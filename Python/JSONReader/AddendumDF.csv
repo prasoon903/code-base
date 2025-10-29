@@ -1,0 +1,4 @@
+TranId,MessageTypeIdentifier,FunctionCode,AcquiringInsitutionIDCode,ForwardingInsitutionIDCode,NonNativeSid
+501426753,1644,696,,,2
+501426754,1644,696,,009685,3
+501426755,1644,696,,009685,4

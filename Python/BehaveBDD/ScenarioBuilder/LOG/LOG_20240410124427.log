@@ -1,0 +1,38 @@
+2024-04-10 12:44:27,277 — INFO — ResponseFile to be processed: E:\Python\BehaveBDD\ScenarioBuilder\ResponseFile\COOKIE-231352_20240410124427.sql
+2024-04-10 12:44:27,277 — INFO — File Processing starts ...
+2024-04-10 12:44:27,277 — INFO — START TIME::: 2024-04-10 12:44:27.276484
+2024-04-10 12:44:27,277 — INFO — E:\Python\BehaveBDD\ScenarioBuilder\INPUT\
+2024-04-10 12:44:27,277 — INFO — ********************Scenario.xlsx*****************************
+2024-04-10 12:44:27,277 — INFO — INSIDE ReadingTheFileDF WITH FILE: Scenario.xlsx
+2024-04-10 12:44:27,503 — INFO —     BSAcctid  ARTxnType            Trantime  ... TxnIsFor  ClaimID cpmgroup
+0    1129597       91.0 2023-12-30 06:14:39  ...      NaN      NaN      NaN
+1    1129597       91.0 2023-12-30 06:14:38  ...      NaN      NaN      NaN
+2    1129597       91.0 2023-12-19 11:16:40  ...      NaN      NaN      0.0
+3    1129597       91.0 2023-12-04 21:43:10  ...      NaN      NaN      0.0
+4    1129597       91.0 2023-12-04 21:26:35  ...      NaN      NaN      NaN
+..       ...        ...                 ...  ...      ...      ...      ...
+69   1129597       91.0 2021-02-20 19:53:02  ...      NaN      NaN      0.0
+70   1129597       91.0 2021-01-11 14:41:59  ...      NaN      NaN      0.0
+71   1129597       91.0 2020-12-22 09:38:31  ...      NaN      NaN      NaN
+72   1129597       91.0 2020-12-22 09:38:31  ...      NaN      NaN      NaN
+73   1129597        NaN 2019-07-24 12:11:12  ...      NaN      NaN      NaN
+
+[74 rows x 24 columns]
+2024-04-10 12:44:27,763 — INFO — DATA CONVERTED FROM XLS TO DF
+2024-04-10 12:44:27,763 — INFO — Empty DataFrame
+Columns: []
+Index: []
+2024-04-10 12:44:27,764 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\BehaveBDD\ScenarioBuilder\ScenarioBuilder.py", line 288, in <module>
+    ReadingTheFileDF(FileName)
+  File "E:\Python\BehaveBDD\ScenarioBuilder\ScenarioBuilder.py", line 167, in ReadingTheFileDF
+    DF_PostTime_Sorted = DF1.sort_values(by='PostTime')
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\util\_decorators.py", line 317, in wrapper
+    return func(*args, **kwargs)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\core\frame.py", line 6904, in sort_values
+    k = self._get_label_or_level_values(by, axis=axis)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\core\generic.py", line 1849, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'PostTime'
+2024-04-10 12:44:27,769 — INFO — *********************** FINISHED ***********************

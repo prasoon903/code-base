@@ -1,0 +1,40 @@
+01/19/2022 17:18:49 — 7652 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+01/19/2022 17:18:49 — 7652 — INFO — START TIME: 2022-01-19 17:18:49.400212
+01/19/2022 17:18:49 — 7652 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+01/19/2022 17:18:49 — 7652 — INFO — INSIDE EmailStructure_Head BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — EXITING EmailStructure_Head BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — FILENAME: Gen_sample_PART1.csv
+01/19/2022 17:18:49 — 7652 — INFO — FileID: 202201191718491
+01/19/2022 17:18:49 — 7652 — INFO — INSIDE ValidateDuplicateFile BLOCK
+01/19/2022 17:18:49 — 7652 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\Gen_sample_PART1.csv
+01/19/2022 17:18:49 — 7652 — INFO — EXITING ValidateDuplicateFile BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — INSIDE CheckEmptyFile BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — Total records in the file Gen_sample_PART1.csv is: 71775
+01/19/2022 17:18:49 — 7652 — INFO — Non-Empty file, going to process
+01/19/2022 17:18:49 — 7652 — INFO — INSIDE ImportFileToDB BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — CONNECTION ESTABLISHED
+01/19/2022 17:18:49 — 7652 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+01/19/2022 17:18:49 — 7652 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\Gen_sample_PART1.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version4\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+01/19/2022 17:18:49 — 7652 — INFO — BCP START TIME::: 2022-01-19 17:18:49.763809
+01/19/2022 17:18:49 — 7652 — INFO — Reading BCP Output file
+01/19/2022 17:18:49 — 7652 — INFO — Starting copy...
+01/19/2022 17:18:49 — 7652 — INFO — SQLState = S1000, NativeError = 0
+01/19/2022 17:18:49 — 7652 — INFO — Error = [Microsoft][ODBC Driver 13 for SQL Server]Unexpected EOF encountered in BCP data-file
+01/19/2022 17:18:49 — 7652 — INFO — BCP copy in failed
+01/19/2022 17:18:49 — 7652 — INFO — BCP EXECUTION SUCCESSFULL
+01/19/2022 17:18:49 — 7652 — INFO — BCP FINISH TIME::: 2022-01-19 17:18:49.894806
+01/19/2022 17:18:49 — 7652 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+01/19/2022 17:18:49 — 7652 — INFO — INSIDE DataValidation BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — PROCESSING NEW FILE
+01/19/2022 17:18:49 — 7652 — INFO — ExceptionFile: EXCP_Gen_sample_PART1_POD1.csv
+01/19/2022 17:18:49 — 7652 — INFO — CONNECTION ESTABLISHED
+01/19/2022 17:18:49 — 7652 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'Gen_sample_PART1.csv', '202201191718491', 10000, 1, 0, 'EXCP_Gen_sample_PART1_POD1.csv'
+01/19/2022 17:18:49 — 7652 — INFO — Error in validating records
+01/19/2022 17:18:49 — 7652 — INFO — EXITING DataValidation BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — INSIDE EmailBody_Error BLOCK
+01/19/2022 17:18:49 — 7652 — INFO — EXITING EmailBody_Error BLOCK
+01/19/2022 17:18:49 — 7652 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 01/19/2022 17:18:49</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>Gen_sample_PART1.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;>Error in validating records</td></tr></table>EXCP_Gen_sample_PART1_POD1.csv<br><br><br><div class="footer"><footer><small>&copy; Copyright 2022, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+01/19/2022 17:18:49 — 7652 — DEBUG — Inside SendMail
+01/19/2022 17:18:50 — 7652 — INFO — SENDING MAIL ...
+01/19/2022 17:18:52 — 7652 — INFO — Finish Time::: 2022-01-19 17:18:52.743557
+01/19/2022 17:18:52 — 7652 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

@@ -1,0 +1,15 @@
+2025-07-04 11:29:35,091 — INFO — File Processing starts ...
+2025-07-04 11:29:35,091 — INFO — START TIME::: 2025-07-04 11:29:35.090840
+2025-07-04 11:29:35,091 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-07-04 11:29:35,092 — INFO — ********************Seg3_scale_up_after_fixing_5_new_issues_dedup_tran_id_level_CBR_Refresh.xlsx*****************************
+2025-07-04 11:29:35,092 — INFO — LoopCount: 1
+2025-07-04 11:29:36,501 — INFO — ['Sheet1']
+2025-07-04 11:29:36,501 — INFO — Processing File: Seg3_scale_up_after_fixing_5_new_issues_dedup_tran_id_level_CBR_Refresh.xlsx
+2025-07-04 11:29:36,501 — INFO — Processing sheet: Sheet1
+2025-07-04 11:29:36,502 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-329066_Sheet1.txt
+2025-07-04 11:29:36,503 — INFO — INSIDE ReadingTheFileDF WITH FILE: Seg3_scale_up_after_fixing_5_new_issues_dedup_tran_id_level_CBR_Refresh.xlsx
+2025-07-04 11:29:37,975 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-07-04 11:29:38,109 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-07-04 11:29:38,162 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-07-04 11:29:38,164 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-07-04 11:30:07,442 — INFO — *********************** FINISHED ***********************

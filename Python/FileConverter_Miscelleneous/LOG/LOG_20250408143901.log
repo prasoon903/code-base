@@ -1,0 +1,56 @@
+2025-04-08 14:39:01,163 — INFO — File Processing starts ...
+2025-04-08 14:39:01,163 — INFO — START TIME::: 2025-04-08 14:39:01.162379
+2025-04-08 14:39:01,163 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-04-08 14:39:01,164 — INFO — ********************CBR Analysis Shared with CC 0407.xlsx*****************************
+2025-04-08 14:39:01,164 — INFO — LoopCount: 1
+2025-04-08 14:39:01,371 — INFO — ['Sheet1']
+2025-04-08 14:39:01,372 — INFO — Processing File: CBR Analysis Shared with CC 0407.xlsx
+2025-04-08 14:39:01,372 — INFO — Processing sheet: Sheet1
+2025-04-08 14:39:01,372 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-316803_Sheet1.txt
+2025-04-08 14:39:01,373 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Analysis Shared with CC 0407.xlsx
+2025-04-08 14:39:01,519 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 607, in _handle_usecols
+    col_indices.append(usecols_key.index(col))
+                       ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'py_resolved_date' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 330, in <module>
+    ReadingTheFileDF(FileName, S1.SheetName)
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 153, in ReadingTheFileDF
+    DF = pd.read_excel(File, sheet_name=sheets, usecols=S1.Columns)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 508, in read_excel
+    data = io.parse(
+           ^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 1616, in parse
+    return self._reader.parse(
+           ^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 916, in parse
+    raise err
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 878, in parse
+    parser = TextParser(
+             ^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\readers.py", line 2053, in TextParser
+    return TextFileReader(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 133, in __init__
+    ) = self._infer_columns()
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 542, in _infer_columns
+    columns = self._handle_usecols(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 609, in _handle_usecols
+    self._validate_usecols_names(self.usecols, usecols_key)
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\base_parser.py", line 979, in _validate_usecols_names
+    raise ValueError(
+ValueError: Usecols do not match columns, columns expected but not found: ['py_resolved_date', 'PC_date', 'dispute_amount', 'account_uuid', 'px_create_date_time', 'clearing_date', 'transaction_amount', 'transaction_date', 'PC_amount_Final', 'dispute_id'] (sheet: Sheet1)

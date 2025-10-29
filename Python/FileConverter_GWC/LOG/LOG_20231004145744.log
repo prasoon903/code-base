@@ -1,0 +1,45 @@
+2023-10-04 14:57:44,796 — INFO — ResponseFile to be processed: E:\Python\FileConverter_GWC\ResponseFile\COOKIE-231352_20231004145744.sql
+2023-10-04 14:57:44,797 — INFO — File Processing starts ...
+2023-10-04 14:57:44,797 — INFO — START TIME::: 2023-10-04 14:57:44.796332
+2023-10-04 14:57:44,798 — INFO — E:\Python\FileConverter_GWC\INPUT\
+2023-10-04 14:57:44,798 — INFO — ********************Cookie -Good will Sep'23 2.0.xlsx*****************************
+2023-10-04 14:57:44,798 — INFO — INSIDE ReadingTheFileDF WITH FILE: Cookie -Good will Sep'23 2.0.xlsx
+2023-10-04 14:57:45,117 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\python_parser.py", line 589, in _handle_usecols
+    col_indices.append(usecols_key.index(col))
+ValueError: 'ACCOUNT_UUID' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_GWC\FileConverter.py", line 284, in <module>
+    ReadingTheFileDF(FileName)
+  File "E:\Python\FileConverter_GWC\FileConverter.py", line 164, in ReadingTheFileDF
+    DF = pd.read_excel(File, sheet_name=S1.SheetName, usecols=S1.Columns)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\util\_decorators.py", line 317, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 491, in read_excel
+    data = io.parse(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 1711, in parse
+    return self._reader.parse(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 867, in parse
+    parser = TextParser(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\readers.py", line 1870, in TextParser
+    return TextFileReader(*args, **kwds)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\readers.py", line 1442, in __init__
+    self._engine = self._make_engine(f, self.engine)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\readers.py", line 1747, in _make_engine
+    return mapping[engine](f, **self.options)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\python_parser.py", line 123, in __init__
+    ) = self._infer_columns()
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\python_parser.py", line 521, in _infer_columns
+    columns = self._handle_usecols(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\python_parser.py", line 591, in _handle_usecols
+    self._validate_usecols_names(self.usecols, usecols_key)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\parsers\base_parser.py", line 918, in _validate_usecols_names
+    raise ValueError(
+ValueError: Usecols do not match columns, columns expected but not found: ['ACCOUNT_UUID', 'DISPUTE_AMOUNT']
+2023-10-04 14:57:45,178 — INFO — *********************** FINISHED ***********************

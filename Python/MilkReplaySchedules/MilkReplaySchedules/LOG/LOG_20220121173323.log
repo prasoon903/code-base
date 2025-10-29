@@ -1,0 +1,111 @@
+01/21/2022 17:33:23 — 18876 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+01/21/2022 17:33:23 — 18876 — INFO — START TIME: 2022-01-21 17:33:23.640579
+01/21/2022 17:33:23 — 18876 — INFO — PRINTING ENVIRONMENT VARIABLES
+01/21/2022 17:33:23 — 18876 — INFO — CI_DB: PP_CI
+01/21/2022 17:33:23 — 18876 — INFO — CL_DB: PP_CL
+01/21/2022 17:33:23 — 18876 — INFO — CAuth_DB: PP_CAUTH
+01/21/2022 17:33:23 — 18876 — INFO — SERVERNAME: XEON-S8
+01/21/2022 17:33:23 — 18876 — INFO — MailFrom: prasoon.parashar@corecard.com
+01/21/2022 17:33:23 — 18876 — INFO — MailTo: prasoon.parashar@corecard.com
+01/21/2022 17:33:23 — 18876 — INFO — SMTP_SERVER: corecard-com.mail.protection.outlook.com
+01/21/2022 17:33:23 — 18876 — INFO — SMTPPORT: 25
+01/21/2022 17:33:23 — 18876 — INFO — RetailAWSEnvironment: 0
+01/21/2022 17:33:23 — 18876 — INFO — RetailAWS_secret_name: ses-smtp-secret
+01/21/2022 17:33:23 — 18876 — INFO — RetailAWS_region_name: us-south-1
+01/21/2022 17:33:23 — 18876 — INFO — RetailAWS_service_name: secretsmanager
+01/21/2022 17:33:23 — 18876 — INFO — RetailSES_smtp_url: email-smtp.ap-south-1.amazonaws.com
+01/21/2022 17:33:23 — 18876 — INFO — RetailAWSPort: 587
+01/21/2022 17:33:23 — 18876 — INFO — RetailInputFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT
+01/21/2022 17:33:23 — 18876 — INFO — RetailErrorFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR
+01/21/2022 17:33:23 — 18876 — INFO — RetailOutFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT
+01/21/2022 17:33:23 — 18876 — INFO — RetailLogFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG
+01/21/2022 17:33:23 — 18876 — INFO — RetailGeneratedFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED
+01/21/2022 17:33:23 — 18876 — INFO — RetailInstitutionID: 6969
+01/21/2022 17:33:23 — 18876 — INFO — RetailEnvironment: LOCAL
+01/21/2022 17:33:23 — 18876 — INFO — RetailExceptionFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION
+01/21/2022 17:33:23 — 18876 — INFO — RetailExceptionFilePrefix: EXCP_
+01/21/2022 17:33:23 — 18876 — INFO — RetailExceptionFileSuffix: _PODID_
+01/21/2022 17:33:23 — 18876 — INFO — RetailFileProcessingPOD: POD1
+01/21/2022 17:33:23 — 18876 — INFO — BatchCount: 10000
+01/21/2022 17:33:23 — 18876 — INFO — AccountNumberCheck: 1
+01/21/2022 17:33:23 — 18876 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+01/21/2022 17:33:23 — 18876 — INFO — INSIDE GetOperatingServer BLOCK
+01/21/2022 17:33:23 — 18876 — INFO — CONNECTION ESTABLISHED
+01/21/2022 17:33:23 — 18876 — INFO — ConnectionStatus: True
+01/21/2022 17:33:23 — 18876 — ERROR — ERROR INSIDE GetOperatingServer BLOCK can only concatenate str (not "ProgrammingError") to str
+01/21/2022 17:33:23 — 18876 — INFO — INSIDE EmailStructure_Head BLOCK
+01/21/2022 17:33:23 — 18876 — INFO — EXITING EmailStructure_Head BLOCK
+01/21/2022 17:33:23 — 18876 — INFO — FILENAME: Valid_File.csv
+01/21/2022 17:33:23 — 18876 — INFO — FileID: 202201211733231
+01/21/2022 17:33:23 — 18876 — INFO — INSIDE ValidateDuplicateFile BLOCK
+01/21/2022 17:33:23 — 18876 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\Valid_File.csv
+01/21/2022 17:33:23 — 18876 — INFO — EXITING ValidateDuplicateFile BLOCK
+01/21/2022 17:33:23 — 18876 — INFO — INSIDE CheckEmptyFile BLOCK
+01/21/2022 17:33:23 — 18876 — INFO — Total records in the file Valid_File.csv is: 173
+01/21/2022 17:33:23 — 18876 — INFO — Non-Empty file, going to process
+01/21/2022 17:33:23 — 18876 — INFO — IN GenerateErrorPotenialFile FUNCTION 
+01/21/2022 17:33:23 — 18876 — INFO — INSIDE ImportFileToDB BLOCK
+01/21/2022 17:33:23 — 18876 — INFO — CONNECTION ESTABLISHED
+01/21/2022 17:33:23 — 18876 — INFO — ConnectionStatus: True
+01/21/2022 17:33:23 — 18876 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+01/21/2022 17:33:23 — 18876 — INFO — IMPORTING FILE DATA OF FILE : Gen_Valid_File_PART2.csv
+01/21/2022 17:33:23 — 18876 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED\Gen_Valid_File_PART2.csv -b 5000 -h TABLOCK -f E:\Python\Corecard_Python_Design\BCP_changes_V2\MilkReplaySchedules2.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error2_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output2_in.log -S XEON-S8 -T -t , -F 2
+01/21/2022 17:33:23 — 18876 — INFO — BCP START TIME::: 2022-01-21 17:33:23.838606
+01/21/2022 17:33:24 — 18876 — INFO — Reading BCP Output file
+01/21/2022 17:33:24 — 18876 — INFO — Output File Location: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output2_in.log
+01/21/2022 17:33:24 — 18876 — INFO — Starting copy...
+01/21/2022 17:33:24 — 18876 — INFO — 101 rows copied.
+01/21/2022 17:33:24 — 18876 — INFO — Network packet size (bytes): 4096
+01/21/2022 17:33:24 — 18876 — INFO — Clock Time (ms.) Total     : 156    Average : (647.44 rows per sec.)
+01/21/2022 17:33:24 — 18876 — INFO — BCP EXECUTION SUCCESSFULL
+01/21/2022 17:33:24 — 18876 — INFO — BCP FINISH TIME::: 2022-01-21 17:33:24.144540
+01/21/2022 17:33:24 — 18876 — INFO — IMPORTING FILE DATA OF FILE : Gen_Valid_File_PART1.csv
+01/21/2022 17:33:24 — 18876 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED\Gen_Valid_File_PART1.csv -b 5000 -h TABLOCK -f E:\Python\Corecard_Python_Design\BCP_changes_V2\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+01/21/2022 17:33:24 — 18876 — INFO — BCP START TIME::: 2022-01-21 17:33:24.145517
+01/21/2022 17:33:24 — 18876 — INFO — Reading BCP Output file
+01/21/2022 17:33:24 — 18876 — INFO — Output File Location: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log
+01/21/2022 17:33:24 — 18876 — INFO — Starting copy...
+01/21/2022 17:33:24 — 18876 — INFO — 71 rows copied.
+01/21/2022 17:33:24 — 18876 — INFO — Network packet size (bytes): 4096
+01/21/2022 17:33:24 — 18876 — INFO — Clock Time (ms.) Total     : 16     Average : (4437.50 rows per sec.)
+01/21/2022 17:33:24 — 18876 — INFO — BCP EXECUTION SUCCESSFULL
+01/21/2022 17:33:24 — 18876 — INFO — BCP FINISH TIME::: 2022-01-21 17:33:24.565146
+01/21/2022 17:33:24 — 18876 — INFO — INSIDE DataValidation BLOCK
+01/21/2022 17:33:24 — 18876 — INFO — PROCESSING NEW FILE
+01/21/2022 17:33:24 — 18876 — INFO — ExceptionFile: EXCP_Valid_File_PODID_POD1.csv
+01/21/2022 17:33:24 — 18876 — INFO — CONNECTION ESTABLISHED
+01/21/2022 17:33:24 — 18876 — INFO — ConnectionStatus: True
+01/21/2022 17:33:24 — 18876 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'Valid_File.csv', '202201211733231', 10000, 1, 0, 'EXCP_Valid_File_PODID_POD1.csv'
+01/21/2022 17:33:28 — 18876 — INFO — INSIDE FileDetails BLOCK
+01/21/2022 17:33:28 — 18876 — INFO — EXITING FileDetails BLOCK
+01/21/2022 17:33:28 — 18876 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+01/21/2022 17:33:28 — 18876 — INFO — No new record to update
+01/21/2022 17:33:28 — 18876 — INFO — EXITING DataValidation BLOCK
+01/21/2022 17:33:28 — 18876 — INFO — INSIDE GenerateExceptionFile BLOCK
+01/21/2022 17:33:28 — 18876 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION\EXCP_Valid_File_PODID_POD1.csv
+01/21/2022 17:33:28 — 18876 — INFO — CONNECTION ESTABLISHED
+01/21/2022 17:33:28 — 18876 — INFO — ConnectionStatus: True
+01/21/2022 17:33:28 — 18876 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'Valid_File.csv' AND FileID = '202201211733231' AND JobStatus = 10
+01/21/2022 17:33:29 — 18876 — DEBUG —                  Report_Date Business_Date   Batch_Timestamp  ...                                      Error_Message                    Field_Path     AccountNumber
+0    2018-06-11 11:45:01.420    2018-06-11  11:45:01.4200000  ...  scheduleId=3 at monthNumber=1 has MDR output t...  schedule at month {10,11,12}  1100001000000062
+1    2018-06-11 11:45:01.420    2018-06-11  11:45:01.4200000  ...  scheduleId=3 at monthNumber=1 has MDR output t...  schedule at month {10,11,12}  1100001000000070
+2    2018-06-11 11:45:01.420    2018-06-11  11:45:01.4200000  ...  scheduleId=3 at monthNumber=1 has MDR output t...  schedule at month {10,11,12}  1100001000000070
+3    2018-06-11 11:45:01.420    2018-06-11  11:45:01.4200000  ...  scheduleId=3 at monthNumber=1 has MDR output t...  schedule at month {10,11,12}  1100001000000203
+4    2018-06-11 11:45:01.420    2018-06-11  11:45:01.4200000  ...  scheduleId=3 at monthNumber=1 has MDR output t...  schedule at month {10,11,12}  1100001000000203
+..                       ...           ...               ...  ...                                                ...                           ...               ...
+167  2018-06-10 19:05:15.440    2018-06-10  19:05:15.4400000  ...  scheduleId=3 at monthNumber=1 has MDR output t...         schedule at month {1}  1100001000004577
+168  2018-06-10 19:05:15.440    2018-06-10  19:05:15.4400000  ...  scheduleId=3 at monthNumber=1 has MDR output t...         schedule at month {1}  1100001000004395
+169  2018-06-10 19:05:15.440    2018-06-10  19:05:15.4400000  ...  scheduleId=3 at monthNumber=1 has MDR output t...         schedule at month {1}  1100001000004510
+170  2018-06-10 19:05:15.440    2018-06-10  19:05:15.4400000  ...  scheduleId=3 at monthNumber=1 has MDR output t...         schedule at month {1}  1100001000004320
+171  2018-06-10 19:05:15.440    2018-06-10  19:05:15.4400000  ...  scheduleId=3 at monthNumber=1 has MDR output t...         schedule at month {1}  1100001000004486
+
+[172 rows x 12 columns]
+01/21/2022 17:33:29 — 18876 — INFO — TOTAL RECORDS FOR EXCEPTION FILE: 172
+01/21/2022 17:33:29 — 18876 — INFO — EXITING GenerateExceptionFile BLOCK
+01/21/2022 17:33:29 — 18876 — INFO — INSIDE EmailBody_Success BLOCK
+01/21/2022 17:33:29 — 18876 — INFO — EXITING EmailBody_Error BLOCK
+01/21/2022 17:33:29 — 18876 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:Coral;>Server operating time: 01/21/2022 17:33:23</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>Valid_File.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>172</td><td style=color:green;>0</td><td style=color:red;>172</td><td style=color:green;>No new record to update</td></tr></table><p style=color:blue;><b>File Name:</b> Valid_File.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>172</b></td></tr></table><p style=color:blue;><b>File Name:</b> Valid_File.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>172</b></td></tr></table><p style=color:Crimson;><b>EXCEPTION FILE NAME:</b> EXCP_Valid_File_PODID_POD1.csv</p><p style=color:DarkBlue;><b>TOTAL RECORDS IN EXCEPTION FILE: 172</b></p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2022, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+01/21/2022 17:33:29 — 18876 — DEBUG — Inside SendMail
+01/21/2022 17:33:31 — 18876 — INFO — SENDING MAIL ...
+01/21/2022 17:33:36 — 18876 — INFO — Finish Time::: 2022-01-21 17:33:36.141940
+01/21/2022 17:33:36 — 18876 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

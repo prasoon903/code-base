@@ -1,0 +1,17 @@
+2025-06-17 11:35:41,181 — INFO — File Processing starts ...
+2025-06-17 11:35:41,181 — INFO — START TIME::: 2025-06-17 11:35:41.180040
+2025-06-17 11:35:41,181 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-06-17 11:35:41,182 — INFO — ********************Seg 3 CBR Impact Assessment_Account number issue.xlsx*****************************
+2025-06-17 11:35:41,182 — INFO — LoopCount: 1
+2025-06-17 11:35:41,258 — INFO — ['Sheet1', 'Sheet2', 'Sheet3']
+2025-06-17 11:35:41,259 — INFO — Processing File: Seg 3 CBR Impact Assessment_Account number issue.xlsx
+2025-06-17 11:35:41,259 — INFO — Processing sheet: Sheet1
+2025-06-17 11:35:41,259 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-325858_Sheet1.txt
+2025-06-17 11:35:41,261 — INFO — INSIDE ReadingTheFileDF WITH FILE: Seg 3 CBR Impact Assessment_Account number issue.xlsx
+2025-06-17 11:35:41,414 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-06-17 11:35:41,472 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-06-17 11:35:41,506 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-06-17 11:35:41,506 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-06-17 11:35:48,101 — INFO — proc: psutil.Process(pid=11436, name='python.exe', status='running', started='11:35:40')
+2025-06-17 11:35:48,102 — INFO — handle.path: E:\Python\FileConverter_Miscelleneous\INPUT\Seg 3 CBR Impact Assessment_Account number issue.xlsx
+2025-06-17 11:35:48,102 — INFO — file_path: E:\Python\FileConverter_Miscelleneous\INPUT\Seg 3 CBR Impact Assessment_Account number issue.xlsx

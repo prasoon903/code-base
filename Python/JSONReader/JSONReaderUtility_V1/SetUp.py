@@ -1,0 +1,12 @@
+class SetUp:
+    CI_DB = "PP_CI"
+    CL_DB = "PP_CL"
+    CAuth_DB = "PP_CAuth"
+    SERVERNAME = "XEON-S8"
+    TableName1 = "IPMMAsterInterim"
+    TableName2 = "IPMAddendumDetails"
+    JSONInputFile = "E:\Python\JSONReader\JSONReaderUtility\JSONFile\INPUT"
+    JSONErrorFile = "E:\Python\JSONReader\JSONReaderUtility\JSONFile\ERROR"
+    JSONOutFile = "E:\Python\JSONReader\JSONReaderUtility\JSONFile\OUTPUT"
+    JSONLogFile = "E:\Python\JSONReader\JSONReaderUtility\JSONFile\LOG"
+    JSONSplitFile = "E:\Python\JSONReader\JSONReaderUtility\JSONFile\SPLITTED"

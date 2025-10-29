@@ -1,0 +1,114 @@
+Changed database context to 'master'.
+hostname                                                                                                                         program_name                                                                                                                     spid   name                                                                                                                            
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- ------ --------------------------------------------------------------------------------------------------------------------------------
+
+(0 rows affected)
+ 
+Changed database context to 'master'.
+
+(2 rows affected)
+Processed 2832 pages for database 'PP_JAZZ_CC', file 'DJ_BC_CC' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CC', file 'DJ_BC_CC_log' on file 1.
+RESTORE DATABASE successfully processed 2833 pages in 0.029 seconds (762.981 MB/sec).
+MESSAGE               
+----------------------
+PP_JAZZ_CC -- RESTORED
+
+(1 rows affected)
+
+(2 rows affected)
+Processed 14256 pages for database 'PP_JAZZ_CAUTH', file 'DJ_BC_CAuth' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CAUTH', file 'DJ_BC_CAuth_log' on file 1.
+RESTORE DATABASE successfully processed 14257 pages in 0.093 seconds (1197.596 MB/sec).
+MESSAGE                  
+-------------------------
+PP_JAZZ_CAUTH -- RESTORED
+
+(1 rows affected)
+
+(2 rows affected)
+Processed 5304 pages for database 'PP_JAZZ_CoreApp', file 'DJ_BC_CoreAPP' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CoreApp', file 'DJ_BC_CoreAPP_log' on file 1.
+RESTORE DATABASE successfully processed 5305 pages in 0.071 seconds (583.647 MB/sec).
+MESSAGE                    
+---------------------------
+PP_JAZZ_CoreApp -- RESTORED
+
+(1 rows affected)
+
+(2 rows affected)
+Processed 9344 pages for database 'PP_JAZZ_CL', file 'DJ_BC_CL' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CL', file 'DJ_BC_CL_log' on file 1.
+RESTORE DATABASE successfully processed 9345 pages in 0.072 seconds (1013.909 MB/sec).
+MESSAGE               
+----------------------
+PP_JAZZ_CL -- RESTORED
+
+(1 rows affected)
+
+(39 rows affected)
+Processed 125288 pages for database 'PP_JAZZ_CI', file 'DJ_BC_CI' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CI_Old' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJan19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIFeb19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIMar19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIApr19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIMay19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJun19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJul19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIAug19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CISep19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIOct19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CINov19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIDec19' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJan20' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIFeb20' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIMar20' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIApr20' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIMay20' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJun20' on file 1.
+Processed 664 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJul20' on file 1.
+Processed 1224 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIAug20' on file 1.
+Processed 1224 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CISep20' on file 1.
+Processed 1328 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIOct20' on file 1.
+Processed 1648 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CINov20' on file 1.
+Processed 2392 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIDec20' on file 1.
+Processed 1032 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJan21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIFeb21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIMAR21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIAPR21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIMAY21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJUN21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIJUL21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIAUG21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CISEP21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIOCT21' on file 1.
+Processed 16 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CINOV21' on file 1.
+Processed 1720 pages for database 'PP_JAZZ_CI', file 'Plat_Jazz_CIDEC21' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CI', file 'DJ_BC_CI_log' on file 1.
+RESTORE DATABASE successfully processed 136985 pages in 0.502 seconds (2131.850 MB/sec).
+MESSAGE               
+----------------------
+PP_JAZZ_CI -- RESTORED
+
+(1 rows affected)
+
+(2 rows affected)
+Processed 2480 pages for database 'PP_JAZZ_CI_Secondary', file 'ETL_CCGS_JAZZ_CoreIssue_Secondary' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CI_Secondary', file 'ETL_CCGS_JAZZ_CoreIssue_Secondary_log' on file 1.
+RESTORE DATABASE successfully processed 2481 pages in 0.181 seconds (107.052 MB/sec).
+MESSAGE                         
+--------------------------------
+PP_JAZZ_CI_Secondary -- RESTORED
+
+(1 rows affected)
+
+(2 rows affected)
+Processed 8608 pages for database 'PP_JAZZ_CoreCredit', file 'Admin_portal_CNB30511' on file 1.
+Processed 1 pages for database 'PP_JAZZ_CoreCredit', file 'Admin_portal_CNB30511_log' on file 1.
+RESTORE DATABASE successfully processed 8609 pages in 0.075 seconds (896.686 MB/sec).
+MESSAGE                       
+------------------------------
+PP_JAZZ_CoreCredit -- RESTORED
+
+(1 rows affected)

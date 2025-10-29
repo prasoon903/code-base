@@ -1,0 +1,12 @@
+09/17/2021 19:27:48 — 22352 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+09/17/2021 19:27:48 — 22352 — INFO — START TIME: 2021-09-17 19:27:48.595111
+09/17/2021 19:27:48 — 22352 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+09/17/2021 19:27:48 — 22352 — INFO — INSIDE GetOperatingServer BLOCK
+09/17/2021 19:28:22 — 22352 — ERROR — ERROR IN CONNECTING TO THE DATABASE('08001', '[08001] [Microsoft][ODBC Driver 13 for SQL Server]Named Pipes Provider: Could not open a connection to SQL Server [53].  (53) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 13 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 13 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 13 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (53)')
+09/17/2021 19:28:22 — 22352 — ERROR — ERROR INSIDE GetOperatingServer BLOCKlocal variable 'cur' referenced before assignment
+09/17/2021 19:28:22 — 22352 — INFO — INSIDE EmailStructure_Head BLOCK
+09/17/2021 19:28:22 — 22352 — INFO — EXITING EmailStructure_Head BLOCK
+09/17/2021 19:28:22 — 22352 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:green;>Server operating time: 09/17/2021 19:27:48</h4><h3 style=color:red;>No file Present in Input folder</h3><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+09/17/2021 19:28:22 — 22352 — INFO — INVALID ENVIRONMENT
+09/17/2021 19:28:22 — 22352 — INFO — Finish Time::: 2021-09-17 19:28:22.041903
+09/17/2021 19:28:22 — 22352 — INFO — *************************** NO FILE EXISTS, EXITING ***************************

@@ -1,0 +1,101 @@
+02/03/2022 15:54:26 — 836 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+02/03/2022 15:54:26 — 836 — INFO — START TIME: 2022-02-03 15:54:26.038177
+02/03/2022 15:54:26 — 836 — INFO — PRINTING ENVIRONMENT VARIABLES
+02/03/2022 15:54:26 — 836 — INFO — CI_DB: PP_CI
+02/03/2022 15:54:26 — 836 — INFO — CL_DB: PP_CL
+02/03/2022 15:54:26 — 836 — INFO — CAuth_DB: PP_CoreAuth
+02/03/2022 15:54:26 — 836 — INFO — SERVERNAME: XEON-S8
+02/03/2022 15:54:26 — 836 — INFO — MailFrom: prasoon.parashar@corecard.com
+02/03/2022 15:54:26 — 836 — INFO — MailTo: prasoon.parashar@corecard.com
+02/03/2022 15:54:26 — 836 — INFO — SMTP_SERVER: corecard-com.mail.protection.outlook.com
+02/03/2022 15:54:26 — 836 — INFO — SMTPPORT: 25
+02/03/2022 15:54:26 — 836 — INFO — RetailAWSEnvironment: 0
+02/03/2022 15:54:26 — 836 — INFO — RetailAWS_secret_name: ses-smtp-secret
+02/03/2022 15:54:26 — 836 — INFO — RetailAWS_region_name: us-south-1
+02/03/2022 15:54:26 — 836 — INFO — RetailAWS_service_name: secretsmanager
+02/03/2022 15:54:26 — 836 — INFO — RetailSES_smtp_url: email-smtp.ap-south-1.amazonaws.com
+02/03/2022 15:54:26 — 836 — INFO — RetailAWSPort: 587
+02/03/2022 15:54:26 — 836 — INFO — RetailInputFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT
+02/03/2022 15:54:26 — 836 — INFO — RetailErrorFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR
+02/03/2022 15:54:26 — 836 — INFO — RetailOutFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT
+02/03/2022 15:54:26 — 836 — INFO — RetailLogFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG
+02/03/2022 15:54:26 — 836 — INFO — RetailGeneratedFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED
+02/03/2022 15:54:26 — 836 — INFO — RetailInstitutionID: 6969
+02/03/2022 15:54:26 — 836 — INFO — RetailEnvironment: LOCAL
+02/03/2022 15:54:26 — 836 — INFO — RetailExceptionFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION
+02/03/2022 15:54:26 — 836 — INFO — RetailExceptionFilePrefix: EXCP_
+02/03/2022 15:54:26 — 836 — INFO — RetailExceptionFileSuffix: _PODID_
+02/03/2022 15:54:26 — 836 — INFO — RetailFileProcessingPOD: POD1
+02/03/2022 15:54:26 — 836 — INFO — BatchCount: 10000
+02/03/2022 15:54:26 — 836 — INFO — AccountNumberCheck: 1
+02/03/2022 15:54:26 — 836 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+02/03/2022 15:54:26 — 836 — INFO — INSIDE GetOperatingServer BLOCK
+02/03/2022 15:54:26 — 836 — INFO — CONNECTION ESTABLISHED
+02/03/2022 15:54:26 — 836 — INFO — ConnectionStatus: True
+02/03/2022 15:54:26 — 836 — ERROR — ERROR INSIDE GetOperatingServer BLOCK can only concatenate str (not "ProgrammingError") to str
+02/03/2022 15:54:26 — 836 — INFO — INSIDE EmailStructure_Head BLOCK
+02/03/2022 15:54:26 — 836 — INFO — EXITING EmailStructure_Head BLOCK
+02/03/2022 15:54:26 — 836 — INFO — FILENAME: amortization_schedule_error_feed_20220203_6.csv
+02/03/2022 15:54:26 — 836 — INFO — FileID: 202202031554261
+02/03/2022 15:54:26 — 836 — INFO — INSIDE ValidateDuplicateFile BLOCK
+02/03/2022 15:54:26 — 836 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_20220203_6.csv
+02/03/2022 15:54:26 — 836 — INFO — EXITING ValidateDuplicateFile BLOCK
+02/03/2022 15:54:26 — 836 — INFO — INSIDE CheckEmptyFile BLOCK
+02/03/2022 15:54:26 — 836 — INFO — Total records in the file amortization_schedule_error_feed_20220203_6.csv is: 13
+02/03/2022 15:54:26 — 836 — INFO — Non-Empty file, going to process
+02/03/2022 15:54:26 — 836 — INFO — IN GenerateErrorPotenialFile FUNCTION 
+02/03/2022 15:54:26 — 836 — INFO — INSIDE ImportFileToDB BLOCK
+02/03/2022 15:54:26 — 836 — INFO — CONNECTION ESTABLISHED
+02/03/2022 15:54:26 — 836 — INFO — ConnectionStatus: True
+02/03/2022 15:54:26 — 836 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+02/03/2022 15:54:26 — 836 — INFO — IMPORTING FILE DATA OF FILE : Gen_amortization_schedule_error_feed_20220203_6_PART2.csv
+02/03/2022 15:54:26 — 836 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED\Gen_amortization_schedule_error_feed_20220203_6_PART2.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version6\MilkReplaySchedules2.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error2_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output2_in.log -S XEON-S8 -T -t , -F 2
+02/03/2022 15:54:26 — 836 — INFO — BCP START TIME::: 2022-02-03 15:54:26.248181
+02/03/2022 15:54:26 — 836 — INFO — Reading BCP Output file
+02/03/2022 15:54:26 — 836 — INFO — Output File Location: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output2_in.log
+02/03/2022 15:54:26 — 836 — INFO — Starting copy...
+02/03/2022 15:54:26 — 836 — INFO — 0 rows copied.
+02/03/2022 15:54:26 — 836 — INFO — Network packet size (bytes): 4096
+02/03/2022 15:54:26 — 836 — INFO — Clock Time (ms.) Total     : 1
+02/03/2022 15:54:26 — 836 — INFO — BCP EXECUTION SUCCESSFULL
+02/03/2022 15:54:26 — 836 — INFO — BCP FINISH TIME::: 2022-02-03 15:54:26.378183
+02/03/2022 15:54:26 — 836 — INFO — IMPORTING FILE DATA OF FILE : Gen_amortization_schedule_error_feed_20220203_6_PART1.csv
+02/03/2022 15:54:26 — 836 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED\Gen_amortization_schedule_error_feed_20220203_6_PART1.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version6\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+02/03/2022 15:54:26 — 836 — INFO — BCP START TIME::: 2022-02-03 15:54:26.380183
+02/03/2022 15:54:26 — 836 — INFO — Reading BCP Output file
+02/03/2022 15:54:26 — 836 — INFO — Output File Location: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log
+02/03/2022 15:54:26 — 836 — INFO — Starting copy...
+02/03/2022 15:54:26 — 836 — INFO — 13 rows copied.
+02/03/2022 15:54:26 — 836 — INFO — Network packet size (bytes): 4096
+02/03/2022 15:54:26 — 836 — INFO — Clock Time (ms.) Total     : 15     Average : (866.67 rows per sec.)
+02/03/2022 15:54:26 — 836 — INFO — BCP EXECUTION SUCCESSFULL
+02/03/2022 15:54:26 — 836 — INFO — BCP FINISH TIME::: 2022-02-03 15:54:26.504185
+02/03/2022 15:54:26 — 836 — INFO — INSIDE DataValidation BLOCK
+02/03/2022 15:54:26 — 836 — INFO — ExceptionFile: EXCP_amortization_schedule_error_feed_20220203_6_PODID_POD1.csv
+02/03/2022 15:54:26 — 836 — INFO — CONNECTION ESTABLISHED
+02/03/2022 15:54:26 — 836 — INFO — ConnectionStatus: True
+02/03/2022 15:54:26 — 836 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'amortization_schedule_error_feed_20220203_6.csv', '202202031554261', 10000, 1, 1, 'EXCP_amortization_schedule_error_feed_20220203_6_PODID_POD1.csv'
+02/03/2022 15:54:26 — 836 — INFO — INSIDE FileDetails BLOCK
+02/03/2022 15:54:26 — 836 — INFO — EXITING FileDetails BLOCK
+02/03/2022 15:54:26 — 836 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+02/03/2022 15:54:26 — 836 — INFO — USP_UpdateScheduleTypeOfBadSchedule executed successfully
+02/03/2022 15:54:26 — 836 — INFO — EXITING DataValidation BLOCK
+02/03/2022 15:54:26 — 836 — INFO — INSIDE GenerateExceptionFile BLOCK
+02/03/2022 15:54:26 — 836 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION\EXCP_amortization_schedule_error_feed_20220203_6_PODID_POD1.csv
+02/03/2022 15:54:26 — 836 — INFO — CONNECTION ESTABLISHED
+02/03/2022 15:54:26 — 836 — INFO — ConnectionStatus: True
+02/03/2022 15:54:26 — 836 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'amortization_schedule_error_feed_20220203_6.csv' AND FileID = '202202031554261' AND JobStatus = 10
+02/03/2022 15:54:27 — 836 — DEBUG —                Report_Date Business_Date  ...             Field_Path     AccountNumber
+0  2018-05-15 15:11:22.017    2018-05-15  ...  schedule at month {1}  1200001000002696
+1  2018-05-15 15:11:22.017    2018-05-15  ...  schedule at month {1}  1200001000002697
+
+[2 rows x 12 columns]
+02/03/2022 15:54:27 — 836 — INFO — TOTAL RECORDS FOR EXCEPTION FILE: 2
+02/03/2022 15:54:27 — 836 — INFO — EXITING GenerateExceptionFile BLOCK
+02/03/2022 15:54:27 — 836 — INFO — INSIDE EmailBody_Success BLOCK
+02/03/2022 15:54:27 — 836 — INFO — EXITING EmailBody_Error BLOCK
+02/03/2022 15:54:27 — 836 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:Coral;>Server operating time: 02/03/2022 15:54:26</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_20220203_6.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>13</td><td style=color:green;>11</td><td style=color:red;>2</td><td style=color:green;>No Error</td></tr></table><p style=color:blue;><b>File Name:</b> amortization_schedule_error_feed_20220203_6.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>2</b></td></tr>                                     <tr><td>2</td><td>No Error</td><td><b>11</b></td></tr></table><p style=color:Crimson;><b>EXCEPTION FILE NAME:</b> EXCP_amortization_schedule_error_feed_20220203_6_PODID_POD1.csv</p><p style=color:DarkBlue;><b>TOTAL RECORDS IN EXCEPTION FILE: 2</b></p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2022, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+02/03/2022 15:54:27 — 836 — DEBUG — Inside SendMail
+02/03/2022 15:54:30 — 836 — INFO — SENDING MAIL ...
+02/03/2022 15:55:13 — 836 — INFO — Finish Time::: 2022-02-03 15:55:13.005517
+02/03/2022 15:55:13 — 836 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

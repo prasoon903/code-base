@@ -1,0 +1,25 @@
+{
+    "AccountCreation" : "AccountCreation",
+    "SecondaryCardCreation" :  "SecondaryCardCreation",
+    "PostSingleTransaction" : "PostSingleTransaction",
+    "ManualAuth" : "ManualAuth",
+    "RetailManualAuth" : "RetailManualAuth",
+    "AgingAPI" :"AgingAPI",
+    "InitiateDispute":"InitiateTransactionDispute",
+    "DisputeResolution":"ReceiveDisputeResolution",
+    "AccountSummary" :"AccountSummary",
+    "StatementMetaData":"StatementMetaData",
+    "PlanSegmentDetails":"PlanSegmentDetails",
+    "AddManualStatus": "AddManualStatusToAccount",
+    "RemoveManualStatus": "RemoveManualStatusAction",
+    "ReageEnrollment": "ReAgeEnrollment",
+    "TCAPEnrollment": "TCAPEnrollmentAPI",
+    "PWPEnrollment": "PWPEnrollmentAPI",
+    "AccountUpdate": "AccountUpdate",
+    "addcustomeruser": "AddCustomerUser",
+    "customerstatusupdate": "CustomerStatusUpdate",
+    "BankAccountManagement": "BankAccountManagement",
+    "PaymentSchedule": "PaymentSchedule",
+    "SettlementEnrollmentAPI": "SettlementEnrollmentAPI"
+}
+

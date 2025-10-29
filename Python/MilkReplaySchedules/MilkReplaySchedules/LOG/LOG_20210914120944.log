@@ -1,0 +1,41 @@
+09/14/2021 12:09:44 — 1180 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+09/14/2021 12:09:44 — 1180 — INFO — START TIME: 2021-09-14 12:09:44.500649
+09/14/2021 12:09:44 — 1180 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+09/14/2021 12:09:44 — 1180 — INFO — INSIDE GetOperatingServer BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — CONNECTION ESTABLISHED
+09/14/2021 12:09:45 — 1180 — INFO — OperatingServer: XEON-S8
+09/14/2021 12:09:45 — 1180 — INFO — EXITING GetOperatingServer BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — INSIDE EmailStructure_Head BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — EXITING EmailStructure_Head BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — FILENAME: TestFile_2.csv
+09/14/2021 12:09:45 — 1180 — INFO — FileID: 202109141209441
+09/14/2021 12:09:45 — 1180 — INFO — INSIDE ValidateDuplicateFile BLOCK
+09/14/2021 12:09:45 — 1180 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\TestFile_2.csv
+09/14/2021 12:09:45 — 1180 — INFO — EXITING ValidateDuplicateFile BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — INSIDE CheckEmptyFile BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — Total records in the file TestFile_2.csv is: 10
+09/14/2021 12:09:45 — 1180 — INFO — Non-Empty file, going to process
+09/14/2021 12:09:45 — 1180 — INFO — INSIDE ImportFileToDB BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — CONNECTION ESTABLISHED
+09/14/2021 12:09:45 — 1180 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+09/14/2021 12:09:45 — 1180 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\TestFile_2.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version4\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+09/14/2021 12:09:45 — 1180 — INFO — BCP START TIME::: 2021-09-14 12:09:45.350929
+09/14/2021 12:09:45 — 1180 — INFO — Reading BCP Output file
+09/14/2021 12:09:45 — 1180 — INFO — Starting copy...
+09/14/2021 12:09:45 — 1180 — INFO — 10 rows copied.
+09/14/2021 12:09:45 — 1180 — INFO — Network packet size (bytes): 4096
+09/14/2021 12:09:45 — 1180 — INFO — Clock Time (ms.) Total     : 63     Average : (158.73 rows per sec.)
+09/14/2021 12:09:45 — 1180 — INFO — BCP EXECUTION SUCCESSFULL
+09/14/2021 12:09:45 — 1180 — INFO — BCP FINISH TIME::: 2021-09-14 12:09:45.682655
+09/14/2021 12:09:45 — 1180 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+09/14/2021 12:09:45 — 1180 — INFO — INSIDE DataValidation BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — Processing new file
+09/14/2021 12:09:45 — 1180 — INFO — CONNECTION ESTABLISHED
+09/14/2021 12:09:45 — 1180 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'TestFile_2.csv', '202109141209441', 10000, 1, 0, EXCP_TestFile_2_POD1.csv
+09/14/2021 12:09:45 — 1180 — INFO — INSIDE EmailBody_Error BLOCK
+09/14/2021 12:09:45 — 1180 — INFO — EXITING EmailBody_Error BLOCK
+09/14/2021 12:09:45 — 1180 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 09/14/2021 12:09:44</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>TestFile_2.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;></td></tr></table>EXCP_TestFile_2_POD1.csv<br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+09/14/2021 12:09:45 — 1180 — DEBUG — Inside SendMail
+09/14/2021 12:09:46 — 1180 — INFO — SENDING MAIL ...
+09/14/2021 12:09:50 — 1180 — INFO — Finish Time::: 2021-09-14 12:09:50.191389
+09/14/2021 12:09:50 — 1180 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

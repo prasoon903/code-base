@@ -1,0 +1,28 @@
+2021-07-12 14:37:11,890 — INFO — File Processing starts ...
+2021-07-12 14:37:11,890 — INFO — Start Time::: 2021-07-12 14:37:11.889045
+2021-07-12 14:37:11,891 — INFO — E:\Python\PaymentHold\POTB\INPUT\
+2021-07-12 14:37:11,891 — INFO — ********************Policy_Sample_File_V7_2.csv*****************************
+2021-07-12 14:37:11,891 — INFO — FileID: 2021071237111
+2021-07-12 14:37:12,008 — INFO — Connection established
+2021-07-12 14:37:12,008 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'Policy_Sample_File_V7_2.csv'
+2021-07-12 14:37:15,843 — INFO — File is in NEW state and going to process
+2021-07-12 14:37:15,844 — DEBUG — Inside ValidateDuplicateFile
+2021-07-12 14:37:15,844 — DEBUG — E:\Python\PaymentHold\POTB\OUT\Policy_Sample_File_V7_2.csv
+2021-07-12 14:37:15,845 — DEBUG — Inside ImportFileToDB
+2021-07-12 14:37:15,845 — INFO — Connection established
+2021-07-12 14:37:17,846 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\Policy_Sample_File_V7_2.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 14:37:17,847 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\Policy_Sample_File_V7_2.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 14:37:22,153 — INFO — Record Insert Time:::2021-07-12 14:37:22.153882
+2021-07-12 14:37:22,153 — DEBUG — Error ===> False
+2021-07-12 14:37:22,154 — DEBUG — Inside DataValidation
+2021-07-12 14:37:22,154 — INFO — Connection established
+2021-07-12 14:37:22,154 — DEBUG — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Internal '2021071237111', 'Policy_Sample_File_V7_2.csv' ,'6969', 'G2', 'ACCOUNTNUMBER'
+2021-07-12 14:37:22,883 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Internal executed successfully
+2021-07-12 14:37:22,884 — DEBUG — EXEC PP_CI..USP_Archiveintradayaccountotbrule_Internal
+2021-07-12 14:37:22,983 — DEBUG — ABORT: False
+ErrorFlag: 0
+ErrorMessage: No Error
+2021-07-12 14:37:22,984 — DEBUG — Inside SendMail
+2021-07-12 14:37:24,927 — INFO — SENDING MAIL ...
+2021-07-12 14:37:26,755 — INFO — Finish Time::: 2021-07-12 14:37:26.755479
+2021-07-12 14:37:26,756 — INFO — ********************All files processed... Exiting*****************************

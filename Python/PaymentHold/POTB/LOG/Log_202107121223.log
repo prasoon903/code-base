@@ -1,0 +1,63 @@
+2021-07-12 12:12:23,645 — INFO — File Processing starts ...
+2021-07-12 12:12:23,656 — INFO — Start Time::: 2021-07-12 12:12:23.576616
+2021-07-12 12:12:23,657 — INFO — E:\Python\PaymentHold\POTB\INPUT\
+2021-07-12 12:12:23,658 — INFO — ********************IntraDayAccountOTBRule_20190816.csv*****************************
+2021-07-12 12:12:23,658 — INFO — FileID: 2021071212231
+2021-07-12 12:12:24,143 — INFO — Connection established
+2021-07-12 12:12:24,143 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'IntraDayAccountOTBRule_20190816.csv'
+2021-07-12 12:12:24,645 — INFO — File is in NEW state and going to process
+2021-07-12 12:12:24,645 — DEBUG — Inside ValidateDuplicateFile
+2021-07-12 12:12:24,668 — DEBUG — E:\Python\PaymentHold\POTB\OUT\IntraDayAccountOTBRule_20190816.csv
+2021-07-12 12:12:24,669 — DEBUG — Inside ImportFileToDB
+2021-07-12 12:12:24,669 — INFO — Connection established
+2021-07-12 12:12:24,716 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\IntraDayAccountOTBRule_20190816.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 12:12:24,717 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\IntraDayAccountOTBRule_20190816.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 12:12:25,140 — INFO — Record Insert Time:::2021-07-12 12:12:25.140586
+2021-07-12 12:12:25,140 — DEBUG — Error ===> False
+2021-07-12 12:12:25,140 — DEBUG — Inside DataValidation
+2021-07-12 12:12:25,140 — INFO — Connection established
+2021-07-12 12:12:25,140 — DEBUG — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Internal '2021071212231', 'IntraDayAccountOTBRule_20190816.csv' ,'6969', 'G2', 'ACCOUNTNUMBER'
+2021-07-12 12:12:25,343 — INFO — ErrorFlag: 4::No record to update
+2021-07-12 12:12:25,343 — INFO — No new record to update
+2021-07-12 12:12:25,344 — DEBUG — ABORT: False
+ErrorFlag: 4
+ErrorMessage: No new record to update
+2021-07-12 12:12:25,345 — INFO — INSIDE AWS SES PROCESS
+2021-07-12 12:12:25,345 — INFO — INSIDE GETTING THE AWS SECRET KEY
+2021-07-12 12:12:25,345 — INFO — GETTING SESSION
+2021-07-12 12:12:25,354 — INFO — Session(region_name=None)
+2021-07-12 12:12:25,354 — INFO — GETTING CLIENT
+2021-07-12 12:12:28,594 — INFO — <botocore.client.SecretsManager object at 0x00000200A7A56880>
+2021-07-12 12:12:28,595 — ERROR — Error in sending mail 
+Traceback (most recent call last):
+  File "E:\Python\PaymentHold\IntraDayAccountOTBRule.py", line 553, in SendMail
+    AWSSecretKeyStr = get_secret()
+  File "E:\Python\PaymentHold\IntraDayAccountOTBRule.py", line 184, in get_secret
+    get_secret_value_response = client.get_secret_value(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\client.py", line 662, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\client.py", line 682, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\endpoint.py", line 102, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\endpoint.py", line 132, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\endpoint.py", line 115, in create_request
+    self._event_emitter.emit(event_name, request=request,
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\hooks.py", line 356, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\hooks.py", line 228, in emit
+    return self._emit(event_name, kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\hooks.py", line 211, in _emit
+    response = handler(**kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\signers.py", line 90, in handler
+    return self.sign(operation_name, request)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\signers.py", line 162, in sign
+    auth.add_auth(request)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\auth.py", line 373, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+2021-07-12 12:12:28,672 — INFO — Finish Time::: 2021-07-12 12:12:28.672861
+2021-07-12 12:12:28,673 — INFO — ********************All files processed... Exiting*****************************

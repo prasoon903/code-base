@@ -1,0 +1,11 @@
+2023-02-16 15:21:42,708 — INFO — ResponseFile to be processed: E:\Python\FileConverter_BackdatedTxns\ResponseFile\COOKIE-231352_20230216152142.txt
+2023-02-16 15:21:42,709 — INFO — File Processing starts ...
+2023-02-16 15:21:42,709 — INFO — START TIME::: 2023-02-16 15:21:42.708761
+2023-02-16 15:21:42,709 — INFO — E:\Python\FileConverter_BackdatedTxns\INPUT\
+2023-02-16 15:21:42,710 — INFO — ********************Remediation8200.8284.8691.Jazz365 (1).xlsx*****************************
+2023-02-16 15:21:42,710 — INFO — INSIDE ReadingTheFileDF WITH FILE: Remediation8200.8284.8691.Jazz365 (1).xlsx
+2023-02-16 15:21:44,152 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-02-16 15:21:44,176 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-02-16 15:21:44,181 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-02-16 15:21:44,181 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-02-16 15:21:44,396 — INFO — *********************** FINISHED ***********************

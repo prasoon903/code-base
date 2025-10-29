@@ -1,0 +1,52 @@
+2021-02-17 05:14:28,686 INFO ==================================================================================================================
+2021-02-17 05:14:28,686 INFO AUTHOR :   Neha Vishwakarma
+2021-02-17 05:14:28,686 INFO Reviewer : Poonam Agrawal Mam / Jinendra Sir 
+2021-02-17 05:14:28,686 INFO DESCRIPTION : This process will read and Insert request of all apis in  sql Table and then call particular APIBy making their JSON Request 
+2021-02-17 05:14:28,686 INFO ==================================================================================================================
+2021-02-17 05:14:28,686 INFO Reading File svcManualReageAccountProd_CRFeb2021_1.csv
+2021-02-17 05:14:28,686 INFO 2021-02-17
+2021-02-17 05:14:28,686 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat'}
+2021-02-17 05:14:28,686 INFO https://ccservices.corecard.com//CoreCardServices/CoreCardServices.svc/ManualReage
+2021-02-17 05:14:28,686 INFO SELECT COUNT(1) FROM APIJSONRequestLog  WITH (NOLOCK) WHERE  FileName = 'svcManualReageAccountProd_CRFeb2021_1.csv' AND importdate between '2021-02-17'
+         and '2021-02-17 23:59:59'
+2021-02-17 05:14:28,686 INFO (0,)
+2021-02-17 05:14:28,686 INFO 0
+2021-02-17 05:14:28,686 INFO 0
+2021-02-17 05:14:28,710 INFO TypeOfManualReage,TotalDueMethod,AccountNumber
+
+2021-02-17 05:14:28,710 INFO The last line is:
+2021-02-17 05:14:28,710 INFO 1,2698.89,1100011102821554
+2021-02-17 05:14:28,710 INFO <_io.TextIOWrapper name='P:\\Dump\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_CRFeb2021_1.csv' mode='r' encoding='cp1252'>
+2021-02-17 05:14:28,710 INFO ***checking checkHeaderCount********
+2021-02-17 05:14:28,710 INFO 3
+2021-02-17 05:14:28,710 INFO ***checking checkLineColumnCount********
+2021-02-17 05:14:28,710 INFO 3
+2021-02-17 05:14:28,710 INFO ***checking checkLineColumnCount********
+2021-02-17 05:14:28,710 INFO 3
+2021-02-17 05:14:28,710 INFO 0
+2021-02-17 05:14:28,725 INFO TypeOfManualReage
+2021-02-17 05:14:28,725 INFO <_io.TextIOWrapper name='P:\\Dump\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_CRFeb2021_1.csv' mode='r' encoding='cp1252'>
+2021-02-17 05:14:28,725 INFO 1
+2021-02-17 05:14:28,725 INFO 1100011112162411
+2021-02-17 05:14:28,725 INFO AccountNumber
+2021-02-17 05:14:28,725 INFO **********Remove NewLine***********
+2021-02-17 05:14:28,725 INFO AccountNumber
+2021-02-17 05:14:28,725 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '262.68', 'AccountNumber': '1100011112162411'}
+2021-02-17 05:14:28,725 INFO ('svcManualReageAccountProd_CRFeb2021_1.csv', 1, 'NEW', datetime.datetime(2021, 2, 17, 5, 14, 28, 725683), '{"Password": "Test123!", "UserID": "DRPSeriveCall", "APIVersion": "2.0", "Source": "plat", "TypeOfManualReage": "1", "TotalDueMethod": "262.68", "AccountNumber": "1100011112162411"}')
+2021-02-17 05:14:28,725 INFO ------------------------------Insersion1-----------------------------
+2021-02-17 05:14:28,725 INFO ------------------------------Insersion2-----------------------------
+2021-02-17 05:14:28,725 INFO Request_Parameter={'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '262.68', 'AccountNumber': '1100011112162411'}
+2021-02-17 05:14:28,725 INFO 1
+2021-02-17 05:14:28,725 INFO *******checking timeout**********
+2021-02-17 05:14:29,765 INFO *******checking timeout**********
+2021-02-17 05:14:29,765 INFO 200
+2021-02-17 05:14:29,765 INFO {'ErrorFound': 'NO', 'ErrorNumber': 'ERR01040', 'ErrorMessage': 'Re-age posted successfully', 'ResponseID': '2435631049', 'CycleDue': '4 Cycles Past Due', 'AccountUUID': None, 'AdminUUID': None, 'PODID': '1'}
+2021-02-17 05:14:29,765 INFO 2435631049
+2021-02-17 05:14:29,765 INFO Re-age posted successfully
+2021-02-17 05:14:29,765 INFO UPDATE APIJSONRequestLog SET status='DONE', ResponseID= '2435631049' , ErrorMesssage = 'Re-age posted successfully', 
+             ErrorFound = 'NO' WHERE FileName ='svcManualReageAccountProd_CRFeb2021_1.csv' and importdate between '2021-02-17' and '2021-02-17 23:59:59'
+              and LineNumber = '1'and  status='NEW'
+              
+2021-02-17 05:14:29,765 INFO None
+2021-02-17 05:14:29,765 INFO 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$--Execution Completed--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

@@ -1,0 +1,15 @@
+2025-05-14 18:01:05,623 — INFO — File Processing starts ...
+2025-05-14 18:01:05,623 — INFO — START TIME::: 2025-05-14 18:01:05.622082
+2025-05-14 18:01:05,623 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-14 18:01:05,624 — INFO — ********************CBR Remediation CO-ACCT-289.xlsx*****************************
+2025-05-14 18:01:05,624 — INFO — LoopCount: 1
+2025-05-14 18:01:33,220 — INFO — ['CBR Remediation CO-ACCT-289', 'Sheet1']
+2025-05-14 18:01:33,220 — INFO — Processing File: CBR Remediation CO-ACCT-289.xlsx
+2025-05-14 18:01:33,220 — INFO — Processing sheet: Sheet1
+2025-05-14 18:01:33,221 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-320534_Sheet1.txt
+2025-05-14 18:01:33,222 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Remediation CO-ACCT-289.xlsx
+2025-05-14 18:01:39,871 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-14 18:01:39,873 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-05-14 18:01:39,877 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-05-14 18:01:39,878 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-05-14 18:01:51,362 — INFO — *********************** FINISHED ***********************

@@ -1,0 +1,30 @@
+07/09/2020 20:07:23 — 24224 — INFO — File Processing starts ...
+07/09/2020 20:07:23 — 24224 — INFO — Start Time::: 2020-07-09 20:07:23.136575
+07/09/2020 20:07:23 — 24224 — INFO — INSIDE GetOperatingServer BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — Connection established
+07/09/2020 20:07:23 — 24224 — INFO — EXITING GetOperatingServer BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — INSIDE EmailStructure BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — EXITING EmailStructure BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — Checking the INPROCESS jobs
+07/09/2020 20:07:23 — 24224 — INFO — Connection established
+07/09/2020 20:07:23 — 24224 — INFO — EXITING CheckForInProcessJobs BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — E:\Python\ApplyDBCrTxnPosting\ApplyDbCR\INPUT\
+07/09/2020 20:07:23 — 24224 — INFO — ********************ProcessLocalFile_2.csv*****************************
+07/09/2020 20:07:23 — 24224 — INFO — FileID: 2020070907231
+07/09/2020 20:07:23 — 24224 — INFO — EXITING ValidateDuplicateFile
+07/09/2020 20:07:23 — 24224 — INFO — INSIDE FileToProcess BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — Connection established
+07/09/2020 20:07:23 — 24224 — INFO — Query executed successfully.
+07/09/2020 20:07:23 — 24224 — INFO — File is in NEW state and going to process
+07/09/2020 20:07:23 — 24224 — INFO — EXITING FileToProcess BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — Inserting records to the database
+07/09/2020 20:07:23 — 24224 — INFO — Connection established
+07/09/2020 20:07:23 — 24224 — INFO — TABLE TRUNCATED SUCCESSFULY
+07/09/2020 20:07:23 — 24224 — INFO — BCP START TIME::: 2020-07-09 20:07:23.481903
+07/09/2020 20:07:23 — 24224 — INFO — BCP execution successful
+07/09/2020 20:07:23 — 24224 — INFO — BCP FINISH TIME::: 2020-07-09 20:07:23.596724
+07/09/2020 20:07:23 — 24224 — INFO — INSIDE EmailStructure BLOCK
+07/09/2020 20:07:23 — 24224 — INFO — EXITING EmailStructure BLOCK
+07/09/2020 20:07:47 — 24224 — INFO — Sending mail...
+07/09/2020 20:07:49 — 24224 — INFO — ********************All files processed... Exiting*****************************
+07/09/2020 20:07:49 — 24224 — INFO — FINISH TIME::: 2020-07-09 20:07:23.136575

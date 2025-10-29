@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Countdown — Presets & Fixed Checkbox</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+  :root { --btn-height: 40px; --btn-font: 14px; --btn-radius: 8px; }
+  * { box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; overflow: hidden; margin:0; height:100vh;
+    display:flex; align-items:center; justify-content:center;
+    background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1e293b);
+    background-size: 400% 400%; animation: gradientBG 20s ease infinite; color: #e6eef8; }
+  @keyframes gradientBG {0% {background-position:0% 50%;} 50% {background-position:100% 50%;} 100% {background-position:0% 50%;}}
+  .timer-text { font-size: 3.5rem; line-height:1; text-shadow:0 0 6px rgba(0,0,0,0.5); }
+  .time-text { font-size: 1.5rem; text-shadow:0 0 4px rgba(0,0,0,0.4); }
+  .label-text { font-size: 1rem; letter-spacing:0.1em; }
+  #lastDayDisplay { font-size:1rem; color:#cbd5e1; margin-top:4px; }
+  #wheelBackground { position:absolute; top:0; left:0; width:320px; height:320px; border-radius:50%;
+    background: radial-gradient(circle, rgba(74,222,128,0.06) 0%, rgba(250,204,21,0.04) 50%, rgba(248,113,113,0.02) 100%); }
+  .modal-backdrop { background: rgba(2,6,23,0.6); }
+
+  /* Button sizing utility */
+  .btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height: var(--btn-height);
+    height: var(--btn-height);
+    gap:8px;
+    padding: 0 12px;
+    font-size: var(--btn-font);
+    line-height: 1;
+    border-radius: var(--btn-radius);
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.05) inset;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .btn-sm {
+    height: 28px; min-height:28px; padding: 0 8px; font-size: 13px; border-radius: 6px;
+  }
+
+  /* Preset pills */
+  .preset-pill { display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border-radius:999px; background:rgba(255,255,255,0.06); color:#e6eef8; cursor:pointer; margin:4px; font-size:0.9rem; }
+  .preset-pill-default { box-shadow: 0 0 0 2px rgba(59,130,246,0.12); }
+  .pill-actions { margin-left:6px; background:transparent; border:0; color:inherit; cursor:pointer; padding:4px; border-radius:6px; }
+
+  .pill-menu { position:relative; display:inline-block; vertical-align:middle; }
+  .pill-menu-content { display:none; position:absolute; right:0; top:110%; background:white; color:#0f172a; min-width:160px; border-radius:6px; box-shadow:0 6px 18px rgba(2,6,23,0.12); z-index:60; overflow:hidden; }
+  .pill-menu-content button { width:100%; text-align:left; padding:8px 10px; border:0; background:transparent; cursor:pointer; color: inherit; font-size:14px; height:40px; display:flex; align-items:center; }
+  .pill-menu:hover .pill-menu-content { display:block; }
+
+  .small-btn { padding:6px 10px; border-radius:6px; background:#0b1220; color:#e5e7eb; cursor:pointer; border:1px solid rgba(255,255,255,0.04); display:inline-flex; align-items:center; height:var(--btn-height); }
+
+  .presets-row { display:flex; align-items:center; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:8px; }
+  .muted { color: rgba(230,238,248,0.7); font-size:0.9rem; }
+
+  /* Style text-like inputs but exclude checkboxes */
+  #settingsModal input:not([type="checkbox"]),
+  #settingsModal select,
+  #settingsModal textarea {
+    opacity: 1 !important;
+    filter: none !important;
+    color: #0b1220 !important;
+    -webkit-text-fill-color: #0b1220 !important;
+    background-color: #ffffff !important;
+    caret-color: #0b1220 !important;
+    pointer-events: auto !important;
+    user-select: text !important;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 6px;
+    border: 1px solid rgba(15,23,42,0.08);
+    padding: 8px 10px;
+  }
+
+  /* datetime-local internals (Chromium/Edge) */
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-fields-wrapper,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-text,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-year-field,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-month-field,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-day-field,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-hour-field,
+  #settingsModal input[type="datetime-local"]::-webkit-datetime-edit-minute-field {
+    color: #0b1220 !important;
+    -webkit-text-fill-color: #0b1220 !important;
+    opacity: 1 !important;
+  }
+
+  /* Checkbox styling - keep native feel but larger & colored */
+  #settingsModal input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: #2563eb; /* blue accent */
+    vertical-align: middle;
+  }
+  /* Make the checkbox label clickable and nicely spaced */
+  .checkbox-wrap { display:inline-flex; align-items:center; gap:8px; }
+
+  /* Truly disabled controls retain subdued look */
+  #settingsModal input:disabled,
+  #settingsModal select:disabled,
+  #settingsModal textarea:disabled {
+    opacity: 0.70 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    -webkit-text-fill-color: rgba(0,0,0,0.6) !important;
+    color: rgba(0,0,0,0.6) !important;
+  }
+
+  /* Buttons: use .btn sizing but keep color classes for backgrounds */
+  #settingsModal button { color: #fff; }
+  #settingsModal .btn-neutral { background: #e5e7eb; color: #0b1220; }
+
+  /* Keep specific colors but let .btn handle size */
+  .bg-blue-600 { background-color:#2563eb !important; }
+  .bg-blue-700 { background-color:#1d4ed8 !important; }
+  .bg-emerald-600 { background-color:#10b981 !important; }
+  .bg-emerald-700 { background-color:#059669 !important; }
+  .bg-indigo-600 { background-color:#4f46e5 !important; }
+  .bg-indigo-700 { background-color:#4338ca !important; }
+  .bg-yellow-500 { background-color:#f59e0b !important; }
+  .bg-yellow-600 { background-color:#d97706 !important; }
+  .bg-red-600 { background-color:#dc2626 !important; }
+  .bg-red-700 { background-color:#b91c1c !important; }
+
+  /* Modal sizing tweak */
+  #settingsModal .content-box { max-width: 900px; width: 100%; }
+
+  @media (max-width: 640px) {
+    .timer-text { font-size: 2.4rem; }
+    :root { --btn-height: 36px; --btn-font: 13px; }
+  }
+</style>
+</head>
+<body>
+<div class="text-center w-full max-w-2xl mx-auto p-4">
+  <div class="flex items-center justify-center mb-2">
+    <h1 class="text-3xl font-bold text-gray-200 mr-3">Countdown to Freedom</h1>
+    <button id="openSettings" title="Change dates / manage presets" class="small-btn btn">⚙️ Manage</button>
+  </div>
+
+  <!-- Quick presets -->
+  <div class="presets-row" id="presetsRow" aria-live="polite">
+    <button id="addPresetQuick" class="preset-pill btn">＋ Add</button>
+  </div>
+
+  <p id="subtitle" class="text-gray-300 mb-2">Time remaining until last working day</p>
+  <p id="lastDayDisplay">Last Working Day: —</p>
+
+  <div class="relative w-80 h-80 mx-auto mt-4">
+    <div id="wheelBackground"></div>
+    <canvas id="countdownCanvas" class="absolute top-0 left-0" width="320" height="320"></canvas>
+    <div id="countdown-display" class="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+      <div id="days" class="timer-text font-bold text-white">0</div>
+      <div class="label-text text-gray-300 uppercase">Days</div>
+      <div class="mt-4 text-text time-text" id="time">00:00:00</div>
+    </div>
+  </div>
+</div>
+
+<!-- Settings modal -->
+<div id="settingsModal" class="fixed inset-0 hidden items-center justify-center z-50" aria-hidden="true">
+  <div class="modal-backdrop absolute inset-0"></div>
+
+  <div class="relative content-box w-full max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 z-10" role="dialog" aria-modal="true">
+    <div class="flex items-start justify-between mb-4">
+      <h2 class="text-xl font-semibold text-black">Edit Dates & Presets</h2>
+      <div class="checkbox-wrap">
+        <label for="makeDefaultCheckbox" class="text-sm text-gray-600 mr-2 cursor-pointer">Default</label>
+        <input id="makeDefaultCheckbox" type="checkbox" title="Mark current loaded preset as default" />
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-sm text-gray-700 mb-1">Resignation Date & Time</label>
+        <input id="resignInput" type="datetime-local" class="w-full mb-3" />
+
+        <label class="block text-sm text-gray-700 mb-1">Last Working Day & Time</label>
+        <input id="lastInput" type="datetime-local" class="w-full mb-3" />
+
+        <div class="flex items-center space-x-2">
+          <button id="applyBtn" class="btn bg-blue-600" title="Apply changes">Apply</button>
+          <button id="saveAsPresetBtn" class="btn bg-emerald-600" title="Save as preset">Save as preset</button>
+          <button id="cancelBtn" class="btn btn-neutral" title="Close">Close</button>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-700 mb-1">Presets</label>
+        <div class="flex items-center gap-2 mb-2">
+          <select id="presetsSelect" class="flex-1 p-2"></select>
+          <button id="loadPresetBtn" class="btn bg-blue-600">Load</button>
+        </div>
+
+        <div class="flex items-center gap-2 mb-2">
+          <button id="editPresetBtn" class="btn bg-indigo-600">Edit</button>
+          <button id="renamePresetBtn" class="btn bg-yellow-500" style="color:#111;">Rename</button>
+          <button id="deletePresetBtn" class="btn bg-red-600">Delete</button>
+        </div>
+
+        <div class="text-sm text-gray-600 mb-2">
+          <strong>Default preset:</strong> <span id="defaultPresetName">—</span>
+        </div>
+
+        <div class="mt-2 text-xs text-gray-500">
+          Tips: Use quick preset pills on the main screen to switch faster. Edit a preset from its pill menu or via the "Edit" button here.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* -------------------------
+  DOM refs & state
+  ------------------------- */
+const canvas = document.getElementById('countdownCanvas');
+const ctx = canvas.getContext('2d');
+
+const daysEl = document.getElementById('days');
+const timeEl = document.getElementById('time');
+const lastDayDisplay = document.getElementById('lastDayDisplay');
+
+const openSettings = document.getElementById('openSettings');
+const settingsModal = document.getElementById('settingsModal');
+const resignInput = document.getElementById('resignInput');
+const lastInput = document.getElementById('lastInput');
+const applyBtn = document.getElementById('applyBtn');
+const cancelBtn = document.getElementById('cancelBtn');
+
+const saveAsPresetBtn = document.getElementById('saveAsPresetBtn');
+const presetsSelect = document.getElementById('presetsSelect');
+const loadPresetBtn = document.getElementById('loadPresetBtn');
+const deletePresetBtn = document.getElementById('deletePresetBtn');
+const renamePresetBtn = document.getElementById('renamePresetBtn');
+const editPresetBtn = document.getElementById('editPresetBtn');
+const defaultPresetName = document.getElementById('defaultPresetName');
+const makeDefaultCheckbox = document.getElementById('makeDefaultCheckbox');
+
+const presetsRow = document.getElementById('presetsRow');
+const addPresetQuick = document.getElementById('addPresetQuick');
+
+const STORAGE_KEY = 'countdown_presets_v1';
+
+let presets = [];
+let activePresetId = null;
+
+// fallback values
+let resignationDate = new Date('2025-08-04T11:00:00');
+let lastWorkingDay  = new Date('2025-10-31T19:30:00');
+
+/* -------------------------
+  Storage helpers
+  ------------------------- */
+function loadPresetsFromStorage(){
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if(!raw) { presets = []; return; }
+    const parsed = JSON.parse(raw);
+    if(Array.isArray(parsed)) presets = parsed;
+    else presets = [];
+  } catch(e){ console.warn('Could not read presets:', e); presets = []; }
+}
+
+function savePresetsToStorage(){ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(presets)); } catch(e){ console.warn('Could not save presets:', e); } }
+
+/* -------------------------
+  Preset utilities
+  ------------------------- */
+function uid(){ return 'p_' + Math.random().toString(36).slice(2,9); }
+function getPresetById(id){ return presets.find(p => p.id === id) || null; }
+function addPreset(name, rISO, lISO, makeDefault=false){
+  let finalName = name || `Preset ${presets.length+1}`;
+  if(presets.some(p=>p.name===finalName)) finalName = `${finalName} (${Math.floor(Math.random()*100)})`;
+  if(makeDefault) presets.forEach(p=>p.isDefault=false);
+  const newPreset = { id: uid(), name: finalName, resignation: rISO, lastWorking: lISO, isDefault: !!makeDefault };
+  presets.push(newPreset);
+  savePresetsToStorage();
+  renderPresetsBar();
+  renderPresetsSelect();
+  return newPreset.id;
+}
+function markPresetAsDefault(id){
+  presets.forEach(p => p.isDefault = (p.id===id));
+  savePresetsToStorage();
+  renderPresetsBar();
+  renderPresetsSelect();
+  updateDefaultLabel();
+  if(settingsModal.classList.contains('flex')){
+    makeDefaultCheckbox.checked = !!(getPresetById(id) && getPresetById(id).isDefault);
+  }
+}
+function setActivePreset(id){
+  const p = getPresetById(id);
+  if(!p) return;
+  activePresetId = id;
+  resignationDate = new Date(p.resignation);
+  lastWorkingDay = new Date(p.lastWorking);
+  updateLastDayDisplay();
+  renderPresetsBar();
+  renderPresetsSelect();
+  updateDefaultLabel();
+  updateCountdown();
+}
+function removePreset(id){
+  const idx = presets.findIndex(p=>p.id===id);
+  if(idx===-1) return false;
+  const wasDefault = presets[idx].isDefault;
+  presets.splice(idx,1);
+  if(wasDefault && presets.length>0) presets[0].isDefault = true;
+  savePresetsToStorage();
+  renderPresetsBar();
+  renderPresetsSelect();
+  updateDefaultLabel();
+  if(activePresetId===id){
+    const def = presets.find(p=>p.isDefault);
+    if(def) setActivePreset(def.id);
+    else {
+      activePresetId = null;
+      resignationDate = new Date('2025-08-04T11:00:00');
+      lastWorkingDay  = new Date('2025-10-31T19:30:00');
+      updateLastDayDisplay();
+      updateCountdown();
+    }
+  }
+  return true;
+}
+function renamePreset(id, newName){
+  const p = getPresetById(id);
+  if(!p) return false;
+  p.name = newName;
+  savePresetsToStorage();
+  renderPresetsBar();
+  renderPresetsSelect();
+  updateDefaultLabel();
+  return true;
+}
+
+/* -------------------------
+  UI: presets bar
+  ------------------------- */
+function clearChildren(el){ while(el.firstChild) el.removeChild(el.firstChild); }
+
+function makePill(p){
+  const btn = document.createElement('button');
+  btn.className = 'preset-pill' + (p.isDefault ? ' preset-pill-default' : '');
+  btn.title = `Load preset "${p.name}"`;
+  btn.type = 'button';
+
+  const nameSpan = document.createElement('span');
+  nameSpan.textContent = p.name;
+  btn.appendChild(nameSpan);
+
+  if(p.isDefault){
+    const star = document.createElement('span');
+    star.textContent = ' ★';
+    star.style.opacity = '0.9';
+    star.style.marginLeft = '4px';
+    btn.appendChild(star);
+  }
+
+  btn.addEventListener('click', () => setActivePreset(p.id));
+
+  const menuWrap = document.createElement('span');
+  menuWrap.className = 'pill-menu';
+  const menuBtn = document.createElement('button');
+  menuBtn.className = 'pill-actions btn-sm';
+  menuBtn.textContent = '⋯';
+  menuWrap.appendChild(menuBtn);
+
+  const menuContent = document.createElement('div');
+  menuContent.className = 'pill-menu-content';
+
+  const editBtn = document.createElement('button');
+  editBtn.textContent = 'Edit';
+  editBtn.addEventListener('click', (e) => { e.stopPropagation(); openModalForPreset(p.id); });
+  menuContent.appendChild(editBtn);
+
+  const setDefaultBtn = document.createElement('button');
+  setDefaultBtn.textContent = 'Set as default';
+  setDefaultBtn.addEventListener('click', (e) => { e.stopPropagation(); markPresetAsDefault(p.id); alert(`"${p.name}" is now default.`); });
+  menuContent.appendChild(setDefaultBtn);
+
+  const renameBtn = document.createElement('button');
+  renameBtn.textContent = 'Rename';
+  renameBtn.addEventListener('click', (e) => { e.stopPropagation(); const newName = prompt('New name for preset:', p.name); if(newName) { renamePreset(p.id, newName.trim()); alert('Renamed.'); } });
+  menuContent.appendChild(renameBtn);
+
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Delete';
+  deleteBtn.addEventListener('click', (e) => { e.stopPropagation(); if(confirm(`Delete preset "${p.name}"? This cannot be undone.`)){ removePreset(p.id); } });
+  menuContent.appendChild(deleteBtn);
+
+  menuWrap.appendChild(menuContent);
+  btn.appendChild(menuWrap);
+
+  return btn;
+}
+
+function renderPresetsBar(){
+  clearChildren(presetsRow);
+  if(presets.length === 0){
+    const hint = document.createElement('div');
+    hint.className = 'muted';
+    hint.textContent = 'No presets saved — add one.';
+    presetsRow.appendChild(hint);
+  } else {
+    presets.forEach(p => presetsRow.appendChild(makePill(p)));
+  }
+  presetsRow.appendChild(addPresetQuick);
+}
+
+/* -------------------------
+  Preset select (modal)
+  ------------------------- */
+function renderPresetsSelect(){
+  presetsSelect.innerHTML = '';
+  const placeholder = document.createElement('option');
+  placeholder.value = '';
+  placeholder.textContent = '-- choose preset --';
+  presetsSelect.appendChild(placeholder);
+  presets.forEach(p => {
+    const opt = document.createElement('option');
+    opt.value = p.id;
+    opt.textContent = p.name + (p.isDefault ? ' (default)' : '');
+    presetsSelect.appendChild(opt);
+  });
+  if(activePresetId){
+    const found = Array.from(presetsSelect.options).find(o => o.value === activePresetId);
+    if(found) presetsSelect.value = activePresetId;
+    else presetsSelect.value = '';
+  } else presetsSelect.value = '';
+}
+
+/* -------------------------
+  Helpers & formatting
+  ------------------------- */
+function pad(n){ return String(n).padStart(2,'0'); }
+function formatForInput(d){
+  if(!d) return '';
+  const yyyy = d.getFullYear(), mm = pad(d.getMonth()+1), dd = pad(d.getDate()), hh = pad(d.getHours()), min = pad(d.getMinutes());
+  return `${yyyy}-${mm}-${dd}T${hh}:${min}`;
+}
+function niceDateTimeString(d){
+  return d.toLocaleString(undefined, { year:'numeric', month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+}
+function updateLastDayDisplay(){ lastDayDisplay.textContent = `Last Working Day: ${niceDateTimeString(lastWorkingDay)}`; }
+
+/* -------------------------
+  Draw + countdown
+  ------------------------- */
+let particles = [];
+function drawWheel(percentage){
+  const cx = canvas.width/2, cy = canvas.height/2;
+  const radius = 140, lineWidth = 20;
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(percentage > 0){
+    const startAngle = -0.5*Math.PI;
+    const endAngle = startAngle + 2*Math.PI*percentage;
+    const grad = (ctx.createConicGradient) ? ctx.createConicGradient(startAngle, cx, cy) :
+                 ctx.createLinearGradient(cx-radius, cy, cx+radius, cy);
+    if(grad.addColorStop){ grad.addColorStop(0,'#f87171'); grad.addColorStop(0.5,'#facc15'); grad.addColorStop(1,'#4ade80'); }
+    ctx.beginPath(); ctx.arc(cx,cy,radius,startAngle,endAngle,false);
+    ctx.lineWidth = lineWidth; ctx.lineCap = 'round'; ctx.strokeStyle = grad; ctx.shadowBlur = 2; ctx.shadowColor = 'rgba(255,255,255,0.05)';
+    ctx.stroke();
+    const tipAngle = endAngle;
+    const tipX = cx + Math.cos(tipAngle)*radius, tipY = cy + Math.sin(tipAngle)*radius;
+    particles.push({x:tipX,y:tipY,radius:Math.random()*3+1,alpha:1});
+  }
+  for(let i=particles.length-1;i>=0;i--){
+    const p = particles[i];
+    ctx.beginPath(); ctx.arc(p.x,p.y,p.radius,0,2*Math.PI);
+    ctx.fillStyle = `rgba(255,255,255,${p.alpha})`; ctx.fill();
+    p.alpha -= 0.02; p.radius *= 0.95;
+    if(p.alpha <= 0 || p.radius <= 0.5) particles.splice(i,1);
+  }
+}
+
+let rafHandle = null;
+function updateCountdown(){
+  const now = new Date();
+  const totalDays = Math.max(1, Math.ceil((lastWorkingDay - resignationDate)/(1000*60*60*24)));
+  const timeRemaining = lastWorkingDay.getTime() - now.getTime();
+  const days = Math.max(Math.floor(timeRemaining/(1000*60*60*24)), 0);
+  const hours = Math.floor((timeRemaining % (1000*60*60*24))/(1000*60*60));
+  const minutes = Math.floor((timeRemaining % (1000*60*60))/(1000*60));
+  const seconds = Math.floor((timeRemaining % (1000*60))/1000);
+  const percentageRemaining = Math.max(0, Math.min(1, (days + (hours/24))/totalDays));
+  daysEl.textContent = days;
+  timeEl.textContent = `${String(hours).padStart(2,'0')}:${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+  drawWheel(percentageRemaining);
+  if(rafHandle) cancelAnimationFrame(rafHandle);
+  rafHandle = requestAnimationFrame(updateCountdown);
+}
+
+/* -------------------------
+  Events & modal logic
+  ------------------------- */
+openSettings.addEventListener('click', openModal);
+addPresetQuick.addEventListener('click', () => {
+  const name = prompt('Preset name:', `Preset ${presets.length+1}`);
+  if(!name) return;
+  const makeDefault = confirm('Make this preset the default (auto-load on open)?');
+  const newId = addPreset(name.trim(), resignationDate.toISOString(), lastWorkingDay.toISOString(), makeDefault);
+  setActivePreset(newId);
+  alert('Preset saved and loaded.');
+});
+
+// ensure modal controls are enabled (remove accidental disabled)
+function enableModalControls() {
+  const controls = settingsModal.querySelectorAll('input, select, button, textarea');
+  controls.forEach(el => {
+    if (el.hasAttribute('disabled')) el.removeAttribute('disabled');
+    el.disabled = false;
+    el.style.opacity = '';
+    el.style.pointerEvents = '';
+  });
+}
+
+function openModal(){
+  renderPresetsSelect();
+  resignInput.value = formatForInput(resignationDate);
+  lastInput.value = formatForInput(lastWorkingDay);
+  // reflect default status: prefer selected preset, otherwise active preset
+  const selected = presetsSelect.value;
+  if(selected){
+    const p = getPresetById(selected);
+    makeDefaultCheckbox.checked = !!(p && p.isDefault);
+  } else {
+    makeDefaultCheckbox.checked = !!(presets.find(p => p.id === activePresetId && p.isDefault));
+  }
+  settingsModal.classList.remove('hidden'); settingsModal.classList.add('flex');
+  settingsModal.setAttribute('aria-hidden', 'false');
+  enableModalControls();
+}
+function closeModal(){ settingsModal.classList.remove('flex'); settingsModal.classList.add('hidden'); settingsModal.setAttribute('aria-hidden', 'true'); }
+
+function openModalForPreset(presetId){
+  renderPresetsSelect();
+  const p = getPresetById(presetId);
+  if(!p){ alert('Preset not found.'); return; }
+  presetsSelect.value = presetId;
+  resignationDate = new Date(p.resignation);
+  lastWorkingDay = new Date(p.lastWorking);
+  resignInput.value = formatForInput(resignationDate);
+  lastInput.value = formatForInput(lastWorkingDay);
+  makeDefaultCheckbox.checked = !!p.isDefault;
+  settingsModal.classList.remove('hidden'); settingsModal.classList.add('flex');
+  settingsModal.setAttribute('aria-hidden', 'false');
+  enableModalControls();
+}
+
+/* Default checkbox behavior:
+   - applies to selected preset, else the active preset
+   - if no preset exists and user checks it, prompt to save current dates as default
+*/
+makeDefaultCheckbox.addEventListener('change', () => {
+  const selectedId = presetsSelect.value;
+  const targetId = selectedId || activePresetId;
+
+  if(!targetId){
+    if(makeDefaultCheckbox.checked){
+      if(confirm('No preset selected. Save current dates as a new default preset?')) {
+        const newId = addPreset('Default Preset', resignationDate.toISOString(), lastWorkingDay.toISOString(), true);
+        setActivePreset(newId);
+        alert('Saved current dates as the default preset.');
+      } else {
+        makeDefaultCheckbox.checked = false;
+      }
+    }
+    return;
+  }
+
+  if(makeDefaultCheckbox.checked){
+    markPresetAsDefault(targetId);
+    alert('Marked as default.');
+  } else {
+    const p = getPresetById(targetId);
+    if(p){
+      p.isDefault = false;
+      savePresetsToStorage();
+      renderPresetsBar();
+      renderPresetsSelect();
+      updateDefaultLabel();
+    }
+  }
+});
+
+presetsSelect.addEventListener('change', () => {
+  const id = presetsSelect.value;
+  const p = getPresetById(id);
+  makeDefaultCheckbox.checked = !!(p && p.isDefault);
+});
+
+applyBtn.addEventListener('click', () => {
+  const rVal = resignInput.value; const lVal = lastInput.value;
+  if(!rVal || !lVal){ alert('Please provide both dates.'); return; }
+  const newR = new Date(rVal); const newL = new Date(lVal);
+  if(isNaN(newR) || isNaN(newL)){ alert('Invalid dates.'); return; }
+  if(newL.getTime() <= newR.getTime()){
+    if(!confirm('Last working day is on/earlier than resignation date. Proceed?')) return;
+  }
+  resignationDate = newR; lastWorkingDay = newL;
+
+  const selectedId = presetsSelect.value;
+  if(selectedId){
+    const p = getPresetById(selectedId);
+    if(p){
+      p.resignation = resignationDate.toISOString();
+      p.lastWorking = lastWorkingDay.toISOString();
+      if(makeDefaultCheckbox.checked) {
+        presets.forEach(x => x.isDefault = (x.id === p.id));
+      }
+      savePresetsToStorage();
+      renderPresetsBar();
+      renderPresetsSelect();
+      updateDefaultLabel();
+      setActivePreset(p.id);
+    } else {
+      updateLastDayDisplay();
+      updateCountdown();
+    }
+  } else {
+    if(makeDefaultCheckbox.checked){
+      const newId = addPreset('Default Preset', resignationDate.toISOString(), lastWorkingDay.toISOString(), true);
+      setActivePreset(newId);
+    } else {
+      updateLastDayDisplay();
+      updateCountdown();
+      activePresetId = null;
+      updateDefaultLabel();
+    }
+  }
+  closeModal();
+});
+
+saveAsPresetBtn.addEventListener('click', () => {
+  const rVal = resignInput.value; const lVal = lastInput.value;
+  if(!rVal || !lVal){ alert('Please provide both dates.'); return; }
+  const newR = new Date(rVal); const newL = new Date(lVal);
+  if(isNaN(newR) || isNaN(newL)){ alert('Invalid dates.'); return; }
+  const name = prompt('Preset name:', `Preset ${presets.length+1}`);
+  if(!name) return;
+  const makeDefault = confirm('Make this preset the default (auto-load on open)?');
+  const newId = addPreset(name.trim(), newR.toISOString(), newL.toISOString(), makeDefault);
+  setActivePreset(newId);
+  alert('Preset saved.');
+});
+
+loadPresetBtn.addEventListener('click', () => {
+  const id = presetsSelect.value;
+  if(!id){ alert('Choose a preset to load.'); return; }
+  const p = getPresetById(id);
+  if(!p) return;
+  setActivePreset(id);
+  resignInput.value = formatForInput(resignationDate);
+  lastInput.value = formatForInput(lastWorkingDay);
+  makeDefaultCheckbox.checked = !!p.isDefault;
+});
+
+deletePresetBtn.addEventListener('click', () => {
+  const id = presetsSelect.value;
+  if(!id){ alert('Choose a preset to delete.'); return; }
+  const p = getPresetById(id);
+  if(!p) return;
+  if(!confirm(`Delete preset "${p.name}"? This cannot be undone.`)) return;
+  const wasActive = activePresetId === id;
+  removePreset(id);
+  if(wasActive){
+    const def = presets.find(x=>x.isDefault);
+    if(def) setActivePreset(def.id);
+    else { activePresetId = null; resignationDate = new Date('2025-08-04T11:00:00'); lastWorkingDay = new Date('2025-10-31T19:30:00'); updateLastDayDisplay(); updateCountdown(); }
+  }
+});
+
+renamePresetBtn.addEventListener('click', () => {
+  const id = presetsSelect.value;
+  if(!id){ alert('Choose a preset to rename.'); return; }
+  const p = getPresetById(id);
+  if(!p) return;
+  const newName = prompt('New name for preset:', p.name);
+  if(!newName) return;
+  renamePreset(id, newName.trim());
+});
+
+editPresetBtn.addEventListener('click', () => {
+  const id = presetsSelect.value;
+  if(!id){ alert('Choose a preset to edit.'); return; }
+  openModalForPreset(id);
+});
+
+cancelBtn.addEventListener('click', closeModal);
+settingsModal.addEventListener('click', (e) => { if(e.target === settingsModal) closeModal(); });
+document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && !settingsModal.classList.contains('hidden')) closeModal(); });
+
+/* -------------------------
+  Initialization
+  ------------------------- */
+function updateDefaultLabel(){
+  const def = presets.find(p => p.isDefault);
+  defaultPresetName.textContent = def ? def.name : '—';
+}
+(function init(){
+  loadPresetsFromStorage();
+  const def = presets.find(p => p.isDefault);
+  if(def){
+    activePresetId = def.id;
+    resignationDate = new Date(def.resignation);
+    lastWorkingDay = new Date(def.lastWorking);
+  } else if(presets.length>0){
+    activePresetId = presets[0].id;
+    resignationDate = new Date(presets[0].resignation);
+    lastWorkingDay = new Date(presets[0].lastWorking);
+  }
+  renderPresetsBar();
+  renderPresetsSelect();
+  updateDefaultLabel();
+  updateLastDayDisplay();
+  updateCountdown();
+})();
+</script>
+</body>
+</html>

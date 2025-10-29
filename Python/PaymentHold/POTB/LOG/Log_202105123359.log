@@ -1,0 +1,49 @@
+2021-05-12 11:33:59,901 — INFO — File Processing starts ...
+2021-05-12 11:33:59,902 — INFO — Start Time::: 2021-05-12 11:33:59.900247
+2021-05-12 11:33:59,902 — INFO — E:\Python\PaymentHold\POTB\INPUT\
+2021-05-12 11:33:59,902 — INFO — ********************Policy_Sample_File_V8.csv*****************************
+2021-05-12 11:33:59,903 — INFO — FileID: 2021051233591
+2021-05-12 11:34:00,045 — INFO — Connection established
+2021-05-12 11:34:00,052 — INFO — File is in NEW state and going to process
+2021-05-12 11:34:00,053 — INFO — Connection established
+2021-05-12 11:34:00,083 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\Policy_Sample_File_V8.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-05-12 11:34:00,791 — INFO — Record Insert Time:::2021-05-12 11:34:00.791366
+2021-05-12 11:34:00,791 — INFO — Connection established
+2021-05-12 11:34:00,991 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Internal executed successfully
+2021-05-12 11:34:01,132 — INFO — INSIDE AWS SES PROCESS
+2021-05-12 11:34:01,132 — INFO — INSIDE GETTING THE AWS SECRET KEY
+2021-05-12 11:34:01,133 — INFO — GETTING SESSION
+2021-05-12 11:34:01,147 — INFO — GETTING CLIENT
+2021-05-12 11:34:03,953 — ERROR — Error in sending mail 
+Traceback (most recent call last):
+  File "e:\Python\PaymentHold\IntraDayAccountOTBRule.py", line 552, in SendMail
+    password    = get_secret()
+  File "e:\Python\PaymentHold\IntraDayAccountOTBRule.py", line 182, in get_secret
+    get_secret_value_response = client.get_secret_value(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\client.py", line 662, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\client.py", line 682, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\endpoint.py", line 102, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\endpoint.py", line 132, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\endpoint.py", line 115, in create_request
+    self._event_emitter.emit(event_name, request=request,
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\hooks.py", line 356, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\hooks.py", line 228, in emit
+    return self._emit(event_name, kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\hooks.py", line 211, in _emit
+    response = handler(**kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\signers.py", line 90, in handler
+    return self.sign(operation_name, request)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\signers.py", line 162, in sign
+    auth.add_auth(request)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python39\lib\site-packages\botocore\auth.py", line 373, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+2021-05-12 11:34:04,055 — INFO — Finish Time::: 2021-05-12 11:34:04.054714
+2021-05-12 11:34:04,056 — INFO — ********************All files processed... Exiting*****************************

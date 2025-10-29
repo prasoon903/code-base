@@ -1,0 +1,11 @@
+2023-03-15 11:17:24,295 — INFO — ResponseFile to be processed: E:\Python\FileConverter_InterestCredit\ResponseFile\InterestCredits_20230315111724.sql
+2023-03-15 11:17:24,295 — INFO — File Processing starts ...
+2023-03-15 11:17:24,295 — INFO — START TIME::: 2023-03-15 11:17:24.295022
+2023-03-15 11:17:24,295 — INFO — E:\Python\FileConverter_InterestCredit\INPUT\
+2023-03-15 11:17:24,295 — INFO — ********************Input file for Interest Credit_0307_v2.xlsx*****************************
+2023-03-15 11:17:24,295 — INFO — INSIDE ReadingTheFileDF WITH FILE: Input file for Interest Credit_0307_v2.xlsx
+2023-03-15 11:17:26,452 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-03-15 11:17:26,483 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-03-15 11:17:26,499 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-03-15 11:17:26,499 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-03-15 11:17:26,684 — INFO — *********************** FINISHED ***********************

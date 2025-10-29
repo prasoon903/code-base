@@ -1,0 +1,77 @@
+2021-08-04 19:14:38,200 INFO ==================================================================================================================
+2021-08-04 19:14:38,201 INFO AUTHOR :   Neha Vishwakarma
+2021-08-04 19:14:38,203 INFO Reviewer : Poonam Agrawal Mam / Jinendra Sir 
+2021-08-04 19:14:38,203 INFO DESCRIPTION : This process will read and Insert request of all apis in  sql Table and then call particular APIBy making their JSON Request 
+2021-08-04 19:14:38,204 INFO ==================================================================================================================
+2021-08-04 19:14:38,205 INFO Reading File svcManualReageAccountProd_1.csv
+2021-08-04 19:14:38,206 INFO 2021-08-04
+2021-08-04 19:14:38,207 INFO {'Password': 'Test123!', 'UserID': 'PlatCall', 'APIVersion': '2.0', 'Source': 'plat'}
+2021-08-04 19:14:38,208 INFO http://xeon-web1/PrasoonP/PrasoonPManualReage.aspx
+2021-08-04 19:14:38,239 INFO SELECT COUNT(1) FROM APIJSONRequestLog  WITH (NOLOCK) WHERE  FileName = 'svcManualReageAccountProd_1.csv' AND importdate between '2021-08-04'
+         and '2021-08-04 23:59:59'
+2021-08-04 19:14:38,240 INFO (0,)
+2021-08-04 19:14:38,242 INFO 0
+2021-08-04 19:14:38,243 INFO 0
+2021-08-04 19:14:38,244 INFO TypeOfManualReage,TotalDueMethod,AccountNumber
+
+2021-08-04 19:14:38,244 INFO The last line is:
+2021-08-04 19:14:38,245 INFO 1,157,1100001000001706
+2021-08-04 19:14:38,246 INFO <_io.TextIOWrapper name='E:\\Python\\APICalling\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_1.csv' mode='r' encoding='cp1252'>
+2021-08-04 19:14:38,266 INFO ***checking checkHeaderCount********
+2021-08-04 19:14:38,266 INFO 3
+2021-08-04 19:14:38,266 INFO ***checking checkLineColumnCount********
+2021-08-04 19:14:38,266 INFO 3
+2021-08-04 19:14:38,266 INFO ***checking checkLineColumnCount********
+2021-08-04 19:14:38,267 INFO 3
+2021-08-04 19:14:38,268 INFO 0
+2021-08-04 19:14:38,269 INFO TypeOfManualReage
+2021-08-04 19:14:38,270 INFO <_io.TextIOWrapper name='E:\\Python\\APICalling\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_1.csv' mode='r' encoding='cp1252'>
+2021-08-04 19:14:38,270 INFO 1
+2021-08-04 19:14:38,271 INFO 1100001000001698
+2021-08-04 19:14:38,272 INFO AccountNumber
+2021-08-04 19:14:38,272 INFO **********Remove NewLine***********
+2021-08-04 19:14:38,273 INFO AccountNumber
+2021-08-04 19:14:38,274 INFO {'Password': 'Test123!', 'UserID': 'PlatCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '250', 'AccountNumber': '1100001000001698'}
+2021-08-04 19:14:38,274 INFO ('svcManualReageAccountProd_1.csv', 1, 'NEW', datetime.datetime(2021, 8, 4, 19, 14, 38, 274798), '{"Password": "Test123!", "UserID": "PlatCall", "APIVersion": "2.0", "Source": "plat", "TypeOfManualReage": "1", "TotalDueMethod": "250", "AccountNumber": "1100001000001698"}')
+2021-08-04 19:14:38,275 INFO ------------------------------Insersion1-----------------------------
+2021-08-04 19:14:38,284 INFO ------------------------------Insersion2-----------------------------
+2021-08-04 19:14:38,284 INFO Request_Parameter={'Password': 'Test123!', 'UserID': 'PlatCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '250', 'AccountNumber': '1100001000001698'}
+2021-08-04 19:14:38,285 INFO 1
+2021-08-04 19:14:38,285 INFO *******checking timeout**********
+2021-08-04 19:14:45,871 INFO  ********************timeout*************************
+2021-08-04 19:14:45,871 INFO UPDATE APIJSONRequestLog SET status='Error', ErrorMesssage = 'TIMEOUT', 
+         ErrorFound = 'TIMEOUTError' WHERE FileName ='svcManualReageAccountProd_1.csv' and importdate between '2021-08-04' and '2021-08-04 23:59:59'
+          and LineNumber = '1' 
+2021-08-04 19:14:45,922 INFO 1
+2021-08-04 19:14:45,923 INFO AccountNumber
+2021-08-04 19:14:45,923 INFO **********Remove NewLine***********
+2021-08-04 19:14:45,924 INFO AccountNumber
+2021-08-04 19:14:45,925 INFO {'Password': 'Test123!', 'UserID': 'PlatCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '157', 'AccountNumber': '1100001000001706'}
+2021-08-04 19:14:45,926 INFO ('svcManualReageAccountProd_1.csv', 2, 'NEW', datetime.datetime(2021, 8, 4, 19, 14, 45, 925131), '{"Password": "Test123!", "UserID": "PlatCall", "APIVersion": "2.0", "Source": "plat", "TypeOfManualReage": "1", "TotalDueMethod": "157", "AccountNumber": "1100001000001706"}')
+2021-08-04 19:14:45,926 INFO ------------------------------Insersion1-----------------------------
+2021-08-04 19:14:45,930 INFO ------------------------------Insersion2-----------------------------
+2021-08-04 19:14:45,931 INFO Request_Parameter={'Password': 'Test123!', 'UserID': 'PlatCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '157', 'AccountNumber': '1100001000001706'}
+2021-08-04 19:14:45,932 INFO 2
+2021-08-04 19:14:45,936 INFO *******checking timeout**********
+2021-08-04 19:14:50,971 INFO  ********************timeout*************************
+2021-08-04 19:14:50,971 INFO UPDATE APIJSONRequestLog SET status='Error', ErrorMesssage = 'TIMEOUT', 
+         ErrorFound = 'TIMEOUTError' WHERE FileName ='svcManualReageAccountProd_1.csv' and importdate between '2021-08-04' and '2021-08-04 23:59:59'
+          and LineNumber = '2' 
+2021-08-04 19:14:51,117 INFO 0
+2021-08-04 19:14:51,118 INFO ******enter into status update************
+2021-08-04 19:14:51,132 INFO ****** fetch record *********** 
+2021-08-04 19:14:51,132 INFO (0, )
+2021-08-04 19:14:51,145 INFO Select count(1) From APIJSONRequestLog Where FileName ='svcManualReageAccountProd_1.csv' and 
+     importdate between '2021-08-04'  and '2021-08-04 23:59:59'  and  ErrorFound = 'YES' 
+2021-08-04 19:14:51,184 INFO (0, )
+2021-08-04 19:14:51,184 INFO Select count(1) From APIJSONRequestLog Where FileName ='svcManualReageAccountProd_1.csv' and 
+          importdate between '2021-08-04' and '2021-08-04 23:59:59'  and  ErrorFound = 'NO' 
+2021-08-04 19:14:51,187 INFO Select status From APIJSONRequestLog  
+    Where FileName='svcManualReageAccountProd_1.csv' and importdate between '2021-08-04' and '2021-08-04 23:59:59'
+    
+2021-08-04 19:14:51,272 INFO ('Error', )
+2021-08-04 19:14:51,272 INFO Error
+2021-08-04 19:14:51,274 INFO E:\Python\APICalling\CCManualReage\Error\svcManualReageAccountProd_1.csv
+2021-08-04 19:14:51,282 INFO File passed all the validations
+2021-08-04 19:14:51,282 INFO 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$--Execution Completed--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

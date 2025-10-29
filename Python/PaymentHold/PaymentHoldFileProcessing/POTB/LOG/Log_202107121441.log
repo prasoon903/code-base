@@ -1,0 +1,28 @@
+2021-07-12 12:14:41,972 — INFO — File Processing starts ...
+2021-07-12 12:14:41,972 — INFO — Start Time::: 2021-07-12 12:14:41.970961
+2021-07-12 12:14:41,972 — INFO — E:\Python\PaymentHold\POTB\INPUT\
+2021-07-12 12:14:41,973 — INFO — ********************IntraDayAccountOTBRule_20190814.csv*****************************
+2021-07-12 12:14:41,973 — INFO — FileID: 2021071214411
+2021-07-12 12:14:42,122 — INFO — Connection established
+2021-07-12 12:14:42,123 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'IntraDayAccountOTBRule_20190814.csv'
+2021-07-12 12:14:42,130 — INFO — File is in NEW state and going to process
+2021-07-12 12:14:42,130 — DEBUG — Inside ValidateDuplicateFile
+2021-07-12 12:14:42,130 — DEBUG — E:\Python\PaymentHold\POTB\OUT\IntraDayAccountOTBRule_20190814.csv
+2021-07-12 12:14:42,131 — DEBUG — Inside ImportFileToDB
+2021-07-12 12:14:42,132 — INFO — Connection established
+2021-07-12 12:14:42,135 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\IntraDayAccountOTBRule_20190814.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 12:14:42,136 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\IntraDayAccountOTBRule_20190814.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 12:14:42,335 — INFO — Record Insert Time:::2021-07-12 12:14:42.335946
+2021-07-12 12:14:42,335 — DEBUG — Error ===> False
+2021-07-12 12:14:42,335 — DEBUG — Inside DataValidation
+2021-07-12 12:14:42,336 — INFO — Connection established
+2021-07-12 12:14:42,336 — DEBUG — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Internal '2021071214411', 'IntraDayAccountOTBRule_20190814.csv' ,'6969', 'G2', 'ACCOUNTNUMBER'
+2021-07-12 12:14:42,442 — INFO — ErrorFlag: 4::No record to update
+2021-07-12 12:14:42,442 — INFO — No new record to update
+2021-07-12 12:14:42,443 — DEBUG — ABORT: False
+ErrorFlag: 4
+ErrorMessage: No new record to update
+2021-07-12 12:14:42,444 — DEBUG — Inside SendMail
+2021-07-12 12:14:44,296 — INFO — SENDING MAIL ...
+2021-07-12 12:14:46,781 — INFO — Finish Time::: 2021-07-12 12:14:46.781014
+2021-07-12 12:14:46,781 — INFO — ********************All files processed... Exiting*****************************

@@ -1,0 +1,80 @@
+Changed database context to 'master'.
+hostname                                                                                                                         program_name                                                                                                                     spid   name                                                                                                                            
+-------------------------------------------------------------------------------------------------------------------------------- -------------------------------------------------------------------------------------------------------------------------------- ------ --------------------------------------------------------------------------------------------------------------------------------
+
+(0 rows affected)
+ 
+Status         
+---------------
+Start restoring
+
+(1 rows affected)
+Changed database context to 'master'.
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 3536 pages for database 'PP_POD2_CC', file 'DJ_BC_CC' on file 1.
+Processed 1 pages for database 'PP_POD2_CC', file 'DJ_BC_CC_log' on file 1.
+RESTORE DATABASE successfully processed 3537 pages in 0.037 seconds (746.661 MB/sec).
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 6440 pages for database 'PP_POD2_CoreCredit', file 'Admin_portal_CNB30511' on file 1.
+Processed 1 pages for database 'PP_POD2_CoreCredit', file 'Admin_portal_CNB30511_log' on file 1.
+RESTORE DATABASE successfully processed 6441 pages in 0.069 seconds (729.187 MB/sec).
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 141536 pages for database 'PP_POD2_CoreApp', file 'DJ_BC_CI' on file 1.
+Processed 1 pages for database 'PP_POD2_CoreApp', file 'DJ_BC_CI_log' on file 1.
+RESTORE DATABASE successfully processed 141537 pages in 0.615 seconds (1797.969 MB/sec).
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 141536 pages for database 'PP_POD2_CI', file 'DJ_BC_CI' on file 1.
+Processed 1 pages for database 'PP_POD2_CI', file 'DJ_BC_CI_log' on file 1.
+RESTORE DATABASE successfully processed 141537 pages in 0.719 seconds (1537.901 MB/sec).
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 7392 pages for database 'PP_POD2_CL', file 'DJ_BC_CL' on file 1.
+Processed 1 pages for database 'PP_POD2_CL', file 'DJ_BC_CL_log' on file 1.
+RESTORE DATABASE successfully processed 7393 pages in 0.076 seconds (759.887 MB/sec).
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 13880 pages for database 'PP_POD2_CAuth', file 'DJ_BC_CAuth' on file 1.
+Processed 1 pages for database 'PP_POD2_CAuth', file 'DJ_BC_CAuth_log' on file 1.
+RESTORE DATABASE successfully processed 13881 pages in 0.093 seconds (1166.010 MB/sec).
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 680 pages for database 'PP_POD2_CI_Secondary', file 'MasterDB_POD2_secondary' on file 1.
+Processed 1 pages for database 'PP_POD2_CI_Secondary', file 'MasterDB_POD2_secondary_log' on file 1.
+RESTORE DATABASE successfully processed 681 pages in 0.018 seconds (295.220 MB/sec).
+Status     
+-----------
+DB restored
+
+(1 rows affected)

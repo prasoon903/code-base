@@ -1,0 +1,13 @@
+{
+    "AccountCreation" : "RSoniAccountCreation.aspx",
+    "SecondaryCardCreation" :  "SecondaryCardCreation",
+    "PostSingleTransaction" : "RSoniPostSingleTransaction.aspx",
+    "ManualAuth" : "ManualAuth",
+    "RetailManualAuth" : "RetailManualAuth",
+    "AgingAPI" :"RSoniAgingAPI.aspx",
+    "InitiateDispute":"RSoniInitiateTransactionDispute.aspx",
+    "DisputeResolution":"RSoniReceiveDisputeResolution.aspx",
+    "AccountSummary" :"AccountSummary",
+    "StatementMetaData":"RSoniStatementMetaData.aspx",
+    "PlanSegmentDetails":"RSONIPlanSegment.aspx"
+}

@@ -1,0 +1,15 @@
+2025-05-09 17:25:24,944 — INFO — File Processing starts ...
+2025-05-09 17:25:24,944 — INFO — START TIME::: 2025-05-09 17:25:24.935205
+2025-05-09 17:25:24,945 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-09 17:25:24,945 — INFO — ********************CBR Impact Assessment Refresh_v3.xlsx*****************************
+2025-05-09 17:25:24,945 — INFO — LoopCount: 1
+2025-05-09 17:25:28,187 — INFO — ['Sheet1', 'Sheet3']
+2025-05-09 17:25:28,188 — INFO — Processing File: CBR Impact Assessment Refresh_v3.xlsx
+2025-05-09 17:25:28,188 — INFO — Processing sheet: Sheet1
+2025-05-09 17:25:28,188 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-320236_Sheet1.txt
+2025-05-09 17:25:28,189 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Impact Assessment Refresh_v3.xlsx
+2025-05-09 17:25:31,315 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-09 17:25:31,534 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-05-09 17:25:31,624 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-05-09 17:25:31,625 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-05-09 17:25:55,912 — INFO — *********************** FINISHED ***********************

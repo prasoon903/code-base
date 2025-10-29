@@ -1,0 +1,22 @@
+2024-04-10 13:01:53,590 — INFO — ResponseFile to be processed: E:\Python\BehaveBDD\ScenarioBuilder\ResponseFile\COOKIE-231352_20240410130153.sql
+2024-04-10 13:01:53,590 — INFO — File Processing starts ...
+2024-04-10 13:01:53,590 — INFO — START TIME::: 2024-04-10 13:01:53.589724
+2024-04-10 13:01:53,590 — INFO — E:\Python\BehaveBDD\ScenarioBuilder\INPUT\
+2024-04-10 13:01:53,590 — INFO — ********************Scenario.xlsx*****************************
+2024-04-10 13:01:53,590 — INFO — INSIDE ReadingTheFileDF WITH FILE: Scenario.xlsx
+2024-04-10 13:01:53,866 — INFO — DATA CONVERTED FROM XLS TO DF
+2024-04-10 13:01:53,868 — INFO —               Trantime  ...                    Description
+73 2019-07-24 12:11:12  ...                            NaN
+72 2020-12-22 09:38:31  ...   DOMESTIC PURCHASE - REVOLVER
+71 2020-12-22 09:38:31  ...     DOMESTIC PURCHASE - RETAIL
+70 2021-01-11 14:41:59  ...     ACH SCHEDULED BILL PAYMENT
+69 2021-02-20 19:53:02  ...     ACH SCHEDULED BILL PAYMENT
+..                 ...  ...                            ...
+4  2023-12-04 21:26:35  ...        ACH BILL PAYMENT RETURN
+3  2023-12-04 21:43:10  ...     ACH SCHEDULED BILL PAYMENT
+2  2023-12-19 11:16:40  ...     ACH SCHEDULED BILL PAYMENT
+1  2023-12-30 06:14:38  ...     ACH SCHEDULED BILL PAYMENT
+0  2023-12-30 06:14:39  ...     ACH SCHEDULED BILL PAYMENT
+
+[74 rows x 13 columns]
+2024-04-10 13:01:54,038 — INFO — *********************** FINISHED ***********************

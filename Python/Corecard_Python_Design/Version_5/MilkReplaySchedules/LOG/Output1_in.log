@@ -1,0 +1,6 @@
+
+Starting copy...
+SQLState = S1000, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]Unexpected EOF encountered in BCP data-file
+
+BCP copy in failed

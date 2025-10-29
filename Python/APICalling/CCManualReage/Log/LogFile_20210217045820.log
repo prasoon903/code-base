@@ -1,0 +1,52 @@
+2021-02-17 04:58:20,122 INFO ==================================================================================================================
+2021-02-17 04:58:20,122 INFO AUTHOR :   Neha Vishwakarma
+2021-02-17 04:58:20,122 INFO Reviewer : Poonam Agrawal Mam / Jinendra Sir 
+2021-02-17 04:58:20,122 INFO DESCRIPTION : This process will read and Insert request of all apis in  sql Table and then call particular APIBy making their JSON Request 
+2021-02-17 04:58:20,122 INFO ==================================================================================================================
+2021-02-17 04:58:20,122 INFO Reading File svcManualReageAccountProd_CRFeb2021.csv
+2021-02-17 04:58:20,122 INFO 2021-02-17
+2021-02-17 04:58:20,138 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat'}
+2021-02-17 04:58:20,138 INFO https://ccservices.corecard.com//CoreCardServices/CoreCardServices.svc/ManualReage
+2021-02-17 04:58:20,138 INFO SELECT COUNT(1) FROM APIJSONRequestLog  WITH (NOLOCK) WHERE  FileName = 'svcManualReageAccountProd_CRFeb2021.csv' AND importdate between '2021-02-17'
+         and '2021-02-17 23:59:59'
+2021-02-17 04:58:20,138 INFO (0,)
+2021-02-17 04:58:20,138 INFO 0
+2021-02-17 04:58:20,138 INFO 0
+2021-02-17 04:58:20,138 INFO TypeOfManualReage,TotalDueMethod,AccountNumber 
+
+2021-02-17 04:58:20,138 INFO The last line is:
+2021-02-17 04:58:20,138 INFO 1,2698.89,1100011102821554
+2021-02-17 04:58:20,138 INFO <_io.TextIOWrapper name='P:\\Dump\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_CRFeb2021.csv' mode='r' encoding='cp1252'>
+2021-02-17 04:58:20,138 INFO ***checking checkHeaderCount********
+2021-02-17 04:58:20,138 INFO 3
+2021-02-17 04:58:20,138 INFO ***checking checkLineColumnCount********
+2021-02-17 04:58:20,138 INFO 3
+2021-02-17 04:58:20,138 INFO ***checking checkLineColumnCount********
+2021-02-17 04:58:20,138 INFO 3
+2021-02-17 04:58:20,138 INFO 0
+2021-02-17 04:58:20,138 INFO TypeOfManualReage
+2021-02-17 04:58:20,138 INFO <_io.TextIOWrapper name='P:\\Dump\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_CRFeb2021.csv' mode='r' encoding='cp1252'>
+2021-02-17 04:58:20,153 INFO 1
+2021-02-17 04:58:20,153 INFO 1100011112162411
+2021-02-17 04:58:20,153 INFO AccountNumber 
+2021-02-17 04:58:20,153 INFO **********Remove NewLine***********
+2021-02-17 04:58:20,153 INFO AccountNumber 
+2021-02-17 04:58:20,153 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '262.68', 'AccountNumber ': '1100011112162411'}
+2021-02-17 04:58:20,153 INFO ('svcManualReageAccountProd_CRFeb2021.csv', 1, 'NEW', datetime.datetime(2021, 2, 17, 4, 58, 20, 153652), '{"Password": "Test123!", "UserID": "DRPSeriveCall", "APIVersion": "2.0", "Source": "plat", "TypeOfManualReage": "1", "TotalDueMethod": "262.68", "AccountNumber ": "1100011112162411"}')
+2021-02-17 04:58:20,153 INFO ------------------------------Insersion1-----------------------------
+2021-02-17 04:58:20,153 INFO ------------------------------Insersion2-----------------------------
+2021-02-17 04:58:20,153 INFO Request_Parameter={'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '262.68', 'AccountNumber ': '1100011112162411'}
+2021-02-17 04:58:20,153 INFO 1
+2021-02-17 04:58:20,153 INFO *******checking timeout**********
+2021-02-17 04:58:20,649 INFO *******checking timeout**********
+2021-02-17 04:58:20,649 INFO 200
+2021-02-17 04:58:20,649 INFO {'ErrorFound': 'YES', 'ErrorNumber': 'ERR03068', 'ErrorMessage': 'Program Restriction : Invalid Service User or Account Identifier', 'ResponseID': '2435622341', 'CycleDue': None, 'AccountUUID': None, 'AdminUUID': None, 'PODID': None}
+2021-02-17 04:58:20,649 INFO 2435622341
+2021-02-17 04:58:20,649 INFO Program Restriction : Invalid Service User or Account Identifier
+2021-02-17 04:58:20,649 INFO UPDATE APIJSONRequestLog SET status='DONE', ResponseID= '2435622341' , ErrorMesssage = 'Program Restriction : Invalid Service User or Account Identifier', 
+             ErrorFound = 'YES' WHERE FileName ='svcManualReageAccountProd_CRFeb2021.csv' and importdate between '2021-02-17' and '2021-02-17 23:59:59'
+              and LineNumber = '1'and  status='NEW'
+              
+2021-02-17 04:58:20,649 INFO None
+2021-02-17 04:58:20,649 INFO 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$--Execution Completed--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

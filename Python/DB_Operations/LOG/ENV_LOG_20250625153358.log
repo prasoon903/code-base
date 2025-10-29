@@ -1,0 +1,135 @@
+06/25/2025 15:34:06 —   25352 —     INFO — PROCESS STARTS
+06/25/2025 15:34:09 —   25352 —     INFO — LabelPath: \\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DSL
+06/25/2025 15:34:12 —   25352 —     INFO — SELECTED VALUE:: 3
+06/25/2025 15:34:15 —   25352 —     INFO — SELECTED VALUE:: 4
+06/25/2025 15:34:15 —   25352 —     INFO — LabelPath: \\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DSL
+06/25/2025 15:34:15 —   25352 —     INFO — LabelPath: \\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DSL
+06/25/2025 15:34:15 —   25352 —     INFO — PathToCopyDSL: D:\ApplicationSetup\DSLMaster\LB7049_Jazz_25.2.8
+06/25/2025 15:34:15 —   25352 —     INFO — Directory 'D:\ApplicationSetup\DSLMaster\LB7049_Jazz_25.2.8' created
+06/25/2025 15:34:15 —   25352 —     INFO — FromPath: \\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DSL
+06/25/2025 15:34:15 —   25352 —     INFO — ToPath: D:\ApplicationSetup\DSLMaster\LB7049_Jazz_25.2.8
+06/25/2025 15:34:15 —   25352 —     INFO — CopyScript :: XCopy "\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DSL" "D:\ApplicationSetup\DSLMaster\LB7049_Jazz_25.2.8" /E /H /C /I
+06/25/2025 15:35:32 —   25352 —     INFO — DSLs copied successfully
+06/25/2025 15:35:32 —   25352 —     INFO — Environment for DSL being copied: JAZZ
+06/25/2025 15:35:34 —   25352 —     INFO — FromPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\CI
+06/25/2025 15:35:34 —   25352 —     INFO — ToPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\Backup
+06/25/2025 15:35:34 —   25352 —     INFO — DSLs moved successfully
+06/25/2025 15:35:34 —   25352 —     INFO — FromPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\CoreAuth
+06/25/2025 15:35:34 —   25352 —     INFO — ToPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\Backup
+06/25/2025 15:35:34 —   25352 —     INFO — DSLs moved successfully
+06/25/2025 15:35:34 —   25352 —     INFO — FromPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\CoreCollect
+06/25/2025 15:35:34 —   25352 —     INFO — ToPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\Backup
+06/25/2025 15:35:34 —   25352 —     INFO — Directory does not exists, FromPath :: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\CoreCollect
+06/25/2025 15:35:34 —   25352 —     INFO — FromPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\CoreApp
+06/25/2025 15:35:34 —   25352 —     INFO — ToPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\Backup
+06/25/2025 15:35:34 —   25352 —     INFO — Directory does not exists, FromPath :: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\CoreApp
+06/25/2025 15:35:34 —   25352 —     INFO — FromPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\Modularization
+06/25/2025 15:35:34 —   25352 —     INFO — ToPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs\Backup
+06/25/2025 15:35:34 —   25352 —     INFO — DSLs moved successfully
+06/25/2025 15:35:34 —   25352 —     INFO — FromPath: D:\ApplicationSetup\DSLMaster\LB7049_Jazz_25.2.8
+06/25/2025 15:35:34 —   25352 —     INFO — ToPath: D:\ApplicationSetup\JAZZ\DBBSetup\DSLs
+06/25/2025 15:35:34 —   25352 —     INFO — CopyScript :: XCopy "D:\ApplicationSetup\DSLMaster\LB7049_Jazz_25.2.8" "D:\ApplicationSetup\JAZZ\DBBSetup\DSLs" /E /H /C /I
+06/25/2025 15:35:41 —   25352 —     INFO — DSLs copied successfully
+06/25/2025 15:35:41 —   25352 —     INFO — START RESTORE DB
+06/25/2025 15:35:41 —   25352 —     INFO — Running CallSQLScripts from FolderName: SettingUpJAZZ\BeforeDBRestore
+06/25/2025 15:35:41 —   25352 —     INFO — Path: E:\Python\DB_Operations\SettingUpJAZZ\BeforeDBRestore
+06/25/2025 15:35:41 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 0_t_user_details.sql
+06/25/2025 15:35:46 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i KillAll.sql
+06/25/2025 15:35:46 —   25352 —     INFO — EXITING CallSQLScripts
+06/25/2025 15:35:46 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CI
+06/25/2025 15:35:46 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CI', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CI.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:46 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:46 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:46 —   25352 —     INFO — DBName: PP_JAZZ_CI
+06/25/2025 15:35:46 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CI', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CI.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:47 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:35:52 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CI_Secondary
+06/25/2025 15:35:52 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CI_Secondary', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CI_Secondary.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:52 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:52 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:52 —   25352 —     INFO — DBName: PP_JAZZ_CI_Secondary
+06/25/2025 15:35:52 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CI_Secondary', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CI_Secondary.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:52 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:35:53 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CAuth
+06/25/2025 15:35:53 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CAuth', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CAuth.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:53 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:53 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:53 —   25352 —     INFO — DBName: PP_JAZZ_CAuth
+06/25/2025 15:35:53 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CAuth', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CAuth.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:53 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:35:54 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CC
+06/25/2025 15:35:54 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CC', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CC.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:54 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:54 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:54 —   25352 —     INFO — DBName: PP_JAZZ_CC
+06/25/2025 15:35:54 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CC', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CC.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:54 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:35:56 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CL
+06/25/2025 15:35:56 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CL', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CL.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:56 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:56 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:56 —   25352 —     INFO — DBName: PP_JAZZ_CL
+06/25/2025 15:35:56 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CL', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CL.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:56 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:35:57 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CoreApp
+06/25/2025 15:35:57 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CoreApp', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CoreApp.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:57 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:57 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:57 —   25352 —     INFO — DBName: PP_JAZZ_CoreApp
+06/25/2025 15:35:57 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CoreApp', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CoreApp.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:57 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:35:59 —   25352 —     INFO — START GetEnhancedSQL DB: PP_JAZZ_CoreCredit
+06/25/2025 15:35:59 —   25352 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CoreCredit', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CoreCredit.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:59 —   25352 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:35:59 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:35:59 —   25352 —     INFO — DBName: PP_JAZZ_CoreCredit
+06/25/2025 15:35:59 —   25352 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_JAZZ_CoreCredit', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7049_Jazz_25.2.8\Application\DB\Jazz_MasterDB_New\CoreCredit.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\LDF'
+06/25/2025 15:35:59 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:00 —   25352 —     INFO — :: DB RESTORED :: 
+06/25/2025 15:36:00 —   25352 —     INFO — Running CallSQLScripts for POD: 3
+06/25/2025 15:36:00 —   25352 —     INFO — FolderName: SettingUpJAZZ
+06/25/2025 15:36:00 —   25352 —     INFO — Path: E:\Python\DB_Operations\SettingUpJAZZ
+06/25/2025 15:36:00 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 0_t_user_details.sql
+06/25/2025 15:36:03 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 1_Synonym_JAZZ.sql
+06/25/2025 15:36:06 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 2_SetEnvScripts.sql
+06/25/2025 15:36:06 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 3_resetPassword.sql
+06/25/2025 15:36:06 —   25352 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 4_IncreaseDBSize.sql
+06/25/2025 15:36:07 —   25352 —     INFO — EXITING CallSQLScripts
+06/25/2025 15:36:07 —   25352 —     INFO — START RESTORE DB
+06/25/2025 15:36:07 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CI TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CI.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CI-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:07 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:07 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:07 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CI TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CI.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CI-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:07 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:10 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CI_Secondary TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CI_Secondary.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CI_Secondary-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:10 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:10 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:10 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CI_Secondary TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CI_Secondary.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CI_Secondary-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:10 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:11 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CAuth TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CAuth.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CAuth-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:11 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:11 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:11 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CAuth TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CAuth.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CAuth-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:11 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:12 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CL TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CL.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CL-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:12 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:12 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:12 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CL TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CL.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CL-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:12 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:13 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CC TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CC.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CC-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:13 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:13 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:13 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CC TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CC.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CC-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:13 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:14 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CoreApp TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CoreApp.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CoreApp-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:14 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:14 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:14 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CoreApp TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CoreApp.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CoreApp-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:14 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:15 —   25352 —     INFO — BackupSql: BACKUP DATABASE PP_JAZZ_CoreCredit TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CoreCredit.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CoreCredit-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:15 —   25352 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+06/25/2025 15:36:15 —   25352 —     INFO — Server: BPLDEVDB01
+06/25/2025 15:36:15 —   25352 —     INFO — SQL: BACKUP DATABASE PP_JAZZ_CoreCredit TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\JazzDB\backup\LB7049_Jazz_25.2.8_CoreCredit.bak' WITH NOFORMAT, INIT,  NAME = N'PP_JAZZ_CoreCredit-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+06/25/2025 15:36:15 —   25352 —     INFO — DB CONNECTION ESTABLISHED
+06/25/2025 15:36:16 —   25352 —     INFO — :: DB BACKED UP :: 
+06/25/2025 15:36:36 —   25352 —     INFO — ALL PROCESSES DONE. EXITING...: 

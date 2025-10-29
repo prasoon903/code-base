@@ -1,0 +1,10 @@
+{
+    "TagName":
+    ["AccountNumber","CardBalance", "CycleDue", "AmountOfTotalDue","CurrentDue","PastDue","OneCyclePastDue","TwoCyclePastDue","ThreeCyclePastDue",
+      "FourCyclePastDue","FiveCyclePastDue","SixCyclePastDue","SevenCyclePastDue","DaysPastDue","PastDueDate","StatementRemainingBalanceWithInstallmentDue",
+      "Current_Balance", "InstallmentRemainingMinimumDue"],
+    "VariableName":
+    ["AccountNumber","CardBalance", "CycleDue", "AmountOfTotalDue","CurrentDue","PastDue","OneCyclePastDue","TwoCyclePastDue","ThreeCyclePastDue",
+      "FourCyclePastDue","FiveCyclePastDue","SixCyclePastDue","SevenCyclePastDue","DaysPastDue","PastDueDate","StatementRemainingBalanceWithInstallmentDue",
+      "CurrentBalance", "InstallmentRemainingMinimumDue"]
+}

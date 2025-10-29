@@ -1,0 +1,24 @@
+2020-11-23 04:57:36,015 INFO ==================================================================================================================
+2020-11-23 04:57:36,015 INFO AUTHOR :   Neha Vishwakarma
+2020-11-23 04:57:36,015 INFO Reviewer : Poonam Agrawal Mam / Jinendra Sir 
+2020-11-23 04:57:36,015 INFO DESCRIPTION : This process will read and Insert request of all apis in  sql Table and then call particular APIBy making their JSON Request 
+2020-11-23 04:57:36,015 INFO ==================================================================================================================
+2020-11-23 04:57:36,015 INFO Reading File svcManualReageAccountProd_one_11_23.csv
+2020-11-23 04:57:36,015 INFO 2020-11-23
+2020-11-23 04:57:36,031 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat'}
+2020-11-23 04:57:36,031 INFO https://ccservices.corecard.com/CoreCardServices/CoreCardServices.svc/ManualReage
+2020-11-23 04:57:36,031 INFO SELECT COUNT(1) FROM APIJSONRequestLog  WITH (NOLOCK) WHERE  FileName = 'svcManualReageAccountProd_one_11_23.csv' AND importdate between '2020-11-23'
+         and '2020-11-23 23:59:59'
+2020-11-23 04:57:36,031 INFO (0,)
+2020-11-23 04:57:36,031 INFO 0
+2020-11-23 04:57:36,031 INFO 0
+2020-11-23 04:57:36,031 INFO TypeOfManualReage,TotalDueMethod,AccountNumber
+
+2020-11-23 04:57:36,031 INFO The last line is:
+2020-11-23 04:57:36,031 INFO 
+
+2020-11-23 04:57:36,031 INFO ********Invalid File  move to error folder **********
+2020-11-23 04:57:36,031 INFO 1
+2020-11-23 04:57:36,031 INFO 1
+2020-11-23 04:57:36,031 INFO 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$--Execution Completed--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

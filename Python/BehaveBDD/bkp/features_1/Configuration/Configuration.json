@@ -1,0 +1,41 @@
+{
+    "APIDomainUrl" : "http://xeon-web1/PrasoonP/" ,
+	"APIDomainUrlAS" : "http://xeon-web1/RSONIAccountSummary/CoreCardServices.svc/" ,
+    "DBServer" : "BPLDEVDB01",
+    "ODBCDriver" : "{SQL Server}",
+    "PlatformCodeloc" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\Platform",
+    "LabelName" : "LB2291_Plat_23.8.7_PLAT",
+    "DBName" : "PLAT",
+    "LabelPath" : "\\\\vmccrmp01\\ReleaseManagement\\PLAT\\Labels",
+    "LocalDSLPath" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\DSLs",
+    "BackupFolderLocation":"\\\\VMRITIKY\\python\\BehaveProject\\BehaveBDD\\features\\DbBackups",
+    "CIBatchScripts" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\BatchScripts\\CoreIssue",
+    "CoreAuthBatchScripts" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\BatchScripts\\CoreAuth",
+    "CITraceFileLocation" : "D:\\ApplicationSetup\\POD1\\TraceFiles\\CoreIssue",
+    "CoreAuthTraceFileLocation" : "D:\\ApplicationSetup\\POD1\\TraceFiles\\CoreAuth",
+    "CIBatchfileName" :{
+        "CIAppServerName" :"__CIAppserver.bat",
+        "TnpWfName" : "_wfTnpNad.bat",
+        "RetailAuthWfName" : "_WF_RetailAuthJobs.bat"
+ 		"RetailAuthWfName" : "_WF_RetailAuthJobs.bat",
+        "APJOB":"APJOB.Bat"
+    },
+
+    "CoreAuthBatchfileName" :{
+        "CoreAuthAppServerName" :"____CoreAuthAppserver.bat"        
+    },
+
+    "YourDBNames" : {
+        "COREISSUE":"PP_CI" , 
+        "COREAUTH" :"PP_CoreAuth"  , 
+        "CISECONDARY":"PP_CI_Secondary" ,
+        "CORELIBRARY" :"PP_CL",
+        "CORECREDIT" : "PP_CoreCredit",    
+        "CORECOLLECT": "PP_CC",
+        "COREAPP": "PP_CoreApp"},
+    "MDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\MDF",
+    "LDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\LDF"
+	"Posting2.0": "D:\\SVN\\NoBlobTasks\\Posting2.0\\23.8.6\\SQL",
+    "PSFileName": "DSLandDBCreation.ps1"
+    
+}

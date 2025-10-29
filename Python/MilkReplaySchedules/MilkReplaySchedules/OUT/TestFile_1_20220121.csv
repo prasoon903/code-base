@@ -1,0 +1,2 @@
+Report_Date,business_date,batch_timestamp,account_uuid,plan_uuid,schedule_id,institution_id,Product_ID,error,error_message,field_path,AccountNumber
+2021-08-11 18:00:00.000,2021-08-11,18:00:00,624cbd6d-02ef-4146-82b9-9b8f3f49db6a,123456s7118121034A,1,6969,7131,INPUT_VALIDATION_ERROR,Missing required month,"schedule with ID: {4} at month {10,11,12,13,14}",1100001000000203

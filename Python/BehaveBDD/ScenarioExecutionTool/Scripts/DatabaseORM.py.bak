@@ -1,0 +1,280 @@
+# import pyodbc
+# import json
+from Scripts.DataBaseConnections import *
+# import Config as c
+
+
+
+#Configuration =  json.load(open("Configuration/Configuration.json"))
+""" DBCon = pyodbc.connect(Driver = Configuration['ODBCDriver'] ,
+                        Server = Configuration['DBServer'],
+                        Database = Configuration['CoreIssueDBName'],
+                        Trusted_Connection ='yes',
+                        autocommit = True
+                        ) """
+cursor=DBCon.cursor()
+
+
+sql ="""
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.sequences WHERE NAME = 'FeatureStepDataStore_ID')
+BEGIN
+	CREATE SEQUENCE dbo.FeatureStepDataStore_ID
+		START WITH 1
+		INCREMENT BY 1
+		MINVALUE 1
+		NO MAXVALUE
+		CACHE 20
+END
+"""
+cursor.execute(sql)
+
+sql ="""
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.sequences WHERE NAME = 'FeatureStepExecutionInfo_ID')
+BEGIN
+	CREATE SEQUENCE dbo.FeatureStepExecutionInfo_ID
+		START WITH 1
+		INCREMENT BY 1
+		MINVALUE 1
+		NO MAXVALUE
+		CACHE 20
+END
+"""
+cursor.execute(sql)
+
+sql ="""
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.TABLES WHERE NAME = 'FeatureStepExecutionInfo')
+BEGIN
+CREATE TABLE FeatureStepExecutionInfo (
+    ID INT DEFAULT(NEXT VALUE FOR dbo.FeatureStepExecutionInfo_ID),
+    ExecutionID INT ,
+    FeatureName VARCHAR(1000),
+    ScenarioName VARCHAR(1000),
+    StepName VARCHAR(500), 
+    CurrentTime DATETIME DEFAULT Getdate(),
+    Staus VARCHAR(50)
+)
+END
+"""
+cursor.execute(sql)
+
+sql ="""
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.TABLES WHERE NAME = 'FeatureStepDataStore')
+BEGIN
+CREATE TABLE FeatureStepDataStore (
+    ID INT DEFAULT(NEXT VALUE FOR dbo.FeatureStepDataStore_ID),
+    ExecutionID INT,
+    FeatureName VARCHAR(1000),
+    ScenarioName VARCHAR(1000), 
+    VariableName VARCHAR(500),
+    VariableValue VARCHAR(3000)
+    )
+END
+"""
+cursor.execute(sql)
+
+sql ="""
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.TABLES WHERE NAME = 'MaxExecutionValue')
+BEGIN
+CREATE TABLE MaxExecutionValue (
+    ID INT IDENTITY(1,1),
+    Name VARCHAR(50),
+    Value INT,
+    StepSize INT
+    )
+INSERT INTO MaxExecutionValue(Name,Value,StepSize)
+SELECT 'ExecutionID',2,2
+
+END
+"""
+
+cursor.execute(sql)
+
+sql = """
+CREATE OR ALTER PROCEDURE USP_PDF_GetMaxExecutionID
+AS
+DECLARE @MaxExecutionID INT = 0
+BEGIN TRY
+	BEGIN TRAN
+		SELECT @MaxExecutionID = Value  FROM MaxExecutionValue WITH(UPDLOCK) WHERE Name = 'ExecutionID'
+		UPDATE MaxExecutionValue SET Value = @MaxExecutionID + StepSize WHERE Name = 'ExecutionID'
+	COMMIT TRAN
+END TRY
+BEGIN CATCH
+	ROLLBACK TRAN
+END CATCH
+SELECT @MaxExecutionID AS MaxExecutionID
+"""
+cursor.execute(sql)
+
+sql = """
+CREATE OR ALTER PROCEDURE USP_PDF_InsertFeatureStepExecutionInfo
+@ExecutionID INT,
+@FeatureName VARCHAR(1000),
+@ScenarioName VARCHAR(1000), 
+@StepName VARCHAR(500),
+@Staus VARCHAR(50)
+AS 
+IF NOT EXISTS (SELECT TOP 1 1 FROM FeatureStepExecutionInfo WITH(NOLOCK) WHERE ExecutionID=@ExecutionID AND FeatureName=@FeatureName AND ScenarioName=@ScenarioName
+ AND StepName=@StepName)
+BEGIN 
+    INSERT INTO FeatureStepExecutionInfo(ExecutionID, FeatureName, ScenarioName, StepName,Staus)
+    SELECT @ExecutionID, @FeatureName, @ScenarioName, @StepName, @Staus
+END
+BEGIN
+    UPDATE FeatureStepExecutionInfo SET Staus=@Staus,CurrentTime=GetDate()
+    WHERE ExecutionID=@ExecutionID AND FeatureName=@FeatureName AND ScenarioName=@ScenarioName AND StepName=@StepName
+END
+"""
+cursor.execute(sql)
+
+
+
+sql = """
+CREATE OR ALTER PROCEDURE USP_PDF_InsertFeatureStepDataStore
+@ExecutionID INT,
+@FeatureName VARCHAR(1000),
+@ScenarioName VARCHAR(1000), 
+@VariableName VARCHAR(100),
+@VariableValue VARCHAR(1000)
+AS 
+IF NOT EXISTS (SELECT TOP 1 1 FROM FeatureStepDataStore WITH(NOLOCK) WHERE ExecutionID=@ExecutionID AND FeatureName=@FeatureName AND ScenarioName=@ScenarioName 
+AND VariableName=@VariableName )
+BEGIN 
+    INSERT INTO FeatureStepDataStore(ExecutionID, FeatureName, ScenarioName, VariableName, VariableValue)
+    SELECT @ExecutionID, @FeatureName, @ScenarioName, @VariableName, @VariableValue
+END
+ELSE
+BEGIN
+    UPDATE FeatureStepDataStore SET VariableValue = @VariableValue
+    WHERE ExecutionID=@ExecutionID AND FeatureName=@FeatureName AND ScenarioName=@ScenarioName 
+    AND VariableName=@VariableName 
+END
+"""
+cursor.execute(sql)
+
+
+sql = """
+CREATE OR ALTER PROCEDURE USP_PDF_GetValueFromDataStore
+@ExecutionID int,
+@VariableName VARCHAR(100)
+AS
+DECLARE @VariableValue VARCHAR(3000)
+SELECT TOP 1 @VariableValue= VariableValue  FROM FeatureStepDataStore WITH(NOLOCK) 
+WHERE ExecutionID = @ExecutionID and VariableName=@VariableName 
+ORDER BY ID DESC
+SELECT  @VariableValue AS  VariableValue
+"""
+cursor.execute(sql)
+sql="""
+CREATE or alter PROCEDURE [dbo].[USP_GETTxnDetails_Behave]
+  @ExecutionID  INT = 0,
+  @VariableName VARCHAR(500),
+  @FeatureName  VARCHAR(1000)
+AS
+  BEGIN
+    DECLARE @VariableValue VARCHAR(3000)
+    IF(@ExecutionID = 0)
+    BEGIN
+      SELECT @VariableValue = variablevalue from featurestepdatastore (nolock)
+      WHERE  featurename = @FeatureName
+      AND    variablename=@VariableName
+    END
+    ELSE
+    BEGIN
+      SELECT @VariableValue = variablevalue
+      FROM   Featurestepdatastore (nolock)
+      WHERE  executionid = @ExecutionID
+      AND    variablename=@VariableName
+    END
+    DECLARE @tranid DECIMAL(19,0) = try_cast( @VariableValue as decimal(19, 0)) ;
+    WITH cte AS
+    (
+           SELECT accountnumber,
+                  c.tranid,
+                  txncode_internal,
+                  cmttrantype,
+                  posttime,
+                  trantime,
+                  transactionamount,
+                  Isnull(claimid, '') claimid,
+				  cs.invoicenumber,
+				  c.rmatranuuid,
+				  c.txnsource
+           FROM   Ccard_primary c (nolock)
+		   left join ccard_Secondary cs  (nolock) on c.tranid = cs.tranid
+           WHERE  c.tranid = @tranid )
+    SELECT accountnumber,
+           Cast(tranid AS VARCHAR(50)) tranid,
+           txncode_internal,
+           cmttrantype,
+           CONVERT(VARCHAR, posttime, 120) posttime,
+           CONVERT(VARCHAR, trantime, 120) trantime,
+           claimid,
+           cast(transactionamount AS varchar) transactionamount,
+           m.actualtrancode ,
+           m.manualadjustmenttxncode,
+           m1.actualtrancode AS manualreversaltrancode,
+		   cte.invoicenumber,
+		   cte.rmatranuuid,
+		   cte.txnsource
+    FROM   cte
+    JOIN   monetarytxncontrol m(nolock)
+    ON     cte.txncode_internal = m.transactioncode
+    JOIN   monetarytxncontrol m1(nolock)
+    ON     m1.transactioncode = m.manualadjustmenttxncode
+  END"""
+cursor.execute(sql)
+
+sql = """
+CREATE OR ALTER PROCEDURE USP_CheckARSystemHS_Behave
+AS
+BEGIN 
+	
+	DECLARE @InstitutionsCount INT,
+			@ProcDayEnd DATETIME,
+			@InstitutionID INT
+			
+
+	SELECT @InstitutionsCount = COUNT(1) FROM Institutions WITH(NOLOCK)
+
+	IF EXISTS ( SELECT TOP 1 1 FROM ARSystemHSAccounts WITH(NOLOCK) WHERE ProcDayEnd IS NULL)
+		PRINT 'Do Nothing'
+	ELSE
+	BEGIN
+		IF EXISTS ( SELECT TOP 1 1 FROM ARSystemHSAccounts WITH(NOLOCK) WHERE InstitutionID IS NULL)	
+			PRINT 'Do Nothing'
+		ELSE
+		BEGIN
+			SELECT TOP 1 @ProcDayEnd = HS.ProcDayEnd, @InstitutionID = HS.InstitutionID
+			FROM ARSystemHSAccounts HS WITH(NOLOCK)
+			JOIN ARSystemAccounts A WITH(NOLOCK) ON HS.InstitutionID = A.APInstitutionID
+			WHERE HS.ProcDayEnd  < A.ProcDayEnd
+			
+			IF EXISTS (SELECT TOP 1 1 FROM EOD_AsystemHS WITH(NOLOCK) WHERE OldProcDayEnd = @ProcDayEnd AND Status IN ('NEW'))
+				EXEC USP_EOD_AsystemHS_JOB
+			ELSE IF EXISTS (SELECT TOP 1 1 FROM ARSystemAccounts WITH(NOLOCK) WHERE NADMode = 1)
+      BEGIN
+        PRINT 'Wait'
+      END
+      ELSE
+				UPDATE ARSystemHSAccounts SET InstitutionID = NULL
+		END
+
+	END
+
+END
+"""
+cursor.execute(sql)
+
+
+sql = """
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.TABLES WHERE NAME = 'LogARSystemHS_Update_Behave')
+BEGIN
+  CREATE TABLE LogARSystemHS_Update_Behave(
+    Activity VARCHAR(100) NULL,
+    ProcDay DATETIME NULL,
+    UpdateStatus INT DEFAULT(0)
+  )
+END
+"""
+cursor.execute(sql)

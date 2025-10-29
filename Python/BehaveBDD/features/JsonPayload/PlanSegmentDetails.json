@@ -1,0 +1,16 @@
+{
+ "UserID": "PlatCall",
+ "Password": "",
+ "AccountNumber": "",
+ "PlanAcctid":"",
+ "RMATranUUID":"",
+ "Source": "PLAT",
+ "APIVersion": "2.0",
+ "ApplicationVersion": "",
+ "InstallmentPlanStatus": "",
+ "MonthsFilter": "",
+ "PaginationStatus": "",
+ "PageSize": "",
+ "PageNumber": "",
+ "Offset": ""
+}

@@ -1,0 +1,23 @@
+08/13/2021 11:34:52 — 13640 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+08/13/2021 11:34:52 — 13640 — INFO — START TIME: 2021-08-13 11:34:52.263632
+08/13/2021 11:34:52 — 13640 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+08/13/2021 11:34:52 — 13640 — INFO — INSIDE GetOperatingServer BLOCK
+08/13/2021 11:34:52 — 13640 — INFO — CONNECTION ESTABLISHED
+08/13/2021 11:34:52 — 13640 — INFO — OperatingServer: XEON-S8
+08/13/2021 11:34:52 — 13640 — INFO — EXITING GetOperatingServer BLOCK
+08/13/2021 11:34:52 — 13640 — INFO — INSIDE EmailStructure_Head BLOCK
+08/13/2021 11:34:52 — 13640 — INFO — EXITING EmailStructure_Head BLOCK
+08/13/2021 11:34:52 — 13640 — INFO — FILENAME: amortization_schedule_error_feed_NewStructure_1.csv
+08/13/2021 11:34:52 — 13640 — INFO — FileID: 202108131134521
+08/13/2021 11:34:52 — 13640 — INFO — INSIDE ValidateDuplicateFile BLOCK
+08/13/2021 11:34:52 — 13640 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_NewStructure_1.csv
+08/13/2021 11:34:52 — 13640 — INFO — File amortization_schedule_error_feed_NewStructure_1.csv is already present in OUTPUT folder. So it can not be processed.
+08/13/2021 11:34:52 — 13640 — INFO — Duplicate File
+08/13/2021 11:34:52 — 13640 — INFO — EXITING ValidateDuplicateFile BLOCK
+08/13/2021 11:34:52 — 13640 — INFO — INSIDE EmailBody_Error BLOCK
+08/13/2021 11:34:52 — 13640 — INFO — EXITING EmailBody_Error BLOCK
+08/13/2021 11:34:52 — 13640 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 08/13/2021 11:34:52</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_NewStructure_1.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;>Duplicate File</td></tr></table><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+08/13/2021 11:34:52 — 13640 — DEBUG — Inside SendMail
+08/13/2021 11:34:54 — 13640 — INFO — SENDING MAIL ...
+08/13/2021 11:34:56 — 13640 — INFO — Finish Time::: 2021-08-13 11:34:56.594429
+08/13/2021 11:34:56 — 13640 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

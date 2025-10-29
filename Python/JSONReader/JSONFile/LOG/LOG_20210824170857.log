@@ -1,0 +1,41 @@
+08/24/2021 17:08:57 — 18332 — INFO — *************************** JSON READER PROCESSING STARTS ***************************
+08/24/2021 17:08:57 — 18332 — INFO — START TIME: 2021-08-24 17:08:57.731023
+08/24/2021 17:08:57 — 18332 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\JSONReader\JSONFile\INPUT\
+08/24/2021 17:08:57 — 18332 — INFO — FILENAME: adtest.IPM.json
+08/24/2021 17:08:57 — 18332 — INFO — FileID: 202108241708571
+08/24/2021 17:08:57 — 18332 — INFO — INSIDE ValidateDuplicateFile BLOCK
+08/24/2021 17:08:57 — 18332 — INFO — EXITING ValidateDuplicateFile BLOCK
+08/24/2021 17:08:57 — 18332 — INFO — INSIDE GenerateCSV BLOCK
+08/24/2021 17:08:57 — 18332 — INFO — INSIDE ImportFileToDB BLOCK
+08/24/2021 17:08:57 — 18332 — INFO — InputDir: E:\Python\JSONReader\JSONFile\SPLITTED\
+08/24/2021 17:08:57 — 18332 — INFO — FileName: IPM.csv
+08/24/2021 17:08:57 — 18332 — INFO — TableName: IPMMAsterInterim
+08/24/2021 17:08:57 — 18332 — INFO — XML: IPM.fmt
+08/24/2021 17:08:57 — 18332 — INFO — dir_path: E:\Python\JSONReader\
+08/24/2021 17:08:58 — 18332 — INFO — DATABASE CONNECTION ESTABLISHED
+08/24/2021 17:08:58 — 18332 — INFO — bcp PP_CI.DBO.IPMMAsterInterim IN E:\Python\JSONReader\JSONFile\SPLITTED\IPM.csv -b 5000 -h TABLOCK -f E:\Python\JSONReader\IPM.fmt -e E:\Python\JSONReader\JSONFile\LOG\IPM.csv_Error_in.log -o E:\Python\JSONReader\JSONFile\LOG\IPM.csv_Output_in.log -S XEON-S8 -T -t , -F 2
+08/24/2021 17:08:58 — 18332 — INFO — BCP START TIME::: 2021-08-24 17:08:58.046029
+08/24/2021 17:08:58 — 18332 — INFO — Reading BCP generated file
+08/24/2021 17:08:58 — 18332 — INFO — SQLState = S1000, NativeError = 0
+08/24/2021 17:08:58 — 18332 — INFO — Error = [Microsoft][ODBC Driver 13 for SQL Server]Incorrect host-column number found in BCP format-file
+08/24/2021 17:08:58 — 18332 — INFO — Reading BCP generated file
+08/24/2021 17:08:58 — 18332 — INFO — BCP EXECUTION SUCCESSFULL
+08/24/2021 17:08:58 — 18332 — INFO — BCP FINISH TIME::: 2021-08-24 17:08:58.276203
+08/24/2021 17:08:58 — 18332 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+08/24/2021 17:08:58 — 18332 — INFO — INSIDE ImportFileToDB BLOCK
+08/24/2021 17:08:58 — 18332 — INFO — InputDir: E:\Python\JSONReader\JSONFile\SPLITTED\
+08/24/2021 17:08:58 — 18332 — INFO — FileName: Addendum.csv
+08/24/2021 17:08:58 — 18332 — INFO — TableName: IPMAddendumDetails
+08/24/2021 17:08:58 — 18332 — INFO — XML: Addendum.fmt
+08/24/2021 17:08:58 — 18332 — INFO — dir_path: E:\Python\JSONReader\
+08/24/2021 17:08:58 — 18332 — INFO — DATABASE CONNECTION ESTABLISHED
+08/24/2021 17:08:58 — 18332 — INFO — bcp PP_CI.DBO.IPMAddendumDetails IN E:\Python\JSONReader\JSONFile\SPLITTED\Addendum.csv -b 5000 -h TABLOCK -f E:\Python\JSONReader\Addendum.fmt -e E:\Python\JSONReader\JSONFile\LOG\Addendum.csv_Error_in.log -o E:\Python\JSONReader\JSONFile\LOG\Addendum.csv_Output_in.log -S XEON-S8 -T -t , -F 2
+08/24/2021 17:08:58 — 18332 — INFO — BCP START TIME::: 2021-08-24 17:08:58.297093
+08/24/2021 17:08:58 — 18332 — INFO — Reading BCP generated file
+08/24/2021 17:08:58 — 18332 — INFO — SQLState = S1000, NativeError = 0
+08/24/2021 17:08:58 — 18332 — INFO — Error = [Microsoft][ODBC Driver 13 for SQL Server]Incorrect host-column number found in BCP format-file
+08/24/2021 17:08:58 — 18332 — INFO — Reading BCP generated file
+08/24/2021 17:08:58 — 18332 — INFO — BCP EXECUTION SUCCESSFULL
+08/24/2021 17:08:58 — 18332 — INFO — BCP FINISH TIME::: 2021-08-24 17:08:58.484229
+08/24/2021 17:08:58 — 18332 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+08/24/2021 17:08:58 — 18332 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

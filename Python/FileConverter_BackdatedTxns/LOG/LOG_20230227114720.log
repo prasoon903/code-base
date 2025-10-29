@@ -1,0 +1,11 @@
+2023-02-27 11:47:20,917 — INFO — ResponseFile to be processed: E:\Python\FileConverter_BackdatedTxns\ResponseFile\COOKIE-232597_20230227114720.txt
+2023-02-27 11:47:20,932 — INFO — File Processing starts ...
+2023-02-27 11:47:20,932 — INFO — START TIME::: 2023-02-27 11:47:20.916622
+2023-02-27 11:47:20,933 — INFO — E:\Python\FileConverter_BackdatedTxns\INPUT\
+2023-02-27 11:47:20,933 — INFO — ********************Cookie.FinalGoodwill.xlsx*****************************
+2023-02-27 11:47:20,933 — INFO — INSIDE ReadingTheFileDF WITH FILE: Cookie.FinalGoodwill.xlsx
+2023-02-27 11:47:21,395 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-02-27 11:47:21,400 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-02-27 11:47:21,404 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-02-27 11:47:21,405 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-02-27 11:47:21,594 — INFO — *********************** FINISHED ***********************

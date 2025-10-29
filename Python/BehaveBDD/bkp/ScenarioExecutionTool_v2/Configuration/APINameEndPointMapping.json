@@ -1,0 +1,19 @@
+{
+    "AccountCreation" : "PrasoonPAccountCreation.aspx",
+    "SecondaryCardCreation" :  "PrasoonPSecondaryCardCreation.aspx",
+    "PostSingleTransaction" : "PrasoonPPostSingleTransaction.aspx",
+    "ManualAuth" : "PrasoonPManualAuth.aspx",
+    "RetailManualAuth" : "PrasoonPRetailManualAuth.aspx",
+    "AgingAPI" :"PrasoonPAgingAPI.aspx",
+    "InitiateDispute":"PrasoonPInitiateTransactionDispute.aspx",
+    "DisputeResolution":"PrasoonPReceiveDisputeResolution.aspx",
+    "AccountSummary" :"AccountSummary",
+    "StatementMetaData":"PrasoonPStatementMetaData.aspx",
+    "PlanSegmentDetails":"PrasoonPPlanSegment.aspx",
+    "AddManualStatus": "PrasoonPAddManualStatusToAccount.aspx",
+    "RemoveManualStatus": "PrasoonPRemoveManualStatusAction.aspx",
+    "ReageEnrollment": "PrasoonPReAgeEnrollment.aspx",
+    "TCAPEnrollment": "PrasoonPTCAPEnrollmentAPI.aspx",
+    "PWPEnrollment": "PrasoonPPWPEnrollmentAPI.aspx",
+    "AccountUpdate": "PrasoonPAccountUpdate.aspx"
+}

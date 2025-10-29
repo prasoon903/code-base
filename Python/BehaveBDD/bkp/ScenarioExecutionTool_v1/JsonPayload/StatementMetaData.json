@@ -1,0 +1,20 @@
+{
+	"Password":"Test123!",
+	"UserID":"PlatCall",
+	"AdminNumber":"",
+	"AccountNumber":"",
+	"CardNumber":"",
+	"AccountID":"",
+	"StatementDate":"",
+	"StatementID":"",
+	"Source":"PLAT",
+	"IPAddress":"",
+	"CallerID":"",
+	"CalledID":"",
+	"RequestTime":"",
+	"SessionID":"",
+	"APIVersion":"2.0",
+	"ApplicationVersion":"",
+	"AccountUUID":"",
+	"AdminUUID":""
+}

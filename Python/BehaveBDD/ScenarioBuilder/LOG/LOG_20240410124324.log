@@ -1,0 +1,24 @@
+2024-04-10 12:43:24,788 — INFO — ResponseFile to be processed: E:\Python\BehaveBDD\ScenarioBuilder\ResponseFile\COOKIE-231352_20240410124324.sql
+2024-04-10 12:43:24,788 — INFO — File Processing starts ...
+2024-04-10 12:43:24,788 — INFO — START TIME::: 2024-04-10 12:43:24.787117
+2024-04-10 12:43:24,789 — INFO — E:\Python\BehaveBDD\ScenarioBuilder\INPUT\
+2024-04-10 12:43:24,789 — INFO — ********************Scenario.xlsx*****************************
+2024-04-10 12:43:24,789 — INFO — INSIDE ReadingTheFileDF WITH FILE: Scenario.xlsx
+2024-04-10 12:43:25,147 — INFO — DATA CONVERTED FROM XLS TO DF
+2024-04-10 12:43:25,147 — INFO — Empty DataFrame
+Columns: []
+Index: []
+2024-04-10 12:43:25,176 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\BehaveBDD\ScenarioBuilder\ScenarioBuilder.py", line 286, in <module>
+    ReadingTheFileDF(FileName)
+  File "E:\Python\BehaveBDD\ScenarioBuilder\ScenarioBuilder.py", line 165, in ReadingTheFileDF
+    DF_PostTime_Sorted = DF1.sort_values(by='PostTime')
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\util\_decorators.py", line 317, in wrapper
+    return func(*args, **kwargs)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\core\frame.py", line 6904, in sort_values
+    k = self._get_label_or_level_values(by, axis=axis)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\core\generic.py", line 1849, in _get_label_or_level_values
+    raise KeyError(key)
+KeyError: 'PostTime'
+2024-04-10 12:43:25,206 — INFO — *********************** FINISHED ***********************

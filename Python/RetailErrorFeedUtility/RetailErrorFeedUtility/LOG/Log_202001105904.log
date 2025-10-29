@@ -1,0 +1,24 @@
+2020-01-10 17:59:04,669 — INFO — File Processing starts ...
+2020-01-10 17:59:04,691 — INFO — Start Time::: 2020-01-10 17:59:04.668905
+2020-01-10 17:59:04,705 — INFO — E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+2020-01-10 17:59:04,706 — INFO — ********************TESTReplaySchedules_1.csv*****************************
+2020-01-10 17:59:04,706 — INFO — FileID: 2020011059041
+2020-01-10 17:59:04,707 — DEBUG — Inside ValidateDuplicateFile
+2020-01-10 17:59:04,707 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\TESTReplaySchedules_1.csv
+2020-01-10 17:59:04,707 — DEBUG — Inside ImportFileToDB
+2020-01-10 17:59:04,707 — DEBUG — bcp PARASHAR_CB_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\TESTReplaySchedules_1.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2020-01-10 17:59:05,235 — INFO — Record Insert Time:::2020-01-10 17:59:05.235925
+2020-01-10 17:59:05,269 — DEBUG — Error === False
+2020-01-10 17:59:05,295 — DEBUG — Inside DataValidation
+2020-01-10 17:59:05,745 — INFO — Connection established
+2020-01-10 17:59:05,768 — DEBUG — EXEC PARASHAR_CB_CI..USP_ValidateRetailReplaySchedules 'TESTReplaySchedules_1.csv', '2020011059041'
+2020-01-10 17:59:06,219 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+2020-01-10 17:59:06,251 — DEBUG — EXEC PARASHAR_CB_CI..USP_UpdateScheduleTypeOfBadSchedule 'TESTReplaySchedules_1.csv', '2020011059041'
+2020-01-10 17:59:06,266 — INFO — USP_UpdateScheduleTypeOfBadSchedule executed successfully
+2020-01-10 17:59:06,268 — DEBUG — ABORT: False
+ErrorFlag: 0
+ErrorMessage: No Error
+2020-01-10 17:59:06,269 — DEBUG — Inside SendMail
+2020-01-10 17:59:07,581 — INFO — Sending mail...
+2020-01-10 17:59:09,525 — INFO — Finish Time::: 2020-01-10 17:59:09.525081
+2020-01-10 17:59:09,561 — INFO — ********************All files processed... Exiting*****************************

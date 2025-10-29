@@ -1,0 +1,14 @@
+2023-02-07 19:27:32,323 — INFO — ResponseFile to be processed: E:\Python\FileConverter\ResponseFile\GoodWillCredits_20230207192732.sql
+2023-02-07 19:27:32,324 — INFO — File Processing starts ...
+2023-02-07 19:27:32,324 — INFO — START TIME::: 2023-02-07 19:27:32.322313
+2023-02-07 19:27:32,324 — INFO — E:\Python\FileConverter\INPUT\
+2023-02-07 19:27:32,324 — INFO — ********************IA&Weekly.xlsx*****************************
+2023-02-07 19:27:32,325 — INFO — INSIDE ReadingTheFileDF WITH FILE: IA&Weekly.xlsx
+2023-02-07 19:27:32,629 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-02-07 19:27:32,632 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-02-07 19:27:32,635 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-02-07 19:27:32,636 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-02-07 19:27:32,674 — INFO — INSIDE DumpingToDB
+2023-02-07 19:27:32,674 — INFO — CMD: sqlcmd /S XEON-S8 /d PP_CI -E -i E:\Python\FileConverter\ResponseFile\IA&Weekly.xlsx
+2023-02-07 19:27:32,823 — ERROR — FATAL :: [Errno 2] No such file or directory: 'E:\\Python\\FileConverter\\ResponseFile\\IA&Weekly.xlsx'
+2023-02-07 19:27:32,825 — INFO — *********************** FINISHED ***********************

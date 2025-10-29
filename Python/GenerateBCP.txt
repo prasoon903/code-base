@@ -1,0 +1,24 @@
+bcp PP_CI.DBO.IPMMAsterInterim IN E:\Python\JSONReader\JSONFile\SPLITTED\IPM.csv -b 5000 -h TABLOCK -f E:\Python\JSONReader\IPM.xml -e E:\Python\JSONReader\JSONFile\LOG\IPM.csv_Error_in.log -o E:\Python\JSONReader\JSONFile\LOG\IPM.csv_Output_in.log -S XEON-S8 -T -t , -F 2
+
+
+
+bcp PP_CI.DBO.IPMAddendumDetails IN E:\Python\JSONReader\JSONFile\SPLITTED\Addendum.csv -b 5000 -h TABLOCK -f E:\Python\JSONReader\Addendum.xml -e E:\Python\JSONReader\JSONFile\LOG\Addendum.csv_Error_in.log -o E:\Python\JSONReader\JSONFile\LOG\Addendum.csv_Output_in.log -S XEON-S8 -T -t , -F 2
+
+
+
+
+
+bcp PP_CI.DBO.IPMAddendumDetails format nul -f E:\Python\JSONReader\Addendum.fmt -c -S XEON-S8 -T
+
+
+bcp PP_CI.DBO.IPMMAsterInterim format nul -f E:\Python\JSONReader\IPM.fmt -c -S XEON-S8 -T
+
+
+bcp PP_CI.DBO.IPMMAsterInterim format nul -f E:\Python\JSONReader\IPM.xml -x -S XEON-S8 -T
+
+bcp PP_CI.DBO.IPMAddendumDetails format nul -f E:\Python\JSONReader\Addendum.xml -x -S XEON-S8 -T
+
+
+bcp PP_CI.DBO.IPMMAsterInterim_DUMP format nul -c -x -f IPM.xml -t, -S XEON-S8 -T
+
+bcp PP_CI.DBO.IPMAddendumDetails_DUMP format nul -c -x -f Addendum.xml -t, -S XEON-S8 -T

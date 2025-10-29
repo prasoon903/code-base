@@ -1,0 +1,42 @@
+05/05/2021 16:10:27 — 19732 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+05/05/2021 16:10:27 — 19732 — INFO — START TIME: 2021-05-05 16:10:27.497996
+05/05/2021 16:10:27 — 19732 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+05/05/2021 16:10:27 — 19732 — INFO — INSIDE GetOperatingServer BLOCK
+05/05/2021 16:10:27 — 19732 — INFO — CONNECTION ESTABLISHED
+05/05/2021 16:10:27 — 19732 — INFO — OperatingServer: XEON-S8
+05/05/2021 16:10:27 — 19732 — INFO — EXITING GetOperatingServer BLOCK
+05/05/2021 16:10:27 — 19732 — INFO — INSIDE EmailStructure_Head BLOCK
+05/05/2021 16:10:27 — 19732 — INFO — EXITING EmailStructure_Head BLOCK
+05/05/2021 16:10:27 — 19732 — INFO — FILENAME: amortization_schedule_error_feed_20210419_1.csv
+05/05/2021 16:10:27 — 19732 — INFO — FileID: 202105051610271
+05/05/2021 16:10:27 — 19732 — INFO — INSIDE ValidateDuplicateFile BLOCK
+05/05/2021 16:10:27 — 19732 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_20210419_1.csv
+05/05/2021 16:10:27 — 19732 — INFO — EXITING ValidateDuplicateFile BLOCK
+05/05/2021 16:10:27 — 19732 — INFO — INSIDE ImportFileToDB BLOCK
+05/05/2021 16:10:27 — 19732 — INFO — CONNECTION ESTABLISHED
+05/05/2021 16:10:27 — 19732 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+05/05/2021 16:10:27 — 19732 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\amortization_schedule_error_feed_20210419_1.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version3\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+05/05/2021 16:10:27 — 19732 — INFO — BCP START TIME::: 2021-05-05 16:10:27.731996
+05/05/2021 16:10:28 — 19732 — INFO — BCP EXECUTION SUCCESSFULL
+05/05/2021 16:10:28 — 19732 — INFO — BCP FINISH TIME::: 2021-05-05 16:10:28.298303
+05/05/2021 16:10:28 — 19732 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+05/05/2021 16:10:28 — 19732 — INFO — INSIDE DataValidation BLOCK
+05/05/2021 16:10:28 — 19732 — INFO — CONNECTION ESTABLISHED
+05/05/2021 16:10:28 — 19732 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'amortization_schedule_error_feed_20210419_1.csv', '202105051610271'
+05/05/2021 16:10:29 — 19732 — INFO — INSIDE FileDetails BLOCK
+05/05/2021 16:10:29 — 19732 — INFO — EXITING FileDetails BLOCK
+05/05/2021 16:10:29 — 19732 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+05/05/2021 16:10:29 — 19732 — INFO — USP_UpdateScheduleTypeOfBadSchedule executed successfully
+05/05/2021 16:10:29 — 19732 — INFO — EXITING DataValidation BLOCK
+05/05/2021 16:10:29 — 19732 — INFO — INSIDE GenerateExceptionFile BLOCK
+05/05/2021 16:10:29 — 19732 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION\EXCEPTION_amortization_schedule_error_feed_20210419_1_PODID_POD1.csv
+05/05/2021 16:10:29 — 19732 — INFO — CONNECTION ESTABLISHED
+05/05/2021 16:10:29 — 19732 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'amortization_schedule_error_feed_20210419_1.csv' AND FileID = '202105051610271' AND JobStatus = 10
+05/05/2021 16:10:29 — 19732 — INFO — EXITING GenerateExceptionFile BLOCK
+05/05/2021 16:10:29 — 19732 — INFO — INSIDE EmailBody_Success BLOCK
+05/05/2021 16:10:29 — 19732 — INFO — EXITING EmailBody_Error BLOCK
+05/05/2021 16:10:29 — 19732 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 05/05/2021 16:10:27</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_20210419_1.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>10</td><td style=color:green;>5</td><td style=color:red;>5</td><td style=color:green;>No Error</td></tr></table><p style=color:blue;><b>File Name:</b> amortization_schedule_error_feed_20210419_1.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>5</b></td></tr>                                     <tr><td>2</td><td>No Error</td><td><b>5</b></td></tr></table><p style=color:Crimson;><b>Exception File Name:</b> EXCEPTION_amortization_schedule_error_feed_20210419_1_PODID_POD1.csv</p><p style=color:DarkBlue;><b>Total records in exception file:</b> 5</p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+05/05/2021 16:10:29 — 19732 — DEBUG — Inside SendMail
+05/05/2021 16:10:31 — 19732 — INFO — SENDING MAIL ...
+05/05/2021 16:10:33 — 19732 — INFO — Finish Time::: 2021-05-05 16:10:33.407056
+05/05/2021 16:10:33 — 19732 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

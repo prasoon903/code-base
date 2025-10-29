@@ -1,0 +1,21 @@
+{
+    "UserID": "SystemCommSvc",
+    "Password": "Test123!",
+    "AccountNumber": "",
+    "AccountUUID": "",
+    "DisputeID": "",
+    "DisputeAmount": "",
+    "EffectiveDate": "",
+    "Action": "0",
+    "Reason": "8",
+    "TranId": "",
+    "Notes": "",
+    "Source": "PLAT",
+    "IPAddress": "",
+    "CallerID": "",
+    "CalledID": "",
+    "RequestTime": "",
+    "SessionID": "",
+    "APIVersion": "2.0",
+    "ApplicationVersion": "2.0"
+}

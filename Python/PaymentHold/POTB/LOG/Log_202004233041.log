@@ -1,0 +1,15 @@
+2020-04-23 12:30:41,693 — INFO — File Processing starts ...
+2020-04-23 12:30:41,694 — INFO — Start Time::: 2020-04-23 12:30:41.693607
+2020-04-23 12:30:41,694 — INFO — D:\BankCard\POTB\INPUT\
+2020-04-23 12:30:41,695 — INFO — ********************IntraDayAccountOTBRule_NewChange.csv*****************************
+2020-04-23 12:30:41,695 — INFO — FileID: 2020042330411
+2020-04-23 12:30:41,908 — INFO — Connection established
+2020-04-23 12:30:41,916 — INFO — 
+2020-04-23 12:30:41,916 — INFO — Connection established
+2020-04-23 12:30:42,664 — INFO — Record Insert Time:::2020-04-23 12:30:42.664615
+2020-04-23 12:30:42,664 — INFO — Connection established
+2020-04-23 12:30:42,727 — INFO — ErrorFlag: 4::No record to update
+2020-04-23 12:30:42,727 — INFO — No new record to update
+2020-04-23 12:30:43,174 — INFO — Sending mail...
+2020-04-23 12:30:45,184 — INFO — Finish Time::: 2020-04-23 12:30:45.184638
+2020-04-23 12:30:45,185 — INFO — ********************All files processed... Exiting*****************************

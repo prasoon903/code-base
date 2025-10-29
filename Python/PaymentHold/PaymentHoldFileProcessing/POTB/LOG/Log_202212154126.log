@@ -1,0 +1,38 @@
+2022-12-15 16:41:26,936 — INFO — ****************** PAYMENT HOLD FILE PROCESSING STARTS ******************
+2022-12-15 16:41:26,936 — INFO — Start Time::: 2022-12-15 16:41:26.935780
+2022-12-15 16:41:26,937 — INFO — InputDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\INPUT\
+2022-12-15 16:41:26,937 — INFO — OutputDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\OUT\
+2022-12-15 16:41:26,937 — INFO — ErrorDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\ERROR\
+2022-12-15 16:41:26,937 — INFO — LogDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\LOG\
+2022-12-15 16:41:26,937 — INFO — ExceptionDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\EXCEPTION\
+2022-12-15 16:41:26,939 — INFO — INSIDE GetShardMigrationStatus 
+2022-12-15 16:41:27,017 — INFO — CONNECTION ESTABLISHED
+2022-12-15 16:41:27,017 — INFO — ConnectionStatus: True
+2022-12-15 16:41:27,018 — DEBUG — SELECT ISNULL(Sharding, 0) Sharding FROM PP_CI..Org_Balances WITH(NOLOCK) WHERE AcctID = 6969
+2022-12-15 16:41:27,019 — INFO — EXITING GetShardMigrationStatus BLOCK
+2022-12-15 16:41:27,019 — INFO — E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\INPUT\
+2022-12-15 16:41:27,021 — INFO — ********************Policy_Sample_File_V6.csv*****************************
+2022-12-15 16:41:27,021 — INFO — FileID: 2022121541261
+2022-12-15 16:41:27,022 — INFO — Count the total number of records in the file
+2022-12-15 16:41:27,043 — INFO — Total records in file:124
+2022-12-15 16:41:27,044 — INFO — Connection established
+2022-12-15 16:41:27,044 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'Policy_Sample_File_V6.csv', 124
+2022-12-15 16:41:27,151 — INFO — File is in NEW state and going to process
+2022-12-15 16:41:27,152 — DEBUG — Inside ValidateDuplicateFile
+2022-12-15 16:41:27,153 — DEBUG — E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\OUT\Policy_Sample_File_V6.csv
+2022-12-15 16:41:27,154 — DEBUG — Inside ImportFileToDB
+2022-12-15 16:41:27,155 — INFO — Connection established
+2022-12-15 16:41:27,222 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\INPUT\Policy_Sample_File_V6.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\PaymentHoldFileProcessing\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2022-12-15 16:41:29,374 — INFO — Record Insert Time:::2022-12-15 16:41:29.374001
+2022-12-15 16:41:29,374 — DEBUG — Error ===> False
+2022-12-15 16:41:29,375 — DEBUG — Inside DataValidation
+2022-12-15 16:41:29,375 — INFO — Connection established
+2022-12-15 16:41:29,375 — INFO — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Internal '2022121541261', 'Policy_Sample_File_V6.csv' ,'6969', 'G2', 'ACCOUNTNUMBER', 'EXCP_Policy_Sample_File_V6_PODID_1.csv', 0, 124
+2022-12-15 16:41:30,370 — INFO — ErrorFlag: 3::Total records in file is not equal to records in DB
+2022-12-15 16:41:30,371 — DEBUG — ABORT: False
+ErrorFlag: 3
+ErrorMessage: Total records in file is not equal to records in DB
+2022-12-15 16:41:30,373 — DEBUG — Inside SendMail
+2022-12-15 16:41:30,918 — INFO — SENDING MAIL ...
+2022-12-15 16:41:33,023 — INFO — Finish Time::: 2022-12-15 16:41:33.023680
+2022-12-15 16:41:33,024 — INFO — ********************All files processed... Exiting*****************************

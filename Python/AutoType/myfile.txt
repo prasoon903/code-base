@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS #TempStatements
+;WITH CTE
+AS
+(
+	SELECT AccountNumber, MIN(TranTime) MinTranTime, MAX(TranTime) MaxTranTime
+	FROM #TempRecords
+	GROUP BY AccountNumber
+)
+SELECT SH.AccountNumber, SH.acctID, SH.CurrentBalance + SH.CurrentBalanceCO - CSH.CurrentBalance CurrentBalance, 
+ISNULL(SH.LastStatementDate, SH.DateAcctOpened) LastStatementDate, SH.StatementDate
+INTO #TempStatements
+FROM CTE C
+JOIN StatementHeader SH WITH (NOLOCK) ON (C.AccountNumber = SH.AccountNumber)
+JOIN CurrentStatementHeader CSH WITH (NOLOCK) ON (SH.acctID = CSH.acctId AND SH.StatementDate = CSH.StatementDate) 
+WHERE SH.StatementDate BETWEEN C.MinTranTime AND C.MaxTranTime
+
+--SELECT * FROM #TempRecords
+
+
+DROP TABLE IF EXISTS #TempRecordsStatement
+;WITH CTE
+AS
+(
+	SELECT T1.*, T2.acctID, T2.StatementDate NextStatement
+	FROM #TempRecords T1
+	LEFT JOIN #TempStatements T2 ON (T1.AccountNumber = T2.AccountNumber)
+	WHERE T1.TranTime > T2.LastStatementDate AND T1.TranTime <= T2.StatementDate
+),
+Statement
+AS
+(
+	SELECT *, ROW_NUMBER() OVER(PARTITION BY NextStatement ORDER BY RowCounter DESC) RN
+	FROM CTE
+)
+SELECT T.*, S.acctID, S.NextStatement
+INTO #TempRecordsStatement
+FROM #TempRecords  T
+LEFT JOIN Statement S ON (T.RowCounter = S.RowCounter AND S.RN = 1)
+	
+
+
+SELECT TOP 1 
+	@StatementDate = T2.StatementDate, 
+	@AdjustedCurrentBalance = T1.AdjustedCurrentBalance, 
+	@AdjustedHighBalance = T1.AdjustedHighBalance, 
+	@CurrentBalance = T2.CurrentBalance
+FROM #TempRecordsStatement T1
+JOIN #TempStatements T2 ON (T1.acctID = T2.acctID AND T1.NextStatement = T2.StatementDate)
+WHERE T1.CurrentBalance <> T2.CurrentBalance
+ORDER BY T2.StatementDate

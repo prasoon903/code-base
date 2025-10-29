@@ -1,0 +1,195 @@
+import glob
+import shutil
+
+from threading import Thread
+
+from colorama import Fore
+
+import Scripts.Config as c
+import Scripts.Splitter
+from Scripts import Splitter
+from Scripts.ClearFolder import delete_contents
+# from Scripts.Logger import get_logger
+# from .Splitter import *
+from Scripts.ExecutableFunctions import *
+import time
+from datetime import datetime
+from Scripts.GetLogger import MessageLogger
+from Scripts.MergeReports import fn_mergeReports
+from Scripts.CompareJSON import fn_JSONComparator, CompareFromBase
+from Scripts.TviewTimeOp import *
+from Scripts.DataManager import fn_CheckARSystemHS, fn_GetProcessDetails
+from Scripts.DatabaseORM import *
+
+
+def fn_ScenarioExecute():
+    LogDateTime = datetime.now()
+
+    # RootPath = os.environ.get("RootPath")
+    # RootPath = f'E:\\Python\\BehaveBDD\\features'
+    RootPath = c.BasePath
+
+    # log_folder = os.path.join(c.BasePath, "LOG") + "\\"
+    #
+    # LOG_FILE = log_folder + "LOG_" + str(LogDateTime.strftime("%Y%m%d%H%M%S")) + ".log"
+    # MessageLogger = get_logger(LOG_FILE)
+
+    # Configuration = json.load(open(RootPath + "\Configuration/Configuration.json"))
+    Configuration = c.Configuration
+    folderPath = f"FeatureFiles"
+    RootPath = os.path.join(RootPath, folderPath) + "\\"
+    TestCasePath = f"Scenario\\Input"
+    output_folder = f"ConsolidatedScenario"
+    Output_path = os.path.join(RootPath, output_folder) + "\\"
+    MultiThread = Configuration["MultiThread"]
+
+    KeywordCriteria = "Age system to"
+
+    input_path = os.path.join(RootPath, TestCasePath)
+    input_path = input_path + "\\"
+
+    MessageLogger.info(input_path)
+    MessageLogger.info(Output_path)
+    FileInProcess = []
+
+    def fn_fileSplitter():
+        # MessageLogger.debug("EXECUTION STARTED FOR SCENARIO EXECUTION TOOL")
+        # MessageLogger.debug(f"Start time: {str(LogDateTime.strftime('%Y-%m-%d %H:%M:%S'))}")
+        MessageLogger.info("Inside fn_fileSplitter")
+        delete_contents(Output_path)
+        if os.path.exists(input_path):
+            LoopCount = 0
+            os.chdir(input_path)
+            for file in glob.glob("*.feature"):
+                # fileName = file
+                file_name_with_extension = os.path.basename(file)
+                fileName, file_extension = os.path.splitext(file_name_with_extension)
+                MessageLogger.info(file)
+                LoopCount += 1
+                Splitter.split_file(fileName, input_path + file, KeywordCriteria, input_path, Output_path)
+                shutil.move(input_path + file, os.path.join(RootPath, f"Scenario\\Output") + "\\")
+                # MessageLogger.info(LoopCount)
+                # if LoopCount == 10:
+                #     break
+
+    def fn_ProcessFile(current_folder, fileName, processIndicator, workingThread):
+        MessageLogger.info("Inside fn_ProcessFile")
+        MessageLogger.info("workingThread: " + str(workingThread))
+        MessageLogger.info("processIndicator: " + str(processIndicator))
+        MessageLogger.info("current_folder: " + current_folder)
+        MessageLogger.info("fileName: " + fileName)
+
+        if processIndicator:
+            if fileName not in FileInProcess:
+                os.chdir(Configuration['PythonPath'])
+                behaveCMD = f"behave {os.path.join(current_folder, fileName)} --no-capture -f behave_html_formatter:HTMLFormatter -o {Configuration['BasePath']}\\Reports\\report_{fileName}.html"
+                # behaveCMD = f"behave {os.path.join(current_folder, fileName)} --no-capture --stop"
+                # behaveCMD = f"behave {os.path.join(current_folder, fileName)} --no-capture -f behave-html-formatter-main.behave_html_formatter.html:HTMLFormatter -o {Configuration['BasePath']}\\Reports\\report_{fileName}.html"
+                MessageLogger.info(behaveCMD)
+                FileInProcess.append(fileName)
+                os.system(behaveCMD)
+                shutil.move(os.path.join(current_folder, fileName), os.path.join(current_folder, f"Processed") + "\\")
+            else:
+                MessageLogger.warning(f"{fileName} is already in process")
+        else:
+            MessageLogger.warning("This file need not to be processed via this thread")
+
+    def fn_ExecuteSteps():
+        MessageLogger.info("Inside fn_ExecuteSteps")
+        if os.path.exists(Output_path):
+            subfolders = [
+                f
+                for f in os.listdir(Output_path)
+                if os.path.isdir(os.path.join(Output_path, f))
+            ]
+            subfolders.sort()
+            LoopCount = 0
+
+            # MessageLogger.info the list of subfolders
+            for subfolder in subfolders:
+                MessageLogger.info(subfolder)
+                current_folder = os.path.join(Output_path, subfolder) + "\\"
+                os.chdir(current_folder)
+                if subfolder != "TestAccount":
+                    Datetocheck = subfolder
+                    CurrentTnpDate = fn_GetCurrentCommonTNPDate()
+                    if len(Datetocheck) > 10:
+                        DatePart, TimePart =  subfolder.split(" ")
+                        Year, Month, Date  = DatePart.split("-")
+                        hour, minute, second = TimePart.split("_")
+                        fn_SetDateInTview(Month, Date, Year, hour, minute, second)
+                        Datetocheck = DatePart
+                    else:
+                        tnpdate = subfolder.split("-")
+                        Month, Date, Year = tnpdate[1], tnpdate[2], tnpdate[0]
+                        fn_SetDateInTview(Month, Date, Year)
+                    
+                    AgingCheckCount = 0
+
+                    while not (fn_checkAgingDate(Datetocheck)):
+                        MessageLogger.warning("Aging is InProgress")
+                        AgingCheckCount = AgingCheckCount + 1
+                        if (AgingCheckCount > 2):
+                            fn_CheckARSystemHS()
+                        time.sleep(15)
+                if MultiThread == "1":
+                    files = [
+                        file
+                        for file in glob.glob("*.feature")
+                    ]
+                    Threads = {}
+                    MessageLogger.info("Multithreading environment")
+                    os.chdir(RootPath)
+                    totalFiles = len(files)
+                    MaxThreads = int(Configuration["MaxThreads"])
+                    # threadRequired = totalFiles / MaxThreads + 1
+
+                    if totalFiles % MaxThreads == 0:
+                        TotalExecutionLoop = int(totalFiles / MaxThreads)
+                    else:
+                        TotalExecutionLoop = int(totalFiles / MaxThreads) + 1
+
+                    for Loop in range(TotalExecutionLoop):
+                        threads = []
+                        try:
+                            for ThreadLoop in range(MaxThreads):
+                                fileIndex = MaxThreads * Loop + ThreadLoop
+                                MessageLogger.info(f"START THREAD - ThreadLoop - {ThreadLoop}, ExecutionLoop - {Loop}, FileCount - {fileIndex}")
+                                if fileIndex < totalFiles:
+                                    thread = Thread(target=fn_ProcessFile, args=(current_folder, files[fileIndex if fileIndex < totalFiles else MaxThreads * Loop], True if fileIndex < totalFiles else False, ThreadLoop + 1,))
+                                    thread.start()
+                                    threads.append(thread)
+
+                            for thread in threads:
+                                thread.join()
+
+                        except Exception as e:
+                            MessageLogger.error(f"AssertionError occurred: {e}")
+                else:
+                    for file in glob.glob("*.feature"):
+                        LoopCount += 1
+                        fileName = file
+                        MessageLogger.info("fileName: " + fileName)
+                        MessageLogger.info("Now fetching the files from folder and execute steps one by one")
+                        os.chdir(RootPath)
+                        MessageLogger.info("Single threaded environment")
+                        # behaveCMD = f"behave {os.path.join(current_folder, fileName)} --no-capture --stop"
+                        # MessageLogger.info(behaveCMD)
+                        # os.system(behaveCMD)
+                        # shutil.move(os.path.join(current_folder, fileName),
+                        # os.path.join(current_folder, f"Processed") + "\\")
+                        fn_ProcessFile(current_folder, fileName, True, 0)
+
+                MessageLogger.info(
+                    "After execution all the steps it is going to age the system to folder date " + subfolder)
+
+                os.chdir(current_folder)
+
+            fn_mergeReports(f"{Configuration['BasePath']}\\Reports")
+
+            MessageLogger.info("Start Json comparison")
+            CompareFromBase()
+
+    fn_fileSplitter()
+    fn_ExecuteSteps()
+    fn_GetProcessDetails()

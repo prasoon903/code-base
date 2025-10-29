@@ -1,0 +1,8 @@
+IF NOT EXISTS (SELECT TOP 1 1 FROM SYS.TABLES WHERE NAME = 'LogARSystemHS_Update_Behave')
+BEGIN
+  CREATE TABLE LogARSystemHS_Update_Behave(
+    Activity VARCHAR(100) NULL,
+    ProcDay DATETIME NULL,
+    UpdateStatus INT DEFAULT(0)
+  )
+END

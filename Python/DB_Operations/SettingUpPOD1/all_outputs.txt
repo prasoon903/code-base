@@ -1,0 +1,39 @@
+ 
+-- Output of 0_t_user_details.sql -- 
+Changed database context to 'master'.
+Changed database context to 'msdb'.
+Job 'BPLDEVDB01_DBOWNER_Permission' started successfully.
+WAITING FOR BPLDEVDB01_DBOWNER_Permission TO EXECUTE
+-- Output of 1_Synonym_ALL.sql -- 
+Changed database context to 'PP_CI'.
+Changed database context to 'PP_CL'.
+Changed database context to 'PP_CC'.
+Changed database context to 'PP_CoreCredit'.
+Changed database context to 'PP_CAUTH'.
+Changed database context to 'PP_CoreApp'.
+Changed database context to 'PP_CI_Secondary'.
+-- Output of 2_SetEnvScripts.sql -- 
+ritik DELETED 1
+-- Output of 3_USP_GetPSDData_Terms.sql -- 
+-- Output of 4_IncreaseDBSize.sql -- 
+Changed database context to 'master'.
+-- Output of USP_AccountDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_CBAuditDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_CBAuditPSDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_CCardDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_CCardForSpecificTransactionDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_CurrentStatementDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_DelinquencyRecordsDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_InstallmentDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_PurchaseReversalRecordDetails.sql -- 
+Changed database context to 'PP_CI'.
+-- Output of USP_StatementDetails.sql -- 
+Changed database context to 'PP_CI'.

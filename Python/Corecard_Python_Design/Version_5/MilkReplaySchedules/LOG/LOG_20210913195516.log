@@ -1,0 +1,51 @@
+09/13/2021 19:55:16 — 8104 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+09/13/2021 19:55:16 — 8104 — INFO — START TIME: 2021-09-13 19:55:16.683376
+09/13/2021 19:55:16 — 8104 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+09/13/2021 19:55:16 — 8104 — INFO — INSIDE GetOperatingServer BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — CONNECTION ESTABLISHED
+09/13/2021 19:55:17 — 8104 — INFO — OperatingServer: XEON-S8
+09/13/2021 19:55:17 — 8104 — INFO — EXITING GetOperatingServer BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE EmailStructure_Head BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — EXITING EmailStructure_Head BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — FILENAME: EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv
+09/13/2021 19:55:17 — 8104 — INFO — FileID: 202109131955161
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE ValidateDuplicateFile BLOCK
+09/13/2021 19:55:17 — 8104 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv
+09/13/2021 19:55:17 — 8104 — INFO — EXITING ValidateDuplicateFile BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE CheckEmptyFile BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — Total records in the file EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv is: 1
+09/13/2021 19:55:17 — 8104 — INFO — Non-Empty file, going to process
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE ImportFileToDB BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — CONNECTION ESTABLISHED
+09/13/2021 19:55:17 — 8104 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+09/13/2021 19:55:17 — 8104 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version4\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+09/13/2021 19:55:17 — 8104 — INFO — BCP START TIME::: 2021-09-13 19:55:17.161716
+09/13/2021 19:55:17 — 8104 — INFO — Reading BCP Output file
+09/13/2021 19:55:17 — 8104 — INFO — Starting copy...
+09/13/2021 19:55:17 — 8104 — INFO — 1 rows copied.
+09/13/2021 19:55:17 — 8104 — INFO — Network packet size (bytes): 4096
+09/13/2021 19:55:17 — 8104 — INFO — Clock Time (ms.) Total     : 1      Average : (1000.00 rows per sec.)
+09/13/2021 19:55:17 — 8104 — INFO — BCP EXECUTION SUCCESSFULL
+09/13/2021 19:55:17 — 8104 — INFO — BCP FINISH TIME::: 2021-09-13 19:55:17.308569
+09/13/2021 19:55:17 — 8104 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE DataValidation BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — CONNECTION ESTABLISHED
+09/13/2021 19:55:17 — 8104 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv', '202109131955161', 10000, 1
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE FileDetails BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — EXITING FileDetails BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+09/13/2021 19:55:17 — 8104 — INFO — No new record to update
+09/13/2021 19:55:17 — 8104 — INFO — EXITING DataValidation BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — INSIDE GenerateExceptionFile BLOCK
+09/13/2021 19:55:17 — 8104 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION\EXCP_EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1_POD1.csv
+09/13/2021 19:55:17 — 8104 — INFO — CONNECTION ESTABLISHED
+09/13/2021 19:55:17 — 8104 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv' AND FileID = '202109131955161' AND JobStatus = 10
+09/13/2021 19:55:18 — 8104 — INFO — TOTAL RECORDS FOR EXCEPTION FILE: 1
+09/13/2021 19:55:18 — 8104 — INFO — EXITING GenerateExceptionFile BLOCK
+09/13/2021 19:55:18 — 8104 — INFO — INSIDE EmailBody_Success BLOCK
+09/13/2021 19:55:18 — 8104 — INFO — EXITING EmailBody_Error BLOCK
+09/13/2021 19:55:18 — 8104 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 09/13/2021 19:55:16</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>1</td><td style=color:green;>0</td><td style=color:red;>1</td><td style=color:green;>No new record to update</td></tr></table><p style=color:blue;><b>File Name:</b> EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>1</b></td></tr></table><p style=color:Crimson;><b>EXCEPTION FILE NAME:</b> EXCP_EXCP_amortization_schedule_error_feed_NewStructure_Dummy_POD1_POD1.csv</p><p style=color:DarkBlue;><b>TOTAL RECORDS IN EXCEPTION FILE: 1</b></p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+09/13/2021 19:55:18 — 8104 — DEBUG — Inside SendMail
+09/13/2021 19:55:18 — 8104 — INFO — SENDING MAIL ...
+09/13/2021 19:55:21 — 8104 — INFO — Finish Time::: 2021-09-13 19:55:21.505033
+09/13/2021 19:55:21 — 8104 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

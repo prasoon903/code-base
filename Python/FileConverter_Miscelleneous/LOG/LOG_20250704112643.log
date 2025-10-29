@@ -1,0 +1,57 @@
+2025-07-04 11:26:43,906 — INFO — File Processing starts ...
+2025-07-04 11:26:43,906 — INFO — START TIME::: 2025-07-04 11:26:43.905400
+2025-07-04 11:26:43,906 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-07-04 11:26:43,907 — INFO — ********************Seg3_scale_up_after_fixing_5_new_issues_dedup_tran_id_level_CBR_Refresh.xlsx*****************************
+2025-07-04 11:26:43,907 — INFO — LoopCount: 1
+2025-07-04 11:26:45,397 — INFO — ['Sheet1']
+2025-07-04 11:26:45,398 — INFO — Processing File: Seg3_scale_up_after_fixing_5_new_issues_dedup_tran_id_level_CBR_Refresh.xlsx
+2025-07-04 11:26:45,398 — INFO — Processing sheet: Sheet1
+2025-07-04 11:26:45,398 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-329066_Sheet1.txt
+2025-07-04 11:26:45,409 — INFO — INSIDE ReadingTheFileDF WITH FILE: Seg3_scale_up_after_fixing_5_new_issues_dedup_tran_id_level_CBR_Refresh.xlsx
+2025-07-04 11:26:46,900 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 607, in _handle_usecols
+    col_indices.append(usecols_key.index(col))
+                       ^^^^^^^^^^^^^^^^^^^^^^
+ValueError: 'account_uuid' is not in list
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 335, in <module>
+    ReadingTheFileDF(FileName, S1.SheetName)
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 153, in ReadingTheFileDF
+    DF = pd.read_excel(File, sheet_name=sheets, usecols=S1.Columns)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 508, in read_excel
+    data = io.parse(
+           ^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 1616, in parse
+    return self._reader.parse(
+           ^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 916, in parse
+    raise err
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\excel\_base.py", line 878, in parse
+    parser = TextParser(
+             ^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\readers.py", line 2053, in TextParser
+    return TextFileReader(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\readers.py", line 1898, in _make_engine
+    return mapping[engine](f, **self.options)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 133, in __init__
+    ) = self._infer_columns()
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 542, in _infer_columns
+    columns = self._handle_usecols(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\python_parser.py", line 609, in _handle_usecols
+    self._validate_usecols_names(self.usecols, usecols_key)
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\io\parsers\base_parser.py", line 979, in _validate_usecols_names
+    raise ValueError(
+ValueError: Usecols do not match columns, columns expected but not found: ['account_uuid'] (sheet: Sheet1)
+2025-07-04 11:26:46,925 — INFO — *********************** FINISHED ***********************

@@ -1,0 +1,2 @@
+behave --capture --stop
+pause;

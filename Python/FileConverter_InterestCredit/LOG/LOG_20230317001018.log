@@ -1,0 +1,11 @@
+2023-03-17 00:10:18,274 — INFO — ResponseFile to be processed: E:\Python\FileConverter_InterestCredit\ResponseFile\InterestCredits_20230317001018.sql
+2023-03-17 00:10:18,309 — INFO — File Processing starts ...
+2023-03-17 00:10:18,310 — INFO — START TIME::: 2023-03-17 00:10:18.273605
+2023-03-17 00:10:18,310 — INFO — E:\Python\FileConverter_InterestCredit\INPUT\
+2023-03-17 00:10:18,310 — INFO — ********************cookie BK - duplicate postings.xlsx*****************************
+2023-03-17 00:10:18,310 — INFO — INSIDE ReadingTheFileDF WITH FILE: cookie BK - duplicate postings.xlsx
+2023-03-17 00:10:19,856 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-03-17 00:10:19,885 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-03-17 00:10:19,893 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-03-17 00:10:19,894 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-03-17 00:10:20,081 — INFO — *********************** FINISHED ***********************

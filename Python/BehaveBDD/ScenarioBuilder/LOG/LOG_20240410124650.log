@@ -1,0 +1,22 @@
+2024-04-10 12:46:50,641 — INFO — ResponseFile to be processed: E:\Python\BehaveBDD\ScenarioBuilder\ResponseFile\COOKIE-231352_20240410124650.sql
+2024-04-10 12:46:50,642 — INFO — File Processing starts ...
+2024-04-10 12:46:50,642 — INFO — START TIME::: 2024-04-10 12:46:50.641118
+2024-04-10 12:46:50,642 — INFO — E:\Python\BehaveBDD\ScenarioBuilder\INPUT\
+2024-04-10 12:46:50,642 — INFO — ********************Scenario.xlsx*****************************
+2024-04-10 12:46:50,642 — INFO — INSIDE ReadingTheFileDF WITH FILE: Scenario.xlsx
+2024-04-10 12:46:50,914 — INFO — DATA CONVERTED FROM XLS TO DF
+2024-04-10 12:46:50,916 — INFO —     BSAcctid  ARTxnType  ... TranCode                    Description
+73   1129597        NaN  ...      NaN                            NaN
+72   1129597       91.0  ...    F4007   DOMESTIC PURCHASE - REVOLVER
+71   1129597       91.0  ...    F4001     DOMESTIC PURCHASE - RETAIL
+70   1129597       91.0  ...     2101     ACH SCHEDULED BILL PAYMENT
+69   1129597       91.0  ...     2101     ACH SCHEDULED BILL PAYMENT
+..       ...        ...  ...      ...                            ...
+4    1129597       91.0  ...     2206        ACH BILL PAYMENT RETURN
+3    1129597       91.0  ...     2101     ACH SCHEDULED BILL PAYMENT
+2    1129597       91.0  ...     2101     ACH SCHEDULED BILL PAYMENT
+1    1129597       91.0  ...     2101     ACH SCHEDULED BILL PAYMENT
+0    1129597       91.0  ...     2101     ACH SCHEDULED BILL PAYMENT
+
+[74 rows x 26 columns]
+2024-04-10 12:46:50,975 — INFO — *********************** FINISHED ***********************

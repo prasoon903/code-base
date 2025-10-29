@@ -1,0 +1,8 @@
+{
+    "AccountCreation" : "PrasoonPAccountCreation",
+    "SecondaryCardCreation" :  "PrasoonPSecondaryCardCreation",
+    "PostSingleTransaction" : "PrasoonPPostSingleTransaction",
+    "ManualAuth" : "PrasoonPManualAuth",
+    "RetailManualAuth" : "PrasoonPRetailManualAuth",
+    "AccountSummary" : "CoreServices/CoreCardServices.svc/AccountSummary"
+}

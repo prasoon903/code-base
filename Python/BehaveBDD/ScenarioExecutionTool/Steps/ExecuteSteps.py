@@ -1,0 +1,987 @@
+from behave import *
+from Scripts.ExecutableFunctions import *
+from Scripts.DataManager import *
+from Scripts.GetAccountPlanData import fn_SaveAccountPlanData
+from Scripts.GetLogger import MessageLogger
+from Scripts.SetLoggerGlobals import get_global_EXECUTION_ID
+from Scripts.APIAndDataExtraction import *
+
+
+@given("execute {action} {details}")
+def step_impl(context, action, details):
+    try:
+        # Use regular expressions to match the variations of the steps
+        action = action.lower()
+        details = details.lower()
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        hitapi = False
+        keepJsonResponse = True
+        keepOtherData = False
+        SaveJsonResponse = False
+        TranTime = ""
+        PostTime = ""
+        IsTestAccount = False
+        MessageLogger.info("*********************| " + action + " " + details + " |*********************" + str(EXECUTION_ID))
+
+        if action in ("create", "add"):
+            # Implement logic for "Create" statement
+            input_string = action
+            match = re.search(r"(\S+)", input_string)
+            (
+                API,
+                Status,
+                amount,
+                txntype,
+                digit,
+                disputeaction,
+                months,
+                field,
+                value,
+                customerType,
+                user_info,
+                rollup,
+                methodname,
+            ) = fn_ExtractData(details)
+            MessageLogger.debug(f"From input_string:")
+            MessageLogger.debug(f"API: {API}")
+            MessageLogger.debug(f"Status: {Status}")
+            MessageLogger.debug(f"Amount: {amount}")
+            MessageLogger.debug(f"txntype: {txntype}")
+            MessageLogger.debug(f"digit: {digit}")
+            MessageLogger.debug(f"disputeaction: {disputeaction}")
+            MessageLogger.debug(f"months: {months}")
+            MessageLogger.debug(f"field: {field}")
+            MessageLogger.debug(f"value: {value}")
+            MessageLogger.debug(f"customerType: {customerType}")
+            MessageLogger.debug(f"user_info: {user_info}")
+            MessageLogger.debug(f"rollup: {rollup}")
+            MessageLogger.debug(f"methodname: {methodname}")
+            MessageLogger.debug(f"done:")
+            APIName = API
+            # APIName = details
+            context.apiname = fn_GetAPINAME(APIName)
+            context.Status = Status
+            context.disputeaction = disputeaction
+            # actype = "create"
+            actype = action
+            context.activitytype = actype
+            context.amount = amount
+            context.months = months
+            context.field = field
+            context.value = value
+            # context.paymentmethod = methodname
+            # context.clientid = str(uuid.uuid4())
+            # context.clientid = get_random_uuid_from_file()
+            context.clientid = generate_random_clientid()
+            context.customerType = customerType
+            if customerType is not None and customerType != "":
+                context.customersave = context.customerType.lower() + "_" + str(digit)
+            elif API is not None and API != "":
+                context.customersave = API.lower() + "_" + str(digit)
+            context.user_info = user_info
+            context.rollup = rollup
+            if context.customerType.lower() == "participant":
+                context.customerType = "22"
+            elif context.customerType.lower() == "coowner":
+                context.customerType = "33"
+            elif context.customerType.lower() == "manager":
+                context.customerType = "11"
+            if context.apiname == "PaymentSchedule":
+                context.paymentmethod = methodname
+                (context.frequency, context.paymentdate, context.specificday, context.PaymentType, context.amount, context.Paymentmode) = get_payment_schedule_req_data(context)
+                
+
+            hitapi = True
+
+        elif action == "get":
+            actype = action
+            context.activitytype = actype
+            context.apiname = fn_GetAPINAME(details)
+            hitapi = True
+
+        elif action in "post":
+            APIName = "PostSingleTransaction"
+            context.apiname = fn_GetAPINAME(APIName)
+            
+            # Implement logic for "Post" statement
+            FullString = action + " " + details
+            MessageLogger.info("FullString: " + FullString)
+            match = re.search(r"post (.*?) of", FullString)
+            MessageLogger.info(details)
+            MessageLogger.info(match)
+            hitapi = True
+            if match:
+                word_in_between = match.group(1)
+                word_in_between = word_in_between.lower()
+                MessageLogger.info(word_in_between)
+                parts = word_in_between.split("_")
+                if len(parts) > 0:
+                    word_in_between = parts[0]
+                    MessageLogger.info("after " + word_in_between)
+                if word_in_between in ( "payment reversal", "purchase reversal", "dispute", "disputeresolution", ):
+                    match = re.search(r"of (\S+)", details)
+                    context.Txninfo = match.group(1)
+                    context.txntype = context.Txninfo
+                    actype = "post transaction reversal"
+                    IsTestAccount, TranTime, PostTime = fn_SetTxnTimeForAccount(
+                        EXECUTION_ID, ""
+                    )
+                    if word_in_between in ("dispute", "disputeresolution"):
+                        context.disputeamount = 0
+                        context.disputeaction = 0
+                        match = re.search(r"for (\S+)", details)
+                        MessageLogger.info("match: " + str(match))
+                        context.Txninfo = match.group(1)
+                        MessageLogger.info(FullString)
+                        (
+                            API, Status, amount, txntype, digit, disputeaction, months, field, value, customerType, user_info, rollup, methodname,
+                        ) = fn_ExtractData(details)
+                        MessageLogger.info("amount: " + str(amount))
+                        if match:
+                            context.disputeamount = amount
+                            context.cnt = digit
+                            if len(parts) > 1:
+                                context.cnt = parts[1]
+                        actype = word_in_between
+                        context.disputeaction = disputeaction
+                        context.apiname = fn_GetAPINAME(API)
+                        context.txntype = word_in_between
+                    context.activitytype = actype
+                elif word_in_between in ("payment", "debit", "credit", "purchase", "cashpurchase", "return", "btpurchase", "promopurchase", "retailpurchase", "chargeoffreversal", ):
+                    (
+                        variable,
+                        digit,
+                        amount,
+                        by,
+                        cpm,
+                        at,
+                        txntype,
+                        forTxn,
+                        user_info,
+                        return_info,
+                    ) = extract_informationforPST(FullString)
+                    MessageLogger.info(f"From input_string:")
+                    MessageLogger.info(f"Variable: {variable}")
+                    MessageLogger.info(f"digit: {digit}")
+                    MessageLogger.info(f"Amount: {amount}")
+                    MessageLogger.info(f"By: {by}")
+                    MessageLogger.info(f"CPM: {cpm}")
+                    MessageLogger.info(f"At: {at}")
+                    MessageLogger.info(f"txntype: {txntype}")
+                    MessageLogger.info(f"forTxn: {forTxn}")
+                    MessageLogger.info(f"user_info: {user_info}")
+                    MessageLogger.info(f"return_info: {return_info}")
+                    TotalAmount = 0.0
+                    tableInfoFields = []
+                    value = 0.0
+                    if forTxn == "":
+                        amount = str(GetAmount_Account(amount))
+                    else:
+                        amount = str(GetAmount_Plan(amount, forTxn))
+                    MessageLogger.info(f"Amount: {amount}")
+
+                    context.variable = variable
+                    context.amount = amount
+                    context.by = by
+                    context.cpm = cpm
+                    context.at = at
+                    actype = "post transaction"
+                    context.activitytype = actype
+                    context.cnt = digit
+                    context.txntype = txntype
+                    context.user_info = user_info
+                    context.return_info = return_info
+                    IsTestAccount, TranTime, PostTime = fn_SetTxnTimeForAccount(
+                        EXECUTION_ID, context.at
+                    )
+                    
+                elif word_in_between in ("ntddispute", "ntddisputeresolution", ):
+                    context.disputeamount = 0
+                    context.disputeaction = 0
+                    context.disputereason = 0
+                    MessageLogger.info(FullString)
+                    API, Status, amount, txntype, digit, disputeaction, months, field, value, customerType, user_info, rollup, methodname = fn_ExtractData(details)
+                    MessageLogger.info("amount: " + str(amount))
+                    MessageLogger.info("methodname: " + str(methodname))
+                    context.apiname = fn_GetAPINAME(API)
+                    context.activitytype = word_in_between
+                    if word_in_between == "ntddisputeresolution":
+                        context.ntddecision = field
+                        context.ntdapproch = value
+                        context.disputeid = fn_GetValueFromDataStore(EXECUTION_ID, "ntddispute_" + str(digit) + '_disputeid')
+                    else:
+                        context.disputeamount = amount
+                        context.cnt = digit
+                        if len(parts) > 1:
+                            context.cnt = parts[1]
+                        context.ntdaction = disputeaction
+                        context.ntdreason = rollup
+                        if (methodname.lower()).startswith("interest") or (methodname.lower()).startswith("rrc"):
+                            context.ntdtranid = fn_GetValueFromDataStore(EXECUTION_ID,  methodname + '_tranid')
+                            context.disputeamount = fn_GetValueFromDataStore(EXECUTION_ID,  methodname + '_amount')
+                        else:
+                            context.ntdeffectivedate = methodname
+                        
+                    
+
+        else:
+            # Implement logic for other statements
+            MessageLogger.error("Invalid Step")
+
+        if hitapi:
+            try:
+                MessageLogger.info("APIName " + str(context.apiname))
+                MessageLogger.info("activitytype " + str(context.activitytype))
+                MessageLogger.info(
+                    "Code with new execution id: " + str(get_global_EXECUTION_ID())
+                )
+                MessageLogger.info("action in " + action)
+                MessageLogger.info("action in corecard... " + action)
+                EXECUTION_ID = get_global_EXECUTION_ID()
+                payLoad = {}
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    context.activitytype + " " + context.apiname,
+                    "InProgress",
+                )
+
+                if action.strip() in ("create", "get", "add"):
+                    MessageLogger.info("action in corecard... inside " + action)
+                    if action == "get":
+                        data = {
+                            "TagName": ["AccountNumber"],
+                            "VariableName": ["@MyAccountNumber"],
+                        }
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        SaveJsonResponse = True
+                        keepJsonResponse = False
+
+                    elif action.strip() == "add":
+                        MessageLogger.info(
+                            "action in corecard... inside add++" + action
+                        )
+                        if context.apiname == "AddManualStatus":
+                            data = {
+                                "TagName": ["AccountNumber", "ManualStatus"],
+                                "VariableName": ["@MyAccountNumber", context.Status],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname == "RemoveManualStatus":
+                            data = {
+                                "TagName": ["AccountNumber", "ManualStatus"],
+                                "VariableName": ["@MyAccountNumber", context.Status],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname == "ReageEnrollment":
+                            data = {
+                                "TagName": [
+                                    "AccountNumber",
+                                    "FixedPaymentAmount",
+                                    "NumberOfPayments",
+                                ],
+                                "VariableName": [
+                                    "@MyAccountNumber",
+                                    context.amount,
+                                    context.months,
+                                ],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname == "SettlementEnrollmentAPI":
+                            data = {
+                                "TagName": [
+                                    "AccountNumber",
+                                    "AmountTobeSettled",
+                                    "NumberOfMonths",
+                                ],
+                                "VariableName": [
+                                    "@MyAccountNumber",
+                                    context.amount,
+                                    context.months,
+                                ],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname == "TCAPEnrollment":
+                            data = {
+                                "TagName": ["AccountNumber", "TCAPMonths"],
+                                "VariableName": ["@MyAccountNumber", context.months],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname == "PWPEnrollment":
+                            data = {
+                                "TagName": ["AccountNumber", "PWPMonths"],
+                                "VariableName": ["@MyAccountNumber", context.months],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname == "AccountUpdate":
+                            data = {
+                                "TagName": ["AccountNumber", "Field1", "Value1"],
+                                "VariableName": [
+                                    "@MyAccountNumber",
+                                    context.field,
+                                    context.value,
+                                ],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            keepJsonResponse = False
+                        elif context.apiname.strip() == "addcustomeruser":
+                            MessageLogger.info(
+                                "context.apiname here for AddCustomerUser before "
+                                + context.apiname
+                            )
+
+                            data = {
+                                "TagName": [
+                                    "AccountNumber",
+                                    "CustomerType",
+                                    "ClientID",
+                                ],
+                                "VariableName": [
+                                    "@MyAccountNumber",
+                                    context.customerType,
+                                    context.clientid,
+                                ],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            # payLoad['ClientID'] = get_random_uuid_from_file()
+                            # context.clientid = payLoad['ClientID']
+                            if context.customerType == "33":
+                                payLoad["UseMonthlySpendLimit"] = ""
+                                payLoad["MonthlySpendLimit"] = ""
+                                MessageLogger.info(
+                                    "context.apiname here for AddCustomerUser setting coowner variable "
+                                    + context.apiname
+                                )
+
+                            keepJsonResponse = False
+                            keepOtherData = True
+                            table_other = {context.customersave: context.clientid}
+                            MessageLogger.info(
+                                "context.apiname here for AddCustomerUser "
+                                + context.apiname
+                            )
+                            MessageLogger.info(
+                                "context.apiname here for payLoad ", payLoad
+                            )
+                        elif context.apiname.strip() == "customerstatusupdate":
+                            MessageLogger.info(
+                                "context.apiname here for CustomerStatusUpdate before "
+                                + context.apiname
+                            )
+                            data = {
+                                "TagName": [
+                                    "AccountNumber",
+                                    "CustomerStatus",
+                                    "ClientID",
+                                ],
+                                "VariableName": [
+                                    "@MyAccountNumber",
+                                    context.Status,
+                                    "@" + context.user_info,
+                                ],
+                            }
+
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            if context.rollup.lower() == "account":
+                                payLoad["AccountStatusFlag"] = "1"
+                            else:
+                                payLoad["AccountStatusFlag"] = "0"
+                            MessageLogger.info(
+                                "context.apiname here for CardStatusUpdate setting coowner variable "
+                                + context.apiname
+                            )
+                            keepJsonResponse = False
+                            keepOtherData = False
+                            # table_other = {context.customersave:context.clientid}
+                            MessageLogger.info(
+                                "context.apiname here for CustomerStatusUpdate "
+                                + context.apiname
+                            )
+                            MessageLogger.info(
+                                "context.apiname here for payLoad ", payLoad
+                            )
+                        elif context.apiname.strip() == "BankAccountManagement":
+                            MessageLogger.info(
+                                "context.apiname here for BankAccountManagement before "
+                                + context.apiname
+                            )
+                            data = {
+                                "TagName": ["AccountNumber"],
+                                "VariableName": ["@MyAccountNumber"],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            MessageLogger.info(
+                                "payLoad here for BankAccountManagement ", payLoad
+                            )
+                            keepJsonResponse = False
+                            keepOtherData = True
+                            table_other = {context.customersave: context.clientid}
+                        elif context.apiname.strip() == "PaymentSchedule":
+                            MessageLogger.info(
+                                "context.apiname here for PaymentSchedule before "
+                                + context.apiname
+                            )
+                            data = {
+                                "TagName": ["AccountNumber", "MethodName", "ClientID"],
+                                "VariableName": [
+                                    "@MyAccountNumber",
+                                    "@" + context.paymentmethod,
+                                    "@" + context.clientid,
+                                ],
+                            }
+                            context.PaymentTable = fn_TablefromJSON(data)
+                            payLoad = fn_CreateJsonPayloadUsingTable(
+                                EXECUTION_ID, context.PaymentTable
+                            )
+                            MessageLogger.info(
+                                "payLoad here for PaymentSchedule ", payLoad
+                            )
+
+                            keepJsonResponse = False
+                            keepOtherData = False
+
+                            payLoad["RequestType"] = "0" if action == "add" else ""
+                            if payLoad["RequestType"] == "0":
+                                payLoad["Frequency"] = context.frequency
+                                payLoad["PaymentMode"] = context.Paymentmode
+                                payLoad["PaymentType"] = context.PaymentType
+
+                                if payLoad["Frequency"] == "4":
+                                    pass
+                                elif (
+                                    payLoad["Frequency"] == "0"
+                                    or payLoad["Frequency"] == "3"
+                                    or payLoad["Frequency"] == "6"
+                                ):
+                                    payLoad["SpecificDay"] = context.specificday
+                                elif payLoad["Frequency"] == "2":
+                                    payLoad["PaymentDate"] = context.paymentdate
+
+                                if payLoad["PaymentType"] == "3":
+                                    payLoad["FixedAmount"] = context.amount
+
+                            MessageLogger.info(
+                                "payLoad here for PaymentSchedule ", payLoad
+                            )
+
+                    else:
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.table
+                        )
+                else:
+                    if context.activitytype == "post transaction":
+                        MessageLogger.info("activity of " + context.activitytype)
+                        MessageLogger.info("activity of user_info " + context.user_info)
+                        data = {
+                            "TagName": [
+                                "AccountNumber",
+                                "TranType",
+                                "TransactionAmount",
+                                "DateTimeLocalTransaction",
+                                "CreditPlanMaster",
+                                "TransactionTime",
+                                "TransactionPostTime",
+                                "ClientID",
+                            ],
+                            "VariableName": [
+                                "@MyAccountNumber",
+                                "TranType",
+                                "TransactionAmount",
+                                "DateTimeLocalTransaction",
+                                "CreditPlanMaster",
+                                "TransactionTime",
+                                "TransactionPostTime",
+                                "@" + context.user_info,
+                            ],
+                        }
+
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        payLoad["TranType"] = context.by
+                        payLoad["TransactionAmount"] = context.amount
+                        payLoad["CreditPlanMaster"] = context.cpm
+                        payLoad["TransactionPostTime"] = PostTime
+                        if payLoad["ClientID"] == "None":
+                            payLoad["ClientID"] = ""
+
+                        if IsTestAccount:
+                            payLoad["TransactionTime"] = TranTime
+                            payLoad["DateTimeLocalTransaction"] = ""
+                        else:
+                            payLoad["TransactionTime"] = ""
+                            payLoad["DateTimeLocalTransaction"] = TranTime
+
+                        if (
+                            context.return_info is not None
+                            and context.return_info != ""
+                        ):
+                            MessageLogger.info("return of " + context.return_info)
+                            Payment_1 = context.return_info + "_tranid"
+                            TxnDetail = fn_GetTxnDetails(
+                                EXECUTION_ID, Payment_1, context.feature.name
+                            )
+                            MessageLogger.info(TxnDetail)
+                            first_item = TxnDetail[0]
+                            if first_item.get("txnsource", None) in ("29", "39"):
+                                payLoad["RMATranUUID"] = first_item.get(
+                                    "rmatranuuid", None
+                                )
+                            else:
+                                payLoad["TMInvoiceNumber"] = first_item.get(
+                                    "invoicenumber", None
+                                )
+
+                        # if context.at != "posttime":
+                        #     payLoad['DateTimeLocalTransaction'] = context.at
+                        # else:
+                        #     payLoad['DateTimeLocalTransaction'] = ""
+
+                    if context.activitytype == "post transaction reversal":
+                        MessageLogger.info("reversal of " + context.Txninfo)
+                        Payment_1 = context.Txninfo + "_tranid"
+                        TxnDetail = fn_GetTxnDetails(
+                            EXECUTION_ID, Payment_1, context.feature.name
+                        )
+                        MessageLogger.info(TxnDetail)
+                        data = {
+                            "TagName": [
+                                "AccountNumber",
+                                "TranType",
+                                "TransactionAmount",
+                                "ReversalTargetTranID",
+                                "TransactionTime",
+                                "TransactionPostTime",
+                            ],
+                            "VariableName": [
+                                "@MyAccountNumber",
+                                "TranType",
+                                "TransactionAmount",
+                                "ReversalTargetTranID",
+                                "TransactionTime",
+                                "TransactionPostTime",
+                            ],
+                        }
+
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        first_item = TxnDetail[0]
+
+                        # Access the value associated with "ManualReversalTrancode" in the dictionary
+                        result = first_item.get(
+                            "manualreversaltrancode", None
+                        )  # Use .get() to avoid KeyError
+                        payLoad["TranType"] = first_item.get(
+                            "manualreversaltrancode", None
+                        )
+                        payLoad["TransactionAmount"] = first_item.get(
+                            "transactionamount", None
+                        )
+                        payLoad["ReversalTargetTranID"] = first_item.get("tranid", None)
+                        payLoad["AccountNumber"] = first_item.get("accountnumber", None)
+                        payLoad["TransactionTime"] = TranTime
+                        payLoad["TransactionPostTime"] = PostTime
+
+                    if context.activitytype == "dispute":
+                        MessageLogger.info("dispute of " + context.Txninfo)
+                        Payment_1 = context.Txninfo + "_tranid"
+                        TxnDetail = fn_GetTxnDetails(
+                            EXECUTION_ID, Payment_1, context.feature.name
+                        )
+                        MessageLogger.info(TxnDetail)
+                        data = {
+                            "TagName": [
+                                "AccountNumber",
+                                "TransactionAmount",
+                                "TransactionNumber",
+                            ],
+                            "VariableName": [
+                                "@MyAccountNumber",
+                                "TransactionAmount",
+                                "TransactionNumber",
+                            ],
+                        }
+
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        first_item = TxnDetail[0]
+                        payLoad["TransactionAmount"] = context.disputeamount
+                        payLoad["TransactionNumber"] = first_item.get("tranid", None)
+                        payLoad["AccountNumber"] = first_item.get("accountnumber", None)
+
+                    if context.activitytype == "disputeresolution":
+                        MessageLogger.info("dispute resolution of " + context.Txninfo)
+                        Payment_1 = context.Txninfo + "_TranID"
+                        TxnDetail = fn_GetTxnDetails(
+                            EXECUTION_ID, Payment_1, context.feature.name
+                        )
+                        MessageLogger.info(TxnDetail)
+                        data = {
+                            "TagName": [
+                                "AccountNumber",
+                                "TransactionAmount",
+                                "CardIssuerReferenceData",
+                                "Action",
+                            ],
+                            "VariableName": [
+                                "@MyAccountNumber",
+                                "TransactionAmount",
+                                "CardIssuerReferenceData",
+                                "Action",
+                            ],
+                        }
+
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        first_item = TxnDetail[0]
+                        payLoad["TransactionAmount"] = context.disputeamount
+                        payLoad["Action"] = context.disputeaction
+                        payLoad["CardIssuerReferenceData"] = first_item.get(
+                            "claimid", None
+                        )
+                        payLoad["AccountNumber"] = first_item.get("accountnumber", None)
+                        keepJsonResponse = False
+
+                    if context.activitytype == "ntddispute":
+                        data = {
+                            "TagName": [
+                                "AccountNumber",
+                            ],
+                            "VariableName": [
+                                "@MyAccountNumber",
+                            ],
+                        }
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        payLoad["DisputeAmount"] = context.disputeamount
+                        payLoad["Action"] = context.ntdaction
+                        payLoad["Reason"] = context.ntdreason
+                        
+                        if context.ntdaction == "3" or context.ntdaction == "4":
+                            payLoad["TranId"] = context.ntdtranid
+                        else:
+                            payLoad["EffectiveDate"] = context.ntdeffectivedate
+                        payLoad["DisputeID"] = str(uuid.uuid4())
+                        
+                    
+                    if context.activitytype == "ntddisputeresolution":
+                        data = {
+                            "TagName": [
+                                "AccountNumber",
+                            ],
+                            "VariableName": [
+                                "@MyAccountNumber",
+                            ],
+                        }
+                        context.PaymentTable = fn_TablefromJSON(data)
+                        payLoad = fn_CreateJsonPayloadUsingTable(
+                            EXECUTION_ID, context.PaymentTable
+                        )
+                        payLoad["DisputeID"] = context.disputeid
+                        payLoad["ResolutionApproach"] = context.ntdapproch
+                        payLoad["ResolutionDecision"] = context.ntddecision
+                        keepJsonResponse = False
+                    
+                MessageLogger.info("Payload here", payLoad)
+                MessageLogger.info("context.apiname here " + context.apiname)
+                fn_SaveAccountPlanData(
+                    context.feature.name,
+                    f"BEFORE_{context.scenario.name}",
+                    payLoad["AccountNumber"],
+                )
+                (response,request)  = fn_HitAPI(context.apiname, payLoad)
+                context.response = response
+                context.request = request
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    action + "" + context.apiname,
+                    "Done",
+                )
+
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Verify API response is OK",
+                    "InProgress",
+                )
+
+                assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Verify API response is OK",
+                    "Fail Assert API Response is not ok",
+                )
+
+                JsonData = context.response.json()
+                context.jsonData = context.response.json()
+                MessageLogger.info("APIResponse")
+                MessageLogger.info(JsonData)
+                ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+                MessageLogger.info(
+                    f"ErrorFound: {ErrorFound} \nErrorNumber: {ErrorNumber} \nErrorMessage: {ErrorMessage}"
+                )
+                assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Verify API response is OK",
+                    "FAIL Error Found Yes",
+                )
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Verify API response is OK",
+                    "Done",
+                )
+
+                jsonResponse = ""
+                if action in ("create", "get", "add"):
+                    context.AccountNumber = payLoad["AccountNumber"]
+                    if context.apiname == "BankAccountManagement":
+                        table_other = {context.customersave: JsonData["MethodName"]}
+                else:
+                    if context.activitytype not in ("dispute", "disputeresolution", "ntddispute", "ntddisputeresolution", ):
+                        context.TransactionID = JsonData["TransactionID"]
+                        context.AccountNumber = payLoad["AccountNumber"]
+                        context.TransactionAmount = payLoad["TransactionAmount"]
+                        if context.activitytype != "post transaction reversal":
+                            TagName = (
+                                context.txntype + "_" + str(context.cnt) + "_Tranid"
+                            )
+                        else:
+                            TagName = "Reversal_" + context.Txninfo + "_tranid"
+                        MessageLogger.info("TagName = " + TagName)
+                        jsonResponse = fn_GetAPIResponseTags(context.apiname)
+                        jsonResponse = fn_OverrideTagName(
+                            jsonResponse, "TransactionID", TagName
+                        )
+                        MessageLogger.info("Verifying transaction in database")
+                        bflag, errortnp, timeout = verfiyTxninDB(
+                            context.AccountNumber, context.TransactionID
+                        )
+                        assert (
+                            bflag is False or errortnp is True or timeout is True
+                        ), fn_InsertFeatureStepExecutionInfo(
+                            EXECUTION_ID,
+                            context.feature.name,
+                            context.scenario.name,
+                            "Transaction posted Successfully",
+                            "FAIL in posting",
+                        )
+                    elif context.activitytype in "dispute":
+                        context.AccountNumber = payLoad["AccountNumber"]
+                        context.ClaimID = JsonData["CardIssuerReferenceData"]
+                        TagName = context.txntype + "_" + str(context.cnt) + "_claimiD"
+                        MessageLogger.info("TagName = " + TagName)
+                        jsonResponse = fn_GetAPIResponseTags(context.apiname)
+                        jsonResponse = fn_OverrideTagName(
+                            jsonResponse, "CardIssuerReferenceData", TagName
+                        )
+                        TagName = context.txntype + "_" + str(context.cnt) + "_traniD"
+                        jsonResponse = fn_OverrideTagName(
+                            jsonResponse, "OriginalTransactionNumber", TagName
+                        )
+                        MessageLogger.info("Dispute response: ")
+                        MessageLogger.info(jsonResponse)
+                    elif context.activitytype in ("ntddispute", "ntddisputeresolution"):
+                        context.AccountNumber = payLoad["AccountNumber"]
+                        context.DisputeID = JsonData["DisputeID"]
+                        
+                        context.TransactionID = get_ntdipsute_tranid(context.DisputeID)
+                        MessageLogger.info("Verifying transaction in database")
+                        bflag, errortnp, timeout = verfiyTxninDB(
+                            context.AccountNumber, context.TransactionID
+                        )
+                        assert (
+                            bflag is False or errortnp is True or timeout is True
+                        ), fn_InsertFeatureStepExecutionInfo(
+                            EXECUTION_ID,
+                            context.feature.name,
+                            context.scenario.name,
+                            "Transaction posted Successfully",
+                            "FAIL in posting",
+                        )
+                        if context.activitytype == "ntddispute":
+                            TagName = context.activitytype + "_" + str(context.cnt) + "_DisputeID"
+                            MessageLogger.info("TagName = " + TagName)
+                            jsonResponse = fn_GetAPIResponseTags(context.apiname)
+                            jsonResponse = fn_OverrideTagName(
+                                jsonResponse, "DisputeID", TagName
+                            )
+                            context.Claimid = JsonData["Claimid"]
+                            TagName = context.activitytype + "_" + str(context.cnt) + "_Claimid"
+                            MessageLogger.info("TagName = " + TagName)
+                            jsonResponse = fn_OverrideTagName(
+                                jsonResponse, "Claimid", TagName
+                            )
+                            MessageLogger.info("Dispute response: ")
+                    MessageLogger.info(jsonResponse)
+
+                fn_SaveAccountPlanData(
+                    context.feature.name,
+                    f"AFTER_{context.scenario.name}",
+                    payLoad["AccountNumber"],
+                )
+
+                if SaveJsonResponse:
+                    MessageLogger.info(f"Saving API response for {context.apiname}")
+                    fn_SaveAPIResponse(
+                        context.feature.name,
+                        f"AFTER_{context.scenario.name}",
+                        context.apiname,
+                        context.jsonData,
+                    )
+
+                if keepJsonResponse or keepOtherData:
+                    if keepJsonResponse:
+                        table_var = fn_TablefromJSON(jsonResponse)
+                        # MessageLogger.info("Rohit", table_var)
+                        context.payment_table = table_var
+                        # MessageLogger.info(context.payment_table)
+                        # MessageLogger.info("Rohit here for save variable")
+                        # MessageLogger.info("json variable value11111", context.jsonData)
+                    if keepOtherData:
+                        context.payment_table = list(table_other.items())
+                        MessageLogger.info(
+                            f"Saving other data response of  {context.payment_table}"
+                        )
+                        MessageLogger.info(
+                            f"Saving other data response of  {len(context.payment_table[0])}"
+                        )
+                        MessageLogger.info(f"Rohit Here")
+                    assert (
+                        len(context.payment_table[0]) == 2
+                    ), fn_InsertFeatureStepExecutionInfo(
+                        EXECUTION_ID,
+                        context.feature.name,
+                        context.scenario.name,
+                        "Save tag into variable",
+                        "Fail More than two column",
+                    )
+                    # MessageLogger.info("json variable value----------------11111111" + context.jsonData)
+
+                    try:
+                        # MessageLogger.info("Rohit here for save variable new")
+                        if not keepOtherData:
+                            for row in context.payment_table:
+                                fn_InsertFeatureStepDataStore(
+                                    EXECUTION_ID,
+                                    context.feature.name,
+                                    context.scenario.name,
+                                    row[1],
+                                    str(context.jsonData[row[0]]),
+                                )
+                                fn_InsertFeatureStepExecutionInfo(
+                                    EXECUTION_ID,
+                                    context.feature.name,
+                                    context.scenario.name,
+                                    "Save tag into variable",
+                                    "Done",
+                                )
+                        if keepOtherData:
+                            for key, value in context.payment_table:
+                                fn_InsertFeatureStepDataStore(
+                                    EXECUTION_ID,
+                                    context.feature.name,
+                                    context.scenario.name,
+                                    key,
+                                    str(value),
+                                )
+                                fn_InsertFeatureStepExecutionInfo(
+                                    EXECUTION_ID,
+                                    context.feature.name,
+                                    context.scenario.name,
+                                    "Save tag into variable",
+                                    "Done",
+                                )
+                    except AssertionError as ae:
+                        # Handle AssertionError specifically (if needed)
+                        MessageLogger.error(
+                            f"AssertionError occurred1: {ae}", exc_info=True
+                        )
+                        raise Exception("An error occurred during this step1")
+                        exit()
+                    except Exception as e:
+                        fn_InsertFeatureStepExecutionInfo(
+                            EXECUTION_ID,
+                            context.feature.name,
+                            context.scenario.name,
+                            "Save tag into variable",
+                            "Fail ",
+                        )
+                        MessageLogger.error(str(e), exc_info=True)
+                        raise Exception("An error occurred during this step2")
+                        exit()
+
+            except AssertionError as ae:
+                # Handle AssertionError specifically (if needed)
+                MessageLogger.error(f"AssertionError occurred: {ae}", exc_info=True)
+                raise Exception("An error occurred during this step")
+                exit()
+            except Exception as e:
+                MessageLogger.error(f"AssertionError occurred: {e}", exc_info=True)
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Post Transaction",
+                    "Fail - ",
+                )
+        else:
+            MessageLogger.error("Invalid Step and API is not being called")
+    except Exception as e:
+        MessageLogger.error(f"AssertionError occurred: {e}", exc_info=True)

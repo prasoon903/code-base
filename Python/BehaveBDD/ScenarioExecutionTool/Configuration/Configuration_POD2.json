@@ -1,0 +1,48 @@
+{
+    "APIDomainUrl" : "http://xeon-web1/PrasoonP/" ,
+    "BasePath" : "E:\\Python\\BehaveBDD\\ScenarioExecutionTool",
+	"APIDomainUrlAS" : "http://xeon-web1/PrasoonP/CoreCardServices/POD2/CoreCardServices.svc/" ,
+    "CoreIssueURL" : "http://xeon-web1/appScale4792.aspx",
+    "PythonPath": "E:\\Python\\BehaveBDD\\Python310\\",
+    "DBServer" : "BPLDEVDB01",
+    "ODBCDriver" : "{SQL Server}",
+    "PlatformCodeloc" : "D:\\ApplicationSetup\\POD2\\DBBSetup\\Platform",
+    "LabelName" : "LB2312_Plat_23.8.6_POD2",
+    "restoreDBWithBackupScript" : "bigdb_POD2.sql",
+    "BackupScriptLocation" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\Backup",
+    "BackupName" : "APIJob_",
+    "DBName" : "PLAT-POD2",
+    "MultiThread" : "0",
+    "MaxThreads": "8",
+    "LabelPath" : "\\\\vmccrmp01\\ReleaseManagement\\PLAT\\Labels",
+    "LocalDSLPath" : "D:\\ApplicationSetup\\POD2\\DBBSetup\\DSLs",
+    "BackupFolderLocation":"\\\\VMRITIKY\\python\\BehaveProject\\BehaveBDD\\features\\DbBackups",
+    "CIBatchScripts" : "D:\\ApplicationSetup\\POD2\\DBBSetup\\BatchScripts\\CoreIssue",
+    "CoreAuthBatchScripts" : "D:\\ApplicationSetup\\POD2\\DBBSetup\\BatchScripts\\CoreAuth",
+    "CITraceFileLocation" : "D:\\ApplicationSetup\\POD2\\TraceFiles\\CoreIssue",
+    "CoreAuthTraceFileLocation" : "D:\\ApplicationSetup\\POD2\\TraceFiles\\CoreAuth",
+    "CIBatchfileName" :{
+        "CIAppServerName" :"__CIAppserver.bat",
+        "TnpWfName" : "wfTnpNad.bat",
+ 		"RetailAuthWfName" : "_WF_RetailAuthJobs.bat",
+        "APJOB": "APJOB.bat",
+        "APIJOB": "WFAPIJob.bat"
+    },
+    "CoreAuthBatchfileName" :{
+        "CoreAuthAppServerName" :"____CoreAuthAppserver.bat"        
+    },
+
+    "YourDBNames" : {
+        "COREISSUE":"PP_POD2_CI" ,
+        "COREAUTH" :"PP_POD2_CAuth"  ,
+        "CISECONDARY":"PP_POD2_CI_Secondary" ,
+        "CORELIBRARY" :"PP_POD2_CL",
+        "CORECREDIT" : "PP_POD2_CoreCredit",
+        "CORECOLLECT": "PP_POD2_CC",
+        "COREAPP": "PP_POD2_CoreApp"
+    },
+        "MDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\MDF",
+        "LDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\LDF",
+        "Posting2.0": "D:\\SVN\\NoBlobTasks\\Posting2.0\\23.8.6\\SQL",
+        "PSFileName": "DSLandDBCreation.ps1"
+    }

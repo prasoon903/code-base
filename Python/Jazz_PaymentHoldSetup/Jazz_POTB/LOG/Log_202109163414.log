@@ -1,0 +1,28 @@
+2021-09-16 16:34:14,800 — INFO — File Processing starts ...
+2021-09-16 16:34:14,800 — INFO — Start Time::: 2021-09-16 16:34:14.799277
+2021-09-16 16:34:14,800 — INFO — E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\INPUT\
+2021-09-16 16:34:14,801 — INFO — ********************Sample_06.csv*****************************
+2021-09-16 16:34:14,801 — INFO — FileID: 2021091634141
+2021-09-16 16:34:14,990 — INFO — Connection established
+2021-09-16 16:34:14,991 — DEBUG — EXEC PP_JAZZ_CI..USP_GetStatusOfPaymentHoldFileProcessing 'Sample_06.csv'
+2021-09-16 16:34:15,003 — INFO — File is in NEW state and going to process
+2021-09-16 16:34:15,004 — DEBUG — Inside ValidateDuplicateFile
+2021-09-16 16:34:15,005 — DEBUG — E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\OUT\Sample_06.csv
+2021-09-16 16:34:15,006 — DEBUG — Inside ImportFileToDB
+2021-09-16 16:34:15,008 — INFO — Connection established
+2021-09-16 16:34:15,013 — INFO — bcp PP_JAZZ_CI..IntraDayAccountOTBRule_External_Jazz IN E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\INPUT\Sample_06.csv -b 5000 -h TABLOCK -f E:\Python\Jazz_PaymentHoldSetup\IntraDayAccountOTBRule_External_JAZZ.xml -e E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Error1_in.log -o E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-09-16 16:34:15,014 — DEBUG — bcp PP_JAZZ_CI..IntraDayAccountOTBRule_External_Jazz IN E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\INPUT\Sample_06.csv -b 5000 -h TABLOCK -f E:\Python\Jazz_PaymentHoldSetup\IntraDayAccountOTBRule_External_JAZZ.xml -e E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Error1_in.log -o E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-09-16 16:34:15,208 — INFO — Record Insert Time:::2021-09-16 16:34:15.208189
+2021-09-16 16:34:15,208 — DEBUG — Error ===> False
+2021-09-16 16:34:15,209 — DEBUG — Inside DataValidation
+2021-09-16 16:34:15,209 — INFO — Connection established
+2021-09-16 16:34:15,210 — DEBUG — EXEC PP_JAZZ_CI..USP_InsertInto_IntraDayAccountOTBRule_Jazz '2021091634141', 'Sample_06.csv'
+2021-09-16 16:34:15,508 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Jazz executed successfully
+2021-09-16 16:34:15,509 — DEBUG — EXEC PP_JAZZ_CI..USP_Archiveintradayaccountotbrule_Internal
+2021-09-16 16:34:15,536 — DEBUG — ABORT: False
+ErrorFlag: 0
+ErrorMessage: No Error
+2021-09-16 16:34:15,537 — DEBUG — Inside SendMail
+2021-09-16 16:34:17,495 — INFO — SENDING MAIL ...
+2021-09-16 16:34:19,724 — INFO — Finish Time::: 2021-09-16 16:34:19.724257
+2021-09-16 16:34:19,725 — INFO — ********************All files processed... Exiting*****************************

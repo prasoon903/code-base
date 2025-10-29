@@ -1,0 +1,31 @@
+2025-05-09 11:35:57,445 — INFO — File Processing starts ...
+2025-05-09 11:35:57,445 — INFO — START TIME::: 2025-05-09 11:35:57.444216
+2025-05-09 11:35:57,446 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-09 11:35:57,446 — INFO — ********************CBR Impact Assessment Refresh.xlsx*****************************
+2025-05-09 11:35:57,446 — INFO — LoopCount: 1
+2025-05-09 11:36:00,604 — INFO — ['Sheet1', 'Sheet3']
+2025-05-09 11:36:00,604 — INFO — Processing File: CBR Impact Assessment Refresh.xlsx
+2025-05-09 11:36:00,605 — INFO — Processing sheet: Sheet1
+2025-05-09 11:36:00,605 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-320236_Sheet1.txt
+2025-05-09 11:36:00,606 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Impact Assessment Refresh.xlsx
+2025-05-09 11:36:03,522 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-09 11:36:03,607 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 335, in <module>
+    ReadingTheFileDF(FileName, S1.SheetName)
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 165, in ReadingTheFileDF
+    DF1.insert(LoopCount, key, "'" + DF[key].str[:10] + "'", True)
+                                     ^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\strings\accessor.py", line 191, in __init__
+    self._inferred_dtype = self._validate(data)
+                           ^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\strings\accessor.py", line 245, in _validate
+    raise AttributeError("Can only use .str accessor with string values!")
+AttributeError: Can only use .str accessor with string values!. Did you mean: 'std'?
+2025-05-09 11:36:03,630 — INFO — *********************** FINISHED ***********************

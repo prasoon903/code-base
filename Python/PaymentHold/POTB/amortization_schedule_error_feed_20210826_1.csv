@@ -1,0 +1,4 @@
+report_date,business_date,batch_timestamp,account_uuid,plan_uuid,schedule_id,institution_id,product_id,error,error_message,field_path,account_number
+2021-02-03 23:59:57.000,2021-02-03,18:00:00,013d8647-8b95-4b82-bcde-ae6c209fd713,3dd71e08-206f-4589-88b8-365db4f231dd,5,6981,7133,CRS_MDR_OUTPUT_VALIDATION_ERROR,scheduleId=3 at monthNumber=3 has MDR output that is negative,schedule at month {3},1100011141680425
+2021-01-24 23:59:57.000,2021-01-24,18:00:00,06fb9fac-1103-4ede-897c-f01f1b0af31c,410f424e-c3b1-4a0d-bdeb-fe0841b9a5e5,3,6981,7133,CRS_MDR_OUTPUT_VALIDATION_ERROR,scheduleId=2 at monthNumber=23 have a sum of MDR output that is not equal to Total MDR,schedule at month {23},1100011122196680
+2021-04-01 23:59:57.000,2021-04-01,18:00:00,0959df35-28f3-43b4-b5e3-8d5f3e5f8bca,3cd377ae-eb66-4e98-8b89-2151605c82a8,4,6981,7133,INPUT_VALIDATION_ERROR,missing schedule for currentMonth,scheduleId {5},1100011102356841

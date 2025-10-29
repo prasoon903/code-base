@@ -1,0 +1,45 @@
+Feature: COOKIE-264963_CBRefund_Sc10
+
+Background:
+  Given Run as "rerun"
+
+Scenario: Test Given
+    Given Test Given
+    Then Age system to "2018-02-10" Date
+
+Scenario: Create Account With BillingCycle 31
+  Given Create Account
+        |JsonTag    |Value      |
+        |ProductID  |7131       |
+        |StoreName  |CookieStore  |
+        |BillingCycle | 31 |
+        |CreditLimit | 10000 |
+  Then Verify Account Number in Database
+  And Save tag into variable "AccountCreation"
+  
+
+Scenario: Post purchase 1
+  Given execute Post purchase_1 of $500 by trancode 4005
+  Given execute add Bank for Bank_1
+  
+Scenario: Post Payment_1
+  Given execute Post payment_1 of $500 by trancode 2102
+  Then  Age system to "2018-02-20" Date
+  
+Scenario: Add dispute of purchase_1
+  Given execute Post Dispute_1 of $300 for purchase_1
+  Then  Age system to "2018-03-06" Date
+  
+Scenario: Post dispute resolution of purchase_1 writeoff
+  Given execute Post disputeresolution_1 of $100 for Dispute_1 with action 2
+  Then Age system to "2018-04-30" Date
+  
+Scenario: Post dispute resolution of purchase_1 cardholder
+  Given execute Post disputeresolution_1 of $200 for Dispute_1 with action 2
+  Then Age system to "2018-05-06" Date
+  
+Scenario: Run ACH batch
+    Given Test Given
+	Then Start ACHProcessStep_1
+  
+

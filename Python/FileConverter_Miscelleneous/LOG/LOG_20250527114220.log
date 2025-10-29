@@ -1,0 +1,15 @@
+2025-05-27 11:42:20,308 — INFO — File Processing starts ...
+2025-05-27 11:42:20,309 — INFO — START TIME::: 2025-05-27 11:42:20.308825
+2025-05-27 11:42:20,309 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-27 11:42:20,310 — INFO — ********************ISS-11277 - Cookie - CBR impact analysis part 3.xlsx*****************************
+2025-05-27 11:42:20,312 — INFO — LoopCount: 1
+2025-05-27 11:42:20,358 — INFO — ['Sheet1', 'Sheet2', 'Sheet3']
+2025-05-27 11:42:20,359 — INFO — Processing File: ISS-11277 - Cookie - CBR impact analysis part 3.xlsx
+2025-05-27 11:42:20,359 — INFO — Processing sheet: Sheet1
+2025-05-27 11:42:20,360 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-323646_Sheet1.txt
+2025-05-27 11:42:20,360 — INFO — INSIDE ReadingTheFileDF WITH FILE: ISS-11277 - Cookie - CBR impact analysis part 3.xlsx
+2025-05-27 11:42:20,525 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-27 11:42:20,643 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-05-27 11:42:20,712 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-05-27 11:42:20,712 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-05-27 11:42:38,808 — INFO — *********************** FINISHED ***********************

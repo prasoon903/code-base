@@ -1,0 +1,192 @@
+--EXEC USP_StatementDetails @BSacctId = 2829633, @GetStatement = 3, @PlanID = 0, @LinkServer = 'XEON-S8', @DB = 'JAZZSanpreet_CI', @DB_Sec = 'JAZZSanpreet_CI_Sec', @FromDate = '2020-07-31 23:59:57.000', @ToDate = '2020-09-30 23:59:57.000'
+--SELECT DATEDIFF(MONTH, '2020-07-31 23:59:57.000', '2020-09-30 23:59:57.000')
+USE PP_POD2_CI
+GO
+CREATE OR ALTER PROCEDURE USP_StatementDetails
+	@BSacctId INT = 0,
+	@AccountNumber VARCHAR(19) = NULL,
+	@AccountUUID VARCHAR(64) = NULL,
+	@PlanID INT = 0,	
+	@FromDate DATETIME = NULL,
+	@ToDate DATETIME = NULL,
+	@GetStatement INT = 0,
+	@LinkServer VARCHAR(50),
+	@DB VARCHAR(30),
+	@DB_Sec VARCHAR(30)
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+	SET ARITHABORT ON;
+	SET XACT_ABORT ON;
+
+
+	DECLARE @SQL NVARCHAR(MAX), @ColumnNames NVARCHAR(MAX), @ID NVARCHAR(100), @Date NVARCHAR(100), @CurrentDate DATETIME
+	
+
+
+	BEGIN TRY
+		IF (@LinkServer IS NULL OR @LinkServer = '')
+		BEGIN
+
+			SELECT 'LINKSERVER CAN NOT BE NULL' AS ErrorMessage
+			RETURN
+		END
+		ELSE IF (@LinkServer IS NOT NULL AND @LinkServer <> '')
+		BEGIN
+
+			IF NOT EXISTS (SELECT TOP 1 1 FROM Sys.servers WITH(NOLOCK) WHERE NAME =  @LinkServer)
+			BEGIN 
+				SELECT 'Please Provide Correct LINKSERVER == '+ @LinkServer AS ErrorMessage
+				RETURN
+			END
+		END
+
+		SET @LINKSERVER = QUOTENAME(@LINKSERVER)
+		SET @DB = QUOTENAME(@DB)
+		SET @DB_Sec = QUOTENAME(@DB_Sec)
+
+		IF(@GetStatement <> 0 AND @GetStatement <> 1 AND @GetStatement <> 2 AND @GetStatement <> 3)
+		BEGIN
+			SELECT 'Please Provide the valid value for GetStatement (0- AccountLevel via AccountID\1- PlanLevel via AccountID\2- Both via AccountID\3- PlanLevel via PlanID)' AS ErrorMessage
+			RETURN
+		END
+
+		IF(@GetStatement = 0 OR @GetStatement = 1 OR @GetStatement = 2)
+		BEGIN
+			IF(@BSacctId IS NOT NULL AND @BSacctId <> 0)
+			BEGIN
+				SET @BSacctId = @BSacctId
+			END
+			ELSE IF(@AccountNumber IS NOT NULL AND @AccountNumber <> '')
+			BEGIN
+				SET @ID = TRY_CAST(@AccountNumber AS NVARCHAR(19))
+				SET @SQL = 'SELECT @acctID = acctID FROM ' + @LINKSERVER + '.' + @DB + '.dbo.Bsegment_Primary WITH (NOLOCK) WHERE AccountNumber =  @ID'
+				--PRINT @SQL
+				EXECUTE SP_EXECUTESQL @SQL, N'@ID NVARCHAR(100), @acctID INT OUTPUT', @ID=@ID, @acctID = @BSacctId OUTPUT
+				SET @BSacctId = @BSacctId
+			END
+			ELSE IF(@AccountUUID IS NOT NULL AND @AccountUUID <> '')
+			BEGIN
+				SET @ID = TRY_CAST(@AccountUUID AS NVARCHAR(64))
+				--PRINT @ID
+				SET @SQL = 'SELECT @acctID = acctID FROM ' + @LINKSERVER + '.' + @DB + '.dbo.Bsegment_Primary WITH (NOLOCK) WHERE UniversalUniqueID =  @ID'
+				--PRINT @SQL
+				EXECUTE SP_EXECUTESQL @SQL, N'@ID NVARCHAR(100), @acctID INT OUTPUT', @ID=@ID, @acctID = @BSacctId OUTPUT
+				SET @BSacctId = @BSacctId
+			END
+			ELSE
+			BEGIN
+				SELECT 'AccountID, AccountNumber or  AccountUUID MUST BE PASSED' ErrorMessage
+				RETURN
+			END
+
+			IF(@BSacctId IS NULL OR @BSacctId = 0)
+			BEGIN
+				SELECT 'INVALID ACCOUNT IDENTIFIER' ErrorMessage
+				RETURN
+			END
+		END
+
+		IF(@FromDate IS NULL OR @FromDate = '')
+		BEGIN
+			SELECT 'FromDate cannot be blank' ErrorMessage
+			RETURN
+		END
+			
+		IF(@ToDate IS NULL OR @ToDate = '')
+		BEGIN
+			SET @ToDate = dbo.PR_ISOGetBusinessTime()
+		END
+		
+		IF(DATEDIFF(MONTH, @FromDate, @ToDate) > 2)
+		BEGIN
+			SELECT 'Maximum 3 month data can be returned' ErrorMessage
+			RETURN
+		END
+
+		IF(@FromDate >= @ToDate)
+		BEGIN
+			SELECT 'ToDate must be greater than FromDate' ErrorMessage
+			RETURN
+		END
+
+
+		SET @ID = TRY_CAST(@BSacctId AS NVARCHAR)
+			   			   	
+		IF(@GetStatement = 0 OR @GetStatement = 2)
+		BEGIN
+			SET @ColumnNames = N'acctId, SH.StatementDate, SH.StatementID, SystemStatus, CCINHPARENT125AID, CurrentBalance, CurrentBalanceCO, decurrentbalance_trantime_ps, Principal, CycleDueDTD, DateofTotalDue, 
+				DateOfNextStmt, LastStatementDate, SRBWithInstallmentDue, MinimumPaymentDue, AmountOfTotalDue, AmtOfPayPastDue, AmtOfPayCurrDue, AmtOfPayXDLate,AmountOfPayment30DLate, 
+				AmountOfPayment60DLate, AmountOfPayment90DLate, AmountOfPayment120DLate, AmountOfPayment150DLate, AmountOfPayment180DLate, AmountOfPayment210DLate,
+				DateOfOriginalPaymentDueDTD, BeginningBalance, WaiveMinDue, AmountOfDebitsCTD,AmountOfCreditsCTD, AmountOfDebitsRevCTD, AmountOfCreditsRevCTD'
+	
+			SET @SQL = N'SELECT ''StatementHeader'' [Table], ' + @ColumnNames + '
+			FROM ' + @LINKSERVER + '.' + @DB_Sec + '.dbo.StatementHeader SH WITH(NOLOCK)
+			WHERE  SH.acctID = @ID 
+			AND SH.StatementDate BETWEEN @FromDate AND @ToDate
+			ORDER BY SH.StatementDate DESC'
+
+			PRINT(@SQL)
+
+	
+			EXECUTE SP_EXECUTESQL @SQL, N'@ID NVARCHAR(100), @FromDate DATETIME, @ToDate DATETIME', @ID=@ID, @FromDate=@FromDate,@ToDate=@ToDate
+
+		END
+		
+		IF(@GetStatement = 1 OR @GetStatement = 2)
+		BEGIN
+			SET @ColumnNames = N'SH.acctId, SH.StatementDate, SH.StatementID, CreditPlanType, OriginalPurchaseAmount, EqualPaymentAmt, CurrentBalance, CurrentBalanceCO, 
+				decurrentbalance_trantime_ps, Principal, CycleDueDTD, SRBWithInstallmentDue, AmountOfTotalDue, CurrentDue AmtOfPayCurrDue, AmtOfPayXDLate,
+				AmountOfPayment30DLate, AmountOfPayment60DLate, AmountOfPayment90DLate, AmountOfPayment120DLate, AmountOfPayment150DLate, AmountOfPayment180DLate, 
+				AmountOfPayment210DLate, BeginningBalance, AmountOfDebitsCTD,AmountOfCreditsCTD, AmountOfDebitsRevCTD, AmountOfCreditsRevCTD, CreditBalanceMovement, 
+				PayOffDate, LoanEndDate'
+	
+			SET @SQL = N'SELECT ''SummaryHeader'' [Table], ' + @ColumnNames + '
+			FROM ' + @LINKSERVER + '.' + @DB_Sec + '.dbo.SummaryHeader SH WITH(NOLOCK)
+			JOIN ' + @LINKSERVER + '.' + @DB + '.dbo.SummaryHeaderCreditCard SHCC WITH(NOLOCK) ON (SH.acctId = SHCC.acctId AND SH.StatementID = SHCC.StatementID)
+			WHERE  SH.parent02AID = @ID 
+			AND SH.StatementDate BETWEEN @FromDate AND @ToDate'
+
+			--PRINT(@SQL)
+
+	
+			EXECUTE SP_EXECUTESQL @SQL, N'@ID NVARCHAR(100), @FromDate DATETIME, @ToDate DATETIME', @ID=@ID, @FromDate=@FromDate,@ToDate=@ToDate
+		END
+
+		IF(@GetStatement = 3)
+		BEGIN
+			IF(@PlanID IS NULL OR @PlanID <= 0)
+			BEGIN
+				SELECT 'PlanID must be provided to fetch the summary of specific plan' ErrorMessage
+				RETURN
+			END
+
+			SET @ID = TRY_CAST(@PlanID AS NVARCHAR)
+
+			SET @ColumnNames = N'SH.acctId, SH.StatementDate, SH.StatementID, CreditPlanType, OriginalPurchaseAmount, EqualPaymentAmt, CurrentBalance, CurrentBalanceCO, 
+				decurrentbalance_trantime_ps, Principal, CycleDueDTD, SRBWithInstallmentDue, AmountOfTotalDue, CurrentDue AmtOfPayCurrDue, AmtOfPayXDLate,
+				AmountOfPayment30DLate, AmountOfPayment60DLate, AmountOfPayment90DLate, AmountOfPayment120DLate, AmountOfPayment150DLate, AmountOfPayment180DLate, 
+				AmountOfPayment210DLate, BeginningBalance, AmountOfDebitsCTD,AmountOfCreditsCTD, AmountOfDebitsRevCTD, AmountOfCreditsRevCTD, CreditBalanceMovement, 
+				PayOffDate, LoanEndDate'
+	
+			SET @SQL = N'SELECT ''SummaryHeader'' [Table], ' + @ColumnNames + '
+			FROM ' + @LINKSERVER + '.' + @DB_Sec + '.dbo.SummaryHeader SH WITH(NOLOCK)
+			JOIN ' + @LINKSERVER + '.' + @DB + '.dbo.SummaryHeaderCreditCard SHCC WITH(NOLOCK) ON (SH.acctId = SHCC.acctId AND SH.StatementID = SHCC.StatementID)
+			WHERE  SH.parent02AID = @ID 
+			AND SH.StatementDate BETWEEN @FromDate AND @ToDate'
+
+			--PRINT(@SQL)
+
+	
+			EXECUTE SP_EXECUTESQL @SQL, N'@ID NVARCHAR(100), @FromDate DATETIME, @ToDate DATETIME', @ID=@ID, @FromDate=@FromDate,@ToDate=@ToDate
+		END
+
+
+	END TRY
+
+	BEGIN CATCH
+			SELECT ERROR_number() AS ERRORnumberInSP,ERROR_LINE() as ERRORLINEInSP,ERROR_MESSAGE() AS ERRORMESSAGEInSP,ERROR_STATE() AS ERRORSTATEInSP
+	END CATCH
+
+END

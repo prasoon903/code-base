@@ -1,0 +1,14 @@
+2020-04-23 12:53:15,259 — INFO — File Processing starts ...
+2020-04-23 12:53:15,266 — INFO — Start Time::: 2020-04-23 12:53:15.258860
+2020-04-23 12:53:15,268 — INFO — D:\BankCard\POTB\INPUT\
+2020-04-23 12:53:15,270 — INFO — ********************IntraDayAccountOTBRule_NewChange.csv*****************************
+2020-04-23 12:53:15,270 — INFO — FileID: 2020042353151
+2020-04-23 12:53:15,511 — INFO — Connection established
+2020-04-23 12:53:15,525 — INFO — Connection established
+2020-04-23 12:53:15,697 — INFO — Record Insert Time:::2020-04-23 12:53:15.697865
+2020-04-23 12:53:15,698 — INFO — Connection established
+2020-04-23 12:54:47,249 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Internal executed successfully
+2020-04-23 12:54:47,346 — INFO — Connection established
+2020-04-23 12:54:48,188 — INFO — Sending mail...
+2020-04-23 12:54:50,860 — INFO — Finish Time::: 2020-04-23 12:54:50.860654
+2020-04-23 12:54:50,871 — INFO — ********************All files processed... Exiting*****************************

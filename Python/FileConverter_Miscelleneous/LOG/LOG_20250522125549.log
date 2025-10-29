@@ -1,0 +1,15 @@
+2025-05-22 12:55:49,266 — INFO — File Processing starts ...
+2025-05-22 12:55:49,267 — INFO — START TIME::: 2025-05-22 12:55:49.265979
+2025-05-22 12:55:49,268 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-22 12:55:49,268 — INFO — ********************Charge Off Sample Jazz.xlsx*****************************
+2025-05-22 12:55:49,269 — INFO — LoopCount: 1
+2025-05-22 12:55:49,350 — INFO — ['Sheet1', 'Sheet2', 'Sheet3']
+2025-05-22 12:55:49,350 — INFO — Processing File: Charge Off Sample Jazz.xlsx
+2025-05-22 12:55:49,351 — INFO — Processing sheet: Sheet1
+2025-05-22 12:55:49,351 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\CARDS-291177_Sheet1.txt
+2025-05-22 12:55:49,352 — INFO — INSIDE ReadingTheFileDF WITH FILE: Charge Off Sample Jazz.xlsx
+2025-05-22 12:55:49,508 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-22 12:55:49,568 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-05-22 12:55:49,606 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-05-22 12:55:49,606 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-05-22 12:56:11,014 — INFO — *********************** FINISHED ***********************

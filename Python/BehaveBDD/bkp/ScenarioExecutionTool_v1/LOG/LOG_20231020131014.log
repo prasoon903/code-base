@@ -1,0 +1,19 @@
+10/20/2023 13:10:14 — 11916 — INFO — Scenario 18
+10/20/2023 13:10:14 — 11916 — INFO — Scenario 18
+10/20/2023 13:10:14 — 11916 — INFO — Rohitrerun
+10/20/2023 13:10:14 — 11916 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 18' ORDER BY id DESC
+10/20/2023 13:10:14 — 11916 — INFO — fn_setexeutionID18
+10/20/2023 13:10:14 — 11916 — INFO — 18
+10/20/2023 13:10:14 — 11916 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 18,'Scenario 18','Create Account With BillingCycle 7','Create Account','InProgress'
+10/20/2023 13:10:14 — 11916 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:10:14 — 11916 — INFO — 7131
+10/20/2023 13:10:14 — 11916 — INFO — JazzStore
+10/20/2023 13:10:14 — 11916 — INFO — 7
+10/20/2023 13:10:14 — 11916 — INFO — 10000
+10/20/2023 13:10:16 — 11916 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 18,'Scenario 18','Create Account With BillingCycle 7','Create Account','Done'
+10/20/2023 13:10:16 — 11916 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 18,'Scenario 18','Create Account With BillingCycle 7','Verify API response is OK','InProgress'
+10/20/2023 13:10:16 — 11916 — INFO — ErrorFound Yes 
+ErrorNumber ERR04049 
+ErrorMessage Error encountered - Please Try Again Later
+10/20/2023 13:10:16 — 11916 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 18,'Scenario 18','Create Account With BillingCycle 7','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:10:16 — 11916 — INFO — AssertionError occurred: None

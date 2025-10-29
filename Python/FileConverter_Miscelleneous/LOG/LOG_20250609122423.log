@@ -1,0 +1,17 @@
+2025-06-09 12:24:23,484 — INFO — File Processing starts ...
+2025-06-09 12:24:23,485 — INFO — START TIME::: 2025-06-09 12:24:23.484988
+2025-06-09 12:24:23,485 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-06-09 12:24:23,485 — INFO — ********************COOKIE-325206.xlsx*****************************
+2025-06-09 12:24:23,485 — INFO — LoopCount: 1
+2025-06-09 12:24:23,585 — INFO — ['Sheet1', 'Sheet2', 'Sheet3']
+2025-06-09 12:24:23,585 — INFO — Processing File: COOKIE-325206.xlsx
+2025-06-09 12:24:23,586 — INFO — Processing sheet: Sheet1
+2025-06-09 12:24:23,586 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-325206_Sheet1.txt
+2025-06-09 12:24:23,586 — INFO — INSIDE ReadingTheFileDF WITH FILE: COOKIE-325206.xlsx
+2025-06-09 12:24:23,746 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-06-09 12:24:23,753 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-06-09 12:24:23,759 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-06-09 12:24:23,759 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-06-09 12:24:36,263 — INFO — proc: psutil.Process(pid=15264, name='python.exe', status='running', started='12:24:22')
+2025-06-09 12:24:36,281 — INFO — handle.path: E:\Python\FileConverter_Miscelleneous\INPUT\COOKIE-325206.xlsx
+2025-06-09 12:24:36,281 — INFO — file_path: E:\Python\FileConverter_Miscelleneous\INPUT\COOKIE-325206.xlsx

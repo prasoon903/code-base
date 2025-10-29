@@ -1,0 +1,9 @@
+
+(2 rows affected)
+
+(2 rows affected)
+
+(1 rows affected)
+Processed 5752 pages for database 'PP_CoreApp', file 'DJ_BC_CoreAPP' on file 1.
+Processed 1 pages for database 'PP_CoreApp', file 'DJ_BC_CoreAPP_log' on file 1.
+RESTORE DATABASE successfully processed 5753 pages in 0.063 seconds (713.316 MB/sec).

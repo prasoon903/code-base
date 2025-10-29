@@ -1,0 +1,52 @@
+02/03/2022 15:21:05 — 1496 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+02/03/2022 15:21:05 — 1496 — INFO — START TIME: 2022-02-03 15:21:05.256538
+02/03/2022 15:21:05 — 1496 — INFO — PRINTING ENVIRONMENT VARIABLES
+02/03/2022 15:21:05 — 1496 — INFO — CI_DB: VMAUTOLAB172016_CI
+02/03/2022 15:21:05 — 1496 — INFO — CL_DB: VMAUTOLAB172016_CL
+02/03/2022 15:21:05 — 1496 — INFO — CAuth_DB: VMAUTOLAB172016_CoreAuth
+02/03/2022 15:21:05 — 1496 — INFO — SERVERNAME: Xeon-S10
+02/03/2022 15:21:05 — 1496 — INFO — MailFrom: raviraj.mishra@corecard.com
+02/03/2022 15:21:05 — 1496 — INFO — MailTo: raviraj.mishra@corecard.com
+02/03/2022 15:21:05 — 1496 — INFO — SMTP_SERVER: corecard-com.mail.protection.outlook.com
+02/03/2022 15:21:05 — 1496 — INFO — SMTPPORT: 25
+02/03/2022 15:21:05 — 1496 — INFO — RetailAWSEnvironment: 0
+02/03/2022 15:21:05 — 1496 — INFO — RetailAWS_secret_name: ses-smtp-secret
+02/03/2022 15:21:05 — 1496 — INFO — RetailAWS_region_name: us-south-1
+02/03/2022 15:21:05 — 1496 — INFO — RetailAWS_service_name: secretsmanager
+02/03/2022 15:21:05 — 1496 — INFO — RetailSES_smtp_url: email-smtp.ap-south-1.amazonaws.com
+02/03/2022 15:21:05 — 1496 — INFO — RetailAWSPort: 587
+02/03/2022 15:21:05 — 1496 — INFO — RetailInputFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT
+02/03/2022 15:21:05 — 1496 — INFO — RetailErrorFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR
+02/03/2022 15:21:05 — 1496 — INFO — RetailOutFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT
+02/03/2022 15:21:05 — 1496 — INFO — RetailLogFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG
+02/03/2022 15:21:05 — 1496 — INFO — RetailGeneratedFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED
+02/03/2022 15:21:05 — 1496 — INFO — RetailInstitutionID: 6969
+02/03/2022 15:21:05 — 1496 — INFO — RetailEnvironment: LOCAL
+02/03/2022 15:21:05 — 1496 — INFO — RetailExceptionFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION
+02/03/2022 15:21:05 — 1496 — INFO — RetailExceptionFilePrefix: EXCP_
+02/03/2022 15:21:05 — 1496 — INFO — RetailExceptionFileSuffix: _PODID_
+02/03/2022 15:21:05 — 1496 — INFO — RetailFileProcessingPOD: POD1
+02/03/2022 15:21:05 — 1496 — INFO — BatchCount: 10000
+02/03/2022 15:21:05 — 1496 — INFO — AccountNumberCheck: 1
+02/03/2022 15:21:05 — 1496 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+02/03/2022 15:21:05 — 1496 — INFO — INSIDE GetOperatingServer BLOCK
+02/03/2022 15:21:05 — 1496 — ERROR — ERROR IN CONNECTING TO THE DATABASE ('28000', "[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'NEWVISIONSOFT\\prasoon.parashar'. (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'NEWVISIONSOFT\\prasoon.parashar'. (18456); [28000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0)")
+02/03/2022 15:21:05 — 1496 — INFO — ConnectionStatus: False
+02/03/2022 15:21:05 — 1496 — INFO — ERROR IN CONNECTING TO THE DATABASE
+02/03/2022 15:21:05 — 1496 — INFO — EXITING GetOperatingServer BLOCK
+02/03/2022 15:21:05 — 1496 — INFO — INSIDE EmailStructure_Head BLOCK
+02/03/2022 15:21:05 — 1496 — INFO — EXITING EmailStructure_Head BLOCK
+02/03/2022 15:21:05 — 1496 — INFO — FILENAME: amortization_schedule_error_feed_20220203_1.csv
+02/03/2022 15:21:05 — 1496 — INFO — FileID: 202202031521051
+02/03/2022 15:21:05 — 1496 — INFO — INSIDE ValidateDuplicateFile BLOCK
+02/03/2022 15:21:05 — 1496 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_20220203_1.csv
+02/03/2022 15:21:05 — 1496 — INFO — EXITING ValidateDuplicateFile BLOCK
+02/03/2022 15:21:05 — 1496 — INFO — INSIDE CheckEmptyFile BLOCK
+02/03/2022 15:21:05 — 1496 — INFO — Total records in the file amortization_schedule_error_feed_20220203_1.csv is: 11
+02/03/2022 15:21:05 — 1496 — INFO — Non-Empty file, going to process
+02/03/2022 15:21:05 — 1496 — INFO — IN GenerateErrorPotenialFile FUNCTION 
+02/03/2022 15:21:06 — 1496 — INFO — INSIDE ImportFileToDB BLOCK
+02/03/2022 15:21:06 — 1496 — ERROR — ERROR IN CONNECTING TO THE DATABASE ('28000', "[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'NEWVISIONSOFT\\prasoon.parashar'. (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Login failed for user 'NEWVISIONSOFT\\prasoon.parashar'. (18456); [28000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0)")
+02/03/2022 15:21:06 — 1496 — INFO — ConnectionStatus: False
+02/03/2022 15:21:06 — 1496 — INFO — ERROR IN CONNECTING TO THE DATABASE
+02/03/2022 15:21:06 — 1496 — INFO — EXITING ImportFileToDB :: Message :: 

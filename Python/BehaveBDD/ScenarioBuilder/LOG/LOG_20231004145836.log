@@ -1,0 +1,11 @@
+2023-10-04 14:58:36,348 — INFO — ResponseFile to be processed: E:\Python\FileConverter_GWC\ResponseFile\COOKIE-231352_20231004145836.sql
+2023-10-04 14:58:36,348 — INFO — File Processing starts ...
+2023-10-04 14:58:36,348 — INFO — START TIME::: 2023-10-04 14:58:36.347630
+2023-10-04 14:58:36,349 — INFO — E:\Python\FileConverter_GWC\INPUT\
+2023-10-04 14:58:36,349 — INFO — ********************Cookie -Good will Sep'23 2.0.xlsx*****************************
+2023-10-04 14:58:36,349 — INFO — INSIDE ReadingTheFileDF WITH FILE: Cookie -Good will Sep'23 2.0.xlsx
+2023-10-04 14:58:36,667 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-10-04 14:58:36,671 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-10-04 14:58:36,675 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-10-04 14:58:36,676 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-10-04 14:58:36,853 — INFO — *********************** FINISHED ***********************

@@ -1,0 +1,173 @@
+10/20/2023 13:00:44 — 11932 — INFO — Scenario 13
+10/20/2023 13:00:44 — 11932 — INFO — Scenario 13
+10/20/2023 13:00:44 — 11932 — INFO — Rohitrerun
+10/20/2023 13:00:44 — 11932 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 13' ORDER BY id DESC
+10/20/2023 13:00:44 — 11932 — INFO — 4
+10/20/2023 13:00:44 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Create Account','InProgress'
+10/20/2023 13:00:44 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:00:44 — 11932 — INFO — 7131
+10/20/2023 13:00:44 — 11932 — INFO — JazzStore
+10/20/2023 13:00:44 — 11932 — INFO — 12
+10/20/2023 13:00:44 — 11932 — INFO — 10000
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Create Account','Done'
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Verify API response is OK','InProgress'
+10/20/2023 13:00:45 — 11932 — INFO — ErrorFound NO 
+ErrorNumber ERR01002 
+ErrorMessage Account Creation Successful
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Verify API response is OK','Done'
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Verify Account Number in Database','InProgress'
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Verify Account Number in Database','Done'
+10/20/2023 13:00:45 — 11932 — INFO — AccountCreation
+10/20/2023 13:00:45 — 11932 — INFO — json_data befire
+10/20/2023 13:00:45 — 11932 — INFO — json_data after
+10/20/2023 13:00:45 — 11932 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 13:00:45 — 11932 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 13:00:45 — 11932 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 13:00:45 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:45 — 11932 — INFO — 1150001100411416
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Save tag into variable','Done'
+10/20/2023 13:00:45 — 11932 — INFO — MyCardNumber
+10/20/2023 13:00:45 — 11932 — INFO — 5206024092509182
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Create Account With BillingCycle 12','Save tag into variable','Done'
+10/20/2023 13:00:45 — 11932 — INFO — Scenario 13
+10/20/2023 13:00:45 — 11932 — INFO — Scenario 13
+10/20/2023 13:00:45 — 11932 — INFO — Rohitrerun
+10/20/2023 13:00:45 — 11932 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 13' ORDER BY id DESC
+10/20/2023 13:00:45 — 11932 — INFO — 4
+10/20/2023 13:00:45 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Post Transaction','InProgress'
+10/20/2023 13:00:45 — 11932 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 13:00:45 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:00:45 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:00:45 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:45 — 11932 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:00:45 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:45 — 11932 — INFO — 1150001100411416
+10/20/2023 13:00:45 — 11932 — INFO — TranType
+10/20/2023 13:00:45 — 11932 — INFO — TransactionAmount
+10/20/2023 13:00:45 — 11932 — INFO — {'AccountNumber': '1150001100411416', 'TranType': '4005', 'TransactionAmount': '1000'}
+10/20/2023 13:00:46 — 11932 — INFO — {'AccountNumber': '1150001100411416', 'TranType': '4005', 'TransactionAmount': '1000', 'UserID': 'JazzCall'}
+10/20/2023 13:00:46 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Post Transaction','Done'
+10/20/2023 13:00:46 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','InProgress'
+10/20/2023 13:00:46 — 11932 — INFO — ErrorFound NO 
+ErrorNumber ERR01058 
+ErrorMessage Transaction posted successfully
+10/20/2023 13:00:46 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','Done'
+10/20/2023 13:00:46 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Post Transaction','InProgress'
+10/20/2023 13:00:46 — 11932 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 13:00:46 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:00:46 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:00:46 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:46 — 11932 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:00:46 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:46 — 11932 — INFO — 1150001100411416
+10/20/2023 13:00:46 — 11932 — INFO — TranType
+10/20/2023 13:00:46 — 11932 — INFO — TransactionAmount
+10/20/2023 13:00:46 — 11932 — INFO — {'AccountNumber': '1150001100411416', 'TranType': '3001', 'TransactionAmount': '500', 'CreditPlanMaster': '13748'}
+10/20/2023 13:00:47 — 11932 — INFO — {'AccountNumber': '1150001100411416', 'TranType': '3001', 'TransactionAmount': '500', 'CreditPlanMaster': '13748', 'UserID': 'JazzCall'}
+10/20/2023 13:00:47 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Post Transaction','Done'
+10/20/2023 13:00:47 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','InProgress'
+10/20/2023 13:00:47 — 11932 — INFO — ErrorFound NO 
+ErrorNumber ERR01058 
+ErrorMessage Transaction posted successfully
+10/20/2023 13:00:47 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','Done'
+10/20/2023 13:00:47 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Post Transaction','InProgress'
+10/20/2023 13:00:47 — 11932 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 13:00:47 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:00:47 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:00:47 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:47 — 11932 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:00:47 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:47 — 11932 — INFO — 1150001100411416
+10/20/2023 13:00:47 — 11932 — INFO — TranType
+10/20/2023 13:00:47 — 11932 — INFO — TransactionAmount
+10/20/2023 13:00:47 — 11932 — INFO — {'AccountNumber': '1150001100411416', 'TranType': '4005', 'TransactionAmount': '800', 'CreditPlanMaster': '13746'}
+10/20/2023 13:00:48 — 11932 — INFO — {'AccountNumber': '1150001100411416', 'TranType': '4005', 'TransactionAmount': '800', 'CreditPlanMaster': '13746', 'UserID': 'JazzCall'}
+10/20/2023 13:00:48 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Post Transaction','Done'
+10/20/2023 13:00:48 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','InProgress'
+10/20/2023 13:00:48 — 11932 — INFO — ErrorFound NO 
+ErrorNumber ERR01058 
+ErrorMessage Transaction posted successfully
+10/20/2023 13:00:48 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','Done'
+10/20/2023 13:00:48 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify Transaction in DB','InProgress'
+10/20/2023 13:00:48 — 11932 — INFO —  SELECT * FROM CCard_Primary c WITH(NOLOCK) 
+                 WHERE AccountNumber = 1150001100411416 AND
+                    Tranid = 1814415516412805204 
+                
+10/20/2023 13:00:48 — 11932 — INFO — 1
+10/20/2023 13:00:48 — 11932 — INFO —  SELECT * FROM CCard_Primary c WITH(NOLOCK) join trans_in_acct tia (nolock)
+                 on c.tranid = tia.tran_id_index 
+                 WHERE AccountNumber = 1150001100411416 AND
+                    Tranid = 1814415516412805204 AND tia.ATID=51
+                
+10/20/2023 13:00:48 — 11932 — INFO — 1
+10/20/2023 13:00:48 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify Transaction in DB','Done'
+10/20/2023 13:00:48 — 11932 — INFO — 4
+10/20/2023 13:00:48 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Get AccountSummary','InProgress'
+10/20/2023 13:00:48 — 11932 — INFO — [('AccountNumber', '@MyAccountNumber')]
+10/20/2023 13:00:48 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:00:48 — 11932 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:00:48 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:48 — 11932 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:00:48 — 11932 — INFO — MyAccountNumber
+10/20/2023 13:00:48 — 11932 — INFO — 1150001100411416
+10/20/2023 13:00:48 — 11932 — INFO — {'AccountNumber': '1150001100411416'}
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Get AccountSummary','Done'
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','InProgress'
+10/20/2023 13:00:49 — 11932 — INFO — ErrorFound No 
+ErrorNumber ERR01009 
+ErrorMessage Account Balance details returned Successfully.
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Verify API response is OK','Done'
+10/20/2023 13:00:49 — 11932 — INFO — AccountSummary
+10/20/2023 13:00:49 — 11932 — INFO — json_data befire
+10/20/2023 13:00:49 — 11932 — INFO — json_data after
+10/20/2023 13:00:49 — 11932 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:00:49 — 11932 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:00:49 — 11932 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:00:49 — 11932 — INFO — AccountNumber
+10/20/2023 13:00:49 — 11932 — INFO — 1150001100411416
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — CardBalance
+10/20/2023 13:00:49 — 11932 — INFO — 2300.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — CycleDue
+10/20/2023 13:00:49 — 11932 — INFO — 0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — AmountOfTotalDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — CurrentDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — PastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — OneCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — TwoCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — ThreeCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — FourCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — FiveCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — SixCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — SevenCyclePastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — DaysPastDue
+10/20/2023 13:00:49 — 11932 — INFO — 0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — PastDueDate
+10/20/2023 13:00:49 — 11932 — INFO — None
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'
+10/20/2023 13:00:49 — 11932 — INFO — StatementRemainingBalanceWithInstallmentDue
+10/20/2023 13:00:49 — 11932 — INFO — 0.0
+10/20/2023 13:00:49 — 11932 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 4,'Scenario 13','Post purchase 1 and Cash purchase 1','Save tag into variable','Done'

@@ -1,0 +1,89 @@
+10/20/2023 12:53:34 — 1204 — INFO — Scenario 17
+10/20/2023 12:53:34 — 1204 — INFO — Scenario 17
+10/20/2023 12:53:34 — 1204 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 17' ORDER BY id DESC
+10/20/2023 12:53:34 — 1204 — INFO — 0
+10/20/2023 12:53:34 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Create Account','InProgress'
+10/20/2023 12:53:34 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 12:53:34 — 1204 — INFO — 7131
+10/20/2023 12:53:34 — 1204 — INFO — JazzStore
+10/20/2023 12:53:34 — 1204 — INFO — 3
+10/20/2023 12:53:34 — 1204 — INFO — 10000
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Create Account','Done'
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Verify API response is OK','InProgress'
+10/20/2023 12:53:39 — 1204 — INFO — ErrorFound NO 
+ErrorNumber ERR01002 
+ErrorMessage Account Creation Successful
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Verify API response is OK','Done'
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Verify Account Number in Database','InProgress'
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Verify Account Number in Database','Done'
+10/20/2023 12:53:39 — 1204 — INFO — AccountCreation
+10/20/2023 12:53:39 — 1204 — INFO — json_data befire
+10/20/2023 12:53:39 — 1204 — INFO — json_data after
+10/20/2023 12:53:39 — 1204 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 12:53:39 — 1204 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 12:53:39 — 1204 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 12:53:39 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:39 — 1204 — INFO — 1150001100411390
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Save tag into variable','Done'
+10/20/2023 12:53:39 — 1204 — INFO — MyCardNumber
+10/20/2023 12:53:39 — 1204 — INFO — 5206020736668483
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Create Account With BillingCycle 3','Save tag into variable','Done'
+10/20/2023 12:53:39 — 1204 — INFO — Scenario 17
+10/20/2023 12:53:39 — 1204 — INFO — Scenario 17
+10/20/2023 12:53:39 — 1204 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 17' ORDER BY id DESC
+10/20/2023 12:53:39 — 1204 — INFO — 0
+10/20/2023 12:53:39 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Post Transaction','InProgress'
+10/20/2023 12:53:39 — 1204 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 12:53:39 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 12:53:39 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 12:53:39 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:39 — 1204 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 12:53:39 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:39 — 1204 — INFO — 1150001100411390
+10/20/2023 12:53:39 — 1204 — INFO — TranType
+10/20/2023 12:53:39 — 1204 — INFO — TransactionAmount
+10/20/2023 12:53:39 — 1204 — INFO — {'AccountNumber': '1150001100411390', 'TranType': '4005', 'TransactionAmount': '100'}
+10/20/2023 12:53:42 — 1204 — INFO — {'AccountNumber': '1150001100411390', 'TranType': '4005', 'TransactionAmount': '100', 'UserID': 'JazzCall'}
+10/20/2023 12:53:42 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Post Transaction','Done'
+10/20/2023 12:53:42 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Verify API response is OK','InProgress'
+10/20/2023 12:53:42 — 1204 — INFO — ErrorFound NO 
+ErrorNumber ERR01058 
+ErrorMessage Transaction posted successfully
+10/20/2023 12:53:42 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Verify API response is OK','Done'
+10/20/2023 12:53:42 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Post Transaction','InProgress'
+10/20/2023 12:53:42 — 1204 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 12:53:42 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 12:53:42 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 12:53:42 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:42 — 1204 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 12:53:42 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:42 — 1204 — INFO — 1150001100411390
+10/20/2023 12:53:42 — 1204 — INFO — TranType
+10/20/2023 12:53:42 — 1204 — INFO — TransactionAmount
+10/20/2023 12:53:42 — 1204 — INFO — {'AccountNumber': '1150001100411390', 'TranType': '3001', 'TransactionAmount': '50', 'CreditPlanMaster': '13748'}
+10/20/2023 12:53:43 — 1204 — INFO — {'AccountNumber': '1150001100411390', 'TranType': '3001', 'TransactionAmount': '50', 'CreditPlanMaster': '13748', 'UserID': 'JazzCall'}
+10/20/2023 12:53:43 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Post Transaction','Done'
+10/20/2023 12:53:43 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Verify API response is OK','InProgress'
+10/20/2023 12:53:43 — 1204 — INFO — ErrorFound NO 
+ErrorNumber ERR01058 
+ErrorMessage Transaction posted successfully
+10/20/2023 12:53:43 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Verify API response is OK','Done'
+10/20/2023 12:53:43 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Post Transaction','InProgress'
+10/20/2023 12:53:43 — 1204 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 12:53:43 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 12:53:43 — 1204 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 12:53:43 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:43 — 1204 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 12:53:43 — 1204 — INFO — MyAccountNumber
+10/20/2023 12:53:43 — 1204 — INFO — 1150001100411390
+10/20/2023 12:53:43 — 1204 — INFO — TranType
+10/20/2023 12:53:43 — 1204 — INFO — TransactionAmount
+10/20/2023 12:53:43 — 1204 — INFO — {'AccountNumber': '1150001100411390', 'TranType': '4005', 'TransactionAmount': '100', 'CreditPlanMaster': '13746'}
+10/20/2023 12:53:44 — 1204 — INFO — {'AccountNumber': '1150001100411390', 'TranType': '4005', 'TransactionAmount': '100', 'CreditPlanMaster': '13746', 'UserID': 'JazzCall'}
+10/20/2023 12:53:44 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Post Transaction','Done'
+10/20/2023 12:53:44 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Verify API response is OK','InProgress'
+10/20/2023 12:53:44 — 1204 — INFO — ErrorFound YES 
+ErrorNumber ERR04035 
+ErrorMessage Disallow Duplicate Transaction within 1 minute
+10/20/2023 12:53:44 — 1204 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 0,'Scenario 17','Post Purchase, cash and BT Transaction','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 12:53:44 — 1204 — INFO — AssertionError occurred: None

@@ -1,0 +1,8 @@
+
+Starting copy...
+SQLState = S1000, NativeError = 0
+Error = [Microsoft][ODBC Driver 17 for SQL Server]Unexpected EOF encountered in BCP data-file
+
+122 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.) Total     : 110    Average : (1109.09 rows per sec.)

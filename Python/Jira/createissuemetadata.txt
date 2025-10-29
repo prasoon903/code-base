@@ -1,0 +1,1271 @@
+{
+    "expand": "projects",
+    "projects": [
+        {
+            "self": "https://corecard.atlassian.net/rest/api/2/project/10062",
+            "id": "10062",
+            "key": "COM",
+            "name": "Compliance",
+            "avatarUrls": {
+                "48x48": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10410",
+                "24x24": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10410?size=small",
+                "16x16": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10410?size=xsmall",
+                "32x32": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10410?size=medium"
+            },
+            "issuetypes": [
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10000",
+                    "id": "10000",
+                    "description": "A collection of related bugs, stories, and tasks.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10306?size=medium",
+                    "name": "Epic",
+                    "untranslatedName": "Epic",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10002",
+                    "id": "10002",
+                    "description": "A small, distinct piece of work.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10311?size=medium",
+                    "name": "Task",
+                    "untranslatedName": "Task",
+                    "subtask": false
+                }
+            ]
+        },
+        {
+            "self": "https://corecard.atlassian.net/rest/api/2/project/10028",
+            "id": "10028",
+            "key": "PLAT",
+            "name": "PLAT",
+            "avatarUrls": {
+                "48x48": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10400",
+                "24x24": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10400?size=small",
+                "16x16": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10400?size=xsmall",
+                "32x32": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10400?size=medium"
+            },
+            "issuetypes": [
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10022",
+                    "id": "10022",
+                    "description": "An initiative",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10322?size=medium",
+                    "name": "Initiative",
+                    "untranslatedName": "Initiative ",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10000",
+                    "id": "10000",
+                    "description": "A collection of related bugs, stories, and tasks.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10306?size=medium",
+                    "name": "Epic",
+                    "untranslatedName": "Epic",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10001",
+                    "id": "10001",
+                    "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+                    "name": "Story",
+                    "untranslatedName": "Story",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10002",
+                    "id": "10002",
+                    "description": "A small, distinct piece of work.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10311?size=medium",
+                    "name": "Task",
+                    "untranslatedName": "Task",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10059",
+                    "id": "10059",
+                    "description": "Scrum Ceremonies",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10312?size=medium",
+                    "name": "Scrum Ceremonies",
+                    "untranslatedName": "Scrum Ceremonies",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10033",
+                    "id": "10033",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "Specifications",
+                    "untranslatedName": "Specifications",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10056",
+                    "id": "10056",
+                    "description": "Task related to Use Case",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "Use Case",
+                    "untranslatedName": "Use Case",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10049",
+                    "id": "10049",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium",
+                    "name": "Spike",
+                    "untranslatedName": "Spike",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10081",
+                    "id": "10081",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10557?size=medium",
+                    "name": "Feature Testing",
+                    "untranslatedName": "Feature Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10080",
+                    "id": "10080",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10558?size=medium",
+                    "name": "Regression Testing",
+                    "untranslatedName": "Regression Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10099",
+                    "id": "10099",
+                    "description": "Management relates standard task",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium",
+                    "name": "Mgmt",
+                    "untranslatedName": "Mgmt",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10112",
+                    "id": "10112",
+                    "description": "Use this issue type for customer query raised in coretracker.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "CT Query",
+                    "untranslatedName": "CT Query",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10109",
+                    "id": "10109",
+                    "description": "Root Cause Analysis",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "Root Cause Analysis",
+                    "untranslatedName": "Root Cause Analysis",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10094",
+                    "id": "10094",
+                    "description": "Automation Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10560?size=medium",
+                    "name": "Automation Testing",
+                    "untranslatedName": "Automation Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10095",
+                    "id": "10095",
+                    "description": "Security Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10559?size=medium",
+                    "name": "Security Testing",
+                    "untranslatedName": "Security Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10126",
+                    "id": "10126",
+                    "description": "Change request form",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium",
+                    "name": "CARDS Change Request",
+                    "untranslatedName": "CARDS Change Request",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10096",
+                    "id": "10096",
+                    "description": "Stress Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10561?size=medium",
+                    "name": "Stress Testing",
+                    "untranslatedName": "Stress Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10074",
+                    "id": "10074",
+                    "description": "Observations recorded during testing. ",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10562?size=medium",
+                    "name": "Observation",
+                    "untranslatedName": "Observation",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10004",
+                    "id": "10004",
+                    "description": "A problem or error.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+                    "name": "Bug",
+                    "untranslatedName": "Bug",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10041",
+                    "id": "10041",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+                    "name": "Production Defect",
+                    "untranslatedName": "Production Defect",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10042",
+                    "id": "10042",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+                    "name": "UAT Defect",
+                    "untranslatedName": "UAT Defect",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10048",
+                    "id": "10048",
+                    "description": "In sprint Defects",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10304?size=medium",
+                    "name": "In-sprint Defects",
+                    "untranslatedName": "In-sprint Defects",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10111",
+                    "id": "10111",
+                    "description": "Use by Ops Alert monitoring team",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Monitoring",
+                    "untranslatedName": "Monitoring",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10127",
+                    "id": "10127",
+                    "description": "Security log review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Security log review",
+                    "untranslatedName": "Security log review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10131",
+                    "id": "10131",
+                    "description": "Analysis of Data",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Data Analysis",
+                    "untranslatedName": "Data Analysis",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10130",
+                    "id": "10130",
+                    "description": "Release Management",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Release Management",
+                    "untranslatedName": "Release Management",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10132",
+                    "id": "10132",
+                    "description": "Release Planning",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Release Planning",
+                    "untranslatedName": "Release Planning",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10128",
+                    "id": "10128",
+                    "description": "QA Feature Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Feature Testing",
+                    "untranslatedName": "QA Feature Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10129",
+                    "id": "10129",
+                    "description": "QA Adhoc Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Adhoc Testing",
+                    "untranslatedName": "QA Adhoc Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10087",
+                    "id": "10087",
+                    "description": "QA Test Case Update",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case Update",
+                    "untranslatedName": "QA Test Case Update",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10119",
+                    "id": "10119",
+                    "description": "QA Collection Script",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Collection Script",
+                    "untranslatedName": "QA Collection Script",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10121",
+                    "id": "10121",
+                    "description": "QA Automation Script Update",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Script Update",
+                    "untranslatedName": "QA Automation Script Update",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10003",
+                    "id": "10003",
+                    "description": "A small piece of work that's part of a larger task.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Sub-task",
+                    "untranslatedName": "Sub-task",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10123",
+                    "id": "10123",
+                    "description": "QA Automation Retest Regression",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Retest Regression",
+                    "untranslatedName": "QA Automation Retest Regression",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10093",
+                    "id": "10093",
+                    "description": "Automation Script Execution",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Automation Script Execution",
+                    "untranslatedName": "Automation Script Execution",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10118",
+                    "id": "10118",
+                    "description": "QA Automation Regression",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Regression",
+                    "untranslatedName": "QA Automation Regression",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10088",
+                    "id": "10088",
+                    "description": "Collection Script",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Collection Script",
+                    "untranslatedName": "Collection Script",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10120",
+                    "id": "10120",
+                    "description": "QA New script Log Recon",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA New script Log Recon",
+                    "untranslatedName": "QA New script Log Recon",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10125",
+                    "id": "10125",
+                    "description": "Specification Review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10564?size=medium",
+                    "name": "Specification Review",
+                    "untranslatedName": "Specification Review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10110",
+                    "id": "10110",
+                    "description": "Use for worklog entry during training",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Training",
+                    "untranslatedName": "Training",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10065",
+                    "id": "10065",
+                    "description": "Analysis",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Analysis",
+                    "untranslatedName": "Analysis",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10027",
+                    "id": "10027",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10309?size=medium",
+                    "name": "Meetings/Walkthrough",
+                    "untranslatedName": "Meetings/Walkthrough",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10028",
+                    "id": "10028",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                    "name": "QA Testing",
+                    "untranslatedName": "QA Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10060",
+                    "id": "10060",
+                    "description": "Project Management",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Project Management",
+                    "untranslatedName": "Project Management",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10117",
+                    "id": "10117",
+                    "description": "QA Defect Verification Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Defect Verification Testing",
+                    "untranslatedName": "QA Defect Verification Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10063",
+                    "id": "10063",
+                    "description": "QA Regression Log Recon",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Regression Log Recon",
+                    "untranslatedName": "QA Regression Log Recon",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10100",
+                    "id": "10100",
+                    "description": "Management Sub Task",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10321?size=medium",
+                    "name": "Management",
+                    "untranslatedName": "Management",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10062",
+                    "id": "10062",
+                    "description": "Script Creation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Script Creation",
+                    "untranslatedName": "QA Automation Script Creation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10025",
+                    "id": "10025",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10309?size=medium",
+                    "name": "Coding",
+                    "untranslatedName": "Coding",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10023",
+                    "id": "10023",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10321?size=medium",
+                    "name": "Design",
+                    "untranslatedName": "Design",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10038",
+                    "id": "10038",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Ceremonies",
+                    "untranslatedName": "Ceremonies",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10116",
+                    "id": "10116",
+                    "description": "QA Regression Retest-Log Recon",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Regression Retest-Log Recon",
+                    "untranslatedName": "QA Regression Retest-Log Recon",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10030",
+                    "id": "10030",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Unit Test",
+                    "untranslatedName": "Unit Test",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10064",
+                    "id": "10064",
+                    "description": "QA Test Case Execution",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case Execution",
+                    "untranslatedName": "QA Test Case Execution",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10043",
+                    "id": "10043",
+                    "description": "Code Review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Code Review",
+                    "untranslatedName": "Code Review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10044",
+                    "id": "10044",
+                    "description": "QA Task",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Task",
+                    "untranslatedName": "QA Task",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10045",
+                    "id": "10045",
+                    "description": "Documentation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Documentation",
+                    "untranslatedName": "Documentation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10046",
+                    "id": "10046",
+                    "description": "Peer Support",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Peer Support",
+                    "untranslatedName": "Peer Support",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10102",
+                    "id": "10102",
+                    "description": "For all task related to production support",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Production Support",
+                    "untranslatedName": "Production Support",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10047",
+                    "id": "10047",
+                    "description": "UI Design",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "UI Design",
+                    "untranslatedName": "UI Design",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10031",
+                    "id": "10031",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Release Notes",
+                    "untranslatedName": "Release Notes",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10026",
+                    "id": "10026",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Design Review",
+                    "untranslatedName": "Design Review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10057",
+                    "id": "10057",
+                    "description": "QA Test Case Creation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case Creation",
+                    "untranslatedName": "QA Test Case Creation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10115",
+                    "id": "10115",
+                    "description": "QA Retest-Execution/Regression",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Retest-Execution/Regression",
+                    "untranslatedName": "QA Retest-Execution/Regression",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10029",
+                    "id": "10029",
+                    "description": "QA Test Case/Script review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case/Script review",
+                    "untranslatedName": "QA Test Case/Script review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10055",
+                    "id": "10055",
+                    "description": "Use Case Creation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Use Case Creation",
+                    "untranslatedName": "Use Case Creation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10058",
+                    "id": "10058",
+                    "description": "Use Case Review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Use Case Review",
+                    "untranslatedName": "Use Case Review",
+                    "subtask": true
+                }
+            ]
+        },
+        {
+            "self": "https://corecard.atlassian.net/rest/api/2/project/10022",
+            "id": "10022",
+            "key": "TRAIN",
+            "name": "Training",
+            "avatarUrls": {
+                "48x48": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10409",
+                "24x24": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10409?size=small",
+                "16x16": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10409?size=xsmall",
+                "32x32": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/project/avatar/10409?size=medium"
+            },
+            "issuetypes": [
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10022",
+                    "id": "10022",
+                    "description": "An initiative",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10322?size=medium",
+                    "name": "Initiative",
+                    "untranslatedName": "Initiative ",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10000",
+                    "id": "10000",
+                    "description": "A collection of related bugs, stories, and tasks.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10306?size=medium",
+                    "name": "Epic",
+                    "untranslatedName": "Epic",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10001",
+                    "id": "10001",
+                    "description": "Created by Jira Agile - do not edit or delete. Issue type for a user story.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10315?size=medium",
+                    "name": "Story",
+                    "untranslatedName": "Story",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10002",
+                    "id": "10002",
+                    "description": "A small, distinct piece of work.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10311?size=medium",
+                    "name": "Task",
+                    "untranslatedName": "Task",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10059",
+                    "id": "10059",
+                    "description": "Scrum Ceremonies",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10312?size=medium",
+                    "name": "Scrum Ceremonies",
+                    "untranslatedName": "Scrum Ceremonies",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10033",
+                    "id": "10033",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "Specifications",
+                    "untranslatedName": "Specifications",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10056",
+                    "id": "10056",
+                    "description": "Task related to Use Case",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "Use Case",
+                    "untranslatedName": "Use Case",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10049",
+                    "id": "10049",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium",
+                    "name": "Spike",
+                    "untranslatedName": "Spike",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10081",
+                    "id": "10081",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10557?size=medium",
+                    "name": "Feature Testing",
+                    "untranslatedName": "Feature Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10080",
+                    "id": "10080",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10558?size=medium",
+                    "name": "Regression Testing",
+                    "untranslatedName": "Regression Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10099",
+                    "id": "10099",
+                    "description": "Management relates standard task",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium",
+                    "name": "Mgmt",
+                    "untranslatedName": "Mgmt",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10112",
+                    "id": "10112",
+                    "description": "Use this issue type for customer query raised in coretracker.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "CT Query",
+                    "untranslatedName": "CT Query",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10109",
+                    "id": "10109",
+                    "description": "Root Cause Analysis",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10314?size=medium",
+                    "name": "Root Cause Analysis",
+                    "untranslatedName": "Root Cause Analysis",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10094",
+                    "id": "10094",
+                    "description": "Automation Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10560?size=medium",
+                    "name": "Automation Testing",
+                    "untranslatedName": "Automation Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10095",
+                    "id": "10095",
+                    "description": "Security Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10559?size=medium",
+                    "name": "Security Testing",
+                    "untranslatedName": "Security Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10126",
+                    "id": "10126",
+                    "description": "Change request form",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10310?size=medium",
+                    "name": "CARDS Change Request",
+                    "untranslatedName": "CARDS Change Request",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10096",
+                    "id": "10096",
+                    "description": "Stress Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10561?size=medium",
+                    "name": "Stress Testing",
+                    "untranslatedName": "Stress Testing",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10074",
+                    "id": "10074",
+                    "description": "Observations recorded during testing. ",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10562?size=medium",
+                    "name": "Observation",
+                    "untranslatedName": "Observation",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10004",
+                    "id": "10004",
+                    "description": "A problem or error.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+                    "name": "Bug",
+                    "untranslatedName": "Bug",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10041",
+                    "id": "10041",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+                    "name": "Production Defect",
+                    "untranslatedName": "Production Defect",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10042",
+                    "id": "10042",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10303?size=medium",
+                    "name": "UAT Defect",
+                    "untranslatedName": "UAT Defect",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10048",
+                    "id": "10048",
+                    "description": "In sprint Defects",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10304?size=medium",
+                    "name": "In-sprint Defects",
+                    "untranslatedName": "In-sprint Defects",
+                    "subtask": false
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10111",
+                    "id": "10111",
+                    "description": "Use by Ops Alert monitoring team",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Monitoring",
+                    "untranslatedName": "Monitoring",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10127",
+                    "id": "10127",
+                    "description": "Security log review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Security log review",
+                    "untranslatedName": "Security log review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10131",
+                    "id": "10131",
+                    "description": "Analysis of Data",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Data Analysis",
+                    "untranslatedName": "Data Analysis",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10130",
+                    "id": "10130",
+                    "description": "Release Management",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Release Management",
+                    "untranslatedName": "Release Management",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10132",
+                    "id": "10132",
+                    "description": "Release Planning",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Release Planning",
+                    "untranslatedName": "Release Planning",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10128",
+                    "id": "10128",
+                    "description": "QA Feature Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Feature Testing",
+                    "untranslatedName": "QA Feature Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10129",
+                    "id": "10129",
+                    "description": "QA Adhoc Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Adhoc Testing",
+                    "untranslatedName": "QA Adhoc Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10087",
+                    "id": "10087",
+                    "description": "QA Test Case Update",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case Update",
+                    "untranslatedName": "QA Test Case Update",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10119",
+                    "id": "10119",
+                    "description": "QA Collection Script",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Collection Script",
+                    "untranslatedName": "QA Collection Script",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10121",
+                    "id": "10121",
+                    "description": "QA Automation Script Update",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Script Update",
+                    "untranslatedName": "QA Automation Script Update",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10003",
+                    "id": "10003",
+                    "description": "A small piece of work that's part of a larger task.",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Sub-task",
+                    "untranslatedName": "Sub-task",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10123",
+                    "id": "10123",
+                    "description": "QA Automation Retest Regression",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Retest Regression",
+                    "untranslatedName": "QA Automation Retest Regression",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10093",
+                    "id": "10093",
+                    "description": "Automation Script Execution",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Automation Script Execution",
+                    "untranslatedName": "Automation Script Execution",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10118",
+                    "id": "10118",
+                    "description": "QA Automation Regression",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Regression",
+                    "untranslatedName": "QA Automation Regression",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10088",
+                    "id": "10088",
+                    "description": "Collection Script",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Collection Script",
+                    "untranslatedName": "Collection Script",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10120",
+                    "id": "10120",
+                    "description": "QA New script Log Recon",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA New script Log Recon",
+                    "untranslatedName": "QA New script Log Recon",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10125",
+                    "id": "10125",
+                    "description": "Specification Review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10564?size=medium",
+                    "name": "Specification Review",
+                    "untranslatedName": "Specification Review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10110",
+                    "id": "10110",
+                    "description": "Use for worklog entry during training",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Training",
+                    "untranslatedName": "Training",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10065",
+                    "id": "10065",
+                    "description": "Analysis",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Analysis",
+                    "untranslatedName": "Analysis",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10027",
+                    "id": "10027",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10309?size=medium",
+                    "name": "Meetings/Walkthrough",
+                    "untranslatedName": "Meetings/Walkthrough",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10028",
+                    "id": "10028",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium",
+                    "name": "QA Testing",
+                    "untranslatedName": "QA Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10060",
+                    "id": "10060",
+                    "description": "Project Management",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Project Management",
+                    "untranslatedName": "Project Management",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10117",
+                    "id": "10117",
+                    "description": "QA Defect Verification Testing",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Defect Verification Testing",
+                    "untranslatedName": "QA Defect Verification Testing",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10063",
+                    "id": "10063",
+                    "description": "QA Regression Log Recon",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Regression Log Recon",
+                    "untranslatedName": "QA Regression Log Recon",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10100",
+                    "id": "10100",
+                    "description": "Management Sub Task",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10321?size=medium",
+                    "name": "Management",
+                    "untranslatedName": "Management",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10062",
+                    "id": "10062",
+                    "description": "Script Creation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Automation Script Creation",
+                    "untranslatedName": "QA Automation Script Creation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10025",
+                    "id": "10025",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10309?size=medium",
+                    "name": "Coding",
+                    "untranslatedName": "Coding",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10023",
+                    "id": "10023",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10321?size=medium",
+                    "name": "Design",
+                    "untranslatedName": "Design",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10038",
+                    "id": "10038",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Ceremonies",
+                    "untranslatedName": "Ceremonies",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10116",
+                    "id": "10116",
+                    "description": "QA Regression Retest-Log Recon",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Regression Retest-Log Recon",
+                    "untranslatedName": "QA Regression Retest-Log Recon",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10030",
+                    "id": "10030",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Unit Test",
+                    "untranslatedName": "Unit Test",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10064",
+                    "id": "10064",
+                    "description": "QA Test Case Execution",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case Execution",
+                    "untranslatedName": "QA Test Case Execution",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10043",
+                    "id": "10043",
+                    "description": "Code Review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Code Review",
+                    "untranslatedName": "Code Review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10044",
+                    "id": "10044",
+                    "description": "QA Task",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Task",
+                    "untranslatedName": "QA Task",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10045",
+                    "id": "10045",
+                    "description": "Documentation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Documentation",
+                    "untranslatedName": "Documentation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10046",
+                    "id": "10046",
+                    "description": "Peer Support",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Peer Support",
+                    "untranslatedName": "Peer Support",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10102",
+                    "id": "10102",
+                    "description": "For all task related to production support",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Production Support",
+                    "untranslatedName": "Production Support",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10047",
+                    "id": "10047",
+                    "description": "UI Design",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "UI Design",
+                    "untranslatedName": "UI Design",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10031",
+                    "id": "10031",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Release Notes",
+                    "untranslatedName": "Release Notes",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10026",
+                    "id": "10026",
+                    "description": "",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Design Review",
+                    "untranslatedName": "Design Review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10057",
+                    "id": "10057",
+                    "description": "QA Test Case Creation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case Creation",
+                    "untranslatedName": "QA Test Case Creation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10115",
+                    "id": "10115",
+                    "description": "QA Retest-Execution/Regression",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Retest-Execution/Regression",
+                    "untranslatedName": "QA Retest-Execution/Regression",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10029",
+                    "id": "10029",
+                    "description": "QA Test Case/Script review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "QA Test Case/Script review",
+                    "untranslatedName": "QA Test Case/Script review",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10055",
+                    "id": "10055",
+                    "description": "Use Case Creation",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Use Case Creation",
+                    "untranslatedName": "Use Case Creation",
+                    "subtask": true
+                },
+                {
+                    "self": "https://corecard.atlassian.net/rest/api/2/issuetype/10058",
+                    "id": "10058",
+                    "description": "Use Case Review",
+                    "iconUrl": "https://corecard.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10316?size=medium",
+                    "name": "Use Case Review",
+                    "untranslatedName": "Use Case Review",
+                    "subtask": true
+                }
+            ]
+        }
+    ]
+}

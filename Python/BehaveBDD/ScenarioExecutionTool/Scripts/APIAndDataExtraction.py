@@ -1,0 +1,688 @@
+import re
+import json
+import requests
+import os
+from Scripts.GetLogger import MessageLogger
+import Scripts.Config as c
+from Scripts.DataBaseConnections import *
+from Scripts.HelperFunction import *
+from Scripts.SetLoggerGlobals import get_global_EXECUTION_ID
+from Scripts.DataManager import fn_GetValueFromDataStore
+
+Configuration = c.Configuration
+RootPath = c.BasePath
+APINAmeEndPointMapping = json.load(
+    open(RootPath + "\Configuration/APINameEndPointMapping.json")
+)
+
+Cursor = DBCon.cursor()
+
+Cursor.execute("SELECT TOP 1 Environment_Name FROM CPS_ENVIRONMENT WITH(NOLOCK)")
+Environment = Cursor.fetchone()
+
+
+def fn_ExtractData(input_string):
+    MessageLogger.info(
+        "*********** |" + input_string + "| ********************************"
+    )
+    API = ""
+    Status = 0
+    amount = 0
+    txntype = ""
+    digit = 0
+    action = 0
+    months = 0
+    field = ""
+    value = ""
+    customerType = ""
+    user_info = ""
+    rollup = ""
+    methodname = ""
+    pattern1 = r"(\w+) for (\d+)"
+    pattern2 = r"(\w+) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) for (\w+)"
+    pattern3 = r"(\w+) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) for (\w+) with action (\d+)"
+    pattern4 = r"(\w+) with \$(\d+) for (\d+) months"
+    pattern5 = r"(\w+) for (\d+) months"
+    pattern6 = r"(\w+) for (\w+) with (\w+)"
+    pattern7 = r"(\w+) as (\w+)"
+    pattern8 = r"(\w+) for (\w+)"
+    pattern18 = (
+        r"(\w+) of (\w+(?:[+-]?\d+(\.\d+)?)?) from (\w+) with freqency (\w+) mode (\w+)"
+    )
+    pattern19 = (
+        r"(\w+) of (\w+(?:[+-]?\d+(\.\d+)?)?) on (\w+) with action (\w+) reason (\w+)"
+    )
+    pattern20 = (
+        r"(\w+) of resolutiondecision (\w+) resolutionapproach (\w+)"
+    )
+    # execute Post NTDDisputeResolve_1 of ResolutionDecision 0 ResolutionApproach 2
+    # execute Post NTDDispute_1 of 25 on 01302020 with action 0 reason 8
+    # execute Post NTDDispute_4 of 35 on interest_1 with action 4 reason 8
+    # Add PaymentSchedule of  MinimumDue from Bank_1  with  Frequency OneTime  '2020-12-12'  mode ACH
+    # Add PaymentSchedule of  $10 from Bank_1  with  Frequency OneTime  '2020-12-12'  mode ACH
+    patternMatched = 0
+
+    match = False
+    if not match:
+        match = re.search(pattern3, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 3
+    if not match:
+        match = re.search(pattern2, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 2
+    if not match:
+        match = re.search(pattern4, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 4
+    if not match:
+        match = re.search(pattern6, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 6
+    if not match:
+        match = re.search(pattern5, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 5
+    if not match:
+        match = re.search(pattern1, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 1
+    if not match:
+        match = re.search(pattern7, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 7
+    if not match:
+        match = re.search(pattern8, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 8
+    if not match:
+        match = re.search(pattern18, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 9
+    if not match:
+        match = re.search(pattern19, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 19
+            
+    if not match:
+        match = re.search(pattern20, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 20
+
+    MessageLogger.debug("PatternMatched = " + str(patternMatched))
+
+    if match:
+        for i in range(len(match.groups()) + 1):
+            MessageLogger.debug(f"index: {i} with value: {match.group(i)}")
+
+    if match:
+        group = len(match.groups())
+        for i in range(1, group + 1):
+            MessageLogger.debug("Group loop " + str(i))
+            MessageLogger.debug("match: " + str(match.group(i)))
+            if i == 1 and match.group(i) is not None:
+                API = match.group(i)
+                parts = API.split("_")
+                if len(parts) > 0:
+                    API = parts[0]
+                    if patternMatched in (19,20):
+                        digit = parts[1]
+            elif i == 2 and match.group(i) is not None:
+                if patternMatched == 1:
+                    Status = match.group(i)
+                elif patternMatched in (2, 3, 4, 9, 19):
+                    amount = match.group(i)
+                elif patternMatched == 5:
+                    months = match.group(i)
+                elif patternMatched in (6, 20):
+                    field = match.group(i)
+                elif patternMatched == 7:
+                    variable = match.group(i)
+                    pattern12 = r"\d+"
+                    match12 = re.search(pattern12, variable)
+                    parts = variable.split("_")
+                    if len(parts) >= 1:
+                        customerType = parts[0]
+                    if match12:
+                        digit = match12.group(0)
+                        MessageLogger.debug(f"Extracted digit: {digit}")
+                elif patternMatched == 8:
+                    variable = match.group(i)
+                    pattern13 = r"\d+"
+                    match13 = re.search(pattern13, variable)
+                    parts = variable.split("_")
+                    if len(parts) >= 1:
+                        paymentMethod = parts[0]
+                    if match13:
+                        digit = match13.group(0)
+                        MessageLogger.debug(f"Extracted digit: {digit}")
+            elif i == 3 and match.group(i) is not None:
+                if patternMatched in (2, 3):
+                    variable = match.group(i)
+                    pattern12 = r"\d+"
+                    match12 = re.search(pattern12, variable)
+                    parts = variable.split("_")
+                    if len(parts) >= 1:
+                        txntype = parts[0]
+                    if match12:
+                        digit = match12.group(0)
+                        MessageLogger.debug(f"Extracted digit: {digit}")
+                elif patternMatched == 4:
+                    months = match.group(i)
+                elif patternMatched in (6, 20):
+                    value = match.group(i)
+                elif (
+                    patternMatched == 9
+                    and amount is None
+                    or amount == 0
+                    or amount == ""
+                ):
+                    amount = match.group(i)
+            elif i == 4 and match.group(i) is not None:
+                if patternMatched in (9, 19):
+                    methodname = match.group(i)  # method name - ntd effective date 
+                else:
+                    action = match.group(i)
+            elif i == 5 and match.group(i) is not None:
+                if patternMatched in (9, 19,3):
+                    action = match.group(i)  # frequeny - NTD action
+                else:
+                    rollup = match.group(i)
+            elif i == 6 and match.group(i) is not None:
+                if patternMatched in (9, 19):
+                    rollup = match.group(i)  # paymrnt mode - NTD reason
+
+        pattern9 = r"to user (\w+)"
+
+        match_1 = re.search(pattern9, input_string)
+        if match_1:
+            # Extract the word after 'to user'
+            user_info = match_1.group(1)
+            MessageLogger.debug("match: " + str(match_1))
+            MessageLogger.debug("Verify transaction for ", user_info)
+        pattern10 = r"rollup to (\w+)"
+
+        match_2 = re.search(pattern10, input_string)
+        if match_2:
+            # Extract the word after 'to user'
+            rollup = match_2.group(1)
+            MessageLogger.debug(f"match: {match_2}")
+            MessageLogger.debug(f"Verify transaction for  {rollup} ")
+
+    # print("API: " + API)
+    # print("Status: " + str(Status))
+    # print("amount: " + str(amount))
+    # print("txntype: " + txntype)
+    # print("digit: " + str(digit))
+    # print("action: " + str(action))
+    # print("months: " + str(months))
+    # print("field: " + field)
+    # print("value: " + value)
+    # print("value: " + customerType)
+    # print("user_info: " + user_info)
+    # print("rollup: " + rollup)
+    # print("mode: " + mode)
+
+    MessageLogger.info(f"API: {API}")
+    MessageLogger.info(f"Status: {Status}")
+    MessageLogger.info(f"amount: {amount}")
+    MessageLogger.info(f"txntype: {txntype}")
+    MessageLogger.info(f"digit: {digit}")
+    MessageLogger.info(f"action: {action}")
+    MessageLogger.info(f"months: {months}")
+    MessageLogger.info(f"field: {field}")
+    MessageLogger.info(f"value: {value}")
+    MessageLogger.info(f"customerType: {customerType}")
+    MessageLogger.info(f"user_info: {user_info}")
+    MessageLogger.info(f"rollup: {rollup}")
+    MessageLogger.info(f"methodname: {methodname}")
+
+    return (
+        API,
+        Status,
+        amount,
+        txntype,
+        digit,
+        action,
+        months,
+        field,
+        value,
+        customerType,
+        user_info,
+        rollup,
+        methodname,
+    )
+
+
+def extract_informationforPST(input_string):
+    MessageLogger.debug(
+        "*********** |" + input_string + "| ********************************"
+    )
+    variable = ""
+    digit = ""
+    amount = ""
+    by = ""
+    cpm = ""
+    at = ""
+    txntype = ""
+    forTxn = ""
+    patternMatched = 0
+    match = False
+    touser = ""
+    pattern1 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\d+) at (\d+) for (\w+)"
+    pattern2 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\d+) at (\d+)"
+    pattern3 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\d+) for (\w+)"
+    pattern4 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\d+)"
+    pattern5 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) at (\d+) for (\w+)"
+    pattern6 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) at (\d+)"
+    pattern7 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) for (\w+)"
+    pattern8 = r"post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+)"
+    # pattern8 = r"post (.+?) of \$(\w+)(?:\s*([+-]?\d*(\.?\d+)))? by trancode (\w+)"
+
+    if not match:
+        match = re.search(pattern1, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 1
+    if not match:
+        match = re.search(pattern2, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 2
+    if not match:
+        match = re.search(pattern3, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 3
+    if not match:
+        match = re.search(pattern4, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 4
+    if not match:
+        match = re.search(pattern5, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 5
+    if not match:
+        match = re.search(pattern6, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 6
+    if not match:
+        match = re.search(pattern7, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 7
+    if not match:
+        match = re.search(pattern8, input_string)
+        if match:
+            MessageLogger.debug("match: " + str(match))
+            patternMatched = 8
+
+    MessageLogger.debug("PatternMatched = " + str(patternMatched))
+
+    if match:
+        for i in range(len(match.groups())):
+            MessageLogger.debug(f"index: {i} with value: {match.group(i)}")
+
+    if match:
+        group = len(match.groups())
+        for index in range(1, group + 1):
+            # MessageLogger.debug("Group loop " + str(index))
+            # MessageLogger.debug("match: " + str(match.group(index)))
+            MessageLogger.debug(f"index: {index} with value: {match.group(index)}")
+            if index == 1:
+                variable = match.group(index)
+                pattern12 = r"\d+"
+                match12 = re.search(pattern12, variable)
+                parts = variable.split("_")
+                if len(parts) >= 1:
+                    txntype = parts[0]
+                if match12:
+                    digit = match12.group(0)
+                    MessageLogger.debug(f"Extracted digit: {digit}")
+            elif index == 2:
+                amount = match.group(index)
+            elif index == 4:
+                by = match.group(index).title()
+            elif index == 5:
+                if patternMatched in (1, 2, 3, 4):
+                    cpm = match.group(index)
+                elif patternMatched in (5, 6):
+                    at = match.group(index)
+                elif patternMatched == 7:
+                    forTxn = match.group(index)
+            elif index == 6:
+                if patternMatched in (1, 2):
+                    at = match.group(index)
+                elif patternMatched in (3, 5):
+                    forTxn = match.group(index)
+            elif index == 7:
+                if patternMatched == 1:
+                    forTxn = match.group(index)
+
+    pattern9 = r"to user (\w+)"
+    user_info = ""
+    match_1 = re.search(pattern9, input_string)
+    if match_1:
+        # Extract the word after 'to user'
+        user_info = match_1.group(1)
+        MessageLogger.debug("match: " + str(match_1))
+        MessageLogger.debug("Verify transaction for ", user_info)
+
+    pattern10 = r"of (\w+)"
+    return_info = ""
+    match_2 = re.search(pattern10, input_string)
+    if match_2:
+        # Extract the word after 'to user'
+        return_info = match_2.group(1)
+        MessageLogger.debug("match: " + str(match_2))
+        MessageLogger.debug("return transaction for ", return_info)
+    # pattern1 = r'post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\d+) at (\d+)'
+    # pattern2 = r'post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\d+)'
+    # pattern3 = r'post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) at (\d+)'
+    # pattern4 = r'post (.+?) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+)'
+    #
+    # if not match:
+    #     match = re.search(pattern1, input_string)
+    #     MessageLogger.debug("match: " + str(match))
+    #     patternMatched = 1
+    # if not match:
+    #     match = re.search(pattern2, input_string)
+    #     MessageLogger.debug("match: " + str(match))
+    #     patternMatched = 2
+    # if not match:
+    #     match = re.search(pattern3, input_string)
+    #     MessageLogger.debug("match: " + str(match))
+    #     patternMatched = 3
+    # if not match:
+    #     match = re.search(pattern4, input_string)
+    #     MessageLogger.debug("match: " + str(match))
+    #     patternMatched = 4
+    #
+    # MessageLogger.debug("PatternMatched = " + str(patternMatched))
+    #
+    # # for i in range(len(match.groups())):
+    # #     MessageLogger.debug(f"index: {i} with value: {match.group(i)}")
+    #
+    # if match:
+    #     group = len(match.groups())
+    #     for index in range(1, group + 1):
+    #         # MessageLogger.debug("Group loop " + str(index))
+    #         # MessageLogger.debug("match: " + str(match.group(index)))
+    #         MessageLogger.debug(f"index: {index} with value: {match.group(index)}")
+    #         if index == 1:
+    #             variable = match.group(index)
+    #             pattern12 = r'\d+'
+    #             match12 = re.search(pattern12, variable)
+    #             parts = variable.split('_')
+    #             if len(parts) >= 1:
+    #                 txntype = parts[0]
+    #             if match12:
+    #                 digit = match12.group(0)
+    #                 MessageLogger.debug(f"Extracted digit: {digit}")
+    #         elif index == 2:
+    #             amount = match.group(index)
+    #         elif index == 4:
+    #             by = match.group(index).title()
+    #         elif index == 5:
+    #             if patternMatched in (1, 2):
+    #                 cpm = match.group(index)
+    #             elif patternMatched == 3:
+    #                 at = match.group(index)
+    #         elif index == 6:
+    #             if patternMatched == 1:
+    #                 at = match.group(index)
+
+    return variable, digit, amount, by, cpm, at, txntype, forTxn, user_info, return_info
+
+
+#
+# def extract_informationforPST(input_string):
+#     MessageLogger.debug("*********** |" + input_string + "| ********************************")
+#     variable = ''
+#     digit = ''
+#     amount = ''
+#     by = ''
+#     cpm = ''
+#     at = ''
+#     txntype = ''
+#     # Define a regular expression pattern to match the desired parts
+#     # pattern1 = r'post (\w+) of \$(\d+) by trancode (\d+) on CPM (\d+) at (\w+)'
+#     # pattern2 = r'post (\S+) of \$(\d+) by trancode (\d+) on CPM (\w+)'
+#     # pattern3 = r'post (\w+) of \$(\d+) by trancode (\d+) at (\w+)'
+#     # pattern4 = r'post (\w+) of \$(\d+) by trancode (\d+)'
+#
+#     pattern1 = r'post (\w+) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\w+) at (\w+)'
+#     pattern2 = r'post (\S+) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) on cpm (\w+)'
+#     pattern3 = r'post (\w+) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+) at (\w+)'
+#     pattern4 = r'post (\w+) of \$(\w+(?:[+-]?\d+(\.\d+)?)?) by trancode (\w+)'
+#
+#     match = re.search(pattern1, input_string)
+#     MessageLogger.debug(match)
+#     if not match:
+#         MessageLogger.debug("pattern2")
+#         match = re.search(pattern2, input_string)
+#         MessageLogger.debug("match: " + str(match))
+#     if not match:
+#         MessageLogger.debug("pattern3")
+#         match = re.search(pattern3, input_string)
+#         MessageLogger.debug("match: " + str(match))
+#     if not match:
+#         MessageLogger.debug("pattern4")
+#         match = re.search(pattern4, input_string)
+#         MessageLogger.debug("match: " + str(match))
+#
+#     pattern5 = r'(\w+) (on cpm) (\w+)'
+#     pattern6 = r'(\w+) (on cpm) (\w+) (at) (\w+)'
+#     pattern7 = r'(\w+) (at) (\w+)'
+#     match1 = re.search(pattern5, input_string)
+#     MessageLogger.debug("match1" + str(match1))
+#     match2 = re.search(pattern6, input_string)
+#     MessageLogger.debug("match2" + str(match2))
+#     match3 = re.search(pattern7, input_string)
+#     MessageLogger.debug("match3" + str(match3))
+#
+#     if match:
+#         group = len(match.groups())
+#         for i in range(1, group+1):
+#             MessageLogger.debug("Group loop " + str(i))
+#             MessageLogger.debug("match3: " + str(match.group(i)))
+#             if i == 1:
+#                 variable = match.group(i)
+#                 pattern12 = r'\d+'
+#                 match12 = re.search(pattern12, variable)
+#                 parts = variable.split('_')
+#                 if len(parts) >= 1:
+#                     txntype = parts[0]
+#                 if match12:
+#                     digit = match12.group(0)
+#                     MessageLogger.debug(f"Extracted digit: {digit}")
+#             elif i == 2:
+#                 amount = match.group(i)
+#             elif i == 3:
+#                 by = match.group(i)
+#             elif i == 4 and match1:
+#                 cpm = match.group(i)
+#             elif i == 5 and match2:
+#                 at = match.group(i)
+#
+#             if i == 4 and match1:
+#                 cpm = match.group(i)
+#             elif i < 4:
+#                 cpm = ''
+#
+#             if i == 5 and match2:
+#                 at = match.group(i)
+#             elif i < 5:
+#                 at = ''
+#
+#             if i == 4 and match3:
+#                 at = match.group(i)
+#             elif i < 4:
+#                 at = ''
+#
+#     return variable, digit, amount, by, cpm, at, txntype
+
+
+def fn_GetAPINAME(APINAME):
+    MessageLogger.debug("fn_GetAPINAME: " + str(APINAME))
+    if APINAME in (
+        "Payment Reversal",
+        "Purchase",
+        "Cash Purchase",
+        "Payment",
+        "Credit",
+        "Return",
+        "Debit",
+    ):
+        APINAME = "PostSingleTransaction"
+    elif APINAME == "AccountSummary":
+        APINAME = "AccountSummary"
+    elif APINAME == "Get StatementMetaData":
+        APINAME = "StatementMetaData"
+    elif APINAME.upper() == "account".upper():
+        APINAME = "AccountCreation"
+    elif APINAME == "addmanualstatus":
+        APINAME = "AddManualStatus"
+    elif APINAME == "removemanualstatus":
+        APINAME = "RemoveManualStatus"
+    elif APINAME == "dispute":
+        APINAME = "InitiateDispute"
+    elif APINAME == "disputeresolution":
+        APINAME = "DisputeResolution"
+    elif APINAME == "reageenrollment":
+        APINAME = "ReageEnrollment"
+    elif APINAME == "tcapenrollment":
+        APINAME = "TCAPEnrollment"
+    elif APINAME == "pwpenrollment":
+        APINAME = "PWPEnrollment"
+    elif APINAME == "accountupdate":
+        APINAME = "AccountUpdate"
+    elif APINAME == "plansegmentdetails":
+        APINAME = "PlanSegmentDetails"
+    elif APINAME == "AddCustomerUser":
+        APINAME = "AddCustomerUser"
+    elif APINAME == "bank":
+        APINAME = "BankAccountManagement"
+    elif APINAME == "paymentschedule":
+        APINAME = "PaymentSchedule"
+    elif APINAME == "settlementenrollment":
+        APINAME = "SettlementEnrollmentAPI"
+    elif APINAME == "ntddispute":
+        APINAME = "InitiateNonTxnDispute"
+    elif APINAME == "ntddisputeresolution":
+        APINAME = "ResolveNonTxnDispute"
+
+    MessageLogger.debug("fn_GetAPINAME: " + str(APINAME))
+
+    return APINAME
+
+
+def fn_HitAPIbyParam(APIName, param1):
+    response = {}
+    if APIName == "AccountSummary":
+        APIUrl = Configuration["APIDomainUrlAS"] + APINAmeEndPointMapping[APIName]
+    else:
+        APIUrl = Configuration["APIDomainUrl"] + APINAmeEndPointMapping[APIName]
+    JsonPath = RootPath + f"\JsonPayload/{APIName}.json"
+    if os.path.exists(JsonPath):
+        APIJson = json.load(open(JsonPath))
+        if "PLAT" in str(Environment.Environment_Name).upper():
+            APIJson["UserID"] = "SystemCommSvc"
+        else:
+            APIJson["UserID"] = "SystemCommSvc"
+
+        if APIName == "AccountSummary":
+            APIJson["AccountNumber"] = param1
+
+        # APIJson.update(PayLoad)
+
+        replace_guids(APIJson)
+
+        headers = {"Accept": "application/json", "Content-Type": "application/json"}
+        # MessageLogger.debug(APIJson)
+        response = requests.post(APIUrl, data=json.dumps(APIJson), headers=headers)
+    else:
+        MessageLogger.error("API Json not configured on : " + JsonPath)
+    return response
+
+
+def get_payment_schedule_req_data(data):
+    try:
+        frequency = ""
+        paymentdate = ""
+        specificday = ""
+        PaymentType = ""
+        amount = ""
+        Paymentmode = ""
+        tempsplit = data.disputeaction.split(" ")
+        frequency = tempsplit[0]
+
+        if frequency.lower() == "onetime":
+            frequency = "2"
+            paymentdate = tempsplit[1]
+        elif frequency.lower() == "monthlyspecificday":
+            frequency = "0"
+            specificday = tempsplit[1]
+        elif frequency.lower() == "paymentduedate":
+            frequency = "1"
+        elif frequency.lower() == "weekly":
+            frequency = "3"
+            specificday = tempsplit[1]
+        elif frequency.lower() == "instantpay":
+            frequency = "4"
+        elif frequency.lower() == "daily":
+            frequency = "4"
+        elif frequency.lower() == "bi-weekly":
+            frequency = "6"
+            specificday = tempsplit[1]
+        elif frequency.lower() == "semi-monthly":
+            frequency = "7"
+
+        if data.amount.lower() == "currentbalance":
+            PaymentType = "2"
+        elif data.amount.lower() == "minimumdue":
+            PaymentType = "0"
+        elif data.amount.lower() == "statementbalance":
+            PaymentType = "1"
+        elif data.amount.lower() == "adjustedstatementbalance":
+            PaymentType = "4"
+        elif data.amount.lower().startswith("bs"):
+            s = data.amount.lower()
+            PaymentType = "3"
+            execution_id = get_global_EXECUTION_ID()
+            amount = fn_GetValueFromDataStore(execution_id, s[2:])
+        else:
+            PaymentType = "3"
+            # print(data.amount)
+            match_amt = re.search(r"\d+", data.amount)
+            # print(match_amt)
+            if match_amt:
+                PaymentType = "3"
+                amount = match_amt.group(0)
+                # print(amount)
+
+        if data.rollup.lower() == "ach":
+            Paymentmode = "0"
+        elif data.rollup.lower() == "apc":
+            Paymentmode = "3"
+        else:
+            Paymentmode = "0"
+
+        return frequency, paymentdate, specificday, PaymentType, amount, Paymentmode
+    except Exception as e:
+        MessageLogger.error(f"Error in get_payment_schedule_req_data() -> {e}")
+        return None, None, None, None, None, None

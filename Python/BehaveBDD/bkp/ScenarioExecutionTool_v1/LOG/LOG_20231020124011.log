@@ -1,0 +1,61 @@
+10/20/2023 12:40:26 — 13536 — INFO — Database Restore with backup
+10/20/2023 12:40:26 — 13536 — INFO — *************************************Database Restoration*****************************************
+10/20/2023 12:40:26 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:40:26 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:40:26 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:40:26 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:40:26 — 13536 — INFO — Restoring PP_JAZZ_CI
+10/20/2023 12:40:26 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:40:43 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:40:43 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:40:43 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:40:43 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:40:43 — 13536 — INFO — Restoring PP_JAZZ_CAuth
+10/20/2023 12:40:43 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:40:57 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:40:57 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:40:57 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:40:57 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:40:57 — 13536 — INFO — Restoring PP_JAZZ_CI_Secondary
+10/20/2023 12:40:57 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:41:10 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:10 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:10 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:41:10 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:41:10 — 13536 — INFO — Restoring PP_JAZZ_CL
+10/20/2023 12:41:10 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:41:24 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:24 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:24 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:41:24 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:41:24 — 13536 — INFO — Restoring PP_JAZZ_CoreCredit
+10/20/2023 12:41:24 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:41:37 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:37 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:37 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:41:37 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:41:37 — 13536 — INFO — Restoring PP_JAZZ_CC
+10/20/2023 12:41:37 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:41:52 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:52 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB
+10/20/2023 12:41:52 — 13536 — INFO — \\vmccrmp01\ReleaseManagement\PLAT\Labels\LB2312_Plat_23.8.6_Jazz\Application\DB\JAZZ
+10/20/2023 12:41:52 — 13536 — INFO — Try to restore with SP_RESTOREDB method
+10/20/2023 12:41:52 — 13536 — INFO — Restoring PP_CoreApp
+10/20/2023 12:41:52 — 13536 — INFO — sqlcmd -S bpldevdb01 -i E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql -o E:\Python\BehaveBDD\ScenarioExecutionTool\SQL\jazzrestoreqry.sql.txt -b -d Users_Admin
+ echo %ERRORLEVEL%
+10/20/2023 12:42:07 — 13536 — INFO — [32mDB Restored with Backup Successfully
+10/20/2023 12:42:07 — 13536 — INFO — 07/24/2020
+10/20/2023 12:42:37 — 13536 — INFO — datacenter.ini
+10/20/2023 12:42:37 — 13536 — INFO — dbbtrace.ini
+10/20/2023 12:42:37 — 13536 — INFO — dbbtrace.ini.bak
+10/20/2023 12:42:37 — 13536 — INFO — DeletedTrace
+10/20/2023 12:42:37 — 13536 — INFO — MoveTrace.bat
+10/20/2023 12:42:37 — 13536 — INFO — PPARASHAR_appCardinal_4790_16008_0000.txt
+10/20/2023 12:42:37 — 13536 — INFO — PPARASHAR_appCardinal_4790_16008_0000.txt
+10/20/2023 12:42:37 — 13536 — INFO — 1697785957.7497394

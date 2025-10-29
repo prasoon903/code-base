@@ -1,0 +1,22 @@
+{
+    "UserID": "SystemCommSvc",
+    "Password": "Test123!",
+    "AccountNumber": "1100001000001698",
+    "AdminNumber": null,
+    "CardNumber": null,
+    "AccountUUID": null,
+    "AdminUUID": null,
+    "AmountTobeSettled": "600",
+    "NumberOfMonths": "6",
+    "EnrollmentFlag": "1",
+    "EnrollmentId": null,
+    "Source": "PLAT",
+    "IPAddress": null,
+    "CallerID": null,
+    "CalledID": null,
+    "RequestTime": null,
+    "SessionID": null,
+    "APIVersion": "2.0",
+    "ApplicationVersion": "",
+    "RequestorID": null
+}

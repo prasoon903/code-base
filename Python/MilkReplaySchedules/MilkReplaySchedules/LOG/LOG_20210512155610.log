@@ -1,0 +1,47 @@
+05/12/2021 15:56:10 — 1776 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+05/12/2021 15:56:10 — 1776 — INFO — START TIME: 2021-05-12 15:56:10.780162
+05/12/2021 15:56:10 — 1776 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+05/12/2021 15:56:10 — 1776 — INFO — INSIDE GetOperatingServer BLOCK
+05/12/2021 15:56:11 — 1776 — INFO — CONNECTION ESTABLISHED
+05/12/2021 15:56:11 — 1776 — INFO — OperatingServer: XEON-S8
+05/12/2021 15:56:11 — 1776 — INFO — EXITING GetOperatingServer BLOCK
+05/12/2021 15:56:11 — 1776 — INFO — INSIDE EmailStructure_Head BLOCK
+05/12/2021 15:56:11 — 1776 — INFO — EXITING EmailStructure_Head BLOCK
+05/12/2021 15:56:11 — 1776 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:green;>Server operating time: 05/12/2021 15:56:10</h4><h3 style=color:red;>No file Present in Input folder</h3><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+05/12/2021 15:56:11 — 1776 — INFO — INSIDE AWS SES PROCESS
+05/12/2021 15:56:11 — 1776 — INFO — INSIDE GETTING THE AWS SECRET KEY
+05/12/2021 15:56:11 — 1776 — INFO — GETTING SESSION
+05/12/2021 15:56:11 — 1776 — INFO — GETTING CLIENT
+05/12/2021 15:56:11 — 1776 — ERROR — Error in sending mail 
+Traceback (most recent call last):
+  File "e:\Python\MilkReplaySchedules\Version3\MilkReplaySchedulesUtility\SendMail.py", line 37, in SendMail
+    AWSSecretKeyStr = get_secret(MessageLogger)
+  File "e:\Python\MilkReplaySchedules\Version3\MilkReplaySchedulesUtility\GetAWSSecretKey.py", line 39, in get_secret
+    get_secret_value_response = client.get_secret_value(
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\client.py", line 357, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\client.py", line 662, in _make_api_call
+    http, parsed_response = self._make_request(
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\client.py", line 682, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\endpoint.py", line 102, in make_request
+    return self._send_request(request_dict, operation_model)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\endpoint.py", line 132, in _send_request
+    request = self.create_request(request_dict, operation_model)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\endpoint.py", line 115, in create_request
+    self._event_emitter.emit(event_name, request=request,
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\hooks.py", line 356, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\hooks.py", line 228, in emit
+    return self._emit(event_name, kwargs)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\hooks.py", line 211, in _emit
+    response = handler(**kwargs)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\signers.py", line 90, in handler
+    return self.sign(operation_name, request)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\signers.py", line 162, in sign
+    auth.add_auth(request)
+  File "C:\users\prasoon.parashar\appdata\local\programs\python\python39\lib\site-packages\botocore\auth.py", line 373, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+05/12/2021 15:56:11 — 1776 — INFO — Finish Time::: 2021-05-12 15:56:11.978178
+05/12/2021 15:56:11 — 1776 — INFO — *************************** NO FILE EXISTS, EXITING ***************************

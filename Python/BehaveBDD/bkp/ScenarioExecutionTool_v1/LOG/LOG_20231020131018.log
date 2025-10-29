@@ -1,0 +1,16 @@
+10/20/2023 13:10:18 — 8292 — INFO — Post across cycle backdated payment of SRB
+10/20/2023 13:10:18 — 8292 — INFO — fn_setexeutionID20
+10/20/2023 13:10:18 — 8292 — INFO — 20
+10/20/2023 13:10:18 — 8292 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 20,'Post across cycle backdated payment of SRB','Create Account With BillingCycle 8','Create Account','InProgress'
+10/20/2023 13:10:18 — 8292 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:10:18 — 8292 — INFO — 7131
+10/20/2023 13:10:18 — 8292 — INFO — JazzStore
+10/20/2023 13:10:18 — 8292 — INFO — 8
+10/20/2023 13:10:18 — 8292 — INFO — 10000
+10/20/2023 13:10:20 — 8292 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 20,'Post across cycle backdated payment of SRB','Create Account With BillingCycle 8','Create Account','Done'
+10/20/2023 13:10:20 — 8292 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 20,'Post across cycle backdated payment of SRB','Create Account With BillingCycle 8','Verify API response is OK','InProgress'
+10/20/2023 13:10:20 — 8292 — INFO — ErrorFound Yes 
+ErrorNumber ERR04049 
+ErrorMessage Error encountered - Please Try Again Later
+10/20/2023 13:10:20 — 8292 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 20,'Post across cycle backdated payment of SRB','Create Account With BillingCycle 8','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:10:20 — 8292 — INFO — AssertionError occurred: None

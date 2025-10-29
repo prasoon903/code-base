@@ -1,0 +1,5 @@
+Report_Date,business_date,batch_timestamp,account_uuid,plan_uuid,schedule_id,institution_id,Product_ID,error,error_message,field_path
+2021-01-13 14:42:10,2021-01-13,14:42:10,e6af1ab5-40eb-45e7-83fc-de66921ca627,cc04cfc0-8376-4924-8fe4-ad88863f9416,1,6981,7133,correction_feed_request_20210113,NA,NA
+2021-01-13 14:42:10,2021-01-13,14:42:10,2ddac707-0ddc-49dc-bbf4-c62d64473724,4a036d67-eae7-44b5-9ffc-adbc7be17b6a,1,6981,7133,correction_feed_request_20210113,NA,NA
+2021-01-13 14:42:10,2021-01-13,14:42:10,2ddac707-0ddc-49dc-bbf4-c62d64473724,d0d137b4-5f6b-4434-b3ed-c2ff20b10d36,1,6981,7133,correction_feed_request_20210113,NA,NA
+2021-01-13 14:42:10,2021-01-13,14:42:10,1c915300-71b4-4198-8d59-bd4f3401858b,60e4f462-ce86-4604-a1cf-6d62c998c84a,1,6981,7133,correction_feed_request_20210113,NA,NA

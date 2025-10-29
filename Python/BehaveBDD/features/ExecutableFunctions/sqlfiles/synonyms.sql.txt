@@ -1,0 +1,7 @@
+Changed database context to 'PP_JAZZ_CI'.
+Changed database context to 'PP_JAZZ_CL'.
+Changed database context to 'PP_JAZZ_CC'.
+Changed database context to 'PP_JAZZ_CoreCredit'.
+Changed database context to 'PP_JAZZ_CAuth'.
+Changed database context to 'PP_JAZZ_CoreApp'.
+Changed database context to 'PP_JAZZ_CI'.

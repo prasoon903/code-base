@@ -1,0 +1,2 @@
+Report_Date,Business_Date,Batch_Timestamp,Account_UUID,Plan_UUID,Schedule_ID,Institution_ID,Product_ID,Error,Error_Message,Field_Path,AccountNumber
+2018-05-02 11:02:39.753,2018-05-02,11:02:39.7530000,b1e1c744-71c0-4c1d-816f-f10889ed68ff,ed17ade5-6ab4-4326-82e6-71f2e89e308e,1,6969,7131,CRS_COMPUTATION_ERROR,scheduleId=3 at monthNumber=1 has MDR output that is negative,schedule at month {1},"1100001000001714"

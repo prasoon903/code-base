@@ -1,0 +1,28 @@
+2021-07-12 13:13:43,933 — INFO — File Processing starts ...
+2021-07-12 13:13:43,934 — INFO — Start Time::: 2021-07-12 13:13:43.932832
+2021-07-12 13:13:43,934 — INFO — E:\Python\PaymentHold\POTB\INPUT\
+2021-07-12 13:13:43,935 — INFO — ********************Policy_Sample_File_V7.csv*****************************
+2021-07-12 13:13:43,935 — INFO — FileID: 2021071213431
+2021-07-12 13:13:44,073 — INFO — Connection established
+2021-07-12 13:13:44,073 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'Policy_Sample_File_V7.csv'
+2021-07-12 13:13:44,328 — INFO — File is in NEW state and going to process
+2021-07-12 13:13:44,329 — DEBUG — Inside ValidateDuplicateFile
+2021-07-12 13:13:44,330 — DEBUG — E:\Python\PaymentHold\POTB\OUT\Policy_Sample_File_V7.csv
+2021-07-12 13:13:44,332 — DEBUG — Inside ImportFileToDB
+2021-07-12 13:13:44,333 — INFO — Connection established
+2021-07-12 13:13:44,336 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\Policy_Sample_File_V7.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 13:13:44,337 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\Policy_Sample_File_V7.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-07-12 13:13:44,477 — INFO — Record Insert Time:::2021-07-12 13:13:44.477440
+2021-07-12 13:13:44,477 — DEBUG — Error ===> False
+2021-07-12 13:13:44,477 — DEBUG — Inside DataValidation
+2021-07-12 13:13:44,478 — INFO — Connection established
+2021-07-12 13:13:44,478 — DEBUG — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Internal '2021071213431', 'Policy_Sample_File_V7.csv' ,'6969', 'G2', 'ACCOUNTNUMBER'
+2021-07-12 13:13:44,575 — INFO — ErrorFlag: 4::No record to update
+2021-07-12 13:13:44,576 — INFO — No new record to update
+2021-07-12 13:13:44,579 — DEBUG — ABORT: False
+ErrorFlag: 4
+ErrorMessage: No new record to update
+2021-07-12 13:13:44,582 — DEBUG — Inside SendMail
+2021-07-12 13:13:46,342 — INFO — SENDING MAIL ...
+2021-07-12 13:13:47,930 — INFO — Finish Time::: 2021-07-12 13:13:47.930445
+2021-07-12 13:13:47,931 — INFO — ********************All files processed... Exiting*****************************

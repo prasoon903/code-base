@@ -1,0 +1,31 @@
+2025-05-09 11:32:38,976 — INFO — File Processing starts ...
+2025-05-09 11:32:38,976 — INFO — START TIME::: 2025-05-09 11:32:38.974497
+2025-05-09 11:32:38,976 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-09 11:32:38,976 — INFO — ********************CBR Impact Assessment Refresh.xlsx*****************************
+2025-05-09 11:32:38,977 — INFO — LoopCount: 1
+2025-05-09 11:32:42,176 — INFO — ['Sheet1', 'Sheet3']
+2025-05-09 11:32:42,176 — INFO — Processing File: CBR Impact Assessment Refresh.xlsx
+2025-05-09 11:32:42,177 — INFO — Processing sheet: Sheet1
+2025-05-09 11:32:42,177 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-320236_Sheet1.txt
+2025-05-09 11:32:42,177 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Impact Assessment Refresh.xlsx
+2025-05-09 11:32:45,095 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-09 11:32:45,180 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 334, in <module>
+    ReadingTheFileDF(FileName, S1.SheetName)
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 164, in ReadingTheFileDF
+    DF1.insert(LoopCount, key, "'" + (pd.to_datetime(DF[key])).dt.date.astype(str) + "'", True)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\tools\datetimes.py", line 1067, in to_datetime
+    values = convert_listlike(arg._values, format)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\tools\datetimes.py", line 435, in _convert_listlike_datetimes
+    result, tz_parsed = objects_to_datetime64(
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\arrays\datetimes.py", line 2398, in objects_to_datetime64
+    result, tz_parsed = tslib.array_to_datetime(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "tslib.pyx", line 414, in pandas._libs.tslib.array_to_datetime
+  File "tslib.pyx", line 611, in pandas._libs.tslib.array_to_datetime
+ValueError: Cannot mix tz-aware with tz-naive values
+2025-05-09 11:32:45,196 — INFO — *********************** FINISHED ***********************

@@ -1,0 +1,17 @@
+2025-05-19 14:16:59,091 — INFO — File Processing starts ...
+2025-05-19 14:16:59,091 — INFO — START TIME::: 2025-05-19 14:16:59.091495
+2025-05-19 14:16:59,091 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-19 14:16:59,091 — INFO — ********************CBRFile.xlsx*****************************
+2025-05-19 14:16:59,091 — INFO — LoopCount: 1
+2025-05-19 14:16:59,223 — INFO — ['COOKIE-322299', 'COOKIE-321648']
+2025-05-19 14:16:59,223 — INFO — Processing File: CBRFile.xlsx
+2025-05-19 14:16:59,223 — INFO — Processing sheet: COOKIE-322299
+2025-05-19 14:16:59,223 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-322299_COOKIE-322299.txt
+2025-05-19 14:16:59,223 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBRFile.xlsx
+2025-05-19 14:16:59,471 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-19 14:16:59,555 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-05-19 14:16:59,608 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-05-19 14:16:59,608 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-05-19 14:17:05,012 — INFO — proc: psutil.Process(pid=9288, name='python.exe', status='running', started='14:16:52')
+2025-05-19 14:17:05,012 — INFO — handle.path: E:\Python\FileConverter_Miscelleneous\INPUT\CBRFile.xlsx
+2025-05-19 14:17:05,012 — INFO — file_path: E:\Python\FileConverter_Miscelleneous\INPUT\CBRFile.xlsx

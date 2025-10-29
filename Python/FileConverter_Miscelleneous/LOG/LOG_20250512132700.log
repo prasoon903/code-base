@@ -1,0 +1,15 @@
+2025-05-12 13:27:00,287 — INFO — File Processing starts ...
+2025-05-12 13:27:00,287 — INFO — START TIME::: 2025-05-12 13:27:00.286085
+2025-05-12 13:27:00,287 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-12 13:27:00,288 — INFO — ********************Redress Account Credit Execution.xlsx*****************************
+2025-05-12 13:27:00,288 — INFO — LoopCount: 1
+2025-05-12 13:27:02,301 — INFO — ['Sheet1']
+2025-05-12 13:27:02,301 — INFO — Processing File: Redress Account Credit Execution.xlsx
+2025-05-12 13:27:02,302 — INFO — Processing sheet: Sheet1
+2025-05-12 13:27:02,303 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-311077_Sheet1.txt
+2025-05-12 13:27:02,304 — INFO — INSIDE ReadingTheFileDF WITH FILE: Redress Account Credit Execution.xlsx
+2025-05-12 13:27:04,375 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-12 13:27:04,472 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-05-12 13:27:04,524 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-05-12 13:27:04,525 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-05-12 13:27:19,744 — INFO — *********************** FINISHED ***********************

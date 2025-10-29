@@ -1,0 +1,47 @@
+08/05/2021 12:19:31 — 15788 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+08/05/2021 12:19:31 — 15788 — INFO — START TIME: 2021-08-05 12:19:31.432094
+08/05/2021 12:19:31 — 15788 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedules\INPUT\
+08/05/2021 12:19:31 — 15788 — INFO — INSIDE GetOperatingServer BLOCK
+08/05/2021 12:19:31 — 15788 — INFO — CONNECTION ESTABLISHED
+08/05/2021 12:19:31 — 15788 — INFO — OperatingServer: XEON-S8
+08/05/2021 12:19:31 — 15788 — INFO — EXITING GetOperatingServer BLOCK
+08/05/2021 12:19:31 — 15788 — INFO — INSIDE EmailStructure_Head BLOCK
+08/05/2021 12:19:31 — 15788 — INFO — EXITING EmailStructure_Head BLOCK
+08/05/2021 12:19:31 — 15788 — INFO — FILENAME: amortization_schedule_error_feed_NewStructure.csv
+08/05/2021 12:19:31 — 15788 — INFO — FileID: 202108051219311
+08/05/2021 12:19:31 — 15788 — INFO — INSIDE ValidateDuplicateFile BLOCK
+08/05/2021 12:19:31 — 15788 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedules\OUT\amortization_schedule_error_feed_NewStructure.csv
+08/05/2021 12:19:31 — 15788 — INFO — EXITING ValidateDuplicateFile BLOCK
+08/05/2021 12:19:31 — 15788 — INFO — INSIDE ImportFileToDB BLOCK
+08/05/2021 12:19:31 — 15788 — INFO — CONNECTION ESTABLISHED
+08/05/2021 12:19:31 — 15788 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+08/05/2021 12:19:31 — 15788 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedules\INPUT\amortization_schedule_error_feed_NewStructure.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+08/05/2021 12:19:31 — 15788 — INFO — BCP START TIME::: 2021-08-05 12:19:31.860859
+08/05/2021 12:19:32 — 15788 — INFO — Reading BCP Output file
+08/05/2021 12:19:32 — 15788 — INFO — Starting copy...
+08/05/2021 12:19:32 — 15788 — INFO — 10 rows copied.
+08/05/2021 12:19:32 — 15788 — INFO — Network packet size (bytes): 4096
+08/05/2021 12:19:32 — 15788 — INFO — Clock Time (ms.) Total     : 281    Average : (35.59 rows per sec.)
+08/05/2021 12:19:32 — 15788 — INFO — BCP EXECUTION SUCCESSFULL
+08/05/2021 12:19:32 — 15788 — INFO — BCP FINISH TIME::: 2021-08-05 12:19:32.720754
+08/05/2021 12:19:32 — 15788 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+08/05/2021 12:19:32 — 15788 — INFO — INSIDE DataValidation BLOCK
+08/05/2021 12:19:32 — 15788 — INFO — CONNECTION ESTABLISHED
+08/05/2021 12:19:32 — 15788 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'amortization_schedule_error_feed_NewStructure.csv', '202108051219311', 10000, 1
+08/05/2021 12:19:34 — 15788 — INFO — INSIDE FileDetails BLOCK
+08/05/2021 12:19:34 — 15788 — INFO — EXITING FileDetails BLOCK
+08/05/2021 12:19:34 — 15788 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+08/05/2021 12:19:34 — 15788 — INFO — No new record to update
+08/05/2021 12:19:34 — 15788 — INFO — EXITING DataValidation BLOCK
+08/05/2021 12:19:34 — 15788 — INFO — INSIDE GenerateExceptionFile BLOCK
+08/05/2021 12:19:34 — 15788 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedulesTesting\MilkReplaySchedules\EXCEPTION\EXCEPTION_amortization_schedule_error_feed_NewStructure_PODID_POD1.csv
+08/05/2021 12:19:34 — 15788 — INFO — CONNECTION ESTABLISHED
+08/05/2021 12:19:34 — 15788 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'amortization_schedule_error_feed_NewStructure.csv' AND FileID = '202108051219311' AND JobStatus = 10
+08/05/2021 12:19:34 — 15788 — INFO — EXITING GenerateExceptionFile BLOCK
+08/05/2021 12:19:34 — 15788 — INFO — INSIDE EmailBody_Success BLOCK
+08/05/2021 12:19:34 — 15788 — INFO — EXITING EmailBody_Error BLOCK
+08/05/2021 12:19:34 — 15788 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 08/05/2021 12:19:31</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_NewStructure.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>10</td><td style=color:green;>0</td><td style=color:red;>10</td><td style=color:green;>No new record to update</td></tr></table><p style=color:blue;><b>File Name:</b> amortization_schedule_error_feed_NewStructure.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>5</b></td></tr>                                     <tr><td>2</td><td>INVALID AccountUUID or ProductID or InstitutionID</td><td><b>5</b></td></tr></table><p style=color:Crimson;><b>Exception File Name:</b> EXCEPTION_amortization_schedule_error_feed_NewStructure_PODID_POD1.csv</p><p style=color:DarkBlue;><b>Total records in exception file:</b> 5</p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+08/05/2021 12:19:34 — 15788 — DEBUG — Inside SendMail
+08/05/2021 12:19:36 — 15788 — INFO — SENDING MAIL ...
+08/05/2021 12:19:39 — 15788 — INFO — Finish Time::: 2021-08-05 12:19:39.113417
+08/05/2021 12:19:39 — 15788 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

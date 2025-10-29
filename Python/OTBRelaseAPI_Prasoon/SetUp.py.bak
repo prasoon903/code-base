@@ -1,0 +1,21 @@
+class SetUp:
+    CI_DB = "STHAKUR12016_ci"
+    CL_DB = "STHAKUR12016_cl"
+    CAuth_DB = "STHAKUR12016_coreauth"
+    SERVERNAME = "XEON-S9"
+    RetailInputFile = "E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT"
+    RetailErrorFile = "E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR"
+    RetailOutFile = "E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT"
+    RetailLogFile = "E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG"
+    RetailInsitutionID = 6969
+    MailFrom = "prasoon.parashar@corecard.com"
+    MailTo = "prasoon.parashar@corecard.com"
+    SMTP_SERVER = "corecard-com.mail.protection.outlook.com"
+    SMTPPORT = 25
+	
+    OTBReleaseFileIN='D:\Final_dbbweb\OTBRelaseAPI\Incoming_file'
+    OTBReleaseFileError='D:\Final_dbbweb\OTBRelaseAPI\Error'
+    OTBReleaseFileOUT='D:\Final_dbbweb\OTBRelaseAPI\Processed'
+    OTBReleaseFileLog='D:\Final_dbbweb\OTBRelaseAPI\Log'
+    
+    SQLLiteOTBDBPath='D:\Final_dbbweb\OTBRelaseAPI\SQLite_DB'

@@ -1,0 +1,7 @@
+2020-04-20 21:12:47,326 — INFO — File Processing starts ...
+2020-04-20 21:12:47,327 — INFO — Start Time::: 2020-04-20 21:12:47.326933
+2020-04-20 21:12:47,327 — INFO — D:\BankCard\POTB\INPUT\
+2020-04-20 21:12:47,328 — INFO — ********************IntraDayAccountOTBRule_20200420.csv*****************************
+2020-04-20 21:12:47,329 — INFO — FileID: 2020042012471
+2020-04-20 21:12:47,534 — INFO — Connection established
+2020-04-20 21:12:47,550 — INFO — File is in NEW state and going to process

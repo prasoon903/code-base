@@ -1,0 +1,15 @@
+{
+    "Password": "Test123!",
+    "UserID": "SystemCommSvc",
+    "APIVersion": "2.0",
+    "AccountNumber": "{{AccountNumber}}",
+    "BankAccountNumber": "123456670",
+    "BankAccountNumberConfirm": "123456670",
+    "BankName": "FEDERAL RESERVE BANK",
+    "BankRoute": "011000015",
+    "CreditBalanceRefundOption": "1",
+    "MethodType": "1",
+    "RequestType": "0",
+    "Source": "PLAT",
+    "FundingSourceUUID" : "{{$guid}}"
+}

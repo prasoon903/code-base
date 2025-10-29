@@ -1,0 +1,28 @@
+2021-09-16 16:27:34,914 — INFO — File Processing starts ...
+2021-09-16 16:27:34,914 — INFO — Start Time::: 2021-09-16 16:27:34.890832
+2021-09-16 16:27:34,915 — INFO — E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\INPUT\
+2021-09-16 16:27:34,915 — INFO — ********************Sample_06.csv*****************************
+2021-09-16 16:27:34,915 — INFO — FileID: 2021091627341
+2021-09-16 16:27:35,613 — INFO — Connection established
+2021-09-16 16:27:35,614 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'Sample_06.csv'
+2021-09-16 16:27:35,930 — INFO — File is in NEW state and going to process
+2021-09-16 16:27:35,930 — DEBUG — Inside ValidateDuplicateFile
+2021-09-16 16:27:35,930 — DEBUG — E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\OUT\Sample_06.csv
+2021-09-16 16:27:35,930 — DEBUG — Inside ImportFileToDB
+2021-09-16 16:27:35,931 — INFO — Connection established
+2021-09-16 16:27:36,026 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_Jazz IN E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\INPUT\Sample_06.csv -b 5000 -h TABLOCK -f E:\Python\Jazz_PaymentHoldSetup\IntraDayAccountOTBRule_External_JAZZ.xml -e E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Error1_in.log -o E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-09-16 16:27:36,026 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_Jazz IN E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\INPUT\Sample_06.csv -b 5000 -h TABLOCK -f E:\Python\Jazz_PaymentHoldSetup\IntraDayAccountOTBRule_External_JAZZ.xml -e E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Error1_in.log -o E:\Python\Jazz_PaymentHoldSetup\Jazz_POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-09-16 16:27:36,422 — INFO — Record Insert Time:::2021-09-16 16:27:36.422836
+2021-09-16 16:27:36,422 — DEBUG — Error ===> False
+2021-09-16 16:27:36,423 — DEBUG — Inside DataValidation
+2021-09-16 16:27:36,423 — INFO — Connection established
+2021-09-16 16:27:36,424 — DEBUG — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Jazz '2021091627341', 'Sample_06.csv'
+2021-09-16 16:27:37,670 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Jazz executed successfully
+2021-09-16 16:27:37,671 — INFO — No new record to update
+2021-09-16 16:27:37,675 — DEBUG — ABORT: False
+ErrorFlag: 0
+ErrorMessage: No new record to update
+2021-09-16 16:27:37,677 — DEBUG — Inside SendMail
+2021-09-16 16:27:39,701 — INFO — SENDING MAIL ...
+2021-09-16 16:27:42,724 — INFO — Finish Time::: 2021-09-16 16:27:42.724937
+2021-09-16 16:27:42,725 — INFO — ********************All files processed... Exiting*****************************

@@ -1,0 +1,26 @@
+10/20/2023 13:05:14 — 16572 — INFO — Scenario 16
+10/20/2023 13:05:14 — 16572 — INFO — Scenario 16
+10/20/2023 13:05:14 — 16572 — INFO — Rohitrerun
+10/20/2023 13:05:14 — 16572 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 16' ORDER BY id DESC
+10/20/2023 13:05:14 — 16572 — INFO — EXECUTION_ID for rerun6
+10/20/2023 13:05:14 — 16572 — INFO — 6
+10/20/2023 13:05:14 — 16572 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Post Purchase Transaction','Post Transaction','InProgress'
+10/20/2023 13:05:14 — 16572 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 13:05:14 — 16572 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:05:14 — 16572 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:05:14 — 16572 — INFO — MyAccountNumber
+10/20/2023 13:05:14 — 16572 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:05:14 — 16572 — INFO — SET NOCOUNT ON EXEC USP_PDF_GetValueFromDataStore 6,'MyAccountNumber'
+10/20/2023 13:05:14 — 16572 — INFO — 1150001100411424
+10/20/2023 13:05:14 — 16572 — INFO — 1150001100411424
+10/20/2023 13:05:14 — 16572 — INFO — TranType
+10/20/2023 13:05:14 — 16572 — INFO — TransactionAmount
+10/20/2023 13:05:14 — 16572 — INFO — {'AccountNumber': '1150001100411424', 'TranType': '4005', 'TransactionAmount': '500'}
+10/20/2023 13:05:17 — 16572 — INFO — {'AccountNumber': '1150001100411424', 'TranType': '4005', 'TransactionAmount': '500', 'UserID': 'JazzCall'}
+10/20/2023 13:05:17 — 16572 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Post Purchase Transaction','Post Transaction','Done'
+10/20/2023 13:05:17 — 16572 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Post Purchase Transaction','Verify API response is OK','InProgress'
+10/20/2023 13:05:17 — 16572 — INFO — ErrorFound Yes 
+ErrorNumber ERR04049 
+ErrorMessage Error encountered - Please Try Again Later
+10/20/2023 13:05:17 — 16572 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Post Purchase Transaction','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:05:17 — 16572 — INFO — AssertionError occurred: None

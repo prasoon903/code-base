@@ -1,0 +1,52 @@
+{
+    "APIDomainUrl" : "https://pparashar.corecard.in/DBBWEB/CoreCardServices/CoreCardServices.svc/" ,
+    "BasePath" : "E:\\Python\\BehaveBDD\\ScenarioExecutionTool",
+	"APIDomainUrlAS" : "https://pparashar.corecard.in/CoreCardServices/CoreCardServices.svc/" ,
+    "CoreIssueURL" : "https://pparashar.corecard.in/DBBWEB/appScale4790.aspx",
+    "PythonPath": "E:\\Python\\BehaveBDD\\Python310\\",
+    "DBServer" : "BPLDEVDB01",
+    "ODBCDriver" : "{SQL Server}",
+    "PlatformCodeloc" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\Platform",
+    "LabelName" : "LB2530_Plat_24.4.1_PLAT",
+    "restoreDBWithBackupScript" : "bigdb.sql",
+    "BackupScriptLocation" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\Backup",
+    "BackupName" : "LB2530_Plat_24.4.1_PLAT_",
+    "DBName" : "PLAT",
+    "MultiThread" : "0",
+    "MaxThreads": "8",
+    "LabelPath" : "\\\\vmccrmp01\\ReleaseManagement\\PLAT\\Labels",
+    "LocalDSLPath" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\DSLs",
+    "BackupFolderLocation":"\\\\VMRITIKY\\python\\BehaveProject\\BehaveBDD\\features\\DbBackups",
+    "CIBatchScripts" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\BatchScripts\\CoreIssue",
+    "CoreAuthBatchScripts" : "D:\\ApplicationSetup\\POD1\\DBBSetup\\BatchScripts\\CoreAuth",
+    "CITraceFileLocation" : "D:\\ApplicationSetup\\POD1\\TraceFiles\\CoreIssue",
+    "CoreAuthTraceFileLocation" : "D:\\ApplicationSetup\\POD1\\TraceFiles\\CoreAuth",
+    "JsonResponse" : "JsonResponse",
+    "skipComparisionTags" : ["acctid", "plansegcreatedate", "parent02aid", "accountnumber", "PlanUUID", "UniversalUniqueID"],
+    "CIBatchfileName" :{
+        "CIAppServerName" :"__CIAppserver.bat",
+        "TnpWfName" : "_wfTnpNad.bat",
+ 		"RetailAuthWfName" : "_WF_RetailAuthJobs.bat",
+        "APJOB": "APJOB.bat",
+        "APIJOB": "WFAPIJob.bat",
+        "CIFlushTrace": "Flush_enhanced.bat",
+		"ACHProcessStep_1_DayChange": "ACHProcessStep_1_DayChange_AllInstitute.bat"
+    },
+    "CoreAuthBatchfileName" :{
+        "CoreAuthAppServerName" :"____CoreAuthAppserver.bat"
+    },
+
+    "YourDBNames" : {
+        "COREISSUE":"PP_CI" ,
+        "COREAUTH" :"PP_CAuth"  ,
+        "CISECONDARY":"PP_CI_Secondary" ,
+        "CORELIBRARY" :"PP_CL",
+        "CORECREDIT" : "PP_CoreCredit",
+        "CORECOLLECT": "PP_CC",
+        "COREAPP": "PP_CoreApp"
+    },
+        "MDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\MDF",
+        "LDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\LDF",
+        "Posting2.0": "D:\\SVN\\NoBlobTasks\\Posting2.0\\23.8.6\\SQL",
+        "PSFileName": "DSLandDBCreation.ps1"
+    }

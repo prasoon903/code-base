@@ -1,0 +1,1546 @@
+import time
+import subprocess
+from behave import *
+
+from Scripts.DataBaseConnections import *
+from Scripts.DatabaseORM import *
+from Scripts.ExecutableFunctions import *
+from Scripts.DataManager import *
+from Scripts.Config import *
+from Scripts.TviewTimeOp import *
+
+
+from Scripts.MiniDice import DBRestoreWithBackUp, DBRestore
+from Scripts.GetLogger import MessageLogger
+from Scripts.SetLoggerGlobals import get_global_EXECUTION_ID
+
+
+Cursor = DBCon.cursor()
+Cursor_CoreAuth = DBCon_CoreAuth.cursor()
+
+if get_global_EXECUTION_ID() is not None:
+    EXECUTION_ID = get_global_EXECUTION_ID()
+
+# loggerName = "TraceFile"
+# log_folder = os.path.join(c.BasePath, "LOG") + "\\"
+# LOG_FILE = log_folder + "LOG_" + loggerName + ".log"
+# # LOG_FILE = log_folder + "LOG_Test3.log"
+# MessageLogger = get_logger(LOG_FILE)
+
+
+@given("Create Account")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Create Account",
+            "InProgress",
+        )
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.table)
+        # payLoad['ClientId'] = get_random_uuid_from_file()
+        payLoad['ClientId'] = generate_random_clientid()
+        context.clientid =payLoad['ClientId']
+        context.customersave = "Owner"
+        response = fn_HitAPI("AccountCreation", payLoad)
+        context.response = response
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Create Account",
+            "Done",
+        )
+
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        context.jsonData = context.response.json()
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound {ErrorFound} \nErrorNumber {ErrorNumber} \nErrorMessage {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Create Account",
+            "Fail ",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+        # raise Exception('An error occurred during this step')
+
+
+@when("Verify API response is OK")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        context.jsonData = context.response.json()
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound: {ErrorFound} \nErrorNumber: {ErrorNumber} \nErrorMessage: {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Exception Occurs",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@then("Verify Account Number in Database")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Account Number in Database",
+            "InProgress",
+        )
+        if context.response.ok:
+            context.jsonData = context.response.json()
+            cursor.execute(
+                f"SELECT TOP 1 1 FROM Bsegment_Primary WITH(NOLOCK) WHERE AccountNumber={context.jsonData['AccountNumber']}"
+            )
+            AccountRes = cursor.fetchall()
+            assert len(AccountRes) >= 1, fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Verify Account Number in Database",
+                "Fail AccountNumber Not found in DB",
+            )
+            fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Verify Account Number in Database",
+                "Done",
+            )
+            MessageLogger.info("Checking account creation jobs")
+            value = fn_GetDataCITable('BSegment', ["acctId"], 'AccountNumber', context.jsonData["AccountNumber"])
+            AccountID = value[0]["acctId"]
+            fn_GetPendingTxnOfAccount(AccountID)
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Account Number in Database",
+            "Fail ",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@given('Use "{APIName}" "{AccountNumber}"')
+def step_impl(context, APIName, AccountNumber):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    MessageLogger.info(APIName)
+    jsonResponse = fn_GetAPIResponseTags(APIName)
+    jsonResponse = fn_OverrideTagName(
+        jsonResponse, "MyAccountNumber", "MyAccountNumber"
+    )
+    table_var = fn_TablefromJSON(jsonResponse)
+    # MessageLogger.info(jsonResponse)
+    context.custom_table = table_var
+    assert len(context.custom_table[0]) == 2, fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        "Save tag into variable",
+        "Fail More than two column",
+    )
+    try:
+        sAccountNumber = AccountNumber
+        MessageLogger.info("going to save accountnumber " + str(sAccountNumber))
+        # context.jsonData = json.dumps(data)
+        for row in context.custom_table:
+            fn_InsertFeatureStepDataStore(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                row[1],
+                str(sAccountNumber),
+            )
+            fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Save tag into variable",
+                "Done",
+            )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Save tag into variable",
+            "Fail ",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@then("Save tag into variable")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    assert len(context.table[0]) == 2, fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        "Save tag into variable",
+        "Fail More than two column",
+    )
+    try:
+        for row in context.table:
+            fn_InsertFeatureStepDataStore(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                row[1],
+                str(context.jsonData[row[0]]),
+            )
+            fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Save tag into variable",
+                "Done",
+            )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Save tag into variable",
+            "Fail ",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@then('Save tag into variable "{APIName}"')
+def step_impl(context, APIName):
+    try:
+        table_other = None
+        keepOtherData = False
+        MessageLogger.debug("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        MessageLogger.debug(APIName)
+        jsonResponse = fn_GetAPIResponseTags(APIName)
+        jsonResponse = fn_OverrideTagName(jsonResponse, "MyAccountNumber", "MyAccountNumber")
+        table_var = fn_TablefromJSON(jsonResponse)
+        if hasattr(context, 'customersave') and hasattr(context, 'clientid'):
+            table_other = {context.customersave: context.clientid}
+            keepOtherData = True
+            
+        # MessageLogger.info(jsonResponse)
+        context.custom_table = table_var
+        
+        assert len(context.custom_table[0]) == 2, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Save tag into variable",
+            "Fail More than two column",
+        )
+        for row in context.custom_table:
+            fn_InsertFeatureStepDataStore(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                row[1],
+                str(context.jsonData[row[0]]),
+            )
+            fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Save tag into variable",
+                "Done",
+            )
+    
+        if keepOtherData:
+            context.payment_table = list(table_other.items())
+            MessageLogger.info(f"Saving other data response of  {context.payment_table}")
+            MessageLogger.info(f"Saving other data response of  {len(context.payment_table[0])}")
+            assert len(context.payment_table[0]) == 2, fn_InsertFeatureStepExecutionInfo(EXECUTION_ID,
+                                                                                        context.feature.name,
+                                                                                        context.scenario.name,
+                                                                                        "Save tag into variable",
+                                                                                        'Fail More than two column')
+            for key, value in context.payment_table:
+                fn_InsertFeatureStepDataStore(EXECUTION_ID, context.feature.name, context.scenario.name, key, value)
+                fn_InsertFeatureStepExecutionInfo(EXECUTION_ID, context.feature.name, context.scenario.name, "Save tag into variable", 'Done')
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}", exc_info=True)
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Save tag into variable",
+            "Fail ",
+        )
+        MessageLogger.error(str(e), exc_info=True)
+        raise Exception("An error occurred during this step")
+
+@given("Create Secondary Card")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Create Secondary Card",
+            "InProgress",
+        )
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.table)
+        response = fn_HitAPI("SecondaryCardCreation", payLoad)
+        context.response = response
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Create Secondary Card",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Create Secondary Card",
+            "Fail ",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@given("Post Transaction")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "InProgress",
+        )
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.table)
+        # MessageLogger.info(payLoad)
+        response = fn_HitAPI("PostSingleTransaction", payLoad)
+        MessageLogger.info(payLoad)
+        context.response = response
+        JsonData = context.response.json()
+        context.TransactionID = JsonData["TransactionID"]
+        context.AccountNumber = payLoad["AccountNumber"]
+        context.TransactionAmount = payLoad["TransactionAmount"]
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Fail - ",
+        )
+
+
+@then("Verify Transaction in DB")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Transaction in DB",
+            "InProgress",
+        )
+        sql = f""" SELECT * FROM CCard_Primary c WITH(NOLOCK) 
+                 WHERE AccountNumber = '{context.AccountNumber}' AND
+                    Tranid = {context.TransactionID} 
+                """
+        MessageLogger.info(sql)
+        cursor.execute(sql)
+        res = cursor.fetchall()
+        res2 = {}
+        MessageLogger.info(len(res))
+        bflag = False
+        loopcount = 0
+        while bflag == False:
+            if len(res) > 0:
+                sql = f""" SELECT * FROM CCard_Primary c WITH(NOLOCK) join trans_in_acct tia (nolock)
+                 on c.tranid = tia.tran_id_index 
+                 WHERE AccountNumber = {context.AccountNumber} AND
+                    Tranid = {context.TransactionID} AND tia.ATID=51
+                """
+                MessageLogger.info(sql)
+                loopcount = loopcount + 1
+                cursor.execute(sql)
+                res1 = cursor.fetchall()
+                MessageLogger.info(len(res1))
+                if len(res1) > 0:
+                    bflag = True
+                    MessageLogger.info("Transaction has been posted successfully", context.TransactionID)
+                else:
+                    bflag = False
+                    MessageLogger.warning("Transaction posting is InProgress", context.TransactionID)
+                    time.sleep(5)
+                    if loopcount > 10:
+                        sql = f""" SELECT * FROM Errortnp e WITH(NOLOCK) 
+                                        WHERE  Tranid = {context.TransactionID} 
+                                       """
+                        MessageLogger.info(sql)
+                        cursor.execute(sql)
+                        res2 = cursor.fetchall()
+                        MessageLogger.info(len(res2))
+                        if len(res2) > 0:
+                            MessageLogger.error(
+                                "Transaction posting is in ErrorTNP",
+                                context.TransactionID,
+                            )
+                            bflag = True
+
+        assert len(res2) <= 1, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Transaction in DB",
+            "Fail - Transaction is moved to errortnp",
+        )
+        assert len(res) >= 1, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Transaction in DB",
+            "Fail - Transaction is not present in CCard_Primary",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Transaction in DB",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify Transaction in DB",
+            "Fail ",
+        )
+        MessageLogger.info(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@then('Age TestAccount to "{Date}" Date')
+def step_impl(context, Date):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Age TestAccount",
+            "InProgress",
+        )
+        DateToAge = Date.split("-")
+        AgingDate = DateToAge[0] + DateToAge[1] + DateToAge[2]
+        # Month, Date, Year = DateToAge[1], DateToAge[2], DateToAge[0]
+
+        context.apiname = "AgingAPI"
+        data = {
+            "TagName": ["AccountNumber", "AgingDate"],
+            "VariableName": ["@MyAccountNumber", AgingDate]
+        }
+        context.PaymentTable = fn_TablefromJSON(data)
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.PaymentTable)
+
+        MessageLogger.info("Payload here", payLoad)
+        MessageLogger.info("context.apiname here " + context.apiname)
+        response = fn_HitAPI(context.apiname, payLoad)
+        MessageLogger.info(response.json())
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Age TestAccount",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Aging of account",
+            "Fail ",
+        )
+
+
+
+
+@then('Age system "{nDays}" days')
+def step_impl(context, nDays):
+    CurrentTnpDate = fn_GetAgingDate(nDays)
+    tnpdate = CurrentTnpDate.split("-")
+    Month, Date, Year = tnpdate[1], tnpdate[2], tnpdate[0]
+
+    fn_SetDateInTview(Month, Date, Year)
+
+    while not (fn_checkAgingDate(CurrentTnpDate)):
+        MessageLogger.warning("Aging is InProgress")
+        time.sleep(30)
+
+
+@then('Age system to "{Date}" Date')
+def step_impl(context, Date):
+    Datetocheck = Date
+    CurrentTnpDate = fn_GetCurrentCommonTNPDate()
+    tnpdate = Date.split("-")
+    Month, Date, Year = tnpdate[1], tnpdate[2], tnpdate[0]
+    fn_SetDateInTview(Month, Date, Year)
+    while not (fn_checkAgingDate(Datetocheck)):
+        MessageLogger.warning("Aging is InProgress")
+        time.sleep(15)
+
+
+
+
+@then('Set system to "{Date}" Date')
+def step_impl(context, Date):
+    Datetocheck = Date
+    # CurrentTnpDate =fn_GetCurrentCommonTNPDate()
+    tnpdate = Date.split("-")
+    Month, Date, Year = tnpdate[1], tnpdate[2], tnpdate[0]
+    fn_SetDateInTview(Month, Date, Year)
+
+
+@then('Wait for {seconds} seconds')
+def step_impl(context, seconds):
+    MessageLogger.warning(f"Waiting for {seconds} seconds")
+    time.sleep(int(seconds))
+
+
+# @then('Check Payment_"{cnt}" is posted')
+# def step_impl(context, cnt):
+#     EXECUTION_ID = get_global_EXECUTION_ID()
+#     variableToCheck = f"Payment_"+{cnt}+"_TranID"
+#     if not re.match(r'^\d+$', ):
+#         value = fn_GetValueFromDataStore(EXECUTION_ID, variableToCheck)
+#         amount = value
+#     TxnCount =fn_GetTxnDetailsFromCommonTNP()
+#     tnpdate = Date.split('-')
+#     Month , Date , Year = tnpdate[1], tnpdate[2], tnpdate[0]
+#     fn_SetDateInTview(Month , Date , Year)
+#     while not(fn_checkAgingDate(Datetocheck)):
+#         MessageLogger.info("Aging is InProgress")
+#         time.sleep(15)
+
+
+@given("Post Manual Auth")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Manual Auth",
+            "InProgress",
+        )
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.table)
+        # MessageLogger.info(payLoad)
+        response = fn_HitAPI("ManualAuth", payLoad)
+        context.response = response
+        context.AccountNumber = payLoad["AccountNumber"]
+        if payLoad.get("TransactionAmount", None) is None:
+            # MessageLogger.info("RItik===========================")
+            # MessageLogger.info(fn_GetKeyValueFromJsonFile('ManualAuth','TransactionAmount'))
+            context.TransactionAmount = fn_GetKeyValueFromJsonFile(
+                "ManualAuth", "TransactionAmount"
+            )
+        else:
+            context.TransactionAmount = payLoad["TransactionAmount"]
+        time.sleep(2)
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Manual Auth",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Manual Auth",
+            "Fail - ",
+        )
+        MessageLogger.info(e)
+
+
+@when("Post ReatilAuth")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post ReatilAuth",
+            "InProgress",
+        )
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.table)
+
+        response = fn_HitAPI("RetailManualAuth", payLoad)
+        context.response = response
+        context.AccountNumber = payLoad["AccountNumber"]
+        """ if payLoad.get('TransactionAmount' , None) is None:
+            #MessageLogger.info("RItik===========================")
+            MessageLogger.info(fn_GetKeyValueFromJsonFile('RetailManualAuth','TransactionAmount'))
+            context.TransactionAmount = fn_GetKeyValueFromJsonFile('ManualAuth','TransactionAmount')
+        else:
+            context.TransactionAmount = payLoad['TransactionAmount']  """
+        time.sleep(2)
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post ReatilAuth",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post ReatilAuth",
+            "Fail - ",
+        )
+        MessageLogger.error(e)
+        raise Exception("An error occurred during this step")
+
+
+@then("Verify API response is OK")
+def step_impl(context):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound {ErrorFound} \nErrorNumber {ErrorNumber} \nErrorMessage {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Exception Occurs",
+        )
+        MessageLogger.error(str(e))
+        raise Exception("An error occurred during this step")
+
+
+@then('Pause for "{WaitforDelay}" Second')
+def step_impl(context, WaitforDelay):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Wait for {WaitforDelay} Second",
+        "InProgress",
+    )
+    time.sleep(int(WaitforDelay))
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Wait for {WaitforDelay} Second",
+        "Done",
+    )
+
+
+@given("Make bin file entry in txt file")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Make bin file entry in txt file",
+        "InProgress",
+    )
+    FI = open(r"D:\OnePackageSetup\BIN_SETUP\Input\Main.txt", "w")
+    FI.write("100_MC_Card.bin")
+    FI.close()
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Make bin file entry in txt file",
+        "Done",
+    )
+
+
+
+
+@then("verify entry in CoreAuthTransaction")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    Cursor_CoreAuth.execute(
+        "SELECT Count(1) AS Count from CoreAuthTransactions WITH(NOLOCK)"
+    )
+    AfterExecCount = int(Cursor_CoreAuth.fetchone()[0])
+    assert AfterExecCount > context.count, fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"verify entry in CoreAuthTransaction",
+        "Fail - Assert",
+    )
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"verify entry in CoreAuthTransaction",
+        "Done",
+    )
+    MessageLogger.info("verified in database ")
+
+
+@given("Take DB Backup")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    res = fn_TakeDBbackup(context.feature.name, context.scenario.name)
+    assert res != 1, fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Take DB Backup",
+        "Fail - Assert",
+    )
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Take DB Backup",
+        "Done",
+    )
+
+
+@given("Pause")
+def step_impl(context):
+    input("Press ENTER to continue execution")
+
+
+@when("Take DB Backup")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    res = fn_TakeDBbackup()
+    assert res != 1, fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Take DB Backup",
+        "Fail - Assert",
+    )
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Take DB Backup",
+        "Done",
+    )
+
+
+@when("Pause")
+def step_impl(context):
+    input("Press ENTER to continue execution")
+
+
+@then("Take DB Backup")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    res = fn_TakeDBbackup()
+    assert res != 1, fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Take DB Backup",
+        "Fail - Assert",
+    )
+    fn_InsertFeatureStepExecutionInfo(
+        EXECUTION_ID,
+        context.feature.name,
+        context.scenario.name,
+        f"Take DB Backup",
+        "Done",
+    )
+
+
+@then("Pause")
+def step_impl(context):
+    input("Press ENTER to continue execution")
+
+
+
+
+
+@given("Restore Database")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    MessageLogger.info("Database Restore")
+    DBRestore()
+
+
+@given("Restore Database with backup")
+def step_impl(context):
+    MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+    EXECUTION_ID = get_global_EXECUTION_ID()
+    MessageLogger.info("Database Restore with backup")
+    DBRestoreWithBackUp()
+
+
+
+@given("Test Given")
+def step_impl(context):
+    MessageLogger.info("Given is executed")
+
+
+@given('Run feature file "{feature_file}"')
+def step_impl(context, feature_file):
+    # feature_file = feature_file + " --no-capture"
+    subprocess.run(["behave", feature_file], check=True)
+
+
+@given('Post purchase of $"{amount}" by trancode "{trancode}"')
+def step_impl(context, amount, trancode):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "InProgress",
+        )
+        data = {
+            "TagName": ["AccountNumber", "TranType", "TransactionAmount"],
+            "VariableName": ["@MyAccountNumber", "TranType", "TransactionAmount"],
+        }
+        context.PaymentTable = fn_TablefromJSON(data)
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.PaymentTable)
+        payLoad["TranType"] = trancode
+        payLoad["TransactionAmount"] = amount
+        MessageLogger.info(payLoad)
+        response = fn_HitAPI("PostSingleTransaction", payLoad)
+        MessageLogger.info(payLoad)
+        context.response = response
+        JsonData = context.response.json()
+        context.TransactionID = JsonData["TransactionID"]
+        context.AccountNumber = payLoad["AccountNumber"]
+        context.TransactionAmount = payLoad["TransactionAmount"]
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Done",
+        )
+
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound {ErrorFound} \nErrorNumber {ErrorNumber} \nErrorMessage {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Fail - ",
+        )
+
+
+@given('Post cash purchase of $"{amount}" by trancode "{trancode}" and "{CPM}"')
+def step_impl(context, amount, trancode, CPM):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "InProgress",
+        )
+        data = {
+            "TagName": ["AccountNumber", "TranType", "TransactionAmount"],
+            "VariableName": ["@MyAccountNumber", "TranType", "TransactionAmount"],
+        }
+        context.PaymentTable = fn_TablefromJSON(data)
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.PaymentTable)
+        payLoad["TranType"] = trancode
+        payLoad["TransactionAmount"] = amount
+        payLoad["CreditPlanMaster"] = CPM
+        MessageLogger.info(payLoad)
+        response = fn_HitAPI("PostSingleTransaction", payLoad)
+        MessageLogger.info(payLoad)
+        context.response = response
+        JsonData = context.response.json()
+        context.TransactionID = JsonData["TransactionID"]
+        context.AccountNumber = payLoad["AccountNumber"]
+        context.TransactionAmount = payLoad["TransactionAmount"]
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Done",
+        )
+
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound {ErrorFound} \nErrorNumber {ErrorNumber} \nErrorMessage {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Fail - ",
+        )
+
+
+@given('Post Payment_"{cnt}" of $"{amount}" by trancode "{trancode}" at "{posttime}"')
+def step_impl(context, cnt, amount, trancode, posttime):
+    try:
+        MessageLogger.info("Code with new execution id: ", get_global_EXECUTION_ID())
+        MessageLogger.info(amount)
+        EXECUTION_ID = get_global_EXECUTION_ID()
+
+        # MessageLogger.info(re.search(r'^+', amount))
+        TotalAmount = 0.0
+        if "+" in amount:
+            AmountList = amount.split("+")
+            MessageLogger.info(AmountList)
+            for amountValue in AmountList:
+                if not re.match(r"^\d+$", amountValue):
+                    TotalAmount = TotalAmount + float(
+                        fn_GetValueFromDataStore(EXECUTION_ID, amountValue)
+                    )
+                else:
+                    TotalAmount = TotalAmount + float(amountValue)
+        elif "-" in amount:
+            AmountList = amount.split("-")
+            MessageLogger.info(AmountList)
+            for amountValue in AmountList:
+                if not re.match(r"^\d+$", amountValue):
+                    TotalAmount = TotalAmount + float(
+                        fn_GetValueFromDataStore(EXECUTION_ID, amountValue)
+                    )
+                else:
+                    TotalAmount = TotalAmount - float(amountValue)
+        elif not re.match(r"^\d+$", amount):
+            value = fn_GetValueFromDataStore(EXECUTION_ID, amount)
+            TotalAmount = value
+        else:
+            TotalAmount = amount
+
+        amount = str(TotalAmount)
+
+        # if not re.match(r'^\d+$', amount):
+        #     value = fn_GetValueFromDataStore(EXECUTION_ID, amount)
+        #     amount = value
+
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "InProgress",
+        )
+        data = {
+            "TagName": [
+                "AccountNumber",
+                "TranType",
+                "TransactionAmount",
+                "DateTimeLocalTransaction",
+            ],
+            "VariableName": [
+                "@MyAccountNumber",
+                "TranType",
+                "TransactionAmount",
+                "DateTimeLocalTransaction",
+            ],
+        }
+        context.PaymentTable = fn_TablefromJSON(data)
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.PaymentTable)
+        payLoad["TranType"] = trancode
+        payLoad["TransactionAmount"] = amount
+        if posttime != "posttime":
+            payLoad["DateTimeLocalTransaction"] = posttime
+        else:
+            payLoad["DateTimeLocalTransaction"] = ""
+        MessageLogger.info(payLoad)
+        response = fn_HitAPI("PostSingleTransaction", payLoad)
+
+        MessageLogger.info(payLoad)
+        context.response = response
+        JsonData = context.response.json()
+        context.TransactionID = JsonData["TransactionID"]
+        context.AccountNumber = payLoad["AccountNumber"]
+        context.TransactionAmount = payLoad["TransactionAmount"]
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Done",
+        )
+
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        context.jsonData = context.response.json()
+        MessageLogger.info("APIResponse", JsonData)
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound {ErrorFound} \nErrorNumber {ErrorNumber} \nErrorMessage {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+
+        APIName = "PostSingleTransaction"
+        TagName = "Payment_" + str(cnt) + "_Tranid"
+        jsonResponse = fn_GetAPIResponseTags(APIName)
+        jsonResponse = fn_OverrideTagName(jsonResponse, "TransactionID", TagName)
+        table_var = fn_TablefromJSON(jsonResponse)
+        MessageLogger.info("Rohit", table_var)
+        context.payment_table = table_var
+        MessageLogger.info(context.payment_table)
+        MessageLogger.info("Rohit here for save variable")
+        MessageLogger.info("json variable value", context.jsonData)
+        assert len(context.payment_table[0]) == 2, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Save tag into variable",
+            "Fail More than two column",
+        )
+        try:
+            for row in context.payment_table:
+                fn_InsertFeatureStepDataStore(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    row[1],
+                    str(context.jsonData[row[0]]),
+                )
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Save tag into variable",
+                    "Done",
+                )
+        except AssertionError as ae:
+            # Handle AssertionError specifically (if needed)
+            MessageLogger.error(f"AssertionError occurred: {ae}")
+            raise Exception("An error occurred during this step")
+        except Exception as e:
+            fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Save tag into variable",
+                "Fail ",
+            )
+            MessageLogger.info(str(e))
+            raise Exception("An error occurred during this step")
+
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Fail - ",
+        )
+
+
+@given('Post Payment Reversal of Payment_"{cnt}"')
+def step_impl(context, cnt):
+    try:
+        MessageLogger.info("Code with new execution id: " + str(get_global_EXECUTION_ID()))
+        EXECUTION_ID = get_global_EXECUTION_ID()
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "InProgress",
+        )
+        Payment_1 = "Payment_" + str(cnt) + "_Tranid"
+        # MessageLogger.info(Payment_1)
+        # TxnDetail =fn_GetTxnDetails(0,Payment_1, context.feature.name)
+        TxnDetail = fn_GetTxnDetails(EXECUTION_ID, Payment_1, context.feature.name)
+        MessageLogger.info(TxnDetail)
+        data = {
+            "TagName": [
+                "AccountNumber",
+                "TranType",
+                "TransactionAmount",
+                "ReversalTargetTranID",
+            ],
+            "VariableName": [
+                "@MyAccountNumber",
+                "TranType",
+                "TransactionAmount",
+                "ReversalTargetTranID",
+            ],
+        }
+
+        context.PaymentTable = fn_TablefromJSON(data)
+        payLoad = fn_CreateJsonPayloadUsingTable(EXECUTION_ID, context.PaymentTable)
+        first_item = TxnDetail[0]
+        MessageLogger.info("first_item")
+        MessageLogger.info(first_item)
+
+        # Access the value associated with "ManualReversalTrancode" in the dictionary
+        result = first_item.get(
+            "ManualReversalTrancode", None
+        )  # Use .get() to avoid KeyError
+        payLoad["TranType"] = first_item.get("ManualReversalTrancode", None)
+        payLoad["TransactionAmount"] = first_item.get("transactionamount", None)
+        payLoad["ReversalTargetTranID"] = first_item.get("tranid", None)
+        payLoad["AccountNumber"] = first_item.get("accountnumber", None)
+        MessageLogger.info(payLoad)
+        response = fn_HitAPI("PostSingleTransaction", payLoad)
+        # if posttime  != "posttime":
+        #     payLoad['DateTimeLocalTransaction'] = posttime
+        # MessageLogger.info (payLoad)
+        context.response = response
+        JsonData = context.response.json()
+        context.TransactionID = JsonData["TransactionID"]
+        context.AccountNumber = payLoad["AccountNumber"]
+        context.TransactionAmount = payLoad["TransactionAmount"]
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Done",
+        )
+
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "InProgress",
+        )
+
+        assert context.response.ok, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Fail Assert API Response is not ok",
+        )
+        JsonData = context.response.json()
+        context.jsonData = context.response.json()
+        MessageLogger.info("APIResponse", JsonData)
+        ErrorFound, ErrorNumber, ErrorMessage = fn_CheckErrorFound(JsonData)
+        MessageLogger.info(
+            f"ErrorFound {ErrorFound} \nErrorNumber {ErrorNumber} \nErrorMessage {ErrorMessage}"
+        )
+        assert ErrorFound.upper() == "NO", fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "FAIL Error Found Yes",
+        )
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Verify API response is OK",
+            "Done",
+        )
+
+        APIName = "PostSingleTransaction"
+        TagName = "Payment_" + str(cnt) + "_Tranid_rev"
+        jsonResponse = fn_GetAPIResponseTags(APIName)
+        jsonResponse = fn_OverrideTagName(jsonResponse, "TransactionID", TagName)
+        table_var = fn_TablefromJSON(jsonResponse)
+        MessageLogger.info("Rohit", table_var)
+        context.payment_table = table_var
+        MessageLogger.info(context.payment_table)
+        MessageLogger.info("Rohit here for save variable")
+        MessageLogger.info("json varailbe value", context.jsonData)
+        assert len(context.custom_table[0]) == 2, fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Save tag into variable",
+            "Fail More than two column",
+        )
+        try:
+            for row in context.payment_table:
+                fn_InsertFeatureStepDataStore(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    row[1],
+                    str(context.jsonData[row[0]]),
+                )
+                fn_InsertFeatureStepExecutionInfo(
+                    EXECUTION_ID,
+                    context.feature.name,
+                    context.scenario.name,
+                    "Save tag into variable",
+                    "Done",
+                )
+        except AssertionError as ae:
+            # Handle AssertionError specifically (if needed)
+            MessageLogger.error(f"AssertionError occurred: {ae}")
+            raise Exception("An error occurred during this step")
+        except Exception as e:
+            fn_InsertFeatureStepExecutionInfo(
+                EXECUTION_ID,
+                context.feature.name,
+                context.scenario.name,
+                "Save tag into variable",
+                "Fail ",
+            )
+            MessageLogger.info(str(e))
+            raise Exception("An error occurred during this step")
+
+    except AssertionError as ae:
+        # Handle AssertionError specifically (if needed)
+        MessageLogger.error(f"AssertionError occurred: {ae}")
+        raise Exception("An error occurred during this step")
+    except Exception as e:
+        fn_InsertFeatureStepExecutionInfo(
+            EXECUTION_ID,
+            context.feature.name,
+            context.scenario.name,
+            "Post Transaction",
+            "Fail - ",
+        )
+        MessageLogger.info(e)
+
+
+@given('Run as "{action}"')
+def step_impl(context, action):
+    MessageLogger.info(context.feature.name)
+    EXECUTION_ID = fn_setexeutionID(context.feature.name, action)
+    MessageLogger.info(EXECUTION_ID)
+
+
+
+
+@Then('Set system to "{Date}" DateTime')
+def step_impl(context, Date):
+    # Date = str(Date)
+    MessageLogger.info("Set tview time without checking aging")
+    DatePart, TimePart = Date.split(" ")
+    # DatePart = tnpdate[0]
+    Year, Month, Date = DatePart.split("-")
+
+    # TimePart = tnpdate[1]
+    hour, minute, secound = TimePart.split("_")
+    fn_SetDateInTview(Month, Date, Year, hour, minute, secound)
+
+
+
+@Given('Update Control Table "{Key}" "{KeyValue}" "{tableName}" "{field}" "{value}"')
+def step_impl(context, Key, KeyValue, tableName, field, value):
+    fn_UpdateControlTable(Key, KeyValue, tableName, field, value)
+
+
+
+                

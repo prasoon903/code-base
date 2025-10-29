@@ -1,0 +1,15 @@
+2025-09-30 16:12:41,030 — INFO — File Processing starts ...
+2025-09-30 16:12:41,044 — INFO — START TIME::: 2025-09-30 16:12:41.029119
+2025-09-30 16:12:41,044 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-09-30 16:12:41,045 — INFO — ********************11562 Cookie CBR Analysis Shared with CC V2.xlsx*****************************
+2025-09-30 16:12:41,045 — INFO — LoopCount: 1
+2025-09-30 16:12:41,113 — INFO — ['CBR population', 'Sheet2', 'Sheet3', 'Sheet4']
+2025-09-30 16:12:41,114 — INFO — Processing File: 11562 Cookie CBR Analysis Shared with CC V2.xlsx
+2025-09-30 16:12:41,115 — INFO — Processing sheet: CBR population
+2025-09-30 16:12:41,115 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-342791_CBR population.txt
+2025-09-30 16:12:41,116 — INFO — INSIDE ReadingTheFileDF WITH FILE: 11562 Cookie CBR Analysis Shared with CC V2.xlsx
+2025-09-30 16:12:41,383 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-09-30 16:12:41,422 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-09-30 16:12:41,500 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-09-30 16:12:41,500 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-09-30 16:13:07,710 — INFO — *********************** FINISHED ***********************

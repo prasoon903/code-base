@@ -1,0 +1,65 @@
+[
+  {
+    "TranId": 501426753,
+    "MessageTypeIdentifier": "1240",
+    "PrimaryAccountNumber": "IQQAAtSyeHKP7Xfd/JGjsbWqNmnvCpsYncURZOg7CWwSm4bBMgM=",
+    "VirtualAccountNumber": null,
+    "ProcCode": "00",
+    "CCardTranId_Orig": 1383194732930203600,
+    "ClaimID_SecPrsnmt": null,
+    "RejectAcctId": null,
+    "IPMCardPresent": 0,
+    "Addendum": [
+      {
+        "TranId": 501426753,
+        "MessageTypeIdentifier": "1644",
+        "FunctionCode": "696",
+        "AcquiringInsitutionIDCode": null,
+        "ForwardingInsitutionIDCode": null,
+        "NonNativeSid": 2
+      }
+    ]
+  },
+  {
+    "TranId": 501426754,
+    "MessageTypeIdentifier": "1240",
+    "PrimaryAccountNumber": "IQQAAtSyeHKP7Xfd/JGjsbWqNmnvCpsYncURZOg7CWwSm4bBMgM=",
+    "VirtualAccountNumber": "IQQAAtSyeHKP7Xfd/JGjsbWqNmnvCpsYncURZOg7CWwSm4bBMgM=",
+    "ProcCode": "00",
+    "CCardTranId_Orig": 1383194732930203600,
+    "ClaimID_SecPrsnmt": null,
+    "RejectAcctId": null,
+    "IPMCardPresent": 0,
+    "Addendum": [
+      {
+        "TranId": 501426754,
+        "MessageTypeIdentifier": "1644",
+        "FunctionCode": "696",
+        "AcquiringInsitutionIDCode": null,
+        "ForwardingInsitutionIDCode": "009685",
+        "NonNativeSid": 3
+      }
+    ]
+  },
+  {
+    "TranId": 501426755,
+    "MessageTypeIdentifier": "1240",
+    "PrimaryAccountNumber": "IQQAAtSyeHKP7Xfd/JGjsbWqNmnvCpsYncURZOg7CWwSm4bBMgM=",
+    "VirtualAccountNumber": "IQQAAtSyeHKP7Xfd/JGjsbWqNmnvCpsYncURZOg7CWwSm4bBMgM=",
+    "ProcCode": "00",   
+    "CCardTranId_Orig": 1383194732930203600,
+    "ClaimID_SecPrsnmt": null,
+    "RejectAcctId": null,
+    "IPMCardPresent": 0,
+    "Addendum": [
+      {
+        "TranId": 501426755,
+        "MessageTypeIdentifier": "1644",
+        "FunctionCode": "696",
+        "AcquiringInsitutionIDCode": null,
+        "ForwardingInsitutionIDCode": "009685",
+        "NonNativeSid": 4
+      }
+    ]
+  }
+]

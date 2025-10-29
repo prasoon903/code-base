@@ -1,0 +1,28 @@
+2023-10-04 14:56:55,861 — INFO — ResponseFile to be processed: E:\Python\FileConverter_GWC\ResponseFile\COOKIE-231352_20231004145655.sql
+2023-10-04 14:56:55,862 — INFO — File Processing starts ...
+2023-10-04 14:56:55,862 — INFO — START TIME::: 2023-10-04 14:56:55.860702
+2023-10-04 14:56:55,862 — INFO — E:\Python\FileConverter_GWC\INPUT\
+2023-10-04 14:56:55,863 — INFO — ********************Cookie -Good will Sep'23 2.0.xlsx*****************************
+2023-10-04 14:56:55,863 — INFO — INSIDE ReadingTheFileDF WITH FILE: Cookie -Good will Sep'23 2.0.xlsx
+2023-10-04 14:56:57,222 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_GWC\FileConverter.py", line 284, in <module>
+    ReadingTheFileDF(FileName)
+  File "E:\Python\FileConverter_GWC\FileConverter.py", line 164, in ReadingTheFileDF
+    DF = pd.read_excel(File, sheet_name=S1.SheetName, usecols=S1.Columns)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\util\_decorators.py", line 317, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 491, in read_excel
+    data = io.parse(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 1711, in parse
+    return self._reader.parse(
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 761, in parse
+    sheet = self.get_sheet_by_name(asheetname)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_openpyxl.py", line 569, in get_sheet_by_name
+    self.raise_if_bad_sheet_by_name(name)
+  File "C:\Users\prasoon.parashar\AppData\Local\Programs\Python\Python310\lib\site-packages\pandas\io\excel\_base.py", line 603, in raise_if_bad_sheet_by_name
+    raise ValueError(f"Worksheet named '{name}' not found")
+ValueError: Worksheet named 'Cookie-8200' not found
+2023-10-04 14:56:57,282 — INFO — *********************** FINISHED ***********************

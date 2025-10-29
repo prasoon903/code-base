@@ -1,0 +1,16 @@
+10/20/2023 13:06:49 — 1452 — INFO — Verify delinquency should not impact when two payments of same amount was made and
+10/20/2023 13:06:49 — 1452 — INFO — fn_setexeutionID16
+10/20/2023 13:06:49 — 1452 — INFO — 16
+10/20/2023 13:06:49 — 1452 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 16,'Verify delinquency should not impact when two payments of same amount was made and','Create Account With BillingCycle 8','Create Account','InProgress'
+10/20/2023 13:06:49 — 1452 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:06:49 — 1452 — INFO — 7131
+10/20/2023 13:06:49 — 1452 — INFO — JazzStore
+10/20/2023 13:06:49 — 1452 — INFO — 8
+10/20/2023 13:06:49 — 1452 — INFO — 5000
+10/20/2023 13:06:51 — 1452 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 16,'Verify delinquency should not impact when two payments of same amount was made and','Create Account With BillingCycle 8','Create Account','Done'
+10/20/2023 13:06:51 — 1452 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 16,'Verify delinquency should not impact when two payments of same amount was made and','Create Account With BillingCycle 8','Verify API response is OK','InProgress'
+10/20/2023 13:06:51 — 1452 — INFO — ErrorFound Yes 
+ErrorNumber ERR04049 
+ErrorMessage Error encountered - Please Try Again Later
+10/20/2023 13:06:51 — 1452 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 16,'Verify delinquency should not impact when two payments of same amount was made and','Create Account With BillingCycle 8','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:06:51 — 1452 — INFO — AssertionError occurred: None

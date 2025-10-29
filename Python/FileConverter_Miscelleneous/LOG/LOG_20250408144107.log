@@ -1,0 +1,17 @@
+2025-04-08 14:41:07,401 — INFO — File Processing starts ...
+2025-04-08 14:41:07,401 — INFO — START TIME::: 2025-04-08 14:41:07.401112
+2025-04-08 14:41:07,402 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-04-08 14:41:07,402 — INFO — ********************CBR Analysis Shared with CC 0407.xlsx*****************************
+2025-04-08 14:41:07,403 — INFO — LoopCount: 1
+2025-04-08 14:41:07,447 — INFO — ['Sheet1']
+2025-04-08 14:41:07,447 — INFO — Processing File: CBR Analysis Shared with CC 0407.xlsx
+2025-04-08 14:41:07,448 — INFO — Processing sheet: Sheet1
+2025-04-08 14:41:07,448 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-316803_Sheet1.txt
+2025-04-08 14:41:07,450 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Analysis Shared with CC 0407.xlsx
+2025-04-08 14:41:07,661 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-04-08 14:41:07,713 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-04-08 14:41:07,763 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-04-08 14:41:07,763 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-04-08 14:41:09,928 — INFO — proc: psutil.Process(pid=4036, name='python.exe', status='running', started='14:41:06')
+2025-04-08 14:41:09,928 — INFO — handle.path: E:\Python\FileConverter_Miscelleneous\INPUT\CBR Analysis Shared with CC 0407.xlsx
+2025-04-08 14:41:09,928 — INFO — file_path: E:\Python\FileConverter_Miscelleneous\INPUT\CBR Analysis Shared with CC 0407.xlsx

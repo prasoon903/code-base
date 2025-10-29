@@ -1,0 +1,17 @@
+2025-07-03 15:41:08,660 — INFO — File Processing starts ...
+2025-07-03 15:41:08,660 — INFO — START TIME::: 2025-07-03 15:41:08.658877
+2025-07-03 15:41:08,660 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-07-03 15:41:08,661 — INFO — ********************Seg3_June26_2025.xlsx*****************************
+2025-07-03 15:41:08,661 — INFO — LoopCount: 1
+2025-07-03 15:41:08,763 — INFO — ['Seg3_Sep2020_impact']
+2025-07-03 15:41:08,764 — INFO — Processing File: Seg3_June26_2025.xlsx
+2025-07-03 15:41:08,764 — INFO — Processing sheet: Seg3_Sep2020_impact
+2025-07-03 15:41:08,765 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\CARDS-296479_Seg3_Sep2020_impact.txt
+2025-07-03 15:41:08,766 — INFO — INSIDE ReadingTheFileDF WITH FILE: Seg3_June26_2025.xlsx
+2025-07-03 15:41:09,071 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-07-03 15:41:09,237 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-07-03 15:41:09,422 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-07-03 15:41:09,423 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-07-03 15:41:21,508 — INFO — proc: psutil.Process(pid=12000, name='python.exe', status='running', started='15:41:03')
+2025-07-03 15:41:21,525 — INFO — handle.path: E:\Python\FileConverter_Miscelleneous\INPUT\Seg3_June26_2025.xlsx
+2025-07-03 15:41:21,526 — INFO — file_path: E:\Python\FileConverter_Miscelleneous\INPUT\Seg3_June26_2025.xlsx

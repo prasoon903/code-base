@@ -1,0 +1,11 @@
+2023-02-07 18:26:22,183 — INFO — ResponseFile to be processed: E:\Python\FileConverter\ResponseFile\GoodWillCredits_20230207182622.txt
+2023-02-07 18:26:22,184 — INFO — File Processing starts ...
+2023-02-07 18:26:22,184 — INFO — START TIME::: 2023-02-07 18:26:22.183603
+2023-02-07 18:26:22,184 — INFO — E:\Python\FileConverter\INPUT\
+2023-02-07 18:26:22,185 — INFO — ********************IA&Weekly.xlsx*****************************
+2023-02-07 18:26:22,185 — INFO — INSIDE ReadingTheFileDF WITH FILE: IA&Weekly.xlsx
+2023-02-07 18:26:22,494 — INFO — DATA CONVERTED FROM XLS TO DF
+2023-02-07 18:26:22,497 — INFO — DATA FORMATTED FROM DF TO DF1
+2023-02-07 18:26:22,500 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2023-02-07 18:26:22,501 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2023-02-07 18:26:22,545 — INFO — *********************** FINISHED ***********************

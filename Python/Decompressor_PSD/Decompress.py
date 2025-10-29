@@ -1,0 +1,24 @@
+import base64
+import gzip
+import json
+from io import BytesIO
+
+# The provided Base64-encoded and gzip-compressed string
+#encoded_data = "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"
+
+input_file = 'APIQueue.txt'
+
+with open(input_file, 'r') as file:
+    for line in file: 
+        # Step 1: Decode the Base64 encoded string
+        decoded_data = base64.b64decode(line)
+
+        # Step 2: Decompress the gzip data
+        with gzip.GzipFile(fileobj=BytesIO(decoded_data)) as gzip_file:
+            decompressed_data = gzip_file.read()
+
+        # Step 3: Convert the decompressed data to JSON
+        json_data = json.loads(decompressed_data)
+
+        # Print the resulting JSON
+        print(json.dumps(json_data, indent=4))

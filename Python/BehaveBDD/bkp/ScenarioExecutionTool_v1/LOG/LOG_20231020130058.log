@@ -1,0 +1,56 @@
+10/20/2023 13:00:58 — 16612 — INFO — Scenario 7.
+10/20/2023 13:00:58 — 16612 — INFO — Scenario 7.
+10/20/2023 13:00:58 — 16612 — INFO — Rohitrerun
+10/20/2023 13:00:58 — 16612 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 7.' ORDER BY id DESC
+10/20/2023 13:00:58 — 16612 — INFO — 8
+10/20/2023 13:00:58 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Create Account','InProgress'
+10/20/2023 13:00:58 — 16612 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:00:58 — 16612 — INFO — 7131
+10/20/2023 13:00:58 — 16612 — INFO — JazzStore
+10/20/2023 13:00:58 — 16612 — INFO — 12
+10/20/2023 13:00:58 — 16612 — INFO — 10000
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Create Account','Done'
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Verify API response is OK','InProgress'
+10/20/2023 13:01:01 — 16612 — INFO — ErrorFound NO 
+ErrorNumber ERR01002 
+ErrorMessage Account Creation Successful
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Verify API response is OK','Done'
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Verify Account Number in Database','InProgress'
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Verify Account Number in Database','Done'
+10/20/2023 13:01:01 — 16612 — INFO — AccountCreation
+10/20/2023 13:01:01 — 16612 — INFO — json_data befire
+10/20/2023 13:01:01 — 16612 — INFO — json_data after
+10/20/2023 13:01:01 — 16612 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 13:01:01 — 16612 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 13:01:01 — 16612 — INFO — [('AccountNumber', 'MyAccountNumber'), ('CardNumber', 'MyCardNumber')]
+10/20/2023 13:01:01 — 16612 — INFO — MyAccountNumber
+10/20/2023 13:01:01 — 16612 — INFO — 1150001100411432
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Save tag into variable','Done'
+10/20/2023 13:01:01 — 16612 — INFO — MyCardNumber
+10/20/2023 13:01:01 — 16612 — INFO — 5206020586256942
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Create Account With BillingCycle 12','Save tag into variable','Done'
+10/20/2023 13:01:01 — 16612 — INFO — Scenario 7.
+10/20/2023 13:01:01 — 16612 — INFO — Scenario 7.
+10/20/2023 13:01:01 — 16612 — INFO — Rohitrerun
+10/20/2023 13:01:01 — 16612 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 7.' ORDER BY id DESC
+10/20/2023 13:01:01 — 16612 — INFO — EXECUTION_ID for rerun8
+10/20/2023 13:01:01 — 16612 — INFO — 8
+10/20/2023 13:01:01 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post purchase','Post Transaction','InProgress'
+10/20/2023 13:01:01 — 16612 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount')]
+10/20/2023 13:01:01 — 16612 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:01:01 — 16612 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:01:01 — 16612 — INFO — MyAccountNumber
+10/20/2023 13:01:01 — 16612 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:01:01 — 16612 — INFO — MyAccountNumber
+10/20/2023 13:01:01 — 16612 — INFO — 1150001100411432
+10/20/2023 13:01:01 — 16612 — INFO — TranType
+10/20/2023 13:01:01 — 16612 — INFO — TransactionAmount
+10/20/2023 13:01:01 — 16612 — INFO — {'AccountNumber': '1150001100411432', 'TranType': '4005', 'TransactionAmount': '5000'}
+10/20/2023 13:01:04 — 16612 — INFO — {'AccountNumber': '1150001100411432', 'TranType': '4005', 'TransactionAmount': '5000', 'UserID': 'JazzCall'}
+10/20/2023 13:01:04 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post purchase','Post Transaction','Done'
+10/20/2023 13:01:04 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post purchase','Verify API response is OK','InProgress'
+10/20/2023 13:01:04 — 16612 — INFO — ErrorFound Yes 
+ErrorNumber ERR04049 
+ErrorMessage Error encountered - Please Try Again Later
+10/20/2023 13:01:04 — 16612 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post purchase','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:01:04 — 16612 — INFO — AssertionError occurred: None

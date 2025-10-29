@@ -1,0 +1,67 @@
+2020-11-23 05:11:50,468 INFO ==================================================================================================================
+2020-11-23 05:11:50,468 INFO AUTHOR :   Neha Vishwakarma
+2020-11-23 05:11:50,468 INFO Reviewer : Poonam Agrawal Mam / Jinendra Sir 
+2020-11-23 05:11:50,468 INFO DESCRIPTION : This process will read and Insert request of all apis in  sql Table and then call particular APIBy making their JSON Request 
+2020-11-23 05:11:50,468 INFO ==================================================================================================================
+2020-11-23 05:11:50,468 INFO Reading File svcManualReageAccountProd_one_5.csv
+2020-11-23 05:11:50,468 INFO 2020-11-23
+2020-11-23 05:11:50,468 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat'}
+2020-11-23 05:11:50,468 INFO https://ccservices.corecard.com//CoreCardServices/CoreCardServices.svc/ManualReage
+2020-11-23 05:11:50,468 INFO SELECT COUNT(1) FROM APIJSONRequestLog  WITH (NOLOCK) WHERE  FileName = 'svcManualReageAccountProd_one_5.csv' AND importdate between '2020-11-23'
+         and '2020-11-23 23:59:59'
+2020-11-23 05:11:50,468 INFO (0,)
+2020-11-23 05:11:50,468 INFO 0
+2020-11-23 05:11:50,468 INFO 0
+2020-11-23 05:11:50,468 INFO TypeOfManualReage,TotalDueMethod,AccountNumber
+
+2020-11-23 05:11:50,468 INFO The last line is:
+2020-11-23 05:11:50,468 INFO 1,50.00,9990011126919999
+2020-11-23 05:11:50,483 INFO <_io.TextIOWrapper name='P:\\Dump\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_one_5.csv' mode='r' encoding='cp1252'>
+2020-11-23 05:11:50,483 INFO ***checking checkHeaderCount********
+2020-11-23 05:11:50,483 INFO 3
+2020-11-23 05:11:50,483 INFO ***checking checkLineColumnCount********
+2020-11-23 05:11:50,483 INFO 3
+2020-11-23 05:11:50,483 INFO 0
+2020-11-23 05:11:50,483 INFO TypeOfManualReage
+2020-11-23 05:11:50,483 INFO <_io.TextIOWrapper name='P:\\Dump\\CCManualReage\\Incoming_file\\svcManualReageAccountProd_one_5.csv' mode='r' encoding='cp1252'>
+2020-11-23 05:11:50,483 INFO 1
+2020-11-23 05:11:50,483 INFO AccountNumber
+2020-11-23 05:11:50,483 INFO **********Remove NewLine***********
+2020-11-23 05:11:50,483 INFO AccountNumber
+2020-11-23 05:11:50,483 INFO {'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '50.00', 'AccountNumber': '9990011126919999'}
+2020-11-23 05:11:50,483 INFO ('svcManualReageAccountProd_one_5.csv', 1, 'NEW', datetime.datetime(2020, 11, 23, 5, 11, 50, 483968), '{"Password": "Test123!", "UserID": "DRPSeriveCall", "APIVersion": "2.0", "Source": "plat", "TypeOfManualReage": "1", "TotalDueMethod": "50.00", "AccountNumber": "9990011126919999"}')
+2020-11-23 05:11:50,483 INFO ------------------------------Insersion1-----------------------------
+2020-11-23 05:11:50,515 INFO ------------------------------Insersion2-----------------------------
+2020-11-23 05:11:50,515 INFO Request_Parameter={'Password': 'Test123!', 'UserID': 'DRPSeriveCall', 'APIVersion': '2.0', 'Source': 'plat', 'TypeOfManualReage': '1', 'TotalDueMethod': '50.00', 'AccountNumber': '9990011126919999'}
+2020-11-23 05:11:50,515 INFO 1
+2020-11-23 05:11:50,515 INFO *******checking timeout**********
+2020-11-23 05:11:51,942 INFO *******checking timeout**********
+2020-11-23 05:11:51,942 INFO 200
+2020-11-23 05:11:51,942 INFO {'ErrorFound': 'YES', 'ErrorNumber': 'ERR03068', 'ErrorMessage': 'Program Restriction : Invalid Service User or Account Identifier', 'ResponseID': '1956503930', 'CycleDue': None, 'AccountUUID': None, 'AdminUUID': None, 'PODID': None}
+2020-11-23 05:11:51,942 INFO 1956503930
+2020-11-23 05:11:51,942 INFO Program Restriction : Invalid Service User or Account Identifier
+2020-11-23 05:11:51,942 INFO UPDATE APIJSONRequestLog SET status='DONE', ResponseID= '1956503930' , ErrorMesssage = 'Program Restriction : Invalid Service User or Account Identifier', 
+             ErrorFound = 'YES' WHERE FileName ='svcManualReageAccountProd_one_5.csv' and importdate between '2020-11-23' and '2020-11-23 23:59:59'
+              and LineNumber = '1'and  status='NEW'
+              
+2020-11-23 05:11:51,958 INFO 0
+2020-11-23 05:11:51,958 INFO ******enter into status update************
+2020-11-23 05:11:51,958 INFO ****** fetch record *********** 
+2020-11-23 05:11:51,958 INFO (1, )
+2020-11-23 05:11:51,958 INFO Select count(1) From APIJSONRequestLog Where FileName ='svcManualReageAccountProd_one_5.csv' and 
+     importdate between '2020-11-23'  and '2020-11-23 23:59:59'  and  ErrorFound = 'YES' 
+2020-11-23 05:11:51,958 INFO ................Upating APIJSONRequestLog...............................
+2020-11-23 05:11:51,974 INFO UPDATE APIJSONRequestLog SET APIErrorStatus ='Error' WHERE FileName ='svcManualReageAccountProd_one_5.csv'  and
+             importdate between '2020-11-23' and '2020-11-23 23:59:59' and ErrorFound = 'YES' 
+2020-11-23 05:11:51,974 INFO (0, )
+2020-11-23 05:11:51,974 INFO Select count(1) From APIJSONRequestLog Where FileName ='svcManualReageAccountProd_one_5.csv' and 
+          importdate between '2020-11-23' and '2020-11-23 23:59:59'  and  ErrorFound = 'NO' 
+2020-11-23 05:11:51,974 INFO Select status From APIJSONRequestLog  
+    Where FileName='svcManualReageAccountProd_one_5.csv' and importdate between '2020-11-23' and '2020-11-23 23:59:59'
+    
+2020-11-23 05:11:51,974 INFO ('DONE', )
+2020-11-23 05:11:51,974 INFO DONE
+2020-11-23 05:11:51,974 INFO P:\Dump\CCManualReage\Error\svcManualReageAccountProd_one_5.csv
+2020-11-23 05:11:51,974 INFO File passed all the validations
+2020-11-23 05:11:51,974 INFO 
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$--Execution Completed--$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$

@@ -1,0 +1,43 @@
+09/17/2021 19:55:47 — 21940 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+09/17/2021 19:55:47 — 21940 — INFO — START TIME: 2021-09-17 19:55:47.112992
+09/17/2021 19:55:47 — 21940 — INFO — PRINTING ENVIRONMENT VARIABLES
+09/17/2021 19:55:47 — 21940 — INFO — CI_DB: PP_CI
+09/17/2021 19:55:47 — 21940 — INFO — CL_DB: PP_CL
+09/17/2021 19:55:47 — 21940 — INFO — CAuth_DB: PP_CAuth
+09/17/2021 19:55:47 — 21940 — INFO — SERVERNAME: XEON-S8
+09/17/2021 19:55:47 — 21940 — INFO — MailFrom: prasoon.parashar@corecard.com
+09/17/2021 19:55:47 — 21940 — INFO — MailTo: prasoon.parashar@corecard.com
+09/17/2021 19:55:47 — 21940 — INFO — SMTP_SERVER: corecard-com.mail.protection.outlook.com
+09/17/2021 19:55:47 — 21940 — INFO — SMTPPORT: 25
+09/17/2021 19:55:47 — 21940 — INFO — RetailAWSEnvironment: 0
+09/17/2021 19:55:47 — 21940 — INFO — RetailAWS_secret_name: ses-smtp-secret
+09/17/2021 19:55:47 — 21940 — INFO — RetailAWS_region_name: ap-south-1
+09/17/2021 19:55:47 — 21940 — INFO — RetailAWS_service_name: secretsmanager
+09/17/2021 19:55:47 — 21940 — INFO — RetailSES_smtp_url: email-smtp.ap-south-1.amazonaws.com
+09/17/2021 19:55:47 — 21940 — INFO — RetailAWSPort: 587
+09/17/2021 19:55:47 — 21940 — INFO — RetailInputFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT
+09/17/2021 19:55:47 — 21940 — INFO — RetailErrorFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR
+09/17/2021 19:55:47 — 21940 — INFO — RetailOutFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT
+09/17/2021 19:55:47 — 21940 — INFO — RetailLogFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG
+09/17/2021 19:55:47 — 21940 — INFO — RetailInstitutionID: 6969
+09/17/2021 19:55:47 — 21940 — INFO — RetailEnvironment: LOCAL
+09/17/2021 19:55:47 — 21940 — INFO — RetailExceptionFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION
+09/17/2021 19:55:47 — 21940 — INFO — RetailExceptionFilePrefix: EXCP_
+09/17/2021 19:55:47 — 21940 — INFO — RetailExceptionFileSuffix: _
+09/17/2021 19:55:47 — 21940 — INFO — RetailFileProcessingPOD: POD1
+09/17/2021 19:55:47 — 21940 — INFO — BatchCount: 10000
+09/17/2021 19:55:47 — 21940 — INFO — AccountNumberCheck: 1
+09/17/2021 19:55:47 — 21940 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+09/17/2021 19:55:47 — 21940 — INFO — INSIDE GetOperatingServer BLOCK
+09/17/2021 19:56:20 — 21940 — ERROR — ERROR IN CONNECTING TO THE DATABASE ('08001', '[08001] [Microsoft][ODBC Driver 13 for SQL Server]Named Pipes Provider: Could not open a connection to SQL Server [53].  (53) (SQLDriverConnect); [08001] [Microsoft][ODBC Driver 13 for SQL Server]Login timeout expired (0); [08001] [Microsoft][ODBC Driver 13 for SQL Server]Invalid connection string attribute (0); [08001] [Microsoft][ODBC Driver 13 for SQL Server]A network-related or instance-specific error has occurred while establishing a connection to SQL Server. Server is not found or not accessible. Check if instance name is correct and if SQL Server is configured to allow remote connections. For more information see SQL Server Books Online. (53)')
+09/17/2021 19:56:20 — 21940 — INFO — ConnectionStatus: False
+09/17/2021 19:56:20 — 21940 — INFO — ERROR IN CONNECTING TO THE DATABASE
+09/17/2021 19:56:20 — 21940 — INFO — EXITING GetOperatingServer BLOCK
+09/17/2021 19:56:20 — 21940 — INFO — INSIDE EmailStructure_Head BLOCK
+09/17/2021 19:56:20 — 21940 — INFO — EXITING EmailStructure_Head BLOCK
+09/17/2021 19:56:20 — 21940 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:green;>Server operating time: 09/17/2021 19:55:47</h4><h3 style=color:red;>No file Present in Input folder</h3><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+09/17/2021 19:56:20 — 21940 — INFO — RetailAWSEnvironment Type: <class 'int'>
+09/17/2021 19:56:20 — 21940 — DEBUG — Inside SendMail
+09/17/2021 19:56:21 — 21940 — INFO — SENDING MAIL ...
+09/17/2021 19:56:23 — 21940 — INFO — Finish Time::: 2021-09-17 19:56:23.029894
+09/17/2021 19:56:23 — 21940 — INFO — *************************** NO FILE EXISTS, EXITING ***************************

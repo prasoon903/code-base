@@ -1,0 +1,4 @@
+{
+    "TagName": ["AccountNumber","CardNumber"],
+    "VariableName": ["MyAccountNumber","MyCardNumber"]
+}

@@ -1,0 +1,10 @@
+2020-04-23 12:59:48,715 — INFO — File Processing starts ...
+2020-04-23 12:59:48,716 — INFO — Start Time::: 2020-04-23 12:59:48.715331
+2020-04-23 12:59:48,716 — INFO — D:\BankCard\POTB\INPUT\
+2020-04-23 12:59:48,717 — INFO — ********************IntraDayAccountOTBRule_NewChange.csv*****************************
+2020-04-23 12:59:48,717 — INFO — FileID: 2020042359481
+2020-04-23 12:59:48,853 — INFO — Connection established
+2020-04-23 12:59:48,860 — INFO — File is in INPROCESS state and can not be processed again
+2020-04-23 12:59:50,208 — INFO — Sending mail...
+2020-04-23 12:59:52,851 — INFO — Finish Time::: 2020-04-23 12:59:52.851897
+2020-04-23 12:59:52,851 — INFO — ********************All files processed... Exiting*****************************

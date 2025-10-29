@@ -1,0 +1,33 @@
+2022-12-15 15:43:59,953 — INFO — ****************** PAYMENT HOLD FILE PROCESSING STARTS ******************
+2022-12-15 15:43:59,954 — INFO — Start Time::: 2022-12-15 15:43:59.953746
+2022-12-15 15:44:00,003 — INFO — INSIDE GetShardMigrationStatus 
+2022-12-15 15:44:00,449 — INFO — CONNECTION ESTABLISHED
+2022-12-15 15:44:00,449 — INFO — ConnectionStatus: True
+2022-12-15 15:44:00,450 — DEBUG — SELECT ISNULL(Sharding, 0) Sharding FROM PP_CI..Org_Balances WITH(NOLOCK) WHERE AcctID = 6969
+2022-12-15 15:44:03,407 — INFO — EXITING GetShardMigrationStatus BLOCK
+2022-12-15 15:44:03,408 — INFO — E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\INPUT\
+2022-12-15 15:44:03,410 — INFO — ********************Policy_Sample_File_V1.csv*****************************
+2022-12-15 15:44:03,411 — INFO — FileID: 2022121543591
+2022-12-15 15:44:03,412 — INFO — Count the total number of records in the file
+2022-12-15 15:44:03,428 — INFO — Connection established
+2022-12-15 15:44:03,428 — DEBUG — EXEC PP_CI..USP_GetStatusOfPaymentHoldFileProcessing 'Policy_Sample_File_V1.csv', 2
+2022-12-15 15:44:06,063 — INFO — File is in NEW state and going to process
+2022-12-15 15:44:06,064 — DEBUG — Inside ValidateDuplicateFile
+2022-12-15 15:44:06,069 — DEBUG — E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\OUT\Policy_Sample_File_V1.csv
+2022-12-15 15:44:06,074 — DEBUG — Inside ImportFileToDB
+2022-12-15 15:44:06,076 — INFO — Connection established
+2022-12-15 15:44:09,569 — DEBUG — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\INPUT\Policy_Sample_File_V1.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\PaymentHoldFileProcessing\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2022-12-15 15:44:17,599 — INFO — Record Insert Time:::2022-12-15 15:44:17.599337
+2022-12-15 15:44:17,599 — DEBUG — Error ===> False
+2022-12-15 15:44:17,599 — DEBUG — Inside DataValidation
+2022-12-15 15:44:17,599 — INFO — Connection established
+2022-12-15 15:44:17,600 — INFO — EXEC PP_CI..USP_InsertInto_IntraDayAccountOTBRule_Internal '2022121543591', 'Policy_Sample_File_V1.csv' ,'6969', 'G2', 'ACCOUNTNUMBER', 'EXCP_Policy_Sample_File_V1_PODID_1.csv',0
+2022-12-15 15:45:21,234 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Internal executed successfully
+2022-12-15 15:45:21,234 — DEBUG — EXEC PP_CI..USP_Archiveintradayaccountotbrule_Internal 'Policy_Sample_File_V1.csv'
+2022-12-15 15:45:23,240 — DEBUG — ABORT: False
+ErrorFlag: 0
+ErrorMessage: No Error
+2022-12-15 15:45:23,241 — DEBUG — Inside SendMail
+2022-12-15 15:45:23,769 — INFO — SENDING MAIL ...
+2022-12-15 15:45:25,714 — INFO — Finish Time::: 2022-12-15 15:45:25.714850
+2022-12-15 15:45:25,715 — INFO — ********************All files processed... Exiting*****************************

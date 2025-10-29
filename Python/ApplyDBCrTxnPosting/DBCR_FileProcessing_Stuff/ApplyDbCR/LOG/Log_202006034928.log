@@ -1,0 +1,10 @@
+2020-06-03 19:49:28,132 — INFO — File Processing starts ...
+2020-06-03 19:49:28,136 — INFO — Start Time::: 2020-06-03 19:49:28.131239
+2020-06-03 19:49:28,137 — INFO — E:\Python\PostDebitCreditTxnUtility\ApplyDbCR\INPUT\
+2020-06-03 19:49:28,138 — INFO — ********************BTS1^_retail_bts_gs_promo_122677116_20200527042407_1.csv*****************************
+2020-06-03 19:49:28,138 — INFO — FileID: 2020060349281
+2020-06-03 19:49:28,476 — INFO — Connection established
+2020-06-03 19:49:28,490 — INFO — Other file is being processed
+2020-06-03 19:49:30,441 — INFO — Sending mail...
+2020-06-03 19:49:33,681 — INFO — Finish Time::: 2020-06-03 19:49:33.681731
+2020-06-03 19:49:33,681 — INFO — ********************All files processed... Exiting*****************************

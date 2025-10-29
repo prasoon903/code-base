@@ -1,0 +1,10 @@
+2020-04-20 21:28:48,243 — INFO — File Processing starts ...
+2020-04-20 21:28:48,243 — INFO — Start Time::: 2020-04-20 21:28:48.243824
+2020-04-20 21:28:48,244 — INFO — D:\BankCard\POTB\INPUT\
+2020-04-20 21:28:48,244 — INFO — ********************IntraDayAccountOTBRule_20200420.csv*****************************
+2020-04-20 21:28:48,244 — INFO — FileID: 2020042028481
+2020-04-20 21:28:48,352 — INFO — Connection established
+2020-04-20 21:28:48,357 — INFO — File has already been processed
+2020-04-20 21:28:50,222 — INFO — Sending mail...
+2020-04-20 21:28:53,002 — INFO — Finish Time::: 2020-04-20 21:28:53.002506
+2020-04-20 21:28:53,003 — INFO — ********************All files processed... Exiting*****************************

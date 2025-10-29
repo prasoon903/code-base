@@ -1,0 +1,109 @@
+01/20/2022 17:48:08 — 6044 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+01/20/2022 17:48:08 — 6044 — INFO — START TIME: 2022-01-20 17:48:08.739275
+01/20/2022 17:48:08 — 6044 — INFO — PRINTING ENVIRONMENT VARIABLES
+01/20/2022 17:48:08 — 6044 — INFO — CI_DB: PP_CI
+01/20/2022 17:48:08 — 6044 — INFO — CL_DB: PP_CL
+01/20/2022 17:48:08 — 6044 — INFO — CAuth_DB: PP_CAUTH
+01/20/2022 17:48:08 — 6044 — INFO — SERVERNAME: XEON-S8
+01/20/2022 17:48:08 — 6044 — INFO — MailFrom: prasoon.parashar@corecard.com
+01/20/2022 17:48:08 — 6044 — INFO — MailTo: prasoon.parashar@corecard.com
+01/20/2022 17:48:08 — 6044 — INFO — SMTP_SERVER: corecard-com.mail.protection.outlook.com
+01/20/2022 17:48:08 — 6044 — INFO — SMTPPORT: 25
+01/20/2022 17:48:08 — 6044 — INFO — RetailAWSEnvironment: 0
+01/20/2022 17:48:08 — 6044 — INFO — RetailAWS_secret_name: ses-smtp-secret
+01/20/2022 17:48:08 — 6044 — INFO — RetailAWS_region_name: us-south-1
+01/20/2022 17:48:08 — 6044 — INFO — RetailAWS_service_name: secretsmanager
+01/20/2022 17:48:08 — 6044 — INFO — RetailSES_smtp_url: email-smtp.ap-south-1.amazonaws.com
+01/20/2022 17:48:08 — 6044 — INFO — RetailAWSPort: 587
+01/20/2022 17:48:08 — 6044 — INFO — RetailInputFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT
+01/20/2022 17:48:08 — 6044 — INFO — RetailErrorFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR
+01/20/2022 17:48:08 — 6044 — INFO — RetailOutFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT
+01/20/2022 17:48:08 — 6044 — INFO — RetailLogFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG
+01/20/2022 17:48:08 — 6044 — INFO — RetailGeneratedFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED
+01/20/2022 17:48:08 — 6044 — INFO — RetailInstitutionID: 6969
+01/20/2022 17:48:08 — 6044 — INFO — RetailEnvironment: LOCAL
+01/20/2022 17:48:08 — 6044 — INFO — RetailExceptionFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION
+01/20/2022 17:48:08 — 6044 — INFO — RetailExceptionFilePrefix: EXCP_
+01/20/2022 17:48:08 — 6044 — INFO — RetailExceptionFileSuffix: _PODID_
+01/20/2022 17:48:08 — 6044 — INFO — RetailFileProcessingPOD: POD1
+01/20/2022 17:48:08 — 6044 — INFO — BatchCount: 10000
+01/20/2022 17:48:08 — 6044 — INFO — AccountNumberCheck: 1
+01/20/2022 17:48:08 — 6044 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+01/20/2022 17:48:08 — 6044 — INFO — INSIDE GetOperatingServer BLOCK
+01/20/2022 17:48:08 — 6044 — INFO — CONNECTION ESTABLISHED
+01/20/2022 17:48:08 — 6044 — INFO — ConnectionStatus: True
+01/20/2022 17:48:08 — 6044 — ERROR — ERROR INSIDE GetOperatingServer BLOCK can only concatenate str (not "ProgrammingError") to str
+01/20/2022 17:48:08 — 6044 — INFO — INSIDE EmailStructure_Head BLOCK
+01/20/2022 17:48:08 — 6044 — INFO — EXITING EmailStructure_Head BLOCK
+01/20/2022 17:48:08 — 6044 — INFO — FILENAME: TestFile_1.csv
+01/20/2022 17:48:08 — 6044 — INFO — FileID: 202201201748081
+01/20/2022 17:48:08 — 6044 — INFO — INSIDE ValidateDuplicateFile BLOCK
+01/20/2022 17:48:08 — 6044 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\TestFile_1.csv
+01/20/2022 17:48:08 — 6044 — INFO — EXITING ValidateDuplicateFile BLOCK
+01/20/2022 17:48:08 — 6044 — INFO — INSIDE CheckEmptyFile BLOCK
+01/20/2022 17:48:08 — 6044 — INFO — Total records in the file TestFile_1.csv is: 1
+01/20/2022 17:48:08 — 6044 — INFO — Non-Empty file, going to process
+01/20/2022 17:48:08 — 6044 — INFO — IN GenerateErrorPotenialFile FUNCTION 
+01/20/2022 17:48:08 — 6044 — INFO — INSIDE ImportFileToDB BLOCK
+01/20/2022 17:48:08 — 6044 — INFO — CONNECTION ESTABLISHED
+01/20/2022 17:48:08 — 6044 — INFO — ConnectionStatus: True
+01/20/2022 17:48:08 — 6044 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+01/20/2022 17:48:08 — 6044 — INFO — IMPORTING FILE DATA OF FILE : Gen_TestFile_1_PART2.csv
+01/20/2022 17:48:08 — 6044 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED\Gen_TestFile_1_PART2.csv -b 5000 -h TABLOCK -f E:\Python\Corecard_Python_Design\BCP_changes_V2\MilkReplaySchedules2.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error2_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output2_in.log -S XEON-S8 -T -t , -F 2
+01/20/2022 17:48:08 — 6044 — INFO — BCP START TIME::: 2022-01-20 17:48:08.907329
+01/20/2022 17:48:09 — 6044 — INFO — Reading BCP Output file
+01/20/2022 17:48:09 — 6044 — INFO — Output File Location: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output2_in.log
+01/20/2022 17:48:09 — 6044 — INFO — Starting copy...
+01/20/2022 17:48:09 — 6044 — INFO — 0 rows copied.
+01/20/2022 17:48:09 — 6044 — INFO — Network packet size (bytes): 4096
+01/20/2022 17:48:09 — 6044 — INFO — Clock Time (ms.) Total     : 16
+01/20/2022 17:48:09 — 6044 — INFO — BCP EXECUTION SUCCESSFULL
+01/20/2022 17:48:09 — 6044 — INFO — BCP FINISH TIME::: 2022-01-20 17:48:09.443019
+01/20/2022 17:48:09 — 6044 — INFO — INSIDE DataValidation BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — PROCESSING NEW FILE
+01/20/2022 17:48:09 — 6044 — INFO — ExceptionFile: EXCP_TestFile_1_PODID_POD1.csv
+01/20/2022 17:48:09 — 6044 — INFO — CONNECTION ESTABLISHED
+01/20/2022 17:48:09 — 6044 — INFO — ConnectionStatus: True
+01/20/2022 17:48:09 — 6044 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'TestFile_1.csv', '202201201748081', 10000, 1, 3, 'EXCP_TestFile_1_PODID_POD1.csv'
+01/20/2022 17:48:09 — 6044 — INFO — Error in validating records
+01/20/2022 17:48:09 — 6044 — INFO — EXITING DataValidation BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — INSIDE ImportFileToDB BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — CONNECTION ESTABLISHED
+01/20/2022 17:48:09 — 6044 — INFO — ConnectionStatus: True
+01/20/2022 17:48:09 — 6044 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+01/20/2022 17:48:09 — 6044 — INFO — IMPORTING FILE DATA OF FILE : Gen_TestFile_1_PART1.csv
+01/20/2022 17:48:09 — 6044 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED\Gen_TestFile_1_PART1.csv -b 5000 -h TABLOCK -f E:\Python\Corecard_Python_Design\BCP_changes_V2\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+01/20/2022 17:48:09 — 6044 — INFO — BCP START TIME::: 2022-01-20 17:48:09.528016
+01/20/2022 17:48:09 — 6044 — INFO — Reading BCP Output file
+01/20/2022 17:48:09 — 6044 — INFO — Output File Location: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log
+01/20/2022 17:48:09 — 6044 — INFO — Starting copy...
+01/20/2022 17:48:09 — 6044 — INFO — 0 rows copied.
+01/20/2022 17:48:09 — 6044 — INFO — Network packet size (bytes): 4096
+01/20/2022 17:48:09 — 6044 — INFO — Clock Time (ms.) Total     : 1
+01/20/2022 17:48:09 — 6044 — INFO — BCP EXECUTION SUCCESSFULL
+01/20/2022 17:48:09 — 6044 — INFO — BCP FINISH TIME::: 2022-01-20 17:48:09.631762
+01/20/2022 17:48:09 — 6044 — INFO — INSIDE DataValidation BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — PROCESSING NEW FILE
+01/20/2022 17:48:09 — 6044 — INFO — ExceptionFile: EXCP_TestFile_1_PODID_POD1.csv
+01/20/2022 17:48:09 — 6044 — INFO — CONNECTION ESTABLISHED
+01/20/2022 17:48:09 — 6044 — INFO — ConnectionStatus: True
+01/20/2022 17:48:09 — 6044 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'TestFile_1.csv', '202201201748081', 10000, 1, 0, 'EXCP_TestFile_1_PODID_POD1.csv'
+01/20/2022 17:48:09 — 6044 — INFO — Error in validating records
+01/20/2022 17:48:09 — 6044 — INFO — EXITING DataValidation BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — INSIDE GenerateExceptionFile BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION\EXCP_TestFile_1_PODID_POD1.csv
+01/20/2022 17:48:09 — 6044 — INFO — CONNECTION ESTABLISHED
+01/20/2022 17:48:09 — 6044 — INFO — ConnectionStatus: True
+01/20/2022 17:48:09 — 6044 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'TestFile_1.csv' AND FileID = '202201201748081' AND JobStatus = 10
+01/20/2022 17:48:09 — 6044 — DEBUG — Empty DataFrame
+Columns: [Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, Error_Message, Field_Path, AccountNumber]
+Index: []
+01/20/2022 17:48:09 — 6044 — INFO — TOTAL RECORDS FOR EXCEPTION FILE: 0
+01/20/2022 17:48:09 — 6044 — INFO — EXITING GenerateExceptionFile BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — INSIDE EmailBody_Error BLOCK
+01/20/2022 17:48:09 — 6044 — INFO — EXITING EmailBody_Error BLOCK
+01/20/2022 17:48:09 — 6044 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:Coral;>Server operating time: 01/20/2022 17:48:08</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>TestFile_1.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;>Error in validating records</td></tr></table><p style=color:Crimson;><b>NO RECORDS FOR EXCEPTION FILE, IT HAS NOT BEEN GENERATED</b></p><p style=color:DarkBlue;><b>TOTAL RECORDS IN EXCEPTION FILE: 0</b></p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2022, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+01/20/2022 17:48:09 — 6044 — DEBUG — Inside SendMail
+01/20/2022 17:48:10 — 6044 — INFO — SENDING MAIL ...
+01/20/2022 17:48:13 — 6044 — INFO — Finish Time::: 2022-01-20 17:48:13.511595
+01/20/2022 17:48:13 — 6044 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

@@ -1,0 +1,31 @@
+08/06/2021 12:00:50 — 19232 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+08/06/2021 12:00:50 — 19232 — INFO — START TIME: 2021-08-06 12:00:50.772778
+08/06/2021 12:00:50 — 19232 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+08/06/2021 12:00:50 — 19232 — INFO — INSIDE GetOperatingServer BLOCK
+08/06/2021 12:00:51 — 19232 — INFO — CONNECTION ESTABLISHED
+08/06/2021 12:00:51 — 19232 — INFO — OperatingServer: XEON-S8
+08/06/2021 12:00:51 — 19232 — INFO — EXITING GetOperatingServer BLOCK
+08/06/2021 12:00:51 — 19232 — INFO — INSIDE EmailStructure_Head BLOCK
+08/06/2021 12:00:51 — 19232 — INFO — EXITING EmailStructure_Head BLOCK
+08/06/2021 12:00:51 — 19232 — INFO — FILENAME: amortization_schedule_error_feed_NewStructure.csv
+08/06/2021 12:00:51 — 19232 — INFO — FileID: 202108061200501
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 1] : ValidateDuplicateFile STARTS
+08/06/2021 12:00:51 — 19232 — INFO — INSIDE ValidateDuplicateFile BLOCK
+08/06/2021 12:00:51 — 19232 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_NewStructure.csv
+08/06/2021 12:00:51 — 19232 — INFO — File amortization_schedule_error_feed_NewStructure.csv is already present in OUTPUT folder. So it can not be processed.
+08/06/2021 12:00:51 — 19232 — INFO — Duplicate File
+08/06/2021 12:00:51 — 19232 — INFO — EXITING ValidateDuplicateFile BLOCK
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 1] : ValidateDuplicateFile FINISHED
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 2] : CheckEmptyFile STARTS
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 2] : CheckEmptyFile FINISHED
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 3] : ImportFileToDB STARTS
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 3] : ImportFileToDB FINISHED
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 4] : DataValidation STARTS
+08/06/2021 12:00:51 — 19232 — INFO — [STEP 4] : DataValidation FINISHED
+08/06/2021 12:00:51 — 19232 — INFO — INSIDE EmailBody_Error BLOCK
+08/06/2021 12:00:51 — 19232 — INFO — EXITING EmailBody_Error BLOCK
+08/06/2021 12:00:51 — 19232 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 08/06/2021 12:00:50</h4><h4 style=color:Indigo;>POD ID: _1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_NewStructure.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;>Duplicate File</td></tr></table><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+08/06/2021 12:00:51 — 19232 — DEBUG — Inside SendMail
+08/06/2021 12:00:52 — 19232 — INFO — SENDING MAIL ...
+08/06/2021 12:00:54 — 19232 — INFO — Finish Time::: 2021-08-06 12:00:54.916125
+08/06/2021 12:00:54 — 19232 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

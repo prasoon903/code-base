@@ -1,0 +1,20 @@
+{
+    "UserID": "SystemCommSvc",
+	"Password":"Test123!",
+    "AccountNumber": "",
+    "AdminNumber":null,
+    "CardNumber":null,
+    "AccountUUID":null,
+    "AdminUUID":null,
+    "TCAPMonths":0,
+    "EnrollmentId":"{{$guid}}",
+    "Source":"PLAT",
+    "IPAddress": "",
+    "CallerID": "",
+    "CalledID": "",
+    "RequestTime": "",
+    "SessionID": "",
+    "APIVersion": "2.0",
+    "ApplicationVersion": "",
+    "EnrollmentFlag": "1"
+}

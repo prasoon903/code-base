@@ -1,0 +1,7 @@
+2022-12-15 15:48:52,312 — INFO — ****************** PAYMENT HOLD FILE PROCESSING STARTS ******************
+2022-12-15 15:48:52,312 — INFO — Start Time::: 2022-12-15 15:48:52.311819
+2022-12-15 15:48:52,312 — INFO — InputDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\INPUT\
+2022-12-15 15:48:52,312 — INFO — OutputDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\OUT\
+2022-12-15 15:48:52,313 — INFO — ErrorDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\ERROR\
+2022-12-15 15:48:52,313 — INFO — LogDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\LOG\
+2022-12-15 15:48:52,313 — INFO — ExceptionDir: E:\Python\PaymentHold\PaymentHoldFileProcessing\POTB\EXCEPTION\

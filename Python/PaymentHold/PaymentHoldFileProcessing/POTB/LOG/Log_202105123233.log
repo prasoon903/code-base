@@ -1,0 +1,15 @@
+2021-05-12 11:32:33,060 — INFO — File Processing starts ...
+2021-05-12 11:32:33,072 — INFO — Start Time::: 2021-05-12 11:32:33.015021
+2021-05-12 11:32:33,073 — INFO — E:\Python\PaymentHold\POTB\INPUT\
+2021-05-12 11:32:33,075 — INFO — ********************Policy_Sample_File_V7.csv*****************************
+2021-05-12 11:32:33,077 — INFO — FileID: 2021051232331
+2021-05-12 11:32:33,712 — INFO — Connection established
+2021-05-12 11:32:33,935 — INFO — File is in NEW state and going to process
+2021-05-12 11:32:33,935 — INFO — Connection established
+2021-05-12 11:32:34,177 — INFO — bcp PP_CI..IntraDayAccountOTBRule_External_G2 IN E:\Python\PaymentHold\POTB\INPUT\Policy_Sample_File_V7.csv -b 5000 -h TABLOCK -f E:\Python\PaymentHold\IntraDayAccountOTBRule_External_G2_n.xml -e E:\Python\PaymentHold\POTB\LOG\Error1_in.log -o E:\Python\PaymentHold\POTB\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2021-05-12 11:32:34,742 — INFO — Record Insert Time:::2021-05-12 11:32:34.742874
+2021-05-12 11:32:34,743 — INFO — Connection established
+2021-05-12 11:32:36,233 — INFO — USP_InsertInto_IntraDayAccountOTBRule_Internal executed successfully
+2021-05-12 11:32:38,151 — INFO — SENDING MAIL ...
+2021-05-12 11:32:39,887 — INFO — Finish Time::: 2021-05-12 11:32:39.887284
+2021-05-12 11:32:39,888 — INFO — ********************All files processed... Exiting*****************************

@@ -1,0 +1,12 @@
+2025-05-12 13:15:48,176 — INFO — File Processing starts ...
+2025-05-12 13:15:48,177 — INFO — START TIME::: 2025-05-12 13:15:48.176369
+2025-05-12 13:15:48,178 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-12 13:15:48,178 — INFO — ********************Tradeline Deletion.xlsx*****************************
+2025-05-12 13:15:48,178 — INFO — LoopCount: 1
+2025-05-12 13:15:48,229 — INFO — ['Sheet1', 'Sheet2', 'Sheet3']
+2025-05-12 13:15:48,229 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 326, in <module>
+    if S1.SheetName in sheet_names:
+       ^^^^^^^^^^^^
+AttributeError: type object 'SetUp' has no attribute 'SheetName'

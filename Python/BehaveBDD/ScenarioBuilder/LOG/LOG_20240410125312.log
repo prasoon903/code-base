@@ -1,0 +1,43 @@
+2024-04-10 12:53:12,334 — INFO — ResponseFile to be processed: E:\Python\BehaveBDD\ScenarioBuilder\ResponseFile\COOKIE-231352_20240410125312.sql
+2024-04-10 12:53:12,335 — INFO — File Processing starts ...
+2024-04-10 12:53:12,335 — INFO — START TIME::: 2024-04-10 12:53:12.334870
+2024-04-10 12:53:12,335 — INFO — E:\Python\BehaveBDD\ScenarioBuilder\INPUT\
+2024-04-10 12:53:12,335 — INFO — ********************Scenario.xlsx*****************************
+2024-04-10 12:53:12,335 — INFO — INSIDE ReadingTheFileDF WITH FILE: Scenario.xlsx
+2024-04-10 12:53:12,551 — INFO — DATA CONVERTED FROM XLS TO DF
+2024-04-10 12:53:12,553 — INFO —               Trantime  ...                    Description
+73 2019-07-24 12:11:12  ...                            NaN
+72 2020-12-22 09:38:31  ...   DOMESTIC PURCHASE - REVOLVER
+71 2020-12-22 09:38:31  ...     DOMESTIC PURCHASE - RETAIL
+70 2021-01-11 14:41:59  ...     ACH SCHEDULED BILL PAYMENT
+69 2021-02-20 19:53:02  ...     ACH SCHEDULED BILL PAYMENT
+..                 ...  ...                            ...
+4  2023-12-04 21:26:35  ...        ACH BILL PAYMENT RETURN
+3  2023-12-04 21:43:10  ...     ACH SCHEDULED BILL PAYMENT
+2  2023-12-19 11:16:40  ...     ACH SCHEDULED BILL PAYMENT
+1  2023-12-30 06:14:38  ...     ACH SCHEDULED BILL PAYMENT
+0  2023-12-30 06:14:39  ...     ACH SCHEDULED BILL PAYMENT
+
+[74 rows x 13 columns]
+2024-04-10 12:53:12,582 — INFO — ********************~$Scenario.xlsx*****************************
+2024-04-10 12:53:12,582 — INFO — INSIDE ReadingTheFileDF WITH FILE: ~$Scenario.xlsx
+2024-04-10 12:53:12,583 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\BehaveBDD\ScenarioBuilder\ScenarioBuilder.py", line 289, in <module>
+    ReadingTheFileDF(FileName)
+  File "E:\Python\BehaveBDD\ScenarioBuilder\ScenarioBuilder.py", line 159, in ReadingTheFileDF
+    DF = pd.read_excel(File, sheet_name=S1.SheetName, usecols=S1.Columns)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\util\_decorators.py", line 211, in wrapper
+    return func(*args, **kwargs)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\util\_decorators.py", line 317, in wrapper
+    return func(*args, **kwargs)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\io\excel\_base.py", line 483, in read_excel
+    io = ExcelFile(io, storage_options=storage_options, engine=engine)
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\io\excel\_base.py", line 1629, in __init__
+    ext = inspect_excel_format(
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\io\excel\_base.py", line 1502, in inspect_excel_format
+    with get_handle(
+  File "E:\Python\BehaveBDD\Python310\lib\site-packages\pandas\io\common.py", line 866, in get_handle
+    handle = open(handle, ioargs.mode)
+PermissionError: [Errno 13] Permission denied: 'E:\\Python\\BehaveBDD\\ScenarioBuilder\\INPUT\\~$Scenario.xlsx'
+2024-04-10 12:53:12,610 — INFO — *********************** FINISHED ***********************

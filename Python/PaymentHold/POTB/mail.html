@@ -1,0 +1,87 @@
+<style>
+	table, th {
+			border: 2px solid black;border-collapse: collapse;
+		}
+	td {
+			border: 1px solid black;border-collapse: collapse;
+		}
+</style>
+<html>
+	<table>
+		<tr>
+			<td><b>FileName</b></td>
+			<td><b>FileStatus</b></td>
+			<td><b>TotalRecord</b></td>
+			<td><b>SuccessCount</b></td>
+			<td><b>ErrorCountForAccountFile</b></td>
+			<td><b>ArchiveCount</b></td>
+			<td><b>NotProcessedCount</b></td>
+			<td><b>ErrorReason</b></td>
+		</tr>
+		<tr>
+			<td style=color:blue;><b>test_payment_hold_14.csv<b></td>
+			<td style=color:red;><b>Error</b></td>
+			<td style=color:green;>0</td>
+			<td style=color:green;>0</td>
+			<td style=color:red;>0</td>
+			<td style=color:green;>0</td>
+			<td style=color:red;>0</td>
+			<td style=color:red;>Duplicate File</td>
+		</tr>
+		<tr>
+			<td style=color:blue;><b>test_payment_hold_15.csv<b></td>
+			<td style=color:green;><b>Success</b></td>
+			<td style=color:green;>102</td>
+			<td style=color:green;>102</td>
+			<td style=color:red;>0</td>
+			<td style=color:green;>0</td>
+			<td style=color:red;>0</td>
+			<td style=color:green;>No error found</td>
+		</tr>
+		<tr>
+			<td style=color:blue;><b>test_payment_hold_16.csv<b></td>
+			<td style=color:green;><b>Success</b></td>
+			<td style=color:green;>102</td><td style=color:green;>102</td>
+			<td style=color:red;>0</td>
+			<td style=color:green;>102</td>
+			<td style=color:red;>0</td>
+			<td style=color:green;>No error found</td>
+		</tr>
+	</table>
+	<p style=color:blue;><b>File Name:</b> test_payment_hold_15.csv</p>
+	<table>
+		<tr>
+			<td><b>HeldDays_LessThanIntradayThreshhold</b></td>
+			<td><b>HeldDays_GreaterThanIntradayThreshhold</b></td>
+			<td><b>RecordCount</b></td>
+		</tr>                                     
+		<tr>
+			<td>2</td>
+			<td>6</td>
+			<td><b>25</b></td>
+		</tr>                                     
+		<tr>
+			<td>3</td>
+			<td>6</td>
+			<td><b>77</b></td>
+		</tr>
+	</table>
+	<p style=color:blue;><b>File Name:</b> test_payment_hold_16.csv</p>
+	<table>
+		<tr>
+			<td><b>HeldDays_LessThanIntradayThreshhold</b></td>
+			<td><b>HeldDays_GreaterThanIntradayThreshhold</b></td>
+			<td><b>RecordCount</b></td>
+		</tr>                                     
+		<tr>
+			<td>2</td>
+			<td>6</td>
+			<td><b>25</b></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>6</td>
+			<td><b>77</b></td>
+		</tr>
+	</table>
+</html>

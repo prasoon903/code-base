@@ -1,0 +1,4 @@
+Accountnumber,InsitututionID,IntradayThreshholdAmount,HeldDays_LessThanIntradayThreshhold,HeldDays_GreaterThanIntradayThreshhold,StartDate,Transactioncode
+1100000100000014,6969,10,10,2,20170223235957,17556
+1100000100000022,6969,10,10,2,20170223235957,NULL
+1100000100000030,6969,10,10,2,20170223235957,17556

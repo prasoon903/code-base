@@ -1,0 +1,17 @@
+2025-06-09 17:54:15,062 — INFO — File Processing starts ...
+2025-06-09 17:54:15,063 — INFO — START TIME::: 2025-06-09 17:54:15.062315
+2025-06-09 17:54:15,064 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-06-09 17:54:15,075 — INFO — ********************LM-16-30 Cases.xlsx*****************************
+2025-06-09 17:54:15,076 — INFO — LoopCount: 1
+2025-06-09 17:54:15,177 — INFO — ['Input - From Pega', 'MDW - TXN Details', 'MDW - LM 16 TXNs', 'SQL']
+2025-06-09 17:54:15,178 — INFO — Processing File: LM-16-30 Cases.xlsx
+2025-06-09 17:54:15,179 — INFO — Processing sheet: MDW - LM 16 TXNs
+2025-06-09 17:54:15,179 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-325321_MDW - LM 16 TXNs.txt
+2025-06-09 17:54:15,197 — INFO — INSIDE ReadingTheFileDF WITH FILE: LM-16-30 Cases.xlsx
+2025-06-09 17:54:15,355 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-06-09 17:54:15,409 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-06-09 17:54:15,438 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-06-09 17:54:15,439 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-06-09 17:54:22,010 — INFO — proc: psutil.Process(pid=8752, name='python.exe', status='running', started='17:54:08')
+2025-06-09 17:54:22,011 — INFO — handle.path: E:\Python\FileConverter_Miscelleneous\INPUT\LM-16-30 Cases.xlsx
+2025-06-09 17:54:22,012 — INFO — file_path: E:\Python\FileConverter_Miscelleneous\INPUT\LM-16-30 Cases.xlsx

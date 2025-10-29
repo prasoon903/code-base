@@ -1,0 +1,117 @@
+09/23/2025 11:42:23 —    2440 —     INFO — PROCESS STARTS
+09/23/2025 11:42:25 —    2440 —     INFO — LabelPath: \\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DSL
+09/23/2025 11:42:27 —    2440 —     INFO — SELECTED VALUE:: 2
+09/23/2025 11:42:30 —    2440 —     INFO — SELECTED VALUE:: 1
+09/23/2025 11:42:30 —    2440 —     INFO — START RESTORE DB
+09/23/2025 11:42:30 —    2440 —     INFO — Running CallSQLScripts from FolderName: SettingUpPOD1\BeforeDBRestore
+09/23/2025 11:42:30 —    2440 —     INFO — Path: E:\Python\DB_Operations\SettingUpPOD1\BeforeDBRestore
+09/23/2025 11:42:30 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 0_t_user_details.sql
+09/23/2025 11:42:35 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i KillAll.sql
+09/23/2025 11:42:36 —    2440 —     INFO — EXITING CallSQLScripts
+09/23/2025 11:42:36 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CI
+09/23/2025 11:42:36 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CI', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CI.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:36 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:36 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:36 —    2440 —     INFO — DBName: PP_CI
+09/23/2025 11:42:36 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CI', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CI.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:36 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:41 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CI_Secondary
+09/23/2025 11:42:41 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CI_Secondary', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CI_Secondary.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:41 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:41 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:41 —    2440 —     INFO — DBName: PP_CI_Secondary
+09/23/2025 11:42:41 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CI_Secondary', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CI_Secondary.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:41 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:44 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CAuth
+09/23/2025 11:42:44 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CAuth', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CAuth.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:44 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:44 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:44 —    2440 —     INFO — DBName: PP_CAuth
+09/23/2025 11:42:44 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CAuth', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CAuth.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:44 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:46 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CC
+09/23/2025 11:42:46 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CC', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CC.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:46 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:46 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:46 —    2440 —     INFO — DBName: PP_CC
+09/23/2025 11:42:46 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CC', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CC.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:46 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:48 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CL
+09/23/2025 11:42:48 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CL', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CL.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:48 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:48 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:48 —    2440 —     INFO — DBName: PP_CL
+09/23/2025 11:42:48 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CL', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CL.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:48 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:49 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CoreApp
+09/23/2025 11:42:49 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CoreApp', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CoreApp.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:49 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:49 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:49 —    2440 —     INFO — DBName: PP_CoreApp
+09/23/2025 11:42:49 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CoreApp', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CoreApp.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:49 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:51 —    2440 —     INFO — START GetEnhancedSQL DB: PP_CoreCredit
+09/23/2025 11:42:51 —    2440 —     INFO — Restore: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CoreCredit', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CoreCredit.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:51 —    2440 —     INFO — RestoreSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:42:51 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:42:51 —    2440 —     INFO — DBName: PP_CoreCredit
+09/23/2025 11:42:51 —    2440 —     INFO — SQL: EXEC SP_RESTOREDB_Enhanced_V4 @DB_NAME = N'PP_CoreCredit', @BACKUP_FILE= N'\\VMCCRMP01\ReleaseManagement\PLAT\Labels\LB7158_Plat_25.10.3_PLAT\Application\DB\MasterDB_New\CoreCredit.bak', @MDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\MDF', @LDF_LOCATION = N'\\BPLDEVDB01\Prasoon_Parashar\LDF'
+09/23/2025 11:42:51 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:42:53 —    2440 —     INFO — :: DB RESTORED :: 
+09/23/2025 11:42:53 —    2440 —     INFO — Running CallSQLScripts for POD: 1
+09/23/2025 11:42:53 —    2440 —     INFO — FolderName: SettingUpPOD1
+09/23/2025 11:42:53 —    2440 —     INFO — Path: E:\Python\DB_Operations\SettingUpPOD1
+09/23/2025 11:42:53 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 0_t_user_details.sql
+09/23/2025 11:42:55 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 1_Synonym_ALL.sql
+09/23/2025 11:42:58 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 2_SetEnvScripts.sql
+09/23/2025 11:42:58 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 3_USP_GetPSDData_Terms.sql
+09/23/2025 11:42:58 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i 4_IncreaseDBSize.sql
+09/23/2025 11:43:00 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_AccountDetails.sql
+09/23/2025 11:43:00 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_CBAuditDetails.sql
+09/23/2025 11:43:00 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_CBAuditPSDetails.sql
+09/23/2025 11:43:00 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_CCardDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_CCardForSpecificTransactionDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_CurrentStatementDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_DelinquencyRecordsDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_InstallmentDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_PurchaseReversalRecordDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — CMD: sqlcmd /S BPLDEVDB01 /d master -E -i USP_StatementDetails.sql
+09/23/2025 11:43:01 —    2440 —     INFO — EXITING CallSQLScripts
+09/23/2025 11:43:01 —    2440 —     INFO — START RESTORE DB
+09/23/2025 11:43:01 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CI TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CI.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CI-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:01 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:01 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:01 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CI TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CI.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CI-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:01 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:04 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CI_Secondary TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CI_Secondary.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CI_Secondary-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:04 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:04 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:04 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CI_Secondary TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CI_Secondary.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CI_Secondary-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:04 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:05 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CAuth TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CAuth.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CAuth-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:05 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:05 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:05 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CAuth TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CAuth.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CAuth-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:05 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:06 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CL TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CL.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CL-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:06 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:06 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:06 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CL TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CL.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CL-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:06 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:08 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CC TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CC.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CC-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:08 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:08 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:08 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CC TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CC.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CC-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:08 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:09 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CoreApp TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CoreApp.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CoreApp-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:09 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:09 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:09 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CoreApp TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CoreApp.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CoreApp-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:09 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:10 —    2440 —     INFO — BackupSql: BACKUP DATABASE PP_CoreCredit TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CoreCredit.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CoreCredit-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:10 —    2440 —     INFO — BackupSQL :: TRYING TO OBTAIN THE DB CONNECTION
+09/23/2025 11:43:10 —    2440 —     INFO — Server: BPLDEVDB01
+09/23/2025 11:43:10 —    2440 —     INFO — SQL: BACKUP DATABASE PP_CoreCredit TO  DISK = N'\\BPLDEVDB01\Prasoon_Parashar\backup\LB7158_Plat_25.10.3_PLAT_CoreCredit.bak' WITH NOFORMAT, INIT,  NAME = N'PP_CoreCredit-Full Database Backup', SKIP, NOREWIND, NOUNLOAD,  STATS = 10
+09/23/2025 11:43:10 —    2440 —     INFO — DB CONNECTION ESTABLISHED
+09/23/2025 11:43:11 —    2440 —     INFO — :: DB BACKED UP :: 
+09/23/2025 11:43:24 —    2440 —     INFO — ALL PROCESSES DONE. EXITING...: 

@@ -1,0 +1,92 @@
+Changed database context to 'master'.
+11 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 10416 pages for database 'RitikYadav_CoreAuth', file 'DJ_BC_CAuth' on file 1.
+Processed 1 pages for database 'RitikYadav_CoreAuth', file 'DJ_BC_CAuth_log' on file 1.
+BACKUP DATABASE successfully processed 10417 pages in 1.040 seconds (78.246 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 120640 pages for database 'RitikYadav_CI', file 'DJ_BC_CI' on file 1.
+Processed 1 pages for database 'RitikYadav_CI', file 'DJ_BC_CI_log' on file 1.
+BACKUP DATABASE successfully processed 120641 pages in 2.426 seconds (388.500 MB/sec).
+11 percent processed.
+21 percent processed.
+31 percent processed.
+41 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 6424 pages for database 'RitikYadav_CL', file 'DJ_BC_CL' on file 1.
+Processed 1 pages for database 'RitikYadav_CL', file 'DJ_BC_CL_log' on file 1.
+BACKUP DATABASE successfully processed 6425 pages in 0.858 seconds (58.495 MB/sec).
+10 percent processed.
+20 percent processed.
+30 percent processed.
+41 percent processed.
+51 percent processed.
+61 percent processed.
+70 percent processed.
+81 percent processed.
+91 percent processed.
+100 percent processed.
+Processed 6256 pages for database 'RitikYadav_CCredit', file 'Admin_portal_CNB30511' on file 1.
+Processed 1 pages for database 'RitikYadav_CCredit', file 'Admin_portal_CNB30511_log' on file 1.
+BACKUP DATABASE successfully processed 6257 pages in 0.868 seconds (56.309 MB/sec).
+12 percent processed.
+22 percent processed.
+31 percent processed.
+41 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+81 percent processed.
+92 percent processed.
+100 percent processed.
+Processed 4064 pages for database 'RitikYadav_CApp', file 'DJ_BC_CoreAPP' on file 1.
+Processed 1 pages for database 'RitikYadav_CApp', file 'DJ_BC_CoreAPP_log' on file 1.
+BACKUP DATABASE successfully processed 4065 pages in 1.167 seconds (27.207 MB/sec).
+13 percent processed.
+22 percent processed.
+31 percent processed.
+42 percent processed.
+50 percent processed.
+61 percent processed.
+70 percent processed.
+80 percent processed.
+93 percent processed.
+100 percent processed.
+Processed 2840 pages for database 'RitikYadav_CC', file 'DJ_BC_CC' on file 1.
+Processed 1 pages for database 'RitikYadav_CC', file 'DJ_BC_CC_log' on file 1.
+BACKUP DATABASE successfully processed 2841 pages in 0.905 seconds (24.518 MB/sec).
+15 percent processed.
+23 percent processed.
+31 percent processed.
+44 percent processed.
+57 percent processed.
+63 percent processed.
+71 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 1616 pages for database 'RitikYadav_CI_Sec', file 'PLAT_secondary' on file 1.
+Processed 1 pages for database 'RitikYadav_CI_Sec', file 'PLAT_secondary_log' on file 1.
+BACKUP DATABASE successfully processed 1617 pages in 0.276 seconds (45.748 MB/sec).

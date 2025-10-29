@@ -1,0 +1,7 @@
+USE master;
+GO
+ALTER DATABASE PP_CI 
+MODIFY FILE
+    (NAME = DJ_BC_CI,
+    SIZE = 2000MB);
+GO

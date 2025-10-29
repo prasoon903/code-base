@@ -1,0 +1,47 @@
+07/09/2020 20:11:46 — 18828 — INFO — File Processing starts ...
+07/09/2020 20:11:46 — 18828 — INFO — Start Time::: 2020-07-09 20:11:46.640910
+07/09/2020 20:11:46 — 18828 — INFO — INSIDE GetOperatingServer BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — Connection established
+07/09/2020 20:11:46 — 18828 — INFO — EXITING GetOperatingServer BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — INSIDE EmailStructure BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — EXITING EmailStructure BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — Checking the INPROCESS jobs
+07/09/2020 20:11:46 — 18828 — INFO — Connection established
+07/09/2020 20:11:46 — 18828 — INFO — EXITING CheckForInProcessJobs BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — E:\Python\ApplyDBCrTxnPosting\ApplyDbCR\INPUT\
+07/09/2020 20:11:46 — 18828 — INFO — ********************ProcessLocalFile_1.csv*****************************
+07/09/2020 20:11:46 — 18828 — INFO — FileID: 2020070911461
+07/09/2020 20:11:46 — 18828 — INFO — EXITING ValidateDuplicateFile
+07/09/2020 20:11:46 — 18828 — INFO — INSIDE FileToProcess BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — Connection established
+07/09/2020 20:11:46 — 18828 — INFO — Query executed successfully.
+07/09/2020 20:11:46 — 18828 — INFO — File is in NEW state and going to process
+07/09/2020 20:11:46 — 18828 — INFO — EXITING FileToProcess BLOCK
+07/09/2020 20:11:46 — 18828 — INFO — Inserting records to the database
+07/09/2020 20:11:46 — 18828 — INFO — Connection established
+07/09/2020 20:11:46 — 18828 — INFO — TABLE TRUNCATED SUCCESSFULY
+07/09/2020 20:11:46 — 18828 — INFO — BCP START TIME::: 2020-07-09 20:11:46.907676
+07/09/2020 20:11:47 — 18828 — INFO — BCP execution successful
+07/09/2020 20:11:47 — 18828 — INFO — BCP FINISH TIME::: 2020-07-09 20:11:47.043085
+07/09/2020 20:11:47 — 18828 — INFO — Inside DataValidation for file: ProcessLocalFile_1.csv
+07/09/2020 20:11:47 — 18828 — INFO — Connection established
+07/09/2020 20:11:47 — 18828 — INFO — EXEC PARASHAR_CB_CI..PR_ApplyDBCrFileProcessing '4101', '4204', 5, 10
+07/09/2020 20:11:47 — 18828 — INFO — PR_ApplyDBCrFileProcessing EXECUTION START TIME::: 2020-07-09 20:11:47.046109
+07/09/2020 20:11:50 — 18828 — INFO — PR_ApplyDBCrFileProcessing executed successfully
+07/09/2020 20:11:50 — 18828 — INFO — PR_ApplyDBCrFileProcessing EXECUTION FINISH TIME::: 2020-07-09 20:11:50.661211
+07/09/2020 20:11:50 — 18828 — INFO — ErrorMessage: SUCCESS
+07/09/2020 20:11:50 — 18828 — INFO — Criteria 1: TotalRecords != '' :: True
+07/09/2020 20:11:50 — 18828 — INFO — Criteria 2: TotalRecords > 0  :: True
+07/09/2020 20:11:50 — 18828 — INFO — JobStatus:: DONE
+07/09/2020 20:11:50 — 18828 — INFO — TotalRecords:: 224
+07/09/2020 20:11:50 — 18828 — INFO — SuccessCount:: 0
+07/09/2020 20:11:50 — 18828 — INFO — ErrorCount:: 224
+07/09/2020 20:11:50 — 18828 — INFO — ErrorReason:: No Error
+07/09/2020 20:11:50 — 18828 — INFO — INSIDE FileDetails BLOCK
+07/09/2020 20:11:50 — 18828 — INFO — Connection established
+07/09/2020 20:11:50 — 18828 — INFO — EXITING FileDetails BLOCK
+07/09/2020 20:11:50 — 18828 — INFO — INSIDE EmailStructure BLOCK
+07/09/2020 20:11:50 — 18828 — INFO — EXITING EmailStructure BLOCK
+07/09/2020 20:12:14 — 18828 — INFO — Sending mail...
+07/09/2020 20:12:17 — 18828 — INFO — ********************All files processed... Exiting*****************************
+07/09/2020 20:12:17 — 18828 — INFO — FINISH TIME::: 2020-07-09 20:11:46.640910

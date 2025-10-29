@@ -1,0 +1,77 @@
+{
+    "expand": "transitions",
+    "transitions": [
+        {
+            "id": "51",
+            "name": "Cancelled",
+            "to": {
+                "self": "https://corecard.atlassian.net/rest/api/2/status/10066",
+                "description": "",
+                "iconUrl": "https://corecard.atlassian.net/images/icons/statuses/generic.png",
+                "name": "Cancelled",
+                "id": "10066",
+                "statusCategory": {
+                    "self": "https://corecard.atlassian.net/rest/api/2/statuscategory/3",
+                    "id": 3,
+                    "key": "done",
+                    "colorName": "green",
+                    "name": "Done"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": true,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": true,
+            "isLooped": false
+        },
+        {
+            "id": "21",
+            "name": "Done",
+            "to": {
+                "self": "https://corecard.atlassian.net/rest/api/2/status/10001",
+                "description": "",
+                "iconUrl": "https://corecard.atlassian.net/",
+                "name": "Done",
+                "id": "10001",
+                "statusCategory": {
+                    "self": "https://corecard.atlassian.net/rest/api/2/statuscategory/3",
+                    "id": 3,
+                    "key": "done",
+                    "colorName": "green",
+                    "name": "Done"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": false,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": false,
+            "isLooped": false
+        },
+        {
+            "id": "61",
+            "name": "On Hold",
+            "to": {
+                "self": "https://corecard.atlassian.net/rest/api/2/status/10065",
+                "description": "",
+                "iconUrl": "https://corecard.atlassian.net/images/icons/statuses/generic.png",
+                "name": "On Hold",
+                "id": "10065",
+                "statusCategory": {
+                    "self": "https://corecard.atlassian.net/rest/api/2/statuscategory/2",
+                    "id": 2,
+                    "key": "new",
+                    "colorName": "blue-gray",
+                    "name": "To Do"
+                }
+            },
+            "hasScreen": false,
+            "isGlobal": false,
+            "isInitial": false,
+            "isAvailable": true,
+            "isConditional": false,
+            "isLooped": false
+        }
+    ]
+}

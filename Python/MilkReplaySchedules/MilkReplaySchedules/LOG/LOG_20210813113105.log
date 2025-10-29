@@ -1,0 +1,24 @@
+08/13/2021 11:31:05 — 13872 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+08/13/2021 11:31:05 — 13872 — INFO — START TIME: 2021-08-13 11:31:05.480024
+08/13/2021 11:31:05 — 13872 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+08/13/2021 11:31:05 — 13872 — INFO — INSIDE GetOperatingServer BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — CONNECTION ESTABLISHED
+08/13/2021 11:31:05 — 13872 — INFO — OperatingServer: XEON-S8
+08/13/2021 11:31:05 — 13872 — INFO — EXITING GetOperatingServer BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — INSIDE EmailStructure_Head BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — EXITING EmailStructure_Head BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — FILENAME: amortization_schedule_error_feed_NewStructure_Empty.csv
+08/13/2021 11:31:05 — 13872 — INFO — FileID: 202108131131051
+08/13/2021 11:31:05 — 13872 — INFO — INSIDE ValidateDuplicateFile BLOCK
+08/13/2021 11:31:05 — 13872 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_NewStructure_Empty.csv
+08/13/2021 11:31:05 — 13872 — INFO — EXITING ValidateDuplicateFile BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — INSIDE CheckEmptyFile BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — Total records in the file amortization_schedule_error_feed_NewStructure_Empty.csv is: 0
+08/13/2021 11:31:05 — 13872 — INFO — Empty file, aborting file processing
+08/13/2021 11:31:05 — 13872 — INFO — INSIDE EmailBody_Error BLOCK
+08/13/2021 11:31:05 — 13872 — INFO — EXITING EmailBody_Error BLOCK
+08/13/2021 11:31:05 — 13872 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 08/13/2021 11:31:05</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_NewStructure_Empty.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;>EMPTY FILE</td></tr></table><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+08/13/2021 11:31:05 — 13872 — DEBUG — Inside SendMail
+08/13/2021 11:31:08 — 13872 — INFO — SENDING MAIL ...
+08/13/2021 11:31:10 — 13872 — INFO — Finish Time::: 2021-08-13 11:31:10.015075
+08/13/2021 11:31:10 — 13872 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

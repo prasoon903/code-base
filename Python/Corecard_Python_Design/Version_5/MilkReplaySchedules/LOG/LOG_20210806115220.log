@@ -1,0 +1,53 @@
+08/06/2021 11:52:20 — 3132 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+08/06/2021 11:52:20 — 3132 — INFO — START TIME: 2021-08-06 11:52:20.431461
+08/06/2021 11:52:20 — 3132 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+08/06/2021 11:52:20 — 3132 — INFO — INSIDE GetOperatingServer BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — CONNECTION ESTABLISHED
+08/06/2021 11:52:20 — 3132 — INFO — OperatingServer: XEON-S8
+08/06/2021 11:52:20 — 3132 — INFO — EXITING GetOperatingServer BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — INSIDE EmailStructure_Head BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — EXITING EmailStructure_Head BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — FILENAME: amortization_schedule_error_feed_OldStructure.csv
+08/06/2021 11:52:20 — 3132 — INFO — FileID: 202108061152201
+08/06/2021 11:52:20 — 3132 — INFO — [STEP 1] : ValidateDuplicateFile STARTS
+08/06/2021 11:52:20 — 3132 — INFO — INSIDE ValidateDuplicateFile BLOCK
+08/06/2021 11:52:20 — 3132 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\amortization_schedule_error_feed_OldStructure.csv
+08/06/2021 11:52:20 — 3132 — INFO — EXITING ValidateDuplicateFile BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — [STEP 1] : ValidateDuplicateFile FINISHED
+08/06/2021 11:52:20 — 3132 — INFO — [STEP 2] : CheckEmptyFile STARTS
+08/06/2021 11:52:20 — 3132 — INFO — INSIDE CheckEmptyFile BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — Total records in the file amortization_schedule_error_feed_OldStructure.csvis: 10
+08/06/2021 11:52:20 — 3132 — INFO — Non-Empty file, going to process
+08/06/2021 11:52:20 — 3132 — INFO — [STEP 2] : CheckEmptyFile FINISHED
+08/06/2021 11:52:20 — 3132 — INFO — [STEP 3] : ImportFileToDB STARTS
+08/06/2021 11:52:20 — 3132 — INFO — INSIDE ImportFileToDB BLOCK
+08/06/2021 11:52:20 — 3132 — INFO — CONNECTION ESTABLISHED
+08/06/2021 11:52:21 — 3132 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+08/06/2021 11:52:21 — 3132 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\amortization_schedule_error_feed_OldStructure.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version4\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+08/06/2021 11:52:21 — 3132 — INFO — BCP START TIME::: 2021-08-06 11:52:21.138838
+08/06/2021 11:52:21 — 3132 — INFO — Reading BCP Output file
+08/06/2021 11:52:21 — 3132 — INFO — Starting copy...
+08/06/2021 11:52:21 — 3132 — INFO — 10 rows copied.
+08/06/2021 11:52:21 — 3132 — INFO — Network packet size (bytes): 4096
+08/06/2021 11:52:21 — 3132 — INFO — Clock Time (ms.) Total     : 438    Average : (22.83 rows per sec.)
+08/06/2021 11:52:21 — 3132 — INFO — BCP EXECUTION SUCCESSFULL
+08/06/2021 11:52:21 — 3132 — INFO — BCP FINISH TIME::: 2021-08-06 11:52:21.902561
+08/06/2021 11:52:21 — 3132 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+08/06/2021 11:52:21 — 3132 — INFO — [STEP 3] : ImportFileToDB FINISHED
+08/06/2021 11:52:21 — 3132 — INFO — [STEP 4] : DataValidation STARTS
+08/06/2021 11:52:21 — 3132 — INFO — INSIDE DataValidation BLOCK
+08/06/2021 11:52:21 — 3132 — INFO — CONNECTION ESTABLISHED
+08/06/2021 11:52:21 — 3132 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'amortization_schedule_error_feed_OldStructure.csv', '202108061152201', 10000, 0
+08/06/2021 11:52:24 — 3132 — INFO — INSIDE FileDetails BLOCK
+08/06/2021 11:52:24 — 3132 — INFO — EXITING FileDetails BLOCK
+08/06/2021 11:52:24 — 3132 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+08/06/2021 11:52:24 — 3132 — INFO — No new record to update
+08/06/2021 11:52:24 — 3132 — INFO — EXITING DataValidation BLOCK
+08/06/2021 11:52:24 — 3132 — INFO — [STEP 4] : DataValidation FINISHED
+08/06/2021 11:52:24 — 3132 — INFO — INSIDE EmailBody_Success BLOCK
+08/06/2021 11:52:24 — 3132 — INFO — EXITING EmailBody_Error BLOCK
+08/06/2021 11:52:24 — 3132 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 08/06/2021 11:52:20</h4><h4 style=color:Indigo;>POD ID: 1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>amortization_schedule_error_feed_OldStructure.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>10</td><td style=color:green;>0</td><td style=color:red;>10</td><td style=color:green;>No new record to update</td></tr></table><p style=color:blue;><b>File Name:</b> amortization_schedule_error_feed_OldStructure.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountUUID or ProductID or InstitutionID</td><td><b>10</b></td></tr></table><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+08/06/2021 11:52:24 — 3132 — DEBUG — Inside SendMail
+08/06/2021 11:52:26 — 3132 — INFO — SENDING MAIL ...
+08/06/2021 11:52:30 — 3132 — INFO — Finish Time::: 2021-08-06 11:52:30.618675
+08/06/2021 11:52:30 — 3132 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

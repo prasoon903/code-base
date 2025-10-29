@@ -1,0 +1,23 @@
+2020-01-10 18:00:05,043 — INFO — File Processing starts ...
+2020-01-10 18:00:05,053 — INFO — Start Time::: 2020-01-10 18:00:05.042896
+2020-01-10 18:00:05,079 — INFO — E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+2020-01-10 18:00:05,080 — INFO — ********************TESTReplaySchedules_2.csv*****************************
+2020-01-10 18:00:05,080 — INFO — FileID: 2020011000051
+2020-01-10 18:00:05,080 — DEBUG — Inside ValidateDuplicateFile
+2020-01-10 18:00:05,081 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\TESTReplaySchedules_2.csv
+2020-01-10 18:00:05,081 — DEBUG — Inside ImportFileToDB
+2020-01-10 18:00:05,081 — DEBUG — bcp PARASHAR_CB_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\TESTReplaySchedules_2.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+2020-01-10 18:00:05,509 — INFO — Record Insert Time:::2020-01-10 18:00:05.509903
+2020-01-10 18:00:05,556 — DEBUG — Error === False
+2020-01-10 18:00:05,597 — DEBUG — Inside DataValidation
+2020-01-10 18:00:06,033 — INFO — Connection established
+2020-01-10 18:00:06,048 — DEBUG — EXEC PARASHAR_CB_CI..USP_ValidateRetailReplaySchedules 'TESTReplaySchedules_2.csv', '2020011000051'
+2020-01-10 18:00:06,100 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+2020-01-10 18:00:06,100 — INFO — No new record to update
+2020-01-10 18:00:06,101 — DEBUG — ABORT: False
+ErrorFlag: 0
+ErrorMessage: No new record to update
+2020-01-10 18:00:06,102 — DEBUG — Inside SendMail
+2020-01-10 18:00:06,658 — INFO — Sending mail...
+2020-01-10 18:00:08,973 — INFO — Finish Time::: 2020-01-10 18:00:08.973956
+2020-01-10 18:00:08,973 — INFO — ********************All files processed... Exiting*****************************

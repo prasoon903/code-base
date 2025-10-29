@@ -1,0 +1,23 @@
+
+Starting copy...
+5000 rows sent to SQL Server. Total sent: 5000
+5000 rows sent to SQL Server. Total sent: 10000
+5000 rows sent to SQL Server. Total sent: 15000
+5000 rows sent to SQL Server. Total sent: 20000
+5000 rows sent to SQL Server. Total sent: 25000
+5000 rows sent to SQL Server. Total sent: 30000
+5000 rows sent to SQL Server. Total sent: 35000
+5000 rows sent to SQL Server. Total sent: 40000
+5000 rows sent to SQL Server. Total sent: 45000
+5000 rows sent to SQL Server. Total sent: 50000
+5000 rows sent to SQL Server. Total sent: 55000
+5000 rows sent to SQL Server. Total sent: 60000
+5000 rows sent to SQL Server. Total sent: 65000
+5000 rows sent to SQL Server. Total sent: 70000
+5000 rows sent to SQL Server. Total sent: 75000
+5000 rows sent to SQL Server. Total sent: 80000
+5000 rows sent to SQL Server. Total sent: 85000
+
+87545 rows copied.
+Network packet size (bytes): 4096
+Clock Time (ms.) Total     : 3000   Average : (29181.67 rows per sec.)

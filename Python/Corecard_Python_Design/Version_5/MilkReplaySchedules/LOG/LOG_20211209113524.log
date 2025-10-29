@@ -1,0 +1,42 @@
+12/09/2021 11:35:24 — 11620 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+12/09/2021 11:35:24 — 11620 — INFO — START TIME: 2021-12-09 11:35:24.171904
+12/09/2021 11:35:24 — 11620 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE GetOperatingServer BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — CONNECTION ESTABLISHED
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE EmailStructure_Head BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — EXITING EmailStructure_Head BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — FILENAME: EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2.csv
+12/09/2021 11:35:24 — 11620 — INFO — FileID: 202112091135241
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE ValidateDuplicateFile BLOCK
+12/09/2021 11:35:24 — 11620 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2.csv
+12/09/2021 11:35:24 — 11620 — INFO — EXITING ValidateDuplicateFile BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE CheckEmptyFile BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — Total records in the file EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2.csv is: 3
+12/09/2021 11:35:24 — 11620 — INFO — Non-Empty file, going to process
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE ImportFileToDB BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — CONNECTION ESTABLISHED
+12/09/2021 11:35:24 — 11620 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+12/09/2021 11:35:24 — 11620 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version4\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+12/09/2021 11:35:24 — 11620 — INFO — BCP START TIME::: 2021-12-09 11:35:24.305890
+12/09/2021 11:35:24 — 11620 — INFO — Reading BCP Output file
+12/09/2021 11:35:24 — 11620 — INFO — Starting copy...
+12/09/2021 11:35:24 — 11620 — INFO — SQLState = S1000, NativeError = 0
+12/09/2021 11:35:24 — 11620 — INFO — Error = [Microsoft][ODBC Driver 13 for SQL Server]Unexpected EOF encountered in BCP data-file
+12/09/2021 11:35:24 — 11620 — INFO — BCP copy in failed
+12/09/2021 11:35:24 — 11620 — INFO — BCP EXECUTION SUCCESSFULL
+12/09/2021 11:35:24 — 11620 — INFO — BCP FINISH TIME::: 2021-12-09 11:35:24.400920
+12/09/2021 11:35:24 — 11620 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE DataValidation BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — PROCESSING EXCEPTION FILE
+12/09/2021 11:35:24 — 11620 — INFO — ExceptionFile: EXCP_EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2_POD1.csv
+12/09/2021 11:35:24 — 11620 — INFO — CONNECTION ESTABLISHED
+12/09/2021 11:35:24 — 11620 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2.csv', '202112091135241', 10000, 1, 1, 'EXCP_EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2_POD1.csv'
+12/09/2021 11:35:24 — 11620 — INFO — Error in validating records
+12/09/2021 11:35:24 — 11620 — INFO — EXITING DataValidation BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — INSIDE EmailBody_Error BLOCK
+12/09/2021 11:35:24 — 11620 — INFO — EXITING EmailBody_Error BLOCK
+12/09/2021 11:35:24 — 11620 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:Coral;>Server operating time: 12/09/2021 11:35:24</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2.csv<b></td><td style=color:red;><b>ERROR</b></td><td style=color:green;>0</td><td style=color:green;>0</td><td style=color:red;>0</td><td style=color:red;>Error in validating records</td></tr></table>EXCP_EXCP_amortization_schedule_error_feed_20211207_1_PODID_POD1_PODID_POD2_POD1.csv<br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+12/09/2021 11:35:24 — 11620 — DEBUG — Inside SendMail
+12/09/2021 11:35:25 — 11620 — INFO — SENDING MAIL ...
+12/09/2021 11:35:27 — 11620 — INFO — Finish Time::: 2021-12-09 11:35:27.347604
+12/09/2021 11:35:27 — 11620 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

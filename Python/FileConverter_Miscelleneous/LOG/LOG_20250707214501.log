@@ -1,0 +1,15 @@
+2025-07-07 21:45:01,468 — INFO — File Processing starts ...
+2025-07-07 21:45:01,470 — INFO — START TIME::: 2025-07-07 21:45:01.451355
+2025-07-07 21:45:01,470 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-07-07 21:45:01,472 — INFO — ********************Tranch2_Trancode_Finalfile_Corecard_07-07-2025.xlsx*****************************
+2025-07-07 21:45:01,474 — INFO — LoopCount: 1
+2025-07-07 21:45:03,684 — INFO — ['Sheet1']
+2025-07-07 21:45:03,684 — INFO — Processing File: Tranch2_Trancode_Finalfile_Corecard_07-07-2025.xlsx
+2025-07-07 21:45:03,684 — INFO — Processing sheet: Sheet1
+2025-07-07 21:45:03,685 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\CARDS-296479_Sheet1.txt
+2025-07-07 21:45:03,701 — INFO — INSIDE ReadingTheFileDF WITH FILE: Tranch2_Trancode_Finalfile_Corecard_07-07-2025.xlsx
+2025-07-07 21:45:05,851 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-07-07 21:45:05,919 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-07-07 21:45:05,968 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-07-07 21:45:05,968 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-07-07 21:45:33,221 — INFO — *********************** FINISHED ***********************

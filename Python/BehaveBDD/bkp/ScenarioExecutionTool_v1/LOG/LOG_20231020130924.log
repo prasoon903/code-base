@@ -1,0 +1,24 @@
+10/20/2023 13:09:24 — 3944 — INFO — Scenario 15.1
+10/20/2023 13:09:24 — 3944 — INFO — Scenario 15.1
+10/20/2023 13:09:24 — 3944 — INFO — Rohitrerun
+10/20/2023 13:09:24 — 3944 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 15.1' ORDER BY id DESC
+10/20/2023 13:09:24 — 3944 — INFO — EXECUTION_ID for rerun12
+10/20/2023 13:09:24 — 3944 — INFO — 12
+10/20/2023 13:09:24 — 3944 — INFO — 12
+10/20/2023 13:09:24 — 3944 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 12,'Scenario 15.1','Age system statement-2','Get AccountSummary','InProgress'
+10/20/2023 13:09:24 — 3944 — INFO — [('AccountNumber', '@MyAccountNumber')]
+10/20/2023 13:09:24 — 3944 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:09:24 — 3944 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:09:24 — 3944 — INFO — MyAccountNumber
+10/20/2023 13:09:24 — 3944 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:09:24 — 3944 — INFO — SET NOCOUNT ON EXEC USP_PDF_GetValueFromDataStore 12,'MyAccountNumber'
+10/20/2023 13:09:24 — 3944 — INFO — None
+10/20/2023 13:09:24 — 3944 — INFO — None
+10/20/2023 13:09:24 — 3944 — INFO — {'AccountNumber': 'None'}
+10/20/2023 13:09:24 — 3944 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 12,'Scenario 15.1','Age system statement-2','Get AccountSummary','Done'
+10/20/2023 13:09:24 — 3944 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 12,'Scenario 15.1','Age system statement-2','Verify API response is OK','InProgress'
+10/20/2023 13:09:24 — 3944 — INFO — ErrorFound Yes 
+ErrorNumber ERR03068 
+ErrorMessage Program Restriction :Invalid Service User or Account Identifier
+10/20/2023 13:09:24 — 3944 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 12,'Scenario 15.1','Age system statement-2','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:09:24 — 3944 — INFO — AssertionError occurred: None

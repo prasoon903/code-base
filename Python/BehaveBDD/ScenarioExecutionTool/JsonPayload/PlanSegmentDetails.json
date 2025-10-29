@@ -1,0 +1,16 @@
+{
+    "Password": "Test123!",
+    "UserID": "SystemCommSvc",
+    "AccountNumber": "",
+    "PlanAcctid": "",
+    "RMATranUUID": "",
+    "Source": "PLAT",
+    "APIVersion": "2.0",
+    "ApplicationVersion": "",
+    "InstallmentPlanStatus": "0",
+    "MonthsFilter": "",
+    "PaginationStatus": "0",
+    "PageSize": "",
+    "PageNumber": "",
+    "Offset": ""
+}

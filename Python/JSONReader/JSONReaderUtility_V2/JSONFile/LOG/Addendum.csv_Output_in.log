@@ -1,0 +1,24 @@
+
+Starting copy...
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+SQLState = 22001, NativeError = 0
+Error = [Microsoft][ODBC Driver 13 for SQL Server]String data, right truncation
+
+BCP copy in failed

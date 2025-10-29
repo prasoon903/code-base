@@ -1,0 +1,100 @@
+10/20/2023 13:05:22 — 1432 — INFO — Scenario 7.
+10/20/2023 13:05:22 — 1432 — INFO — Scenario 7.
+10/20/2023 13:05:22 — 1432 — INFO — Rohitrerun
+10/20/2023 13:05:22 — 1432 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 7.' ORDER BY id DESC
+10/20/2023 13:05:22 — 1432 — INFO — EXECUTION_ID for rerun8
+10/20/2023 13:05:22 — 1432 — INFO — 8
+10/20/2023 13:05:22 — 1432 — INFO — 8
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Get AccountSummary','InProgress'
+10/20/2023 13:05:22 — 1432 — INFO — [('AccountNumber', '@MyAccountNumber')]
+10/20/2023 13:05:22 — 1432 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:05:22 — 1432 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:05:22 — 1432 — INFO — MyAccountNumber
+10/20/2023 13:05:22 — 1432 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_GetValueFromDataStore 8,'MyAccountNumber'
+10/20/2023 13:05:22 — 1432 — INFO — 1150001100411432
+10/20/2023 13:05:22 — 1432 — INFO — 1150001100411432
+10/20/2023 13:05:22 — 1432 — INFO — {'AccountNumber': '1150001100411432'}
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Get AccountSummary','Done'
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Verify API response is OK','InProgress'
+10/20/2023 13:05:22 — 1432 — INFO — ErrorFound No 
+ErrorNumber ERR01009 
+ErrorMessage Account Balance details returned Successfully.
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Verify API response is OK','Done'
+10/20/2023 13:05:22 — 1432 — INFO — AccountSummary
+10/20/2023 13:05:22 — 1432 — INFO — json_data befire
+10/20/2023 13:05:22 — 1432 — INFO — json_data after
+10/20/2023 13:05:22 — 1432 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:05:22 — 1432 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:05:22 — 1432 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:05:22 — 1432 — INFO — AccountNumber
+10/20/2023 13:05:22 — 1432 — INFO — 1150001100411432
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — CardBalance
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — CycleDue
+10/20/2023 13:05:22 — 1432 — INFO — 0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — AmountOfTotalDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — CurrentDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — PastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — OneCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — TwoCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — ThreeCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — FourCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — FiveCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — SixCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — SevenCyclePastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — DaysPastDue
+10/20/2023 13:05:22 — 1432 — INFO — 0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — PastDueDate
+10/20/2023 13:05:22 — 1432 — INFO — None
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — StatementRemainingBalanceWithInstallmentDue
+10/20/2023 13:05:22 — 1432 — INFO — 0.0
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Save tag into variable','Done'
+10/20/2023 13:05:22 — 1432 — INFO — 30
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Post Transaction','InProgress'
+10/20/2023 13:05:22 — 1432 — INFO — [('AccountNumber', '@MyAccountNumber'), ('TranType', 'TranType'), ('TransactionAmount', 'TransactionAmount'), ('DateTimeLocalTransaction', 'DateTimeLocalTransaction')]
+10/20/2023 13:05:22 — 1432 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:05:22 — 1432 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:05:22 — 1432 — INFO — MyAccountNumber
+10/20/2023 13:05:22 — 1432 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:05:22 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_GetValueFromDataStore 8,'MyAccountNumber'
+10/20/2023 13:05:22 — 1432 — INFO — 1150001100411432
+10/20/2023 13:05:22 — 1432 — INFO — 1150001100411432
+10/20/2023 13:05:22 — 1432 — INFO — TranType
+10/20/2023 13:05:22 — 1432 — INFO — TransactionAmount
+10/20/2023 13:05:22 — 1432 — INFO — DateTimeLocalTransaction
+10/20/2023 13:05:22 — 1432 — INFO — {'AccountNumber': '1150001100411432', 'TranType': '2102', 'TransactionAmount': '30', 'DateTimeLocalTransaction': ''}
+10/20/2023 13:05:25 — 1432 — INFO — {'AccountNumber': '1150001100411432', 'TranType': '2102', 'TransactionAmount': '30', 'DateTimeLocalTransaction': '', 'UserID': 'JazzCall'}
+10/20/2023 13:05:25 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Post Transaction','Done'
+10/20/2023 13:05:25 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Verify API response is OK','InProgress'
+10/20/2023 13:05:25 — 1432 — INFO — APIResponse
+10/20/2023 13:05:25 — 1432 — INFO — ErrorFound Yes 
+ErrorNumber ERR04049 
+ErrorMessage Error encountered - Please Try Again Later
+10/20/2023 13:05:25 — 1432 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 8,'Scenario 7.','Post payment of $30 (Less than min due)','Verify API response is OK','FAIL Error Found Yes'
+10/20/2023 13:05:25 — 1432 — INFO — AssertionError occurred: None

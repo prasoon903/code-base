@@ -1,0 +1,14 @@
+08/04/2021 11:36:25 — 1660 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+08/04/2021 11:36:25 — 1660 — INFO — START TIME: 2021-08-04 11:36:25.480978
+08/04/2021 11:36:25 — 1660 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+08/04/2021 11:36:25 — 1660 — INFO — INSIDE GetOperatingServer BLOCK
+08/04/2021 11:36:25 — 1660 — INFO — CONNECTION ESTABLISHED
+08/04/2021 11:36:25 — 1660 — INFO — OperatingServer: XEON-S8
+08/04/2021 11:36:25 — 1660 — INFO — EXITING GetOperatingServer BLOCK
+08/04/2021 11:36:25 — 1660 — INFO — INSIDE EmailStructure_Head BLOCK
+08/04/2021 11:36:25 — 1660 — INFO — EXITING EmailStructure_Head BLOCK
+08/04/2021 11:36:25 — 1660 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:green;>Server operating time: 08/04/2021 11:36:25</h4><h3 style=color:red;>No file Present in Input folder</h3><br><br><br><div class="footer"><footer><small>&copy; Copyright 2021, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+08/04/2021 11:36:25 — 1660 — DEBUG — Inside SendMail
+08/04/2021 11:36:27 — 1660 — INFO — SENDING MAIL ...
+08/04/2021 11:36:29 — 1660 — INFO — Finish Time::: 2021-08-04 11:36:29.844096
+08/04/2021 11:36:29 — 1660 — INFO — *************************** NO FILE EXISTS, EXITING ***************************

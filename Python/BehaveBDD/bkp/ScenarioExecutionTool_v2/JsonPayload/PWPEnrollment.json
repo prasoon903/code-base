@@ -1,0 +1,21 @@
+{
+    "Password": "Test123!",
+    "UserID": "JazzCall",
+    "AccountNumber": "",
+    "AdminNumber": null,
+    "CardNumber": null,
+    "AccountUUID": null,
+    "AdminUUID": null,
+    "EnrollmentFlag": "1",
+    "PWPMonths": 0,
+    "EnrollmentId": "",
+    "Source": "PLAT",
+    "IPAddress": "",
+    "CallerID": "",
+    "CalledID": "",
+    "RequestTime": "",
+    "SessionID": "",
+    "APIVersion": "2.0",
+    "ApplicationVersion": "",
+    "RequestorID": ""
+}

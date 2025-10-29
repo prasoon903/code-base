@@ -1,0 +1,43 @@
+07/21/2025 15:10:17 — 11348 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+07/21/2025 15:10:17 — 11348 — INFO — START TIME: 2025-07-21 15:10:17.284828
+07/21/2025 15:10:17 — 11348 — INFO — PRINTING ENVIRONMENT VARIABLES
+07/21/2025 15:10:17 — 11348 — INFO — CI_DB: PP_CI
+07/21/2025 15:10:17 — 11348 — INFO — CL_DB: PP_CL
+07/21/2025 15:10:17 — 11348 — INFO — CAuth_DB: PP_CoreAuth
+07/21/2025 15:10:17 — 11348 — INFO — SERVERNAME: XEON-S8
+07/21/2025 15:10:17 — 11348 — INFO — MailFrom: prasoon.parashar@corecard.com
+07/21/2025 15:10:17 — 11348 — INFO — MailTo: prasoon.parashar@corecard.com
+07/21/2025 15:10:17 — 11348 — INFO — SMTP_SERVER: corecard-com.mail.protection.outlook.com
+07/21/2025 15:10:17 — 11348 — INFO — SMTPPORT: 25
+07/21/2025 15:10:17 — 11348 — INFO — RetailAWSEnvironment: 0
+07/21/2025 15:10:17 — 11348 — INFO — RetailAWS_secret_name: ses-smtp-secret
+07/21/2025 15:10:17 — 11348 — INFO — RetailAWS_region_name: us-south-1
+07/21/2025 15:10:17 — 11348 — INFO — RetailAWS_service_name: secretsmanager
+07/21/2025 15:10:17 — 11348 — INFO — RetailSES_smtp_url: email-smtp.ap-south-1.amazonaws.com
+07/21/2025 15:10:17 — 11348 — INFO — RetailAWSPort: 587
+07/21/2025 15:10:17 — 11348 — INFO — RetailInputFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT
+07/21/2025 15:10:17 — 11348 — INFO — RetailErrorFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\ERROR
+07/21/2025 15:10:17 — 11348 — INFO — RetailOutFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT
+07/21/2025 15:10:17 — 11348 — INFO — RetailLogFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG
+07/21/2025 15:10:17 — 11348 — INFO — RetailGeneratedFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\GENERATED
+07/21/2025 15:10:17 — 11348 — INFO — RetailInstitutionID: 6969
+07/21/2025 15:10:17 — 11348 — INFO — RetailEnvironment: LOCAL
+07/21/2025 15:10:17 — 11348 — INFO — RetailExceptionFile: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION
+07/21/2025 15:10:17 — 11348 — INFO — RetailExceptionFilePrefix: EXCP_
+07/21/2025 15:10:17 — 11348 — INFO — RetailExceptionFileSuffix: _PODID_
+07/21/2025 15:10:17 — 11348 — INFO — RetailFileProcessingPOD: POD1
+07/21/2025 15:10:17 — 11348 — INFO — BatchCount: 10000
+07/21/2025 15:10:17 — 11348 — INFO — AccountNumberCheck: 1
+07/21/2025 15:10:17 — 11348 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+07/21/2025 15:10:17 — 11348 — INFO — INSIDE GetOperatingServer BLOCK
+07/21/2025 15:10:18 — 11348 — ERROR — ERROR IN CONNECTING TO THE DATABASE ('HY000', '[HY000] [Microsoft][ODBC Driver 17 for SQL Server]SQL Server Network Interfaces: The target principal name is incorrect.\r\n (-2146893022) (SQLDriverConnect); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Cannot generate SSPI context (-2146893022); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]SQL Server Network Interfaces: The target principal name is incorrect.\r\n (-2146893022); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Cannot generate SSPI context (-2146893022); [HY000] [Microsoft][ODBC Driver 17 for SQL Server]Invalid connection string attribute (0)')
+07/21/2025 15:10:18 — 11348 — INFO — ConnectionStatus: False
+07/21/2025 15:10:18 — 11348 — INFO — ERROR IN CONNECTING TO THE DATABASE
+07/21/2025 15:10:18 — 11348 — INFO — EXITING GetOperatingServer BLOCK
+07/21/2025 15:10:18 — 11348 — INFO — INSIDE EmailStructure_Head BLOCK
+07/21/2025 15:10:18 — 11348 — INFO — EXITING EmailStructure_Head BLOCK
+07/21/2025 15:10:18 — 11348 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: </h4><h4 style=color:green;>Server operating time: 07/21/2025 15:10:17</h4><h3 style=color:red;>No file Present in Input folder</h3><br><br><br><div class="footer"><footer><small>&copy; Copyright 2025, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+07/21/2025 15:10:18 — 11348 — DEBUG — Inside SendMail
+07/21/2025 15:10:18 — 11348 — INFO — SENDING MAIL ...
+07/21/2025 15:10:21 — 11348 — INFO — Finish Time::: 2025-07-21 15:10:21.807350
+07/21/2025 15:10:21 — 11348 — INFO — *************************** NO FILE EXISTS, EXITING ***************************

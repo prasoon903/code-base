@@ -1,0 +1,3 @@
+Report_Date,business_date,batch_timestamp,account_uuid,plan_uuid,schedule_id,institution_id,Product_ID,error,error_message,field_path
+2018-02-10 13:30:41.637,2018-02-10,13:30:41.6370000,d434afa6-f570-4cab-aa2d-1fbee4668931,c9d64d0d-7dfc-4db2-9982-80656720caff,1,6969,7131,CRS_COMPUTATION_ERROR,scheduleId=3 at monthNumber=1 has MDR output that is negative,schedule at month {1}
+2018-02-10 13:30:41.637,2018-02-10,13:30:41.6370000,d434afa6-f570-4cab-aa2d-1fbee4668931,4bfb9898-f2c8-4bbe-b445-6577ef382627,1,6969,7131,CRS_COMPUTATION_ERROR,scheduleId=3 at monthNumber=1 has MDR output that is negative,schedule at month {1}

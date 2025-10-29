@@ -1,0 +1,23 @@
+{
+   "Password":"Test123!",
+   "UserID":"SystemCommSvc",
+   "APIVersion":"2.0",
+   "AccountNumber":"",
+   "Action":"0",
+   "AdminNumber":"",
+   "ApplicationVersion":"",
+   "CalledID":"",
+   "CallerID":"",
+   "CardNumber":"",
+   "IPAddress":"",
+   "Notes":"",
+   "Reason":"0",
+   "RequestTime":"",
+   "SessionID":"",
+   "Source":"Plat",
+   "TransactionAmount":"",
+   "TransactionNumber":"",
+   "CardIssuerReferenceData": "",
+   "AccountUUID":"",
+   "AdminUUID":""
+}

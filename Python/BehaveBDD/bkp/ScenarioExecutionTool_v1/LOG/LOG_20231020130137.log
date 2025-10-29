@@ -1,0 +1,77 @@
+10/20/2023 13:01:37 — 16828 — INFO — Scenario 16
+10/20/2023 13:01:37 — 16828 — INFO — Scenario 16
+10/20/2023 13:01:37 — 16828 — INFO — Rohitrerun
+10/20/2023 13:01:37 — 16828 — INFO — SELECT TOP 1 executionid FROM FeatureStepExecutionInfo (NOLOCK) WHERE FeatureName = 'Scenario 16' ORDER BY id DESC
+10/20/2023 13:01:37 — 16828 — INFO — EXECUTION_ID for rerun6
+10/20/2023 13:01:37 — 16828 — INFO — 6
+10/20/2023 13:01:37 — 16828 — INFO — 6
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Get AccountSummary','InProgress'
+10/20/2023 13:01:37 — 16828 — INFO — [('AccountNumber', '@MyAccountNumber')]
+10/20/2023 13:01:37 — 16828 — INFO — fn_CreateJsonPayloadUsingTable--1111
+10/20/2023 13:01:37 — 16828 — INFO — fn_CreateJsonPayloadUsingTable--2222
+10/20/2023 13:01:37 — 16828 — INFO — MyAccountNumber
+10/20/2023 13:01:37 — 16828 — INFO — Inside fn_GetValueFromDataStore
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_GetValueFromDataStore 6,'MyAccountNumber'
+10/20/2023 13:01:37 — 16828 — INFO — 1150001100411424
+10/20/2023 13:01:37 — 16828 — INFO — 1150001100411424
+10/20/2023 13:01:37 — 16828 — INFO — {'AccountNumber': '1150001100411424'}
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Get AccountSummary','Done'
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Verify API response is OK','InProgress'
+10/20/2023 13:01:37 — 16828 — INFO — ErrorFound No 
+ErrorNumber ERR01009 
+ErrorMessage Account Balance details returned Successfully.
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Verify API response is OK','Done'
+10/20/2023 13:01:37 — 16828 — INFO — AccountSummary
+10/20/2023 13:01:37 — 16828 — INFO — json_data befire
+10/20/2023 13:01:37 — 16828 — INFO — json_data after
+10/20/2023 13:01:37 — 16828 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:01:37 — 16828 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:01:37 — 16828 — INFO — [('AccountNumber', 'AccountNumber'), ('CardBalance', 'CardBalance'), ('CycleDue', 'CycleDue'), ('AmountOfTotalDue', 'AmountOfTotalDue'), ('CurrentDue', 'CurrentDue'), ('PastDue', 'PastDue'), ('OneCyclePastDue', 'OneCyclePastDue'), ('TwoCyclePastDue', 'TwoCyclePastDue'), ('ThreeCyclePastDue', 'ThreeCyclePastDue'), ('FourCyclePastDue', 'FourCyclePastDue'), ('FiveCyclePastDue', 'FiveCyclePastDue'), ('SixCyclePastDue', 'SixCyclePastDue'), ('SevenCyclePastDue', 'SevenCyclePastDue'), ('DaysPastDue', 'DaysPastDue'), ('PastDueDate', 'PastDueDate'), ('StatementRemainingBalanceWithInstallmentDue', 'StatementRemainingBalanceWithInstallmentDue')]
+10/20/2023 13:01:37 — 16828 — INFO — AccountNumber
+10/20/2023 13:01:37 — 16828 — INFO — 1150001100411424
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — CardBalance
+10/20/2023 13:01:37 — 16828 — INFO — 2000.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — CycleDue
+10/20/2023 13:01:37 — 16828 — INFO — 0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — AmountOfTotalDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — CurrentDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — PastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — OneCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — TwoCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — ThreeCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — FourCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — FiveCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — SixCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — SevenCyclePastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — DaysPastDue
+10/20/2023 13:01:37 — 16828 — INFO — 0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — PastDueDate
+10/20/2023 13:01:37 — 16828 — INFO — None
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'
+10/20/2023 13:01:37 — 16828 — INFO — StatementRemainingBalanceWithInstallmentDue
+10/20/2023 13:01:37 — 16828 — INFO — 0.0
+10/20/2023 13:01:37 — 16828 — INFO — SET NOCOUNT ON EXEC USP_PDF_InsertFeatureStepExecutionInfo 6,'Scenario 16','Age system','Save tag into variable','Done'

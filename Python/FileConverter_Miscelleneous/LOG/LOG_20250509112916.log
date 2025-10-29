@@ -1,0 +1,28 @@
+2025-05-09 11:29:16,670 — INFO — File Processing starts ...
+2025-05-09 11:29:16,671 — INFO — START TIME::: 2025-05-09 11:29:16.670650
+2025-05-09 11:29:16,671 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-05-09 11:29:16,672 — INFO — ********************CBR Impact Assessment Refresh.xlsx*****************************
+2025-05-09 11:29:16,672 — INFO — LoopCount: 1
+2025-05-09 11:29:19,821 — INFO — ['Sheet1', 'Sheet3']
+2025-05-09 11:29:19,821 — INFO — Processing File: CBR Impact Assessment Refresh.xlsx
+2025-05-09 11:29:19,822 — INFO — Processing sheet: Sheet1
+2025-05-09 11:29:19,822 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-320236_Sheet1.txt
+2025-05-09 11:29:19,835 — INFO — INSIDE ReadingTheFileDF WITH FILE: CBR Impact Assessment Refresh.xlsx
+2025-05-09 11:29:22,737 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-05-09 11:29:22,760 — ERROR — ERROR IN BLOCK
+Traceback (most recent call last):
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 334, in <module>
+    ReadingTheFileDF(FileName, S1.SheetName)
+  File "E:\Python\FileConverter_Miscelleneous\FileConverter.py", line 164, in ReadingTheFileDF
+    DF1.insert(LoopCount, key, "'" + DF[key].dt.date.astype(str) + "'", True)
+                                     ^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\generic.py", line 6299, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\accessor.py", line 224, in __get__
+    accessor_obj = self._accessor(obj)
+                   ^^^^^^^^^^^^^^^^^^^
+  File "E:\Python\BehaveBDD\Python312\Lib\site-packages\pandas\core\indexes\accessors.py", line 643, in __new__
+    raise AttributeError("Can only use .dt accessor with datetimelike values")
+AttributeError: Can only use .dt accessor with datetimelike values
+2025-05-09 11:29:22,814 — INFO — *********************** FINISHED ***********************

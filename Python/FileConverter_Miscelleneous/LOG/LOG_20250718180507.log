@@ -1,0 +1,15 @@
+2025-07-18 18:05:07,788 — INFO — File Processing starts ...
+2025-07-18 18:05:07,788 — INFO — START TIME::: 2025-07-18 18:05:07.787489
+2025-07-18 18:05:07,789 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-07-18 18:05:07,789 — INFO — ********************Seg3 Old Population_0 dispute amount issue.xlsx*****************************
+2025-07-18 18:05:07,789 — INFO — LoopCount: 1
+2025-07-18 18:05:07,805 — INFO — ['Sheet1', 'Sheet2', 'Sheet3']
+2025-07-18 18:05:07,805 — INFO — Processing File: Seg3 Old Population_0 dispute amount issue.xlsx
+2025-07-18 18:05:07,806 — INFO — Processing sheet: Sheet1
+2025-07-18 18:05:07,806 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-331663_Sheet1.txt
+2025-07-18 18:05:07,808 — INFO — INSIDE ReadingTheFileDF WITH FILE: Seg3 Old Population_0 dispute amount issue.xlsx
+2025-07-18 18:05:07,909 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-07-18 18:05:07,963 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-07-18 18:05:07,999 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-07-18 18:05:08,000 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-07-18 18:05:32,170 — INFO — *********************** FINISHED ***********************

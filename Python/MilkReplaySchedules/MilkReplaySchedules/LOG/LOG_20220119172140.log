@@ -1,0 +1,63 @@
+01/19/2022 17:21:40 — 8184 — INFO — *************************** RETAIL ERROR FEED PROCESSING STARTS ***************************
+01/19/2022 17:21:40 — 8184 — INFO — START TIME: 2022-01-19 17:21:40.356754
+01/19/2022 17:21:40 — 8184 — INFO — PATH OF THE INPUT FILE DIRECTORY: E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\
+01/19/2022 17:21:40 — 8184 — INFO — INSIDE EmailStructure_Head BLOCK
+01/19/2022 17:21:40 — 8184 — INFO — EXITING EmailStructure_Head BLOCK
+01/19/2022 17:21:40 — 8184 — INFO — FILENAME: Gen_sample_PART1.csv
+01/19/2022 17:21:40 — 8184 — INFO — FileID: 202201191721401
+01/19/2022 17:21:40 — 8184 — INFO — INSIDE ValidateDuplicateFile BLOCK
+01/19/2022 17:21:40 — 8184 — DEBUG — E:\Python\MilkReplaySchedules\MilkReplaySchedules\OUT\Gen_sample_PART1.csv
+01/19/2022 17:21:40 — 8184 — INFO — EXITING ValidateDuplicateFile BLOCK
+01/19/2022 17:21:40 — 8184 — INFO — INSIDE CheckEmptyFile BLOCK
+01/19/2022 17:21:40 — 8184 — INFO — Total records in the file Gen_sample_PART1.csv is: 71775
+01/19/2022 17:21:40 — 8184 — INFO — Non-Empty file, going to process
+01/19/2022 17:21:40 — 8184 — INFO — INSIDE ImportFileToDB BLOCK
+01/19/2022 17:21:40 — 8184 — INFO — CONNECTION ESTABLISHED
+01/19/2022 17:21:40 — 8184 — INFO — TABLE ILPScheduleDetailsBAD_DUMP TRUNCATED SUCCESSFULLY
+01/19/2022 17:21:40 — 8184 — DEBUG — bcp PP_CI..ILPScheduleDetailsBAD_DUMP IN E:\Python\MilkReplaySchedules\MilkReplaySchedules\INPUT\Gen_sample_PART1.csv -b 5000 -h TABLOCK -f E:\Python\MilkReplaySchedules\Version4\MilkReplaySchedulesUtility\MilkReplaySchedules.xml -e E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Error1_in.log -o E:\Python\MilkReplaySchedules\MilkReplaySchedules\LOG\Output1_in.log -S XEON-S8 -T -t , -F 2
+01/19/2022 17:21:40 — 8184 — INFO — BCP START TIME::: 2022-01-19 17:21:40.709479
+01/19/2022 17:21:42 — 8184 — INFO — Reading BCP Output file
+01/19/2022 17:21:42 — 8184 — INFO — Starting copy...
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 5000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 10000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 15000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 20000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 25000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 30000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 35000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 40000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 45000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 50000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 55000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 60000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 65000
+01/19/2022 17:21:42 — 8184 — INFO — 5000 rows sent to SQL Server. Total sent: 70000
+01/19/2022 17:21:42 — 8184 — INFO — 71775 rows copied.
+01/19/2022 17:21:42 — 8184 — INFO — Network packet size (bytes): 4096
+01/19/2022 17:21:42 — 8184 — INFO — Clock Time (ms.) Total     : 2172   Average : (33045.58 rows per sec.)
+01/19/2022 17:21:43 — 8184 — INFO — BCP EXECUTION SUCCESSFULL
+01/19/2022 17:21:43 — 8184 — INFO — BCP FINISH TIME::: 2022-01-19 17:21:43.000229
+01/19/2022 17:21:43 — 8184 — INFO — EXITING ImportFileToDB :: Message :: NO ERROR
+01/19/2022 17:21:43 — 8184 — INFO — INSIDE DataValidation BLOCK
+01/19/2022 17:21:43 — 8184 — INFO — PROCESSING NEW FILE
+01/19/2022 17:21:43 — 8184 — INFO — ExceptionFile: EXCP_Gen_sample_PART1_POD1.csv
+01/19/2022 17:21:43 — 8184 — INFO — CONNECTION ESTABLISHED
+01/19/2022 17:21:43 — 8184 — DEBUG — EXEC PP_CI..USP_ValidateRetailReplaySchedules 'Gen_sample_PART1.csv', '202201191721401', 10000, 1, 0, 'EXCP_Gen_sample_PART1_POD1.csv'
+01/19/2022 17:22:08 — 8184 — INFO — INSIDE FileDetails BLOCK
+01/19/2022 17:22:08 — 8184 — INFO — EXITING FileDetails BLOCK
+01/19/2022 17:22:08 — 8184 — INFO — USP_ValidateRetailReplaySchedules executed successfully
+01/19/2022 17:22:08 — 8184 — INFO — No new record to update
+01/19/2022 17:22:08 — 8184 — INFO — EXITING DataValidation BLOCK
+01/19/2022 17:22:08 — 8184 — INFO — INSIDE GenerateExceptionFile BLOCK
+01/19/2022 17:22:08 — 8184 — INFO — ExceptionFileName: E:\Python\MilkReplaySchedules\MilkReplaySchedules\EXCEPTION\EXCP_Gen_sample_PART1_POD1.csv
+01/19/2022 17:22:08 — 8184 — INFO — CONNECTION ESTABLISHED
+01/19/2022 17:22:08 — 8184 — DEBUG — SELECT  Report_Date, Business_Date, Batch_Timestamp, Account_UUID, Plan_UUID, Schedule_ID, Institution_ID, Product_ID, Error, [Error_Message], Field_Path, LTRIM(RTRIM(AccountNumber)) AccountNumber FROM PP_CI..ILPScheduleDetailsBAD_Archive WITH (NOLOCK) WHERE FileName = 'Gen_sample_PART1.csv' AND FileID = '202201191721401' AND JobStatus = 10
+01/19/2022 17:22:12 — 8184 — INFO — TOTAL RECORDS FOR EXCEPTION FILE: 59270
+01/19/2022 17:22:12 — 8184 — INFO — EXITING GenerateExceptionFile BLOCK
+01/19/2022 17:22:12 — 8184 — INFO — INSIDE EmailBody_Success BLOCK
+01/19/2022 17:22:12 — 8184 — INFO — EXITING EmailBody_Error BLOCK
+01/19/2022 17:22:12 — 8184 — DEBUG — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h4 style=color:green;>Operating Sever: XEON-S8</h4><h4 style=color:Coral;>Server operating time: 01/19/2022 17:21:40</h4><h4 style=color:Indigo;>POD ID: POD1</h4><table><tr><th><b>FileName</b></th><th><b>FileStatus</b></th><th><b>TotalRecords</b></th><th><b>SuccessfulRecordsCount</b></th><th><b>ErrorRecordCount</b></th><th><b>ErrorReason</b></th></tr><tr><td style=color:blue;><b>Gen_sample_PART1.csv<b></td><td style=color:green;><b>Success</b></td><td style=color:green;>71775</td><td style=color:green;>0</td><td style=color:red;>71775</td><td style=color:green;>No new record to update</td></tr></table><p style=color:blue;><b>File Name:</b> Gen_sample_PART1.csv</p><table><tr><th><b>S.No.</b></th><th><b>ErrorMessage</b></th><th><b>RecordCount</b></th></tr>                                     <tr><td>1</td><td>INVALID AccountNumber</td><td><b>59270</b></td></tr>                                     <tr><td>2</td><td>Error in Records</td><td><b>12505</b></td></tr></table><p style=color:Crimson;><b>EXCEPTION FILE NAME:</b> EXCP_Gen_sample_PART1_POD1.csv</p><p style=color:DarkBlue;><b>TOTAL RECORDS IN EXCEPTION FILE: 59270</b></p><br><br><br><div class="footer"><footer><small>&copy; Copyright 2022, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+01/19/2022 17:22:12 — 8184 — DEBUG — Inside SendMail
+01/19/2022 17:22:13 — 8184 — INFO — SENDING MAIL ...
+01/19/2022 17:22:20 — 8184 — INFO — Finish Time::: 2022-01-19 17:22:20.959286
+01/19/2022 17:22:20 — 8184 — INFO — *************************** ALL FILES PROCESSED, EXITING ***************************

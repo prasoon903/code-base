@@ -1,0 +1,7 @@
+2020-04-20 21:18:52,104 — INFO — File Processing starts ...
+2020-04-20 21:18:52,104 — INFO — Start Time::: 2020-04-20 21:18:52.103347
+2020-04-20 21:18:52,104 — INFO — D:\BankCard\POTB\INPUT\
+2020-04-20 21:18:54,272 — ERROR — <style>table, th {border: 2px solid black;border-collapse: collapse;font-family: Calibri;font-size: 19px;}td {border: 1px solid black;border-collapse: collapse;font-family: Calibri;font-size: 17px;}tr {font-family: Calibri;}.footer {position: fixed;left: 0;bottom: 0;width: 100%;background-color: grey;color: white;text-align: center;font-family: Calibri;}</style><html><h3 style=color:red;>No file Present in Input folder</h3><br><br><br><div class="footer"><footer><small>&copy; Copyright 2020, CoreCard Software, Inc. All rights reserved</small></footer></div></html>
+2020-04-20 21:18:54,273 — INFO — Sending mail...
+2020-04-20 21:18:57,335 — INFO — Finish Time::: 2020-04-20 21:18:57.335402
+2020-04-20 21:18:57,336 — INFO — ********************No file Exists... Exiting*****************************

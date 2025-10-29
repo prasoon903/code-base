@@ -1,0 +1,39 @@
+{
+    "APIDomainUrl" : "http://xeon-web1/PrasoonP/" ,
+	"APIDomainUrlAS" : "http://xeon-web1/PrasoonP/CoreCardServices/JAZZ/CoreCardServices.svc/" ,
+    "DBServer" : "BPLDEVDB01",
+    "ODBCDriver" : "{SQL Server}",
+    "PlatformCodeloc" : "D:\\ApplicationSetup\\JAZZ\\DBBSetup\\Platform",
+    "LabelName" : "LB2312_Plat_23.8.6_Jazz",
+    "DBName" : "JAZZ",
+    "LabelPath" : "\\\\vmccrmp01\\ReleaseManagement\\PLAT\\Labels",
+    "LocalDSLPath" : "D:\\ApplicationSetup\\JAZZ\\DBBSetup\\DSLs",
+    "BackupFolderLocation":"\\\\VMRITIKY\\python\\BehaveProject\\BehaveBDD\\features\\DbBackups",
+    "CIBatchScripts" : "D:\\ApplicationSetup\\JAZZ\\DBBSetup\\BatchScripts\\CoreIssue",
+    "CoreAuthBatchScripts" : "D:\\ApplicationSetup\\JAZZ\\DBBSetup\\BatchScripts\\CoreAuth",
+    "CITraceFileLocation" : "D:\\ApplicationSetup\\JAZZ\\TraceFiles\\CoreIssue",
+    "CoreAuthTraceFileLocation" : "D:\\ApplicationSetup\\JAZZ\\TraceFiles\\CoreAuth",
+    "CIBatchfileName" :{
+        "CIAppServerName" :"__CIAppserver.bat",
+        "TnpWfName" : "_wfTnpNad.bat",
+ 		"RetailAuthWfName" : "_WF_RetailAuthJobs.bat",
+        "APJOB":"APJOB.Bat"
+    },
+
+    "CoreAuthBatchfileName" :{
+        "CoreAuthAppServerName" :"____CoreAuthAppserver.bat"        
+    },
+
+    "YourDBNames" : {
+        "COREISSUE":"PP_JAZZ_CI" ,
+        "COREAUTH" :"PP_JAZZ_CAuth"  ,
+        "CISECONDARY":"PP_JAZZ_CI_Secondary" ,
+        "CORELIBRARY" :"PP_JAZZ_CL",
+        "CORECREDIT" : "PP_JAZZ_CoreCredit",
+        "CORECOLLECT": "PP_JAZZ_CC",
+        "COREAPP": "PP_CoreApp"},
+        "MDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\MDF",
+        "LDF_Path" : "\\\\BPLDEVDB01\\Prasoon_Parashar\\LDF",
+        "Posting2.0": "D:\\SVN\\NoBlobTasks\\Posting2.0\\23.8.6\\SQL",
+        "PSFileName": "DSLandDBCreation.ps1"
+    }

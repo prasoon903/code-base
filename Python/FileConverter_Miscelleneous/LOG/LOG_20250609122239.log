@@ -1,0 +1,15 @@
+2025-06-09 12:22:39,525 — INFO — File Processing starts ...
+2025-06-09 12:22:39,525 — INFO — START TIME::: 2025-06-09 12:22:39.525520
+2025-06-09 12:22:39,526 — INFO — E:\Python\FileConverter_Miscelleneous\INPUT\
+2025-06-09 12:22:39,526 — INFO — ********************COOKIE-325133.xlsx*****************************
+2025-06-09 12:22:39,526 — INFO — LoopCount: 1
+2025-06-09 12:22:39,537 — INFO — ['Sheet1', 'Sheet3']
+2025-06-09 12:22:39,537 — INFO — Processing File: COOKIE-325133.xlsx
+2025-06-09 12:22:39,537 — INFO — Processing sheet: Sheet1
+2025-06-09 12:22:39,537 — INFO — ResponseFile to be processed: E:\Python\FileConverter_Miscelleneous\ResponseFile\COOKIE-325133_Sheet1.txt
+2025-06-09 12:22:39,538 — INFO — INSIDE ReadingTheFileDF WITH FILE: COOKIE-325133.xlsx
+2025-06-09 12:22:39,672 — INFO — DATA CONVERTED FROM XLS TO DF
+2025-06-09 12:22:39,770 — INFO — DATA FORMATTED FROM DF TO DF1
+2025-06-09 12:22:39,805 — INFO — DATA FORMATTED FROM DF1 TO DF2
+2025-06-09 12:22:39,805 — INFO — DATA FORMATTED FROM DF2 TO DF3
+2025-06-09 12:22:54,349 — INFO — *********************** FINISHED ***********************
