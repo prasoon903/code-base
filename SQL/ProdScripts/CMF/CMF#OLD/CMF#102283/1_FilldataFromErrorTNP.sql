@@ -1,0 +1,9 @@
+INSERT INTO AccountsOfPlanToReLink (acctID, TranID, TimeGap)
+SELECT acctID, TranID, ROW_NUMBER() OVER(PARTITION BY acctId ORDER BY TranTime)*10 
+FROM ErrorTNP WITH (NOLOCK) 
+WHERE ATID=51
+AND TranID IN
+(97976234411)
+
+
+

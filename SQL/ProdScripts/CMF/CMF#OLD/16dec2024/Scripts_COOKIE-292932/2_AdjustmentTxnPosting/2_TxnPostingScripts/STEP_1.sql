@@ -1,0 +1,41 @@
+
+IF EXISTS (SELECT TOP 1 1 FROM TransactionCreationTempData WITH (NOLOCK) WHERE JobStatus = 0)
+BEGIN 
+	SELECT 'There is already in-process jobs in the table, so cannot be inserted new records'
+	RETURN
+END
+
+
+--SELECT * FROM TransactionCreationTempData
+--SELECT RMATranUUID, CreditPlanMaster, InvoiceNumber,* FROM CreateNewSingleTransactionData
+
+
+BEGIN TRANSACTION
+--COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+--SELECT * FROM CPS_Environment
+
+
+
+DECLARE @PODID INT = 0
+SELECT @PODID = PODID FROM CPS_Environment WITH (NOLOCK)
+
+IF @PODID = 1
+BEGIN
+
+	INSERT INTO TransactionCreationTempData (JiraID, TxnAcctId, AccountNumber, TransactionAmount, CMTTranType, ActualTranCode, RMATranUUID, CreditPlanMaster, Invoicenumber)   VALUES 
+	('COOKIE-292932', 11402976, '1100011148789922', 1199, '49', 'F4916', 'f5e4395a-19a5-42f2-85fd-58ab6428f28f', 14637, '23012113025723383'),
+	('COOKIE-292932', 11402976, '1100011148789922', 1199, '48', 'F4804', '993ada83-1e77-43c1-b495-e0c5ec14a106', 14737, '23041417342227182')
+END
+
+IF @PODID = 2
+BEGIN
+
+	INSERT INTO TransactionCreationTempData (JiraID, TxnAcctId, AccountNumber, TransactionAmount, CMTTranType, ActualTranCode, RMATranUUID, CreditPlanMaster, Invoicenumber)   VALUES 
+	('COOKIE-292932', 54563773, '1200012046183217', 1199, '48', 'F4804', '00c07a73-63bf-49e4-89c8-ef306c91d587', 14737, '23041012032942329'), --641
+	('COOKIE-292932', 54563773, '1200012046183217', 1199, '49', 'F4916', 'd1a905d3-9708-480e-9727-cd1de73e14b1', 14637, '23041012033218843'), --643
+	('COOKIE-292932', 54563773, '1200012046183217', 1399, '49', 'F4916', '655fe470-472e-4156-9ac8-b3d3123dfef6', 14637, '23041012033112711'), --609
+	('COOKIE-292932', 54563773, '1200012046183217', 1399, '48', 'F4804', 'a751b4d0-065b-40f0-ab8b-388bc9459311', 14737, '230424194015376') --199
+END
+

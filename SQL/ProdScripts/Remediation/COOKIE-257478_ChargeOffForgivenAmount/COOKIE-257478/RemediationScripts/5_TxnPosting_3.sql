@@ -1,0 +1,7 @@
+-- NEED TO RUN MULTIPLE TIMES AS WE HAVE MORE TRANSACTIONS
+
+
+EXEC USP_CreateNewSingleTransactionData 53, 6969, 10000
+EXEC USP_CreateNewSingleTransactionData 53, 6981, 10000
+
+

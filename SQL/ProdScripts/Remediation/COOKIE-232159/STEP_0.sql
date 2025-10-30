@@ -1,0 +1,10 @@
+
+BEGIN TRANSACTION
+--COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+
+DELETE FROM TransactionCreationTempData WHERE JobStatus = 0
+--32676
+
+--SELECT COUNT(1) FROM TransactionCreationTempData WHERE JobStatus = 0

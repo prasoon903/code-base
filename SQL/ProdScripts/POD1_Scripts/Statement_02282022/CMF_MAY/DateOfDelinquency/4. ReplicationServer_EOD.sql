@@ -1,0 +1,16 @@
+-- TO BE RUN ON REPLICATION SERVER ONLY
+
+
+
+
+--USE CCGS_RPT_CoreIssue
+--GO
+
+
+BEGIN TRANSACTION
+--COMMIT TRANSACTION
+-- ROLLBACK TRANSACTION
+
+
+UPDATE TOP(1) PlanInfoForReport SET AmtOfPayCurrDue = AmtOfPayCurrDue + 0.01, AmountOfTotalDue = AmountOfTotalDue + 0.01 WHERE CPSacctId = 53511881 AND BusinessDay = '2021-05-31 23:59:57.000'
+

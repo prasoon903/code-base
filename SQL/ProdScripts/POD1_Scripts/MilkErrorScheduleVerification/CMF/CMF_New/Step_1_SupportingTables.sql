@@ -1,0 +1,55 @@
+-- CREATING THE SUPPORTING TABLES
+
+IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE OBJECT_ID = OBJECT_ID(N'dbo.TEMP_BadSchedulesCorrection') AND TYPE = 'U') 
+BEGIN
+
+	CREATE TABLE DBO.TEMP_BadSchedulesCorrection
+	(
+		Skey DECIMAL(19,0) IDENTITY(1,1) NOT NULL,
+		PlanUUID VARCHAR(64),
+		PlanID INT,
+		ScheduleID INT,
+		JobStatus INT
+	)
+
+	DROP INDEX IF EXISTS IX_TEMP_BadSchedulesCorrection_Skey ON DBO.TEMP_BadSchedulesCorrection
+
+	CREATE CLUSTERED INDEX IX_TEMP_BadSchedulesCorrection_Skey ON DBO.TEMP_BadSchedulesCorrection 
+	(
+		Skey
+	) 
+
+	DROP INDEX IF EXISTS IDX_TEMP_BadSchedulesCorrection_JobStatus ON DBO.TEMP_BadSchedulesCorrection
+
+	CREATE NONCLUSTERED INDEX IDX_TEMP_BadSchedulesCorrection_JobStatus ON DBO.TEMP_BadSchedulesCorrection
+	(
+		JobStatus
+	)
+
+END
+
+IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE OBJECT_ID = OBJECT_ID(N'dbo.TEMP_PlanToMove') AND TYPE = 'U') 
+BEGIN
+
+	CREATE TABLE DBO.TEMP_PlanToMove
+	(
+		Skey DECIMAL(19,0) IDENTITY(1,1) NOT NULL,
+		PlanUUID VARCHAR(64),
+		JobStatus INT
+	)
+
+	DROP INDEX IF EXISTS IX_TEMP_PlanToMove_Skey ON DBO.TEMP_PlanToMove
+
+	CREATE CLUSTERED INDEX IX_TEMP_PlanToMove_Skey ON DBO.TEMP_PlanToMove 
+	(
+		Skey
+	) 
+
+	DROP INDEX IF EXISTS IDX_TEMP_PlanToMove_JobStatus ON DBO.TEMP_PlanToMove
+
+	CREATE NONCLUSTERED INDEX IDX_TEMP_PlanToMove_JobStatus ON DBO.TEMP_PlanToMove
+	(
+		JobStatus
+	)
+
+END

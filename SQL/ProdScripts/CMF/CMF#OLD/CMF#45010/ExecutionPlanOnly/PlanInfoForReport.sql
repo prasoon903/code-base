@@ -1,0 +1,7 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+
+SELECT CycleDueDTD, AmtOfPayCurrDue, AmountOfTotalDue FROM PlanInfoForReport WITH (NOLOCK) WHERE CPSacctId = 21938790 AND Businessday = '2020-10-31 23:59:57.000'

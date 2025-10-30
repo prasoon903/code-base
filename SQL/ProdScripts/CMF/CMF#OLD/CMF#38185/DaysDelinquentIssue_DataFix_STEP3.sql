@@ -1,0 +1,22 @@
+BEGIN TRY
+	BEGIN TRANSACTION
+		UPDATE BsegmentCreditCard SET NoPayDaysDelinquent = 13 WHERE acctID = 521783
+		-- 1 rows
+		UPDATE BsegmentCreditCard SET NoPayDaysDelinquent = 76 WHERE acctID = 2226149
+		-- 1 rows
+		UPDATE BsegmentCreditCard SET NoPayDaysDelinquent = 57 WHERE acctID = 4078987
+		-- 1 rows
+
+		UPDATE TS
+			SET JobStatus = 3
+		FROM Temp_bsegment_DelinqDays TS
+		WHERE TS.acctId IN (521783,2226149,4078987)
+	COMMIT TRANSACTION
+END TRY
+
+BEGIN CATCH
+	IF @@TRANCOUNT > 0
+		ROLLBACK TRANSACTION 
+		SELECT ERROR_MESSAGE(),ERROR_LINE(),ERROR_NUMBER()
+		RAISERROR('ERROR OCCURED :-', 16, 1);
+END CATCH

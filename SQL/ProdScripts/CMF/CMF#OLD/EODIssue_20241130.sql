@@ -1,0 +1,6 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+UPDATE TOP(1) AccountInfoForReport SET DateAcctClosed = NULL WHERE BSAcctID = 413026 AND Businessday = '2024-11-30 23:59:57'

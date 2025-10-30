@@ -1,0 +1,36 @@
+-- CREATING THE SUPPORTING TABLES
+
+USE CCGS_CoreIssue
+GO
+
+IF NOT EXISTS (SELECT 1 FROM SYS.OBJECTS WHERE OBJECT_ID = OBJECT_ID(N'dbo.TEMP_ILPDetails') AND TYPE = 'U') 
+BEGIN
+
+	CREATE TABLE TEMP_ILPDetails
+	(
+		Skey DECIMAL(19,0) IDENTITY(1,1) NOT NULL,
+		parent02AID INT,
+		PlanID INT,
+		PlanUUID VARCHAR(64),
+		ActivityOrder INT,
+		ScheduleID DECIMAL(19, 0),
+		EqualPaymentAmountCalc MONEY, 
+		LastMonthPayment MONEY,
+		Ranking INT,
+		SkeyOnILP DECIMAL(19, 0),
+		JobStatus INT
+	)
+
+	DROP INDEX IF EXISTS IX_TEMP_ILPDetails_Skey ON TEMP_ILPDetails
+	CREATE CLUSTERED INDEX IX_TEMP_ILPDetails_Skey ON TEMP_ILPDetails (Skey)  
+	  
+
+	DROP INDEX IF EXISTS IDX_TEMP_ILPDetails_JobStatus ON TEMP_ILPDetails
+
+	CREATE NONCLUSTERED INDEX IDX_TEMP_ILPDetails_JobStatus ON TEMP_ILPDetails
+	(
+		JobStatus
+	)
+
+END
+

@@ -1,0 +1,12 @@
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+
+	UPDATE BSegment_Primary SET SystemStatus = 3 WHERE acctId IN (339546, 345523)
+	-- 2 rows
+
+COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+--SELECT SystemStatus FROM Bsegment_Primary WITH (NOLOCK) WHERE acctId IN (339546, 345523)

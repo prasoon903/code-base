@@ -1,0 +1,459 @@
+
+SELECT * FROM ##TempData
+SELECT * FROM ##TxnNotFound
+SELECT * FROM ##TempRecords
+
+--GET POD2 accounts
+DROP TABLE IF EXISTS #POD2
+SELECT /*T.ClientID,*/ T.AccountUUID, T.TransactionTime, T.Amount 
+INTO #POD2
+FROM #TempData T
+LEFT JOIN BSegment_Primary BP WITH (NOLOCK) ON (BP.UniversalUniqueID = T.AccountUUID)
+WHERE BP.UniversalUniqueID IS NULL
+
+DROP TABLE IF EXISTS #TempRecordsToPost_POD1
+SELECT BP.acctId, BP.AccountNumber, BP.UniversalUniqueID, BS.ClientID, T1.TransactionUUID, T1.TranTime TransactionTime, T2.Amount, BP.MergeInProcessPH
+INTO #TempRecordsToPost_POD1
+FROM BSegment_Primary BP WITH (NOLOCK)
+JOIN BSegment_Secondary BS WITH (NOLOCK) ON (BP.acctId = BS.acctId)
+JOIN ##TempData T1 ON (T1.acctid = BS.acctId)
+JOIN ##TempRecords T2 ON (T1.TransactionUUID = T2.TransactionUUID)
+--WHERE BP.MergeInProcessPH IS NOT NULL
+
+SELECT * FROM #TempRecordsToPost_POD1
+
+--POD2
+SELECT TransactionUUID, Amount FROM ##TxnNotFound
+
+
+
+
+/*
+
+;WITH CTE 
+AS
+(
+SELECT *, ROW_NUMBER() OVER(PARTITION BY ClientID, AccountUUID ORDER BY SN)  [Rank]
+FROM ##TempData
+)
+SELECT * FROM CTE WHERE [Rank] > 1
+
+
+
+SELECT CP.PostingRef, CP.CMTTranType, CP.TransactionAmount, CP.TranTime, CP.PostTime 
+FROM LS_PRODDRGSDB01.ccgs_coreissue.dbo.CreateNewSingleTransactionData C WITH (NOLOCK)
+JOIN CCard_Primary CP WITH (NOLOCK)  ON (C.TranID = CP.TranID)
+WHERE C.PostTime > TRY_CAST(GETDATE() AS DATE)
+
+
+SELECT * FROM #TempData WHERE AccountUUID = 'd36b58d1-8dad-4741-9fc1-8baf626fc6d4'
+
+;WITH CTE 
+AS
+(
+SELECT *, ROW_NUMBER() OVER(PARTITION BY ClientID, AccountUUID ORDER BY SN)  [Rank]
+FROM #TempData
+)
+SELECT * FROM CTE WHERE [Rank] > 1
+
+DROP TABLE IF EXISTS ##TempData
+SELECT * INTO ##TempData FROM #TempData
+
+DROP TABLE IF EXISTS #TempRecords
+SELECT BP.acctId, BP.AccountNumber, BS.ClientID, T.AccountUUID, BP.MergeInProcessPH, T.Amount, T.TransactionTime 
+INTO #TempRecords
+FROM #TempData T
+JOIN BSegment_Primary BP WITH (NOLOCK) ON (BP.UniversalUniqueID = T.AccountUUID)
+JOIN BSegment_Secondary BS WITH (NOLOCK) ON (BP.acctId = BS.acctID)
+--WHERE MergeInProcessPH IS NOT NULL
+
+DROP TABLE IF EXISTS ##TempRecords
+SELECT * INTO ##TempRecords FROM #TempRecords
+
+--GET POD2 accounts
+DROP TABLE IF EXISTS #POD2
+SELECT /*T.ClientID,*/ T.AccountUUID, T.TransactionTime, T.Amount 
+INTO #POD2
+FROM #TempData T
+LEFT JOIN BSegment_Primary BP WITH (NOLOCK) ON (BP.UniversalUniqueID = T.AccountUUID)
+WHERE BP.UniversalUniqueID IS NULL
+
+SELECT * FROM #TempRecords
+WHERE MergeInProcessPH IS NOT NULL
+
+
+DROP TABLE IF EXISTS #TempJobsToPost
+SELECT acctId, AccountNumber, Amount TransactionAmount, ROW_NUMBER() OVER(PARTITION BY AccountNumber ORDER BY acctId) RowCountData
+INTO #TempJobsToPost
+FROM #TempRecords
+
+SELECT * FROM #TempJobsToPost ORDER by acctId
+
+SELECT AccountNumber, RowCountData FROM #TempJobsToPost  ORDER BY RowCountData DESC
+
+SELECT AccountNumber, MAX(RowCountData) FROM #TempJobsToPost  GROUP BY AccountNumber ORDER BY MAX(RowCountData) DESC
+
+SELECT MAX(RowCountData) FROM #TempJobsToPost
+
+-- Merge Accounts
+
+DROP TABLE IF EXISTS #NonMergedAccounts
+SELECT RTRIM(AccountNumber) SourceAccountNumber, AccountUUID, ClientID SrcClientID, acctId, MergeInProcessPH, Amount TransactionAmount, TT.TransactionTime 
+INTO #NonMergedAccounts
+FROM #TempRecords TT
+WHERE MergeInProcessPH IS NULL
+ORDER BY acctID
+
+DROP TABLE IF EXISTS #MergedAccounts
+SELECT RTRIM(AccountNumber) SourceAccountNumber, AccountUUID, ClientID SrcClientID, MergeInProcessPH, Amount TransactionAmount
+INTO #MergedAccounts
+FROM #TempRecords TT
+WHERE MergeInProcessPH IS NOT NULL
+ORDER BY acctID
+
+SELECT * FROM #NonMergedAccounts
+
+SELECT * FROM #MergedAccounts
+
+
+
+SELECT DestAccountNumber, AcrossPODMerge, * 
+FROM LS_PRODDRGSDB01.ccgs_coreissue.dbo.MergeAccountJob MA WITH (NOLOCK) 
+WHERE SrcAccountNumber = '1100011126022395'
+
+DROP TABLE IF EXISTS #PostWithNoInterestCredit
+SELECT SrcAccountNumber, DestAccountNumber AccountNumber, SrcBsAcctId, DestBSAcctId,
+T1.TransactionAmount Amount, 
+--MA.EndTime TranTime_ToPostOnDest, BP.DateAcctOpened DateAcctOpened_DEST, 
+MA.SrcClientID, BS.ClientID DestClientID,
+BP.UniversalUniqueID DestAccountUUID, SrcBSAccountUUID SrcAccountuuid--,
+--MA.EndTime MergeTime
+INTO #PostWithNoInterestCredit
+FROM #MergedAccounts t1
+LEFT JOIN LS_PRODDRGSDB01.ccgs_coreissue.dbo.MergeAccountJob MA WITH (NOLOCK) ON (T1.SourceAccountNumber = MA.SRCAccountNumber)
+LEFT JOIN LS_PRODDRGSDB01.ccgs_coreissue.dbo.BSegment_Primary BP WITH (NOLOCK) ON (MA.DestAccountNumber = BP.AccountNumber )
+LEFT JOIN LS_PRODDRGSDB01.ccgs_coreissue.dbo.BSegment_Secondary BS WITH (NOLOCK) ON (BS.acctId = BP.acctId)
+--WHERE  
+--T1.SourceAccountNumber IN ('1100011127011249', '1100011139323376') AND 
+--T1.TranTime >= BP.DateAcctOpened
+--ORDER BY DestAccountNumber
+
+
+DROP TABLE IF EXISTS #PostWithInterestCredit
+SELECT SrcAccountNumber, DestAccountNumber AccountNumber, T1.TransactionLifeCycleUniqueID, SrcBsAcctId, DestBSAcctId, T1.TranTime TranTime_Src,
+T1.TransactionAmount Amount, MA.EndTime TranTime_ToPostOnDest, BP.DateAcctOpened DateAcctOpened_DEST, MA.SrcClientID, BS.ClientID DestClientID,
+BP.UniversalUniqueID DestAccountUUID, SrcBSAccountUUID SrcAccountuuid,
+MA.EndTime MergeTime, ROW_NUMBER() OVER(PARTITION BY DestAccountNumber ORDER BY T1.TranTime) RowCountData, CAST(0 AS MONEY) FINAL_INT_CR_AMT
+INTO #PostWithInterestCredit
+FROM #MergedAccounts t1
+LEFT JOIN LS_PRODDRGSDB01.ccgs_coreissue.dbo.MergeAccountJob MA WITH (NOLOCK) ON (T1.SourceAccountNumber = MA.SRCAccountNumber)
+LEFT JOIN LS_PRODDRGSDB01.ccgs_coreissue.dbo.BSegment_Primary BP WITH (NOLOCK) ON (MA.DestAccountNumber = BP.AccountNumber )
+LEFT JOIN LS_PRODDRGSDB01.ccgs_coreissue.dbo.BSegment_Secondary BS WITH (NOLOCK) ON (BS.acctId = BP.acctId)
+WHERE  
+--T1.SourceAccountNumber IN ('1100011127011249', '1100011139323376') AND 
+T1.TranTime < BP.DateAcctOpened
+ORDER BY DestAccountNumber
+
+
+SELECT * FROm #PostWithNoInterestCredit
+
+SELECT * FROm #PostWithInterestCredit
+
+
+DROP TABLE IF EXISTS ##PostWithInterestCredit
+SELECT * INTO ##PostWithInterestCredit FROm #PostWithInterestCredit
+
+
+SELECT * FROM ##PostWithInterestCredit
+
+
+-- CREATE INSERT SCRIPTS
+
+SELECT 'INSERT INTO CreateNewSingleTransactionData (TxnAcctId, AccountNumber, TransactionAmount, CMTTranType, ActualTranCode, TranTime) VALUES (' + TRY_CONVERT(VARCHAR, acctID) + ', '''+RTRIM(SourceAccountNumber)+''', ' + TRY_CONVERT(VARCHAR, TransactionAmount) + ', ''49''' + ', ''4907''' + ', ''' + TRY_CONVERT(VARCHAR(20), TransactionTime, 20) + ''')'
+FROM #NonMergedAccounts
+ORDER BY TransactionTime
+
+
+SELECT 'INSERT INTO CreateNewSingleTransactionData (TxnAcctId, AccountNumber, TransactionAmount, CMTTranType, ActualTranCode, TranTime) VALUES (' + TRY_CONVERT(VARCHAR, DestBsacctID) + ', '''+RTRIM(AccountNumber)+''', ' + TRY_CONVERT(VARCHAR, Amount) + ', ''49''' + ', ''4907'')'
+FROM #PostWithNoInterestCredit
+
+
+
+--SELECT 'INSERT INTO CreateNewSingleTransactionData (TxnAcctId, AccountNumber, TransactionAmount, CMTTranType, ActualTranCode, TranTime) 
+--VALUES (' + TRY_CONVERT(VARCHAR, DestBsacctID) + ', '''+RTRIM(AccountNumber)+''', ' + TRY_CONVERT(VARCHAR, Amount+FINAL_INT_CR_AMT) + ', ''49''' + ', ''4913''' + ', ''' + TRY_CONVERT(VARCHAR(20), DATEADD(MINUTE, 60, TranTime_ToPostOnDest), 20) + ''')'
+--FROM ##PostWithInterestCredit
+--ORDER BY TranTime_ToPostOnDest
+
+SELECT *--ClientID, AccountUUID, Amount
+FROM #POD2
+
+SELECT ClientID, AccountUUID, Amount
+FROM #TempRecords
+
+SELECT RTRIM(SourceAccountNumber) AccountNumber, AccountUUID/*, SrcClientID ClientID*/, TransactionAmount, TransactionTime
+FROM #NonMergedAccounts
+
+SELECT RTRIM(SrcAccountNumber) SrcAccountNumber, RTRIM(AccountNumber) DestAccountNumber, SrcAccountUUID, DestAccountUUID, SrcClientID, DestClientID, Amount TransactionAmount 
+FROM #PostWithNoInterestCredit
+
+--SELECT RTRIM(SrcAccountNumber) SrcAccountNumber, RTRIM(AccountNumber) DestAccountNumber, SrcAccountUUID, DestAccountUUID, SrcClientID, DestClientID, Amount TransactionAmount, 
+--FINAL_INT_CR_AMT InterestCreditFromSource, Amount+FINAL_INT_CR_AMT TotalTransactionAmount
+--FROM ##PostWithInterestCredit
+
+
+
+
+
+/*
+
+--DROP TABLE IF EXISTS #TempData
+--GO
+--CREATE TABLE  #TempData (SN DECIMAL(19, 0) IDENTITY(1, 1), ClientID VARCHAR(64), AccountUUID VARCHAR(64), Amount MONEY)
+
+
+
+DROP TABLE IF EXISTS #TempData
+GO
+CREATE TABLE  #TempData (SN DECIMAL(19, 0) IDENTITY(1, 1), AccountUUID VARCHAR(64), TransactionTime DATETIME, Amount MONEY)
+
+
+
+INSERT INTO #TempData VALUES ('a2a39246-fd8f-40f0-b684-cde26467bb8d', '03/27/2021', 160.82)
+INSERT INTO #TempData VALUES ('f23ae680-6294-41ff-9795-247f9030e2d0', '03/21/2021', 55.89)
+INSERT INTO #TempData VALUES ('57f74dc3-59cd-489b-be88-5163d82effcd', '03/20/2021', 90)
+INSERT INTO #TempData VALUES ('699d953f-a6e5-4e54-9258-5a391e2cc520', '09/09/2021', 109.44)
+INSERT INTO #TempData VALUES ('c2e9d75a-97cc-47c4-9cfe-c5cc213c01b5', '12/10/2020', 259)
+INSERT INTO #TempData VALUES ('d461ba39-ff60-4d8b-bceb-c7939c433cc4', '09/29/2021', 52)
+INSERT INTO #TempData VALUES ('1a1614eb-bb27-4a67-8ef2-712fadc0258c', '11/28/2021', 130.07)
+INSERT INTO #TempData VALUES ('043b8b38-13c9-40b5-b0c9-edc83ede3c10', '03/04/2021', 69.43)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/18/2019', 16.32)
+INSERT INTO #TempData VALUES ('2c8f2994-12db-4cb0-a376-995822babf09', '02/12/2021', 202.75)
+INSERT INTO #TempData VALUES ('1137d451-6146-4c7e-9d92-b1e92f88ad1e', '11/18/2020', 479)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/01/2020', 9.99)
+INSERT INTO #TempData VALUES ('06cd2a7c-25dc-4ec8-8d6b-cb08a6512338', '03/04/2021', 1527.47)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/14/2022', 52.49)
+INSERT INTO #TempData VALUES ('5a35e96f-2dcc-4a91-8f9b-e6f735a0237c', '02/24/2021', 158)
+INSERT INTO #TempData VALUES ('213a4460-5906-4aa7-867d-da620163eece', '11/13/2021', 65.92)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/06/2020', 75)
+INSERT INTO #TempData VALUES ('899d7ca8-895c-4e25-ae31-62e901b22852', '07/02/2020', 79.43)
+INSERT INTO #TempData VALUES ('a7b8c82d-51b3-4eda-bfb7-7b11d1ed82f1', '10/29/2021', 529)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/27/2019', 60.33)
+INSERT INTO #TempData VALUES ('44e38ba4-619d-4b1c-b46b-a6c3608eb12c', '10/11/2019', 215)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/02/2019', 9.99)
+INSERT INTO #TempData VALUES ('909db6c4-c5bd-4c72-9014-af561a52a5ab', '10/11/2019', 89.4)
+INSERT INTO #TempData VALUES ('d461ba39-ff60-4d8b-bceb-c7939c433cc4', '11/26/2021', 27.1)
+INSERT INTO #TempData VALUES ('58a6e7c2-9b4a-4487-aa9a-7ea8ee0fec99', '02/04/2021', 274.75)
+INSERT INTO #TempData VALUES ('136cd82a-074b-4b63-9fcd-5c91a91766e4', '01/04/2022', 97)
+INSERT INTO #TempData VALUES ('1145e357-efdc-4a1e-af8f-36d6f95d9f8d', '03/23/2021', 302.46)
+INSERT INTO #TempData VALUES ('09683c37-ab2b-4d18-881f-ec6f6b83baa3', '02/09/2020', 36.27)
+INSERT INTO #TempData VALUES ('3ccbb8a7-d9f4-4f89-ac6f-c770a9c7f9c1', '03/17/2021', 500)
+INSERT INTO #TempData VALUES ('f774aa76-1257-43e4-b39d-4d2c43bec874', '03/14/2021', 325.12)
+INSERT INTO #TempData VALUES ('3c686620-4259-4b4e-b237-73fb865b40b8', '11/04/2020', 84.98)
+INSERT INTO #TempData VALUES ('1b0a2d9f-a7d0-4d5e-aac2-49d601361422', '09/19/2020', 240)
+INSERT INTO #TempData VALUES ('70080af0-118a-4940-885d-8ab28988ad81', '12/22/2021', 70.83)
+INSERT INTO #TempData VALUES ('23c42d45-2920-4161-b52e-2aca8c5b46e1', '12/25/2020', 115)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/29/2019', 4.33)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/25/2019', 25)
+INSERT INTO #TempData VALUES ('ec7b8d96-cc49-46ef-b53b-016177609324', '01/19/2020', 90.93)
+INSERT INTO #TempData VALUES ('f877ea92-23fe-46c6-8c97-d110f6a860f8', '05/24/2020', 72.4)
+INSERT INTO #TempData VALUES ('c0b347a6-f690-45b9-bae8-df0a3449971c', '03/19/2021', 149.78)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/16/2020', 155)
+INSERT INTO #TempData VALUES ('36628447-0975-452c-83cd-a9b605db903c', '03/11/2021', 792.8)
+INSERT INTO #TempData VALUES ('92fb1a07-6382-4830-875d-d8ae636b2edb', '05/31/2021', 42.72)
+INSERT INTO #TempData VALUES ('9a2bc715-bda1-4e8b-90b3-70de2220d00e', '05/04/2021', 108.57)
+INSERT INTO #TempData VALUES ('99945dfd-c4b5-4958-a773-d4c443eac07b', '03/18/2021', 279.29)
+INSERT INTO #TempData VALUES ('d9acfea8-a51f-4469-9428-36ca1e06968a', '10/31/2019', 87.99)
+INSERT INTO #TempData VALUES ('512e49a0-1238-4cb1-9447-8835cb4a7d18', '03/24/2021', 105.99)
+INSERT INTO #TempData VALUES ('c8cd11f5-735f-4e32-845e-d59ec6ee96e9', '03/10/2021', 91.44)
+INSERT INTO #TempData VALUES ('d461ba39-ff60-4d8b-bceb-c7939c433cc4', '08/27/2021', 34)
+INSERT INTO #TempData VALUES ('f04167ee-a6ac-496a-9a36-6e2ef4deec7d', '01/01/2022', 35)
+INSERT INTO #TempData VALUES ('5123ba9d-a741-4703-8e35-1a45c893ccf3', '08/09/2020', 55.93)
+INSERT INTO #TempData VALUES ('615cee63-8012-40fd-93b8-4aff902a82a5', '03/24/2021', 25)
+INSERT INTO #TempData VALUES ('a6416e00-a6fa-429e-a3b5-253dd4055338', '12/02/2019', 372.9)
+INSERT INTO #TempData VALUES ('213a4460-5906-4aa7-867d-da620163eece', '11/01/2021', 60.42)
+INSERT INTO #TempData VALUES ('6b0b4837-2f44-4992-8b19-532babc81beb', '12/21/2019', 399)
+INSERT INTO #TempData VALUES ('3a5d34bd-55be-4246-a6bf-76a285a4c22b', '03/14/2021', 457.38)
+INSERT INTO #TempData VALUES ('28893e76-edb3-45db-bd99-3706e208703e', '11/12/2020', 348.99)
+INSERT INTO #TempData VALUES ('cc30c180-c80d-4990-bce9-98b937c0b3ac', '11/29/2019', 396.31)
+INSERT INTO #TempData VALUES ('221e4390-94a7-4a65-bf02-a17ce4582e9d', '12/17/2021', 101)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/02/2019', 2.17)
+INSERT INTO #TempData VALUES ('7597f245-3d7e-4493-b6e0-818dd6041171', '09/22/2019', 293.96)
+INSERT INTO #TempData VALUES ('8fffe86c-0a93-46f2-8bde-5e472fcc1661', '01/11/2020', 193.84)
+INSERT INTO #TempData VALUES ('a59b2561-ccc6-4d78-9207-a356452ba228', '03/15/2021', 20)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/14/2022', 52.49)
+INSERT INTO #TempData VALUES ('e888ad97-1ad2-4559-b9d5-c9fd918ddc0d', '01/12/2020', 49.99)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/22/2019', 270)
+INSERT INTO #TempData VALUES ('ff3eb764-f84a-43bc-8101-8de241dc18b8', '03/27/2021', 97.78)
+INSERT INTO #TempData VALUES ('1718e7e1-eb88-471d-98f1-f37033652312', '04/28/2021', 236.5)
+INSERT INTO #TempData VALUES ('b0521d4d-719f-49fd-a7ef-4cc5d54afc69', '03/29/2021', 23.29)
+INSERT INTO #TempData VALUES ('bfd2bfc4-eb03-4dd0-8885-b7905cfe2db6', '05/20/2021', 68.07)
+INSERT INTO #TempData VALUES ('a5f117c5-227b-4f08-a893-f8c3b39eaac1', '02/20/2020', 299)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/10/2022', 52.49)
+INSERT INTO #TempData VALUES ('21562c24-9cb1-462b-b4fe-3925a7fa13db', '10/01/2020', 85.62)
+INSERT INTO #TempData VALUES ('ba42fd93-8a9b-45d9-9721-1e1a9caddb72', '03/22/2021', 122.63)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/26/2019', 129.56)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/10/2022', 52.49)
+INSERT INTO #TempData VALUES ('c528a7cf-21ba-412c-8485-7a12a6243d61', '06/04/2021', 501)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 52.49)
+INSERT INTO #TempData VALUES ('d81b0395-7a8e-476b-be51-f01ff4bb44e4', '12/05/2019', 197)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/03/2019', 30.22)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/06/2020', 9.31)
+INSERT INTO #TempData VALUES ('df75bad0-e26d-43cf-8d2b-5a96f6fc5809', '03/21/2021', 60.97)
+INSERT INTO #TempData VALUES ('d332402e-47df-414f-9e04-b6f2b94c574c', '03/20/2021', 66.04)
+INSERT INTO #TempData VALUES ('272dc3f8-9209-4648-b2c4-5c8d747b591c', '11/25/2021', 179.84)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/19/2019', 56.32)
+INSERT INTO #TempData VALUES ('b9d45314-b49a-4643-9ea3-1bc40b33e41f', '03/27/2020', 129.9)
+INSERT INTO #TempData VALUES ('21f34ca5-2874-4bfb-ba70-b4babfd7bee9', '03/28/2021', 2208)
+INSERT INTO #TempData VALUES ('b9467ebc-8b72-4278-af14-d90aa54e75f1', '03/26/2021', 135.36)
+INSERT INTO #TempData VALUES ('3e8a1efe-9573-44a3-ac95-65953359358e', '03/17/2021', 79.95)
+INSERT INTO #TempData VALUES ('26dc8524-1f7c-4382-bff1-1f70c419f154', '01/07/2020', 60)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/07/2019', 15.22)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/02/2020', 48.98)
+INSERT INTO #TempData VALUES ('870522c6-b92e-4739-9f78-cc33f6f3fa14', '03/07/2021', 154.86)
+INSERT INTO #TempData VALUES ('a1ce31bb-0718-4d3d-afa1-3c56f342d674', '03/18/2021', 575.82)
+INSERT INTO #TempData VALUES ('b83d9964-c054-4b8e-bea3-a911a3c3d6db', '01/24/2020', 1249)
+INSERT INTO #TempData VALUES ('96e5d32a-be1e-47ae-95cc-b87f689bbfba', '11/02/2021', 150)
+INSERT INTO #TempData VALUES ('a9961ae5-c902-45a4-950d-c816ed57039c', '03/17/2021', 84.68)
+INSERT INTO #TempData VALUES ('a53f4f45-d94c-47ec-ba57-9c0667d698e1', '03/26/2021', 535.6)
+INSERT INTO #TempData VALUES ('3e47230a-bab3-4518-b187-90845c12da8a', '11/29/2019', 86.27)
+INSERT INTO #TempData VALUES ('c50bd57b-2771-4aa9-bf18-933a0825f522', '03/03/2021', 79.95)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/14/2019', 142.06)
+INSERT INTO #TempData VALUES ('103d6d41-d12a-4361-ae8c-17a43f1216af', '12/09/2021', 3.68)
+INSERT INTO #TempData VALUES ('f25c31e6-cf54-4b32-bb83-0afcdfc34a44', '01/07/2020', 115)
+INSERT INTO #TempData VALUES ('2526bcb4-a6ff-4a3b-b1e6-361e38789e76', '03/18/2021', 79.29)
+INSERT INTO #TempData VALUES ('946729f1-c6b3-4590-8ca1-9d1acb3c3787', '11/14/2019', 865)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/09/2019', 65.26)
+INSERT INTO #TempData VALUES ('d09011ea-c0a2-4847-9b27-f54c5fd37692', '01/17/2020', 49.99)
+INSERT INTO #TempData VALUES ('3fd535e3-7282-4ff2-beaa-081283771d7b', '01/12/2020', 24)
+INSERT INTO #TempData VALUES ('e8c5dfad-5ef4-4fe1-838d-70b5fc998858', '08/12/2020', 158.42)
+INSERT INTO #TempData VALUES ('909db6c4-c5bd-4c72-9014-af561a52a5ab', '11/28/2019', 217.49)
+INSERT INTO #TempData VALUES ('f82820a2-be2e-4d96-8708-4d85a26485d2', '12/07/2019', 356.5)
+INSERT INTO #TempData VALUES ('01186315-94ea-4e69-9cc8-ea6de2c4bc2f', '03/27/2021', 20)
+INSERT INTO #TempData VALUES ('d6827093-f885-4ca5-b49a-018e20084265', '03/20/2021', 86)
+INSERT INTO #TempData VALUES ('ac773e58-57c8-4171-9593-7b8b34634e61', '01/18/2020', 325.88)
+INSERT INTO #TempData VALUES ('8cc844bd-6a52-40f3-99da-de41e2303ce9', '03/17/2021', 600)
+INSERT INTO #TempData VALUES ('47b20a08-db93-469e-9b79-38957049c391', '03/22/2021', 11.79)
+INSERT INTO #TempData VALUES ('7f1060a1-f78e-47e4-aa37-50df27f96d78', '11/28/2019', 150.5)
+INSERT INTO #TempData VALUES ('3dcf6d4b-81ac-4dde-8665-94588db8b3ce', '11/29/2019', 37.15)
+INSERT INTO #TempData VALUES ('0dba8d7d-b110-41aa-bae3-ffbec2349a47', '10/01/2019', 8.54)
+INSERT INTO #TempData VALUES ('fe2527f1-a280-497b-b11c-dedae12b98ea', '03/25/2021', 360)
+INSERT INTO #TempData VALUES ('e709984e-371e-4fe3-8923-62fe3ae71819', '03/23/2021', 1108.27)
+INSERT INTO #TempData VALUES ('06263f25-0a64-4ec1-b784-6301d9cfb2f9', '12/03/2021', 2.75)
+INSERT INTO #TempData VALUES ('221e4390-94a7-4a65-bf02-a17ce4582e9d', '12/15/2021', 101)
+INSERT INTO #TempData VALUES ('a7b8c82d-51b3-4eda-bfb7-7b11d1ed82f1', '10/29/2021', 529)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '08/31/2019', 119.55)
+INSERT INTO #TempData VALUES ('147fefc2-9e00-423e-a808-c1d8f940bc4d', '01/01/2022', 126.14)
+INSERT INTO #TempData VALUES ('b4a9ff92-a7d6-4002-a40c-cc58bb43d52f', '03/04/2021', 34.48)
+INSERT INTO #TempData VALUES ('43d2740e-267c-4bf5-9b5f-4f9a4e5a0365', '11/30/2021', 113.57)
+INSERT INTO #TempData VALUES ('8e9484b0-ac0a-4c49-a679-3f99984c81e9', '12/02/2019', 111.67)
+INSERT INTO #TempData VALUES ('103d6d41-d12a-4361-ae8c-17a43f1216af', '12/09/2021', 2.93)
+INSERT INTO #TempData VALUES ('00b91e97-ccf2-43d9-9562-2892899c01c6', '03/26/2021', 120)
+INSERT INTO #TempData VALUES ('08c9edfc-6e58-471e-ba64-a26f322a8105', '11/28/2019', 100)
+INSERT INTO #TempData VALUES ('894425d5-b362-489a-938a-57f5721e759e', '03/24/2021', 239.06)
+INSERT INTO #TempData VALUES ('15a37ade-ddd8-44b5-a300-0f7b832770de', '01/22/2020', 35.99)
+INSERT INTO #TempData VALUES ('4b328ad8-b6bc-4e68-9145-019eba632651', '12/07/2021', 219)
+INSERT INTO #TempData VALUES ('04d65620-32a8-4347-aba9-faba0c97e187', '08/26/2020', 997)
+INSERT INTO #TempData VALUES ('f01fe95f-6934-4d3f-bfd8-24e75f23ccc2', '08/30/2019', 29)
+INSERT INTO #TempData VALUES ('d1c9e91e-adfc-40c2-bbe7-fc0d8fbae441', '03/19/2021', 563.22)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/04/2019', 29.99)
+INSERT INTO #TempData VALUES ('91270a80-b85c-4b03-9474-a127bce01017', '10/21/2020', 454.9)
+INSERT INTO #TempData VALUES ('af3de0c3-4052-481e-9ae3-2b841191b173', '03/23/2021', 1250.13)
+INSERT INTO #TempData VALUES ('97c64413-dfca-49f8-91bb-1bf140a7ae6b', '01/20/2020', 69.99)
+INSERT INTO #TempData VALUES ('cd5d9742-dc15-48ac-8a39-299912b4aa98', '01/16/2021', 364.26)
+INSERT INTO #TempData VALUES ('aa3d4737-61db-4a71-9617-242487cb3ecb', '01/19/2020', 106.12)
+INSERT INTO #TempData VALUES ('85cf5f09-c800-4933-b28d-fb1843d18ddb', '03/29/2021', 66.35)
+INSERT INTO #TempData VALUES ('c7a30049-8e71-41d3-a377-e0be7902095a', '12/31/2019', 300)
+INSERT INTO #TempData VALUES ('103d6d41-d12a-4361-ae8c-17a43f1216af', '12/17/2021', 82.43)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '12/31/2019', 74)
+INSERT INTO #TempData VALUES ('0bd7ce91-5a87-4ff8-aa10-5c6654686949', '02/20/2021', 100)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 104.99)
+INSERT INTO #TempData VALUES ('02785bdd-f195-4dcf-9e30-2f429f82ba64', '01/04/2020', 1733.36)
+INSERT INTO #TempData VALUES ('dead49da-222f-4d2e-89d7-d19b0dc96acf', '11/21/2019', 29.7)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/11/2019', 2.99)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/05/2019', 127.34)
+INSERT INTO #TempData VALUES ('3dd6b42a-ba6a-40ac-9a6e-78a0f25ba912', '03/01/2021', 366)
+INSERT INTO #TempData VALUES ('f9cd5253-297a-4d39-9752-ae6c8c2a79c5', '11/15/2021', 100)
+INSERT INTO #TempData VALUES ('d5c9d729-9d61-42e4-8155-95b0ca0ad2d7', '03/23/2021', 63.59)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/13/2020', 305)
+INSERT INTO #TempData VALUES ('8763ccb7-5012-43fa-97b1-fccf175812ba', '03/16/2021', 259.28)
+INSERT INTO #TempData VALUES ('c0d256aa-57c2-43ac-95df-db50da1a2c99', '08/06/2021', 548.68)
+INSERT INTO #TempData VALUES ('a994d05a-b602-4e95-a721-6ce1bbff70a1', '06/12/2021', 54.17)
+INSERT INTO #TempData VALUES ('3d7362ea-c330-4e06-b9bd-f9038121b192', '03/18/2021', 59.99)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 104.99)
+INSERT INTO #TempData VALUES ('6b0c1bfb-5ae2-41fa-8dea-d603ce6b627c', '11/15/2021', 410.94)
+INSERT INTO #TempData VALUES ('a7b8c82d-51b3-4eda-bfb7-7b11d1ed82f1', '10/29/2021', 529)
+INSERT INTO #TempData VALUES ('7e219b14-aff1-4064-ac14-cbc56580673d', '03/23/2021', 73.5)
+INSERT INTO #TempData VALUES ('e41f8db0-cbb8-448c-ac75-a61112fc3c3e', '02/13/2021', 159.84)
+INSERT INTO #TempData VALUES ('31b3270f-c7b3-4154-8951-77f131f31126', '11/28/2021', 97.13)
+INSERT INTO #TempData VALUES ('aafb9f65-3f49-4769-a557-26c6160a180e', '10/11/2019', 400)
+INSERT INTO #TempData VALUES ('3f529696-d22c-465a-a76e-51a24e63806f', '12/17/2019', 741.95)
+INSERT INTO #TempData VALUES ('2fb3b07d-30e0-414a-a5ab-46b412580c55', '01/03/2022', 9.99)
+INSERT INTO #TempData VALUES ('a28ec976-f2eb-4bec-9bfd-feaee9dee5e9', '03/07/2021', 99.99)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/17/2022', 52.49)
+INSERT INTO #TempData VALUES ('06263f25-0a64-4ec1-b784-6301d9cfb2f9', '12/02/2021', 2.75)
+INSERT INTO #TempData VALUES ('5ccd02e6-db81-414b-91b8-2339410a6d91', '12/23/2019', 117.1)
+INSERT INTO #TempData VALUES ('fbb7112c-5948-4dd7-bba5-003fd07c8673', '10/13/2019', 77.78)
+INSERT INTO #TempData VALUES ('aa3d4737-61db-4a71-9617-242487cb3ecb', '12/10/2019', 899.99)
+INSERT INTO #TempData VALUES ('f066b347-e302-470c-af9d-99908cd551f4', '10/29/2019', 239.35)
+INSERT INTO #TempData VALUES ('4afa3808-8b4c-4085-9817-cf4e6eeef51b', '10/01/2021', 470)
+INSERT INTO #TempData VALUES ('b1fb7bdd-e6a9-4211-abc9-514dd1347df0', '12/31/2019', 119)
+INSERT INTO #TempData VALUES ('3011da55-51e8-44a8-ad0c-bf555e46a35f', '12/28/2020', 223.82)
+INSERT INTO #TempData VALUES ('432f3940-d370-4146-8c9f-275abe9162f3', '03/24/2021', 239.82)
+INSERT INTO #TempData VALUES ('02fe5283-285d-482f-b30a-f66d07ef57d1', '10/20/2021', 278.5)
+INSERT INTO #TempData VALUES ('0a8e73f0-ec08-43ab-ba88-b605e4ef3b94', '01/08/2022', 37.45)
+INSERT INTO #TempData VALUES ('779f9ac0-cdb1-40a1-8ae8-11f52ab6adea', '11/27/2019', 12.09)
+INSERT INTO #TempData VALUES ('5ccd02e6-db81-414b-91b8-2339410a6d91', '12/23/2019', 0.99)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/14/2022', 104.99)
+INSERT INTO #TempData VALUES ('6f06ec91-a1ca-414a-bcc1-e3646dbf2557', '12/01/2020', 139.84)
+INSERT INTO #TempData VALUES ('e5986f59-a97e-4fcf-affd-dc10f843d172', '11/17/2019', 590.34)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/03/2019', 54.43)
+INSERT INTO #TempData VALUES ('d461ba39-ff60-4d8b-bceb-c7939c433cc4', '09/19/2021', 32)
+INSERT INTO #TempData VALUES ('2ce19996-3664-4247-ac63-441985e6ea8d', '01/20/2020', 35.99)
+INSERT INTO #TempData VALUES ('b83d9964-c054-4b8e-bea3-a911a3c3d6db', '01/24/2020', 199)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/16/2019', 260)
+INSERT INTO #TempData VALUES ('9764a922-4017-458d-bc8f-669030312dea', '05/02/2021', 639)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 52.49)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/11/2022', 52.49)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/06/2019', 335.96)
+INSERT INTO #TempData VALUES ('e67f59b5-f32e-4442-a365-abf0dabcd462', '03/06/2021', 57.6)
+INSERT INTO #TempData VALUES ('43f0f3fc-ab50-487f-bc81-3254b9bb93da', '01/22/2020', 395.45)
+INSERT INTO #TempData VALUES ('6acc9f2a-6e93-4cd4-909c-f29a4ff97614', '01/14/2020', 166.48)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/30/2019', 10.88)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/04/2020', 43.54)
+INSERT INTO #TempData VALUES ('43d2740e-267c-4bf5-9b5f-4f9a4e5a0365', '11/29/2021', 74)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/11/2022', 52.49)
+INSERT INTO #TempData VALUES ('c0be49cc-aa28-4e94-abab-f0086f9a64b3', '03/27/2021', 648.42)
+INSERT INTO #TempData VALUES ('1fbc2021-6c12-47ca-9f7b-7171f4c3f753', '01/09/2022', 57.98)
+INSERT INTO #TempData VALUES ('045996b5-c334-49a1-af73-4f67c4ca47ef', '11/07/2021', 406.97)
+INSERT INTO #TempData VALUES ('da9b9ed5-b19e-4ced-a8b8-e6ef08b995c5', '09/26/2019', 3.99)
+INSERT INTO #TempData VALUES ('72089bf4-3eaf-4730-866c-b8fc0562bfcd', '01/05/2022', 109.88)
+INSERT INTO #TempData VALUES ('6e363e3e-9ed1-47c2-b953-86b869b874f0', '03/16/2021', 270.95)
+INSERT INTO #TempData VALUES ('fbb7112c-5948-4dd7-bba5-003fd07c8673', '10/10/2019', 2944.6)
+INSERT INTO #TempData VALUES ('9a32b704-104f-4162-95b7-eb2989c82fd4', '11/26/2021', 336.94)
+INSERT INTO #TempData VALUES ('43d2740e-267c-4bf5-9b5f-4f9a4e5a0365', '11/29/2021', 706.54)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/07/2020', 31.56)
+INSERT INTO #TempData VALUES ('73cb6f64-3c0a-4faa-8933-812066b8f5d0', '02/03/2021', 94.98)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 104.99)
+INSERT INTO #TempData VALUES ('06b8af71-483c-4f81-ac8f-9a47b55bf531', '03/25/2021', 99.99)
+INSERT INTO #TempData VALUES ('317e5a6c-c149-43d0-93b6-cccb1f873691', '03/26/2021', 689.1)
+INSERT INTO #TempData VALUES ('cea97c37-e441-4439-be01-34086120f56f', '10/25/2019', 1448.54)
+INSERT INTO #TempData VALUES ('67c4d0ab-3e09-4c24-a27f-c18866ef6d7a', '11/27/2021', 160.38)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '09/18/2019', 21.09)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 104.99)
+INSERT INTO #TempData VALUES ('c2d462e6-ce1a-46f0-b955-c51ff0d86efe', '03/27/2021', 308.48)
+INSERT INTO #TempData VALUES ('c482fc2e-11be-4336-9cb1-cd45fb85128a', '10/12/2019', 148.39)
+INSERT INTO #TempData VALUES ('b4a9ff92-a7d6-4002-a40c-cc58bb43d52f', '03/04/2021', 79)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/19/2022', 104.99)
+INSERT INTO #TempData VALUES ('4112e015-c4b5-4dac-b6ad-83c7ae3e344d', '10/07/2020', 95)
+INSERT INTO #TempData VALUES ('6e37c964-b3da-4007-a785-bda7b989d417', '09/08/2019', 392.2)
+INSERT INTO #TempData VALUES ('69049fb2-5867-46eb-acce-b50e7f18b94b', '01/12/2020', 47.76)
+INSERT INTO #TempData VALUES ('df373348-a6a4-4491-afdc-0c06d7ef23b2', '03/23/2021', 250)
+INSERT INTO #TempData VALUES ('b4a9ff92-a7d6-4002-a40c-cc58bb43d52f', '03/04/2021', 339)
+INSERT INTO #TempData VALUES ('abca2a68-dda7-4fd8-b156-99cc3d0eb460', '01/14/2022', 104.99)
+INSERT INTO #TempData VALUES ('84967234-2035-4c7c-9107-81f8b24fe192', '03/23/2021', 69.99)
+INSERT INTO #TempData VALUES ('fc1dc175-255e-4bc1-8d3a-2b8533995178', '10/01/2021', 873.86)
+INSERT INTO #TempData VALUES ('1b620689-c09b-428e-a646-b94034b58e1e', '08/09/2019', 100)
+INSERT INTO #TempData VALUES ('96a3087c-cf62-472e-a344-fa6b664ed12b', '01/14/2020', 23.94)
+INSERT INTO #TempData VALUES ('b88482c4-8972-4d8c-bfad-41b4ad7227f9', '03/26/2021', 54.44)
+
+*/

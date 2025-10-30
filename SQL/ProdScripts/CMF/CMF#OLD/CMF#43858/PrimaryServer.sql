@@ -1,0 +1,21 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+
+	UPDATE LogArTxnAddl SET ExcludeFlag = 1 WHERE TranID IN (31384179230)
+	-- 1 row
+
+COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+/*
+
+SELECT ExcludeFlag,* FROM LogArTxnAddl WITH (NOLOCK) WHERE TranID IN (31384179230)
+
+SELECT bsacctid, AccountNumber, PostingRef, ArTxnType, * FROM CCard_Primary WITH (NOLOCK) WHERE TranID IN (31384179230)
+SELECT bsacctid, AccountNumber, PostingRef, ArTxnType, * FROM CCard_Primary WITH (NOLOCK) WHERE TranRef IN (31384179216)
+
+*/

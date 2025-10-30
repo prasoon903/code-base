@@ -1,0 +1,12 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+USE CCGS_CoreAuth
+GO
+
+	UPDATE BSegment_Primary SET DateOfLastDelinquent = '2020-02-29 00:00:00' WHERE acctId = 1212683
+
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+
+--SELECT DaysDelinquent, DateOfLastDelinquent, * FROM CCGS_RPT_CoreAuth..BSegment_Primary WITH (NOLOCK) WHERE acctId IN (1185600, 1212683, 1218755, 3866773, 4078987)

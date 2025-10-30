@@ -1,0 +1,9 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+
+SELECT AmtOfPayCurrDue, AmountOfTotalDue FROM CPSgmentCreditCard WITH (NOLOCK) WHERE acctId = 2010472
+
+	

@@ -1,0 +1,16 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+
+BEGIN TRANSACTION
+	
+	UPDATE BSegment_Primary SET SystemStatus = 2 WHERE acctId = 340905
+	-- 1 row
+
+
+COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+--SELECT SystemStatus FROM BSegment_Primary WITH (NOLOCk) WHERE acctId = 340905

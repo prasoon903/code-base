@@ -1,0 +1,7 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+
+UPDATE TOP(1) BSegment_Primary SET CurrentBalanceCO = 2946.24 WHERE acctId = 19630045

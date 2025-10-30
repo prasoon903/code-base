@@ -1,0 +1,19 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+BEGIN TRANSACTION
+
+	UPDATE ILPScheduleDetailSummary SET DrCrIndicator_MTC = '1' WHERE Activity = 25 AND DrCrIndicator_MTC = '-1'
+	-- 47 rows
+
+COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+/*
+--VALIDATION
+
+SELECT COUNT(1) 
+FROM ILPScheduleDetailSummary ILPS WITH (NOLOCK)
+WHERE ILPS.Activity = 25
+AND DrCrIndicator_MTC = '-1'
+
+*/

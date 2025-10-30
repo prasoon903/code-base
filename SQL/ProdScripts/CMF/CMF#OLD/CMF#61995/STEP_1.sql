@@ -1,0 +1,12 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+--COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+
+INSERT INTO CreateNewSingleTransactionData (TxnAcctId, AccountNumber, TransactionAmount, CMTTranType, ActualTranCode) 
+VALUES (15456366, '1100011167740541', 0.10, '49', '4913')

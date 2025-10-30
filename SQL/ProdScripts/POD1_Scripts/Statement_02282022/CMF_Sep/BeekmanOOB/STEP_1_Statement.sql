@@ -1,0 +1,20 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+-- COMMIT TRANSACTION
+-- ROLLBACK TRANSACTION
+
+
+UPDATE TOP(1) SummaryHeader SET AmountOfCreditsLTD = AmountOfCreditsLTD - 49 WHERE acctID = 45450207 AND StatementID = 100092964
+UPDATE TOP(1) SummaryHeader SET AmountOfCreditsLTD = AmountOfCreditsLTD - 120.91 WHERE acctID = 45991958 AND StatementID = 100092964
+
+
+
+/*
+SELECT AmountOfCreditsLTD, * 
+FROM LS_PRODDRGSDB01.ccgs_coreissue_Secondary.dbo.SummaryHeader WITH (NOLOCK) 
+WHERE acctID = 45450207 AND StatementID = 100092964
+*/

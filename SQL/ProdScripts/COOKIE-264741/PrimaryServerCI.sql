@@ -1,0 +1,6 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+UPDATE TOP(1) BSegmentCreditCard SET ManualInitialChargeOffReason = NULL WHERE acctID = 498208

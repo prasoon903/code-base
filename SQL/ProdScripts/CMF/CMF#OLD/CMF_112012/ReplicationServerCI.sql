@@ -1,0 +1,6 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+UPDATE TOP(1) AccountInfoForReport SET ManualInitialChargeOffReason = NULL WHERE BSacctID = 498208 AND BusinessDay = '2024-03-07 23:59:57'

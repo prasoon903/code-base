@@ -1,0 +1,11 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+
+UPDATE TOP(1) CCard_Primary SET ArTxnType = '91' WHERE TranID = 77282395966 AND AccountNumber = '1100011182704787' -- Payment
+UPDATE TOP(1) LogArTxnAddl SET ExcludeFlag = NULL WHERE TranID = 77282395966 -- Payment
+
+UPDATE TOP(1) CCard_Primary SET ArTxnType = '91' WHERE TranID = 77282763790 AND AccountNumber = '1100011182704787' -- PaymentRIP
+UPDATE TOP(1) LogArTxnAddl SET ArTxnType = '91' WHERE TranID = 77282763790 -- PaymentRIP

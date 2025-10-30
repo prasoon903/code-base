@@ -1,0 +1,26 @@
+USE CCGS_CoreIssue
+GO
+
+DROP TABLE IF EXISTS TEMP_PlansToCorrect
+
+CREATE TABLE TEMP_PlansToCorrect
+(Skey DECIMAL(19, 0) IDENTITY(1,1) NOT NULL, SkeyOnILP DECIMAL(19, 0), PlanUUID VARCHAR(64), CorrectionDate DATETIME, ScheduleType INT, FileDueToError VARCHAR(300), JobStatus INT)
+
+
+;WITH BadTable
+As
+(
+	SELECT ILP.* FROM ILPScheduleDetailsBad ILP WITh (NOLOCK)
+	JOIN Temp_ErrorPlans TT ON (TT.PlanUUID = ILP.PlanUUID AND ILP.JobStatus = 1)
+),
+BadPlans
+AS
+(
+	SELECT PlanUUID
+	FROM BadTable
+	GROUP BY PlanUUID
+)
+INSERT INTO TEMP_PlansToCorrect
+SELECT ILPS.Skey, ILPS.PlanUUID, NULL, 0, NULL, 0
+FROM ILPScheduleDetailSummary ILPS WITH (NOLOCK)
+JOIN BadPlans Bp ON (BP.PlanUUID = ILPS.PlanUUID)

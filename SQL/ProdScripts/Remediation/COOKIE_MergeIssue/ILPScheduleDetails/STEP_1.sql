@@ -1,0 +1,5 @@
+
+DROP TABLE IF EXISTS TempILPScheduleDetails
+SELECT * INTO TempILPScheduleDetails FROM ILPScheduleDetails WHERE 1 = 2
+
+ALTER TABLE TempILPScheduleDetails ADD SN DECIMAL(19, 0) IDENTITY(1, 1)

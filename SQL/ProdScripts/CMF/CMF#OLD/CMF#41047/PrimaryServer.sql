@@ -1,0 +1,23 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+
+	UPDATE CCard_Primary SET PostingRef = 'Transaction posted successfully', ArTxnType = '91' WHERE TranID IN (29506710107, 29550265075)
+	-- 2 row
+
+	UPDATE LogArTxnAddl SET ExcludeFlag = 1 WHERE TranID IN (29506710107, 29550265075) AND ARTxnType = '93'
+	-- 2 row
+
+COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+/*
+
+SELECT ExcludeFlag,* FROM LogArTxnAddl WITH (NOLOCK) WHERE TranID IN (29506710107, 29550265075)
+
+SELECT bsacctid, AccountNumber, PostingRef, ArTxnType, * FROM CCard_Primary WITH (NOLOCK) WHERE TranID IN (29506710107, 29550265075)
+
+*/

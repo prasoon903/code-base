@@ -1,0 +1,9 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+
+SELECT AmountOfTotalDue FROM SummaryHeader WITH (NOLOCK) WHERE acctId = 21938790 AND StatementID = 44219848
+
+	

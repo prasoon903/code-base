@@ -1,0 +1,9 @@
+
+
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+DELETE FROM currentBalanceAudit WHERE AID = 2296309 AND ATID = 51 AND IdentityField = 3001745088
+UPDATE currentBalanceAudit SET NewValue = '1' WHERE AID = 2296309 AND ATID = 51 AND IdentityField = 3001745090
+

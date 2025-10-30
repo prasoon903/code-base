@@ -1,0 +1,26 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+--COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+
+UPDATE ILPScheduleDetailSummary SET parent02AID = 0 - parent02AID WHERE PlanID IN (69859820)
+
+/*
+
+UPDATE TOP(1) CPSgmentAccounts SET parent02AID = 0 - parent02AID WHERE acctId IN (69859820)
+-- 1 rows update
+	
+DELETE TOP(1) FROM XrefTable WHERE ParentATID = 51 AND ParentAID = 15253340 AND ChildATID = 52 AND ChildAID = 69859820
+-- 1 row delete
+
+
+-- VALIDATION
+
+--SELECT acctId, parent02AID, InvoiceNumber FROM CPSgmentAccounts WITH (NOLOCK) WHERE acctId = 69859820
+--SELECT * FROM XrefTable WITH (NOLOCK) WHERE ParentATID = 51 AND ParentAID = 15253340 AND ChildATID = 52 AND ChildAID = 69859820
+
+*/

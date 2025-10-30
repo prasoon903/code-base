@@ -1,0 +1,9 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+
+SELECT CycleDueDTD, AmtOfPayCurrDue FROM BSegment_Primary WITH (NOLOCK) WHERE acctId = 1667578
+
+	

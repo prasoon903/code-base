@@ -1,0 +1,9 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+INSERT INTO COOKIE_257478_ChargeOffAccount(AccountUUID, ForgivenAmount) VALUES
+('563a3faf-00ea-4dd6-8154-e6c405728bc4', 500),
+('96529c70-8346-4a7f-acc0-e60bcd6d7fc0', 500),
+('40d13ae7-9462-41dd-b4a0-a8952a7d9afd', 500)

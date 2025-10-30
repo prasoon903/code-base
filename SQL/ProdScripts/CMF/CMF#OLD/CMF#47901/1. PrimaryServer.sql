@@ -1,0 +1,17 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+
+--COMMIT TRANSACTION
+--ROLLBACK TRANSACTION
+-- UPDATE WILL BE 1 ROW EACH
+
+
+
+UPDATE TOP(1) BSegmentCreditCard SET ManualInitialChargeOffReason = '6' WHERE acctId = 809746
+
+
+UPDATE TOP(1) BSegment_Primary SET tpylad = NULL, tpyNad = NULL, tpyBlob = NULL WHERE acctId = 809746

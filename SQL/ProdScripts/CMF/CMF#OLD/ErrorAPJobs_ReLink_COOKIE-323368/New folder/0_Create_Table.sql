@@ -1,0 +1,48 @@
+
+--DROP TABLE IF EXISTS ##AccountsOfPlanToReLink
+
+CREATE TABLE AccountsOfPlanToReLink
+(   
+	Skey DECIMAL(19, 0) IDENTITY(1,1),
+	acctID INT, 
+	TranID DECIMAL(19,0), 
+	TimeGap INT,
+	JobStatus INT DEFAULT(0)
+)
+
+
+
+
+/*
+
+DROP TABLE IF EXISTS ##ErrorTNP
+SELECT *
+INTO ##ErrorTNP
+FROM LS_P1MARPRODDB01.CCGS_CoreIssue.dbo.ErrorTNP WITH (NOLOCK)
+
+DROP TABLE IF EXISTS ##CCard_Primary
+SELECT CP.*
+INTO ##CCard_Primary
+FROM CCard_Primary CP WITH (NOLOCK)
+JOIN ##ErrorTNP E ON (CP.TranID = E.TranID)
+
+DROP TABLE IF EXISTS ##CommonTNP
+SELECT *
+INTO ##CommonTNP
+FROM commonTNP WITH (NOLOCK)
+WHERE 1=0
+
+
+
+
+INSERT INTO #AccountsOfPlanToReLink (Acctid) VALUES (1383013)
+
+
+UPDATE AR 
+ SET TranID = ET.tranID
+ FROM #AccountsOfPlanToReLink AR WITH(NOLOCK)
+ JOIN ErrorTNP ET WITH(NOLOCK) ON (Ar.Acctid = ET.Acctid)
+
+
+
+*/

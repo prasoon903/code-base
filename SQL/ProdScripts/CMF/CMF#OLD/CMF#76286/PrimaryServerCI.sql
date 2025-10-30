@@ -1,0 +1,8 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+UPDATE BSegment_Primary SET AmtOfAcctHighBalLTD = 509 WHERE acctId = 4917931
+
+--1 rows

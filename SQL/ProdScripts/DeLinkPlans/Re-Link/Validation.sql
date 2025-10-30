@@ -1,0 +1,32 @@
+SELECT *
+FROM sys.tables 
+WHERE name LIKE '%TempXRef_CT_%'
+
+SELECT * FROM TempXRef_CT_135701
+SELECT * FROM TempData_CT_138504
+SELECT * FROM TempXRef_CT_138504
+
+SELECT PlanSegCreateDate,* FROM LS_P1MARPRODDB01.ccgs_coreissue.dbo.CPSgmentAccounts WITH (NOLOCK) WHERE acctID = 22335785
+SELECT * FROM LS_P1MARPRODDB01.ccgs_coreissue.dbo.TempXRef_CT_135701 WITH (NOLOCK) WHERE ChildAID = 22335785
+SELECT CreatedTime, AccountNumber,* FROM BSegment_Primary WITH (NOLOCK) WHERE acctID = 8186017
+SELECT * FROM CPMAccounts WITH (NOLOCK) WHERE acctID = 13792
+
+
+SELECT PlanSegCreateDate,* FROM LS_P1MARPRODDB01.ccgs_coreissue.dbo.CPSgmentAccounts WITH (NOLOCK) WHERE acctID = 40173948
+SELECT * FROM LS_P1MARPRODDB01.ccgs_coreissue.dbo.TempXRef_CT_135701 WITH (NOLOCK) WHERE ChildAID = 40173948
+SELECT CreatedTime, AccountNumber,* FROM BSegment_Primary WITH (NOLOCK) WHERE acctID = 6781662
+SELECT * FROM CPMAccounts WITH (NOLOCK) WHERE acctID = 13792
+
+--BT LAD > CreateTime THEN BT LAD ELSE CreateTime
+
+SELECT * FROM CCArd_Primary WITH (NOLOCK) WHERE AccountNumber = '1100011142086457' AND TxnAcctID =40173948  ORDer BY PostTIme DESC
+
+--TempXRef_CT_111770
+--TempData_CT_138504
+
+--TempData_CT_111770
+--TempData_CT_135701
+--TempData_CT_138504
+
+--TempXRef_CT_111770
+--TempXRef_CT_135701

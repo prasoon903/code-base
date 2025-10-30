@@ -1,0 +1,55 @@
+INSERT INTO AccountsOfPlanToReLink (acctID, TranID, TimeGap, JobStatus)
+SELECT acctID, TranID, ROW_NUMBER() OVER(PARTITION BY acctId ORDER BY TranTime)*10 , 0
+FROM ErrorAP WITH (NOLOCK) 
+WHERE ATID=51
+AND TranID IN
+(143227199167)
+
+UPDATE AccountsOfPlanToReLink SET FromStatement = '2023-07-31 23:59:57.000', ToStatement = '2025-06-30 23:59:57' WHERE acctID = 13550200 AND JobStatus = 0
+
+
+
+--SELECT * FROM ##AccountsOfPlanToReLink
+
+--847405
+--11409681
+--2757430
+--2437629
+
+/*
+SELECT StatementDate, COUNT(1)
+FROM SummaryHeader WITH (NOLOCK)
+WHERE parent02AID = 13550200
+GROUP BY StatementDate
+ORDER BY StatementDate DESC
+
+
+SELECT StatementID, COUNT(1)
+FROM SummaryHeaderCreditCard WITH (NOLOCK)
+WHERE acctID = 43746522
+GROUP BY StatementID
+ORDER BY StatementID DESC
+
+SELECT * FROM STatementHeader WITH (NOLOCK) WHERE STatementID = 250980248
+
+
+SELECT *
+FROM ErrorAP WITH (NOLOCK) 
+WHERE ATID=51
+AND TranID IN
+(143227199167)
+
+SELECT *
+FROM CCard_Primary WITH (NOLOCK) 
+WHERE TranID IN
+(143227199167)
+
+SELECT *
+FROM CPSgmentAccounts WITH (NOLOCK)
+WHERE parent02AID = -13550200
+
+--SELECT *
+--FROM CommonAP WITH (NOLOCK)
+--WHERE TranTime < GETDATE() 
+
+*/

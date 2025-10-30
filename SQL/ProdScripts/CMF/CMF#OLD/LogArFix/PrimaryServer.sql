@@ -1,0 +1,7 @@
+BEGIN TRAN
+--COMMIT TRAN
+--ROLLBACK TRAN
+
+
+UPDATE TOP(1) LogArTxnAddl  SET ARTxnBusinessDate = '2023-05-01 13:42:00.000' where tranid =  85329024447
+--1 row update

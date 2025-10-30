@@ -1,0 +1,10 @@
+-- TO BE RUN ON REPLICATION SERVER ONLY
+
+USE CCGS_RPT_CoreIssue
+GO
+
+
+
+SELECT AmountOfTotalDue FROM SummaryHeader WITH (NOLOCK) WHERE acctId = 21938790 AND StatementID = 44219848
+
+	

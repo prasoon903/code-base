@@ -1,0 +1,18 @@
+-- TO BE RUN ON PRIMARY SERVER ONLY
+
+USE CCGS_CoreIssue
+GO
+
+BEGIN TRANSACTION
+
+	-- UPDATE TOP(1) WILL BE 1 ROW EACH
+
+	UPDATE TOP(1) SummaryHeaderCreditCard SET CycleDueDTD = 0, AmtOfPayXDLate = AmtOfPayXDLate - 6.71 WHERE acctId = 23544712 AND StatementID = 44217231
+	UPDATE TOP(1) SummaryHeader SET AmountOfTotalDue = AmountOfTotalDue - 6.71 WHERE acctId = 23544712 AND StatementID = 44217231
+
+	UPDATE TOP(1) SummaryHeaderCreditCard SET AmtOfPayXDLate = AmtOfPayXDLate + 6.71 WHERE acctId = 23420439 AND StatementID = 44217231
+
+	
+
+--COMMIT TRANSACTION
+--ROLLBACK TRANSACTION

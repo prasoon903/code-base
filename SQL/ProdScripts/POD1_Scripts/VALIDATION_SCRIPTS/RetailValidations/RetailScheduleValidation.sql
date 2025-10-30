@@ -1,0 +1,26 @@
+DECLARE 
+	@STARTTIME DATETIME,
+	@ENDTIME DATETIME
+
+
+-- FILL DATA IN TEMP TABLES
+
+SELECT
+ILPS.*
+INTO #ILPSummary
+FROM ILPScheduleDetailSummary ILPS
+WITH (NOLOCK)
+WHERE ILPS.LoanDate > @STARTTIME AND ILPS.LoanDate <= @ENDTIME
+
+SELECT 
+ILP.*
+INTO #ILPDetails
+FROM ILPScheduleDetails ILP WITH (NOLOCK)
+JOIN #ILPSummary ILPS WITH (NOLOCK) ON (ILP.ScheduleId = ILPS.ScheduleId AND ILPS.ActivityOrder = 1)
+
+SELECT 
+ILP.*
+INTO #ILPRevised
+FROM ILPScheduleDetailsRevised ILP WITH (NOLOCK)
+JOIN #ILPSummary ILPS WITH (NOLOCK) ON (ILP.ScheduleId = ILPS.ScheduleId AND ILPS.ActivityOrder > 1)
+

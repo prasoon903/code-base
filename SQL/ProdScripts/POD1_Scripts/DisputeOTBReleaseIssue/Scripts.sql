@@ -1,0 +1,62 @@
+SELECT AccountNumber, MergeInProcessPH,*
+FROM BSegment_Primary BP WITH (NOLOCK)
+WHERE acctId IN (18734646, 4712883)
+
+--1100011136429119   
+--1100011186796946   
+
+SELECT * FROM DisputeStatusLog WITH (NOLOCK)
+WHERE ClaimID = '5bf5a020-6267-430a-9fab-37cb12c48e2a'
+
+SELECT TransactionAmount, CMTTranType, ClaimID,* 
+FROM CCard_Primary WITH (NOLOCK)
+WHERE AccountNumber = '1100011186796946'
+AND CMTTranType = '110'
+ORDER BY PostTime DESC
+
+
+SELECT * FROM DisputeLog WITH (NOLOCK)
+WHERE AccountNumber = '1100011136429119'
+
+
+SELECT APIName, T.* 
+FROM TCIvrRequest T WITH (NOLOCK)
+JOIN APIMaster A WITH (NOLOCK) ON (T.RequestName = A.APICode)
+WHERE AccountNumber = '1100011136429119'
+AND APICode = 113565
+ORDER BY RequestDate DESC
+
+SELECT * FROM APIMaster WITH (NOLOCK) WHERE APIname = 'svcDisputeOTBRelease'
+
+SELECT * FROM MonetaryTxnControl WITH (NOLOCK) WHERE LogicModule = '1103'
+
+SELECT * FROM DisputeLog WITH (NOLOCK)
+WHERE DisputeID IN 
+(2799086,
+2799102,
+2799103,
+2798886,
+2863556)
+
+SELECT * 
+FROM DisputeStatusLog WITH (NOLOCK)
+WHERE ClaimID IN (
+'5bf5a020-6267-430a-9fab-37cb12c48e2a',
+'00ca7246-3377-4253-aed2-d0a3af8dd5b4',
+'f31df125-8e93-4ef6-9f23-5fb57097c0f1',
+'c8d578ad-bbba-49ec-aae6-a71ddcf6ab8a',
+'37696cec-5254-4993-ab95-16b0d5a7e0ce')
+
+
+
+;WITH CTE 
+AS 
+(
+SELECT APIName, T.* 
+FROM TCIvrRequest T WITH (NOLOCK)
+JOIN APIMaster A WITH (NOLOCK) ON (T.RequestName = A.APICode)
+WHERE AccountNumber = '1100011136429119'
+--ORDER BY RequestDate DESC
+)
+SELECT APIName, COUNT(1)
+FROM CTE GROUP BY APIName

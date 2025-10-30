@@ -1,0 +1,22 @@
+-- TO BE RUN ON REPLICATION SERVER ONLY
+
+
+USE CCGS_RPT_CoreIssue
+GO
+
+
+BEGIN TRANSACTION
+--COMMIT TRANSACTION
+-- ROLLBACK TRANSACTION
+
+
+
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10384 WHERE BSacctId = 372891 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10384 WHERE BSacctId = 757968 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10384 WHERE BSacctId = 818060 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10386 WHERE BSacctId = 2730513 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10386 WHERE BSacctId = 13435729 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10386 WHERE BSacctId = 16863456 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10384 WHERE BSacctId = 18545175 AND BusinessDay = '2021-08-31 23:59:57.000'
+UPDATE TOP(1) AccountInfoForReport SET ccinhparent127AID = 10406 WHERE BSacctId = 20465702 AND BusinessDay = '2021-08-31 23:59:57.000'
+
