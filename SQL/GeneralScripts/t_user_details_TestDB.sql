@@ -1,0 +1,61 @@
+--Select * from master.dbo.t_user_details with(nolock) WHERE db_name IN ('PP_JAZZ_TEST', 'PP_TEST')
+
+USE master
+
+SET NOCOUNT ON
+
+DROP TABLE IF EXISTS #TempDB
+CREATE TABLE #TempDB (SN INT IDENTITY(1,1), DBName VARCHAR(30), Status INT DEFAULT(0))
+
+INSERT INTO #TempDB (DBName) VALUES ('PP_JAZZ_TEST'), ('PP_TEST')
+
+DROP TABLE IF EXISTS #TempUsers
+CREATE TABLE #TempUsers (SN INT IDENTITY(1,1), Username VARCHAR(500), Status INT DEFAULT(0))
+
+INSERT INTO #TempUsers (Username) VALUES
+('NEWVISIONSOFT\development_users'), ('NEWVISIONSOFT\prepaid')
+
+--SELECT * FROM #TempUsers
+
+
+DECLARE @Username VARCHAR(500)
+DECLARE @DBName VARCHAR(30)
+
+WHILE EXISTS (SELECT TOP 1 1 FROM #TempUsers WHERE Status = 0)
+BEGIN
+	SELECT TOP 1 @Username = Username FROM #TempUsers WHERE Status = 0
+	--PRINT @Username
+
+	UPDATE #TempDB SET Status = 0
+
+	WHILE EXISTS (SELECT TOP 1 1 FROM #TempDB WHERE Status = 0)
+	BEGIN
+		SELECT TOP 1 @DBName = DBName FROM #TempDB WHERE Status = 0
+		--PRINT @DBName
+
+		IF EXISTS (Select 1 from t_user_details with(nolock) WHERE db_name = @DBName AND login_name = @Username)
+		BEGIN
+			UPDATE t_user_details SET status = 1 WHERE db_name = @DBName AND login_name = @Username
+		END
+		ELSE
+		BEGIN
+			INSERT INTO t_user_details (login_name,db_name,status) VALUES (@Username, @DBName, 1)
+		END
+
+		UPDATE #TempDB SET Status = 1 WHERE DBName = @DBName
+	END
+
+	UPDATE #TempUsers SET Status = 1 WHERE Username = @Username
+END
+
+
+
+USE msdb ;  
+GO  
+
+EXEC dbo.sp_start_job N'BPLDEVDB01_DBOWNER_Permission' ;  
+GO 
+
+PRINT 'WAITING FOR BPLDEVDB01_DBOWNER_Permission TO EXECUTE'
+
+WAITFOR DELAY '00:00:02'
